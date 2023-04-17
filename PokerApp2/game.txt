@@ -1,0 +1,59 @@
+PokerStars Hand #242575907698: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level II (100/200) - 2023/03/20 16:29:22 ET
+Table '3563424603 1' 8-max
+Seat 2: Hero (3000 in chips) 
+Seat 3: teddottie (2980 in chips) 
+Seat 4: amit (2542 in chips) 
+Seat 5: Alchemist1 (2508 in chips) 
+Seat 6: CidChompsky (3555 in chips) 
+Seat 7: goodwillout (2145 in chips) 
+Seat 8: chrisj992 (3115 in chips) 
+Hero: posts the ante 20
+teddottie: posts the ante 20
+amit: posts the ante 20
+Alchemist1: posts the ante 20
+CidChompsky: posts the ante 20
+goodwillout: posts the ante 20
+chrisj992: posts the ante 20
+*** 3rd STREET ***
+Dealt to Hero [8h 4d Ks]
+Dealt to teddottie [Ac]
+Dealt to amit [4h]
+Dealt to Alchemist1 [8c]
+Dealt to CidChompsky [Kc]
+Dealt to goodwillout [2h]
+Dealt to chrisj992 [Js]
+goodwillout: brings in for 30
+chrisj992: calls 30
+Hero: folds 
+teddottie: raises 70 to 100
+amit: folds 
+Alchemist1: folds 
+CidChompsky: folds 
+goodwillout: folds 
+chrisj992: calls 70
+*** 4th STREET ***
+Dealt to teddottie [Ac] [8d]
+Dealt to chrisj992 [Js] [5d]
+teddottie: bets 100
+chrisj992: calls 100
+*** 5th STREET ***
+Dealt to teddottie [Ac 8d] [6s]
+Dealt to chrisj992 [Js 5d] [9c]
+teddottie: bets 200
+chrisj992: calls 200
+*** 6th STREET ***
+Dealt to teddottie [Ac 8d 6s] [Kd]
+Dealt to chrisj992 [Js 5d 9c] [Qs]
+teddottie: bets 200
+chrisj992: folds 
+Uncalled bet (200) returned to teddottie
+teddottie collected 970 from pot
+*** SUMMARY ***
+Total pot 970 | Rake 0 
+Seat 2: Hero folded on the 3rd Street (didn't bet)
+Seat 3: teddottie collected (970)
+Seat 4: amit folded on the 3rd Street (didn't bet)
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky folded on the 3rd Street (didn't bet)
+Seat 7: goodwillout folded on the 3rd Street
+Seat 8: chrisj992 folded on the 6th Street
