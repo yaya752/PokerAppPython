@@ -40,6 +40,7 @@
   <ItemGroup>
     <Content Include="Game_File\game.txt" />
     <Content Include="templates\Phase.html" />
+    <Content Include="templates\Phase3.html" />
     <Content Include="templates\save.html" />
     <Content Include="templates\index1.html" />
     <Content Include="templates\Main.html" />
