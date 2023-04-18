@@ -38,11 +38,14 @@
     <Compile Include="Table.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="templates\index.html" />
+    <Content Include="Game_File\game.txt" />
+    <Content Include="templates\Phase.html" />
+    <Content Include="templates\save.html" />
     <Content Include="templates\index1.html" />
     <Content Include="templates\Main.html" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Game_File\" />
     <Folder Include="templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
