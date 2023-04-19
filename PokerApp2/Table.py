@@ -5,6 +5,16 @@ class Table:
         self.Pot = Pot
         self.Rake = Rake
 
+    def __json__(self):
+        Players_list = [] 
+        for player in self.Players:
+            player_json = player.__json__()
+            Players_list.append(player_json)
+        return{
+            'Players':Players_list,
+            'Pot':self.Pot,
+            'Rake': self.Rake
+            }
 
     def display(self):
         for player in self.Players:
@@ -25,3 +35,10 @@ class Table:
             if player.Name == name:
                 player.AllCards.append(card)
                 player.CardSeen.append(card)
+    def Ante(self,ante):
+        for player in self.Players:
+            player.Chips -= ante
+    def Do(self,Name,Action):
+        for player in self.Players:
+            if player.Name == Name:
+                player.Action = Action

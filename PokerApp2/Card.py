@@ -1,9 +1,15 @@
 class Card:
-    def __init__(self, number, shape):
-        self.number = number
-        self.shape = shape
+    def __init__(self, Value, Shape):
+        self.Value = Value
+        self.Shape = Shape
 
 
     def display(self):
-        print("number :", self.number)
-        print("shape :", self.shape)
+        print("Value :", self.Value)
+        print("Shape :", self.Shape)
+
+    def __json__(self):
+        return {
+            'Value': self.Value,
+            'Shape': self.Shape
+        }

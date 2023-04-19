@@ -35,18 +35,22 @@
     <Compile Include="Card.py" />
     <Compile Include="Player.py" />
     <Compile Include="PokerApp.py" />
-    <Compile Include="Table.py" />
+    <Compile Include="table.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Game_File\game.txt" />
+    <Content Include="Game_File\game1.txt" />
+    <Content Include="Game_File\game2.txt" />
     <Content Include="templates\Phase.html" />
+    <Content Include="static\Phase3.css" />
     <Content Include="templates\Phase3.html" />
+    <Content Include="static\Phase3.js" />
     <Content Include="templates\save.html" />
     <Content Include="templates\index1.html" />
     <Content Include="templates\Main.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Game_File\" />
+    <Folder Include="static\" />
     <Folder Include="templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />

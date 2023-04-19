@@ -2,10 +2,11 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from PIL import Image, ImageDraw
 import io
 from Card import Card
-from Table import Table
+from table import Table
 from Player import Player
 import base64
 import random
+import json
 
 
 app = Flask(__name__)
@@ -16,7 +17,7 @@ Function Name: save
 
 Parameters:
 - file_name: name of the file that you want to use ()
-
+    
 Returns: 
 - Redirect the user to the page to choose the phase of the game he want to play
 
@@ -72,24 +73,27 @@ def phase3():
             if mots[0] == "Seat":
                 chips_str = mots[3][1:]
                 chips = int(chips_str)
-                player = Player(mots[2],[],[],chips)
-                player.display()
+                player = Player(mots[2],[],[],chips,"")
                 Table_game.AppendPlayer(player)
-            else:
-                if ligne[:4] == "Dealt":
-                    mots = ligne.split()
-                    if mots[2] == "Hero":
-                        card1 = Card(int(mots[3][1]),mots[3][2])
-                        card2 = Card(int(mots[4][0]),mots[4][1])
-                        card3 = Card(int(mots[5][0]),mots[5][1])
-                        Table_game.DealtAllCards("Hero",card1)
-                        Table_game.DealtAllCards("Hero",card2)
-                        Table_game.DealtSeenCards("Hero",card3)
-                    else:
-                        Table_game.DealtAllCards(mots[2],Card(int(mots[3][1]),mots[3][2]))
+            elif mots[1] == "posts":
+                ante = int(mots[4])
+            elif mots[0] == "Dealt":
+                if mots[2] == "Hero":
+                    card1 = Card(mots[3][1],mots[3][2])
+                    card2 = Card(mots[4][0],mots[4][1])
+                    card3 = Card(mots[5][0],mots[5][1])
+                    Table_game.DealtAllCards("Hero",card1)
+                    Table_game.DealtAllCards("Hero",card2)
+                    Table_game.DealtSeenCards("Hero",card3)
+                else:
+                    Table_game.DealtSeenCards(mots[2],Card(mots[3][1],mots[3][2]))
+            elif mots[1] == "brings" or mots[1:] == "calls" or mots[1] == "folds" or mots[1] == "raises" or mots[1] == "bets":
+                Table_game.Do(mots[0][:-1],mots[1:])
             ligne = f.readline()
-    Table_game.display()
-    return render_template('Phase.html')
+        Table_game.Ante(ante)
+        Table_json = json.dumps(Table_game, default=lambda o: o.__json__())
+        print(Table_json)
+    return render_template('Phase3.html' , Table_json=Table_json)
 
 @app.route('/phase4', methods=['GET', 'POST'])
 def phase4():

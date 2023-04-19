@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>7 Stud Hi-Lo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Phase3.css') }}">
+</head>
+<body>
+    <h1>3rd Street</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Players Name</th>
+                <th>Player CardSeen</th>
+            </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+    </table>
+
+    <p>Pot: <span id="pot"></span></p>
+    <p>Rake: <span id="rake"></span></p>
+
+    <script src={{ url_for('static', filename='Phase3.js') }}></script>
+    
+    <form action="/phase3" method="GET">
+        <input type="submit" value="Third Street">
+    </form>
+    <form action="/phase4" method="GET">
+        <input type="submit" value="Fourth Street">
+    </form>
+    <form action="/phase5" method="GET">
+        <input type="submit" value="Fifth Street">
+    </form>
+    <form action="/phase6" method="GET">
+        <input type="submit" value="Sixth Street">
+    </form>
+    <form action="/phase7" method="GET">
+        <input type="submit" value="Seventh Street">
+    </form>
+    <form action="/Summary" method="GET">
+        <input type="submit" value="Summary">
+    </form>
+</body>
+</html>

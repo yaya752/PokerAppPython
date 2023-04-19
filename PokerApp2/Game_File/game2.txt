@@ -1,0 +1,73 @@
+PokerStars Hand #242575927362: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level II (100/200) - 2023/03/20 16:30:06 ET
+Table '3563424603 1' 8-max
+Seat 2: Hero (2980 in chips) 
+Seat 3: teddottie (3530 in chips) 
+Seat 4: amit (2522 in chips) 
+Seat 5: Alchemist1 (2488 in chips) 
+Seat 6: CidChompsky (3535 in chips) 
+Seat 7: goodwillout (2095 in chips) 
+Seat 8: chrisj992 (2695 in chips) 
+Hero: posts the ante 20
+teddottie: posts the ante 20
+amit: posts the ante 20
+Alchemist1: posts the ante 20
+CidChompsky: posts the ante 20
+goodwillout: posts the ante 20
+chrisj992: posts the ante 20
+*** 3rd STREET ***
+Dealt to Hero [8d 2s 6c]
+Dealt to teddottie [Jd]
+Dealt to amit [3d]
+Dealt to Alchemist1 [9s]
+Dealt to CidChompsky [Th]
+Dealt to goodwillout [2d]
+Dealt to chrisj992 [2h]
+goodwillout: brings in for 30
+chrisj992: folds 
+Hero: calls 30
+teddottie: folds 
+amit: calls 30
+Alchemist1: folds 
+CidChompsky: folds 
+*** 4th STREET ***
+Dealt to Hero [8d 2s 6c] [Tc]
+Dealt to amit [3d] [Qc]
+Dealt to goodwillout [2d] [5d]
+amit: checks 
+goodwillout: checks 
+Hero: checks 
+*** 5th STREET ***
+Dealt to Hero [8d 2s 6c Tc] [5c]
+Dealt to amit [3d Qc] [Kc]
+Dealt to goodwillout [2d 5d] [8c]
+amit: checks 
+goodwillout: checks 
+Hero: checks 
+*** 6th STREET ***
+Dealt to Hero [8d 2s 6c Tc 5c] [Td]
+Dealt to amit [3d Qc Kc] [4d]
+Dealt to goodwillout [2d 5d 8c] [Ah]
+Hero: checks 
+amit: checks 
+goodwillout: bets 200
+Hero: calls 200
+amit: folds 
+*** RIVER ***
+Dealt to Hero [8d 2s 6c Tc 5c Td] [Qd]
+Hero: checks 
+goodwillout: bets 200
+Hero: calls 200
+*** SHOW DOWN ***
+goodwillout: shows [Ac 2c 2d 5d 8c Ah 7c] (HI: two pair, Aces and Deuces; LO: 8,7,5,2,A)
+Hero: mucks hand 
+goodwillout collected 515 from pot
+goodwillout collected 515 from pot
+*** SUMMARY ***
+Total pot 1030 | Rake 0 
+Seat 2: Hero mucked [8d 2s 6c Tc 5c Td Qd]
+Seat 3: teddottie folded on the 3rd Street (didn't bet)
+Seat 4: amit folded on the 6th Street
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky folded on the 3rd Street (didn't bet)
+Seat 7: goodwillout showed [Ac 2c 2d 5d 8c Ah 7c] and won (1030) with HI: two pair, Aces and Deuces; LO: 8,7,5,2,A
+Seat 8: chrisj992 folded on the 3rd Street (didn't bet)
