@@ -1,11 +1,12 @@
 from Card import *
 class Player:
-    def __init__(self,Name, AllCards, CardSeen, Chips , Action):
+    def __init__(self,Name, AllCards, CardSeen, Chips , Action, Position):
         self.Name = Name
         self.AllCards = AllCards
         self.CardSeen = CardSeen
         self.Chips = Chips
         self.Action = Action
+        self.Position = Position
     def __json__(self):
         AllCards_list = []
 
@@ -16,12 +17,15 @@ class Player:
         for Cards in self.CardSeen:
            card = Cards.__json__()
            CardSeen_list.append(card)
+        Action_str = ' '.join (self.Action)
+        
         return {
             'Name': self.Name,
             'AllCards': AllCards_list,
             'CardSeen': CardSeen_list,
             'Chips' : self.Chips,
-            'Action': self.Action
+            'Action': Action_str,
+            'Position': self.Position
         }
 
             
@@ -33,4 +37,5 @@ class Player:
             card.display()
         print("Chips of the player :", self.Chips)
         print(self.Name, self.Action)
+        print(self.Position)
 

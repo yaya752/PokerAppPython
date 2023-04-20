@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
 from PIL import Image, ImageDraw
 import io
 from Card import Card
@@ -9,8 +9,9 @@ import random
 import json
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.secret_key = "PokerApp"
+
 
 '''
 Function Name: save
@@ -29,8 +30,9 @@ Description:
 def save():
     if request.method == 'POST':
         file_name = request.form['file_name']
+        mane_player = request.form['mane_player']
         
-        return redirect(url_for('phase', file_name=file_name))
+        return redirect(url_for('phase', file_name=file_name, mane_player=mane_player))
     return render_template('save.html')
 
 '''
@@ -48,8 +50,10 @@ Description:
 @app.route('/Phases', methods=['GET', 'POST'])
 def phase():
     file_name = request.args['file_name']
+    mane_player = request.args['mane_player']
     file_name = "Game_File\\" + file_name
     session['file_name'] = file_name
+    session['mane_player'] = mane_player
     return render_template('Phase.html')
 '''
 Function Name: phase 3
@@ -62,10 +66,17 @@ Description:
     Create the first phase
 
 '''
+@app.route('/static/Phase3.js')
+def serve_js():
+    return send_from_directory(app.static_folder, 'Phase3.js')
+
+
 @app.route('/phase3', methods=['GET', 'POST'])
 def phase3():
     file_name = session['file_name']
-    Table_game = Table([],0,0)
+    mane_player = session['mane_player']
+    Table_game = Table([],0,0,mane_player,0)
+    pos = 0
     with open(file_name, "r") as f:
         ligne = f.readline()
         while ligne[:5] != "*** 4":
@@ -73,12 +84,14 @@ def phase3():
             if mots[0] == "Seat":
                 chips_str = mots[3][1:]
                 chips = int(chips_str)
-                player = Player(mots[2],[],[],chips,"")
+                player = Player(mots[2],[],[],chips,"",-1)
                 Table_game.AppendPlayer(player)
             elif mots[1] == "posts":
                 ante = int(mots[4])
+                Table_game.Ante=ante 
+                Table_game.Pot+=ante  
             elif mots[0] == "Dealt":
-                if mots[2] == "Hero":
+                if mots[2] == mane_player:
                     card1 = Card(mots[3][1],mots[3][2])
                     card2 = Card(mots[4][0],mots[4][1])
                     card3 = Card(mots[5][0],mots[5][1])
@@ -87,12 +100,17 @@ def phase3():
                     Table_game.DealtSeenCards("Hero",card3)
                 else:
                     Table_game.DealtSeenCards(mots[2],Card(mots[3][1],mots[3][2]))
-            elif mots[1] == "brings" or mots[1:] == "calls" or mots[1] == "folds" or mots[1] == "raises" or mots[1] == "bets":
-                Table_game.Do(mots[0][:-1],mots[1:])
+            elif mots[1] == "brings" or mots[1] == "calls" or mots[1] == "folds" or mots[1] == "raises" or mots[1] == "bets":
+                
+                Table_game.Do(mots[0][:-1],mots[1:],pos)
+                pos+=1
+                     
             ligne = f.readline()
-        Table_game.Ante(ante)
+        Table_game.SetAnte()
+        Table_game.Sort()
         Table_json = json.dumps(Table_game, default=lambda o: o.__json__())
-        print(Table_json)
+        session['table'] = Table_json
+        #print(Table_json)
     return render_template('Phase3.html' , Table_json=Table_json)
 
 @app.route('/phase4', methods=['GET', 'POST'])
