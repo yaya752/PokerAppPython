@@ -1,8 +1,8 @@
-function updateTable(tableJson) {
+function updateTable(tableJson,idtbody,idpot,idrake) {
     var table = JSON.parse(tableJson);
-    var tbody = document.getElementById('table-body');
-    var potSpan = document.getElementById('pot');
-    var rakeSpan = document.getElementById('rake');
+    var tbody = document.getElementById(idtbody);
+    var potSpan = document.getElementById(idpot);
+    var rakeSpan = document.getElementById(idrake);
 
     for (var i = 0; i < table.Players.length; i++) {
         var player = table.Players[i];
@@ -34,10 +34,14 @@ function updateTable(tableJson) {
         var tdChips = document.createElement('td');
         tdChips.textContent = player['Chips'];
 
+        var tdChipsTable = document.createElement('td');
+        tdChipsTable.textContent = player['ChipsOnTable'];
+
         tr.appendChild(tdName);
         tr.appendChild(tdHand);
         tr.appendChild(tdAction);
         tr.appendChild(tdChips);
+        tr.appendChild(tdChipsTable);
         tbody.appendChild(tr);
     }
     potSpan.textContent = table.Pot;

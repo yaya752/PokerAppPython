@@ -29,7 +29,10 @@ class Table:
 
     def AppendPlayer(self,player):
         self.Players.append(player)
-
+    def GetPlayer(self,name):
+        for player in self.Players:
+            if player.Name == name:
+                return player
     def DealtAllCards(self,name,card):
         for player in self.Players:
             if player.Name == name:
@@ -40,30 +43,31 @@ class Table:
             if player.Name == name:
                 player.AllCards.append(card)
                 player.CardSeen.append(card)
+
     def SetAnte(self):
         for player in self.Players:
             player.Chips -= self.Ante
+
     def Do(self,Name,Action,pos):
         for player in self.Players:
             if player.Name == Name:
-                if (player.Position == -1):
-                    player.Action = Action
-                    player.Position = pos
-                '''else:
-                    newPlayer = Player(player.Name,player.AllCards,player.CardSeen,player.Chips,Action,pos)
-                    self.Players.append(newPlayer)'''
+                player.Action = Action
+                player.Position = pos
+                player.ActionsToChips()
+            
+    def Actions(self):
+        for player in self.Players:
+            player.ActionsToChips()
+                    
     def Sort(self):
         i = 0
         Players = self.Players
-        PlayerSorted = []
+        self.Players = []
         while (i < len(Players)):
             j = 0
-            print(Players[i].Position)
             while (i != Players[j].Position):
-                
                 j+=1
-            PlayerSorted.append(Players[j])
+            self.Players.append(Players[j])
             i+=1   
-        self.Players = PlayerSorted
 
 

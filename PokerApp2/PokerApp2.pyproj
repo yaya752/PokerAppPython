@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Card.py" />
+    <Compile Include="function.py" />
     <Compile Include="Player.py" />
     <Compile Include="PokerApp.py" />
     <Compile Include="table.py" />
@@ -45,8 +46,10 @@
     <Content Include="templates\Phase3.html" />
     <Content Include="static\Phase3.js" />
     <Content Include="templates\save.html" />
-    <Content Include="templates\index1.html" />
+    <Content Include="templates\index.html" />
     <Content Include="templates\Main.html" />
+    <Content Include="templates\summary.html" />
+    <Content Include="templates\uploads.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Game_File\" />

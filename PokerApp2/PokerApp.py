@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
+import os
 from PIL import Image, ImageDraw
 import io
 from Card import Card
@@ -7,7 +8,7 @@ from Player import Player
 import base64
 import random
 import json
-
+from function import Summary_json
 
 app = Flask(__name__, static_folder='static')
 app.secret_key = "PokerApp"
@@ -26,15 +27,34 @@ Description:
 - This function get the file name by using a post method, the file have to be in the Game_File Folder
 
 '''
-@app.route('/', methods=['GET', 'POST']) # define the main route (first page)
+@app.route('/save', methods=['GET', 'POST']) # define the main route (first page)
 def save():
     if request.method == 'POST':
         file_name = request.form['file_name']
         mane_player = request.form['mane_player']
-        
         return redirect(url_for('phase', file_name=file_name, mane_player=mane_player))
     return render_template('save.html')
 
+@app.route('/', methods=['GET', 'POST']) # define the main route (first page)
+def index():
+    if request.method == 'POST':
+        mane_player = request.form['mane_player']
+        return redirect(url_for('list_uploads', mane_player=mane_player))
+    return render_template('index.html')
+@app.route('/files')
+def list_uploads():
+    mane_player = request.args['mane_player']
+    uploads_dir = os.path.join(app.root_path, 'Game_File\\')
+    files = os.listdir(uploads_dir)
+    return redirect(url_for('Summary', files=files, mane_player=mane_player ))
+
+@app.route('/Summary')
+def Summary():
+    files = request.args['files']
+    mane_player = request.args['mane_player']
+    #game_file = request.get_json()['game_file']
+    summary_table = Summary_json("game1.txt",mane_player)
+    return render_template('summary.html',summary_table = summary_table)
 '''
 Function Name: phase
 
@@ -71,12 +91,14 @@ def serve_js():
     return send_from_directory(app.static_folder, 'Phase3.js')
 
 
-@app.route('/phase3', methods=['GET', 'POST'])
+@app.route('/Phases/phase3', methods=['GET', 'POST'])
 def phase3():
     file_name = session['file_name']
     mane_player = session['mane_player']
     Table_game = Table([],0,0,mane_player,0)
+    Table_game1 = Table([],0,0,mane_player,0)
     pos = 0
+    pos1 = 0
     with open(file_name, "r") as f:
         ligne = f.readline()
         while ligne[:5] != "*** 4":
@@ -84,8 +106,8 @@ def phase3():
             if mots[0] == "Seat":
                 chips_str = mots[3][1:]
                 chips = int(chips_str)
-                player = Player(mots[2],[],[],chips,"",-1)
-                Table_game.AppendPlayer(player)
+                player = Player(mots[2],[],[],chips,"",-1,0)
+                Table_game.AppendPlayer(player)  
             elif mots[1] == "posts":
                 ante = int(mots[4])
                 Table_game.Ante=ante 
@@ -101,17 +123,28 @@ def phase3():
                 else:
                     Table_game.DealtSeenCards(mots[2],Card(mots[3][1],mots[3][2]))
             elif mots[1] == "brings" or mots[1] == "calls" or mots[1] == "folds" or mots[1] == "raises" or mots[1] == "bets":
-                
-                Table_game.Do(mots[0][:-1],mots[1:],pos)
-                pos+=1
-                     
+                if (pos != len(Table_game.Players  )):
+                    Table_game.Do(mots[0][:-1],mots[1:],pos)
+                    pos+=1
+                else:
+                    player1 = Table_game.GetPlayer(mots[0][:-1])
+                    player1.Position = pos1
+                    Table_game1.AppendPlayer(Player(player1.Name,player1.AllCards,player1.CardSeen,player1.Chips,mots[1:],pos1,player1.ChipsOnTable))
+                    Table_game1.Actions()
+                    pos1+=1
             ligne = f.readline()
         Table_game.SetAnte()
+        Table_game1.SetAnte()
         Table_game.Sort()
+        #Table_game.display()
+        #Table_game1.display()
         Table_json = json.dumps(Table_game, default=lambda o: o.__json__())
+        Table1_json = json.dumps(Table_game1, default=lambda o: o.__json__())
         session['table'] = Table_json
-        #print(Table_json)
-    return render_template('Phase3.html' , Table_json=Table_json)
+        session['table1'] = Table1_json
+        print(Table1_json)
+        print(Table_json)
+    return render_template('Phase3.html' , Table_json=Table_json, Table1_json=Table1_json )
 
 @app.route('/phase4', methods=['GET', 'POST'])
 def phase4():
@@ -136,7 +169,7 @@ def phase7():
 
     print(7)
     return render_template('Phase.html')
-@app.route('/Summary', methods=['GET', 'POST'])
+@app.route('/Phases/Summary', methods=['GET', 'POST'])
 def phaseS():
     print("s")
     return render_template('Phase.html')

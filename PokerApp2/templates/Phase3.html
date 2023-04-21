@@ -9,19 +9,37 @@
 <body>
     <h1>3rd Street</h1>
     <table>
+        <caption>First Round</caption>
         <thead>
+
             <tr>
                 <th>Name</th>
                 <th>Cards</th>
                 <th>Actions</th>
-                <th>total Chips</th>
+                <th>Total Chips</th>
+                <th>Chips on the table</th>
             </tr>
         </thead>
         <tbody id="table-body"></tbody>
     </table>
+    <p>Pot: <span id="pot1"></span></p>
+    <p>Rake: <span id="rake1"></span></p>
+    <table>
+        <caption>Second Round</caption>
+        <thead>
 
-    <p>Pot: <span id="pot"></span></p>
-    <p>Rake: <span id="rake"></span></p>
+            <tr>
+                <th>Name</th>
+                <th>Cards</th>
+                <th>Actions</th>
+                <th>Total Chips</th>
+                <th>Chips on the table</th>
+            </tr>
+        </thead>
+        <tbody id="table1-body"></tbody>
+    </table>
+    <p>Pot: <span id="pot2"></span></p>
+    <p>Rake: <span id="rake2"></span></p>
 
     <form action="/phase3" method="GET">
         <input type="submit" value="Third Street">
@@ -44,7 +62,9 @@
     <script src="{{ url_for('serve_js') }}"></script>
     <script>
         var tableJson = '{{ Table_json|safe }}';
-        updateTable(tableJson);
+        updateTable(tableJson,'table-body','pot1', 'rake1');
+        var tableJson1 = '{{ Table1_json|safe }}';
+        updateTable(tableJson1, 'table1-body', 'pot2', 'rake2');
     </script>
 </body>
 </html>

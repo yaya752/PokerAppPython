@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des fichiers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* Style for the list */
+        ul {
+            list-style-type: disc;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        /* Style for each item in the list */
+        li {
+            float: left;
+            border-right: 1px solid #bbb;
+        }
+
+            /* Style for the last item in the list */
+            li:last-child {
+                border-right: none;
+            }
+
+        /* Style for the active link */
+        .active {
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Liste des fichiers dans le dossier "uploads"</h1>
+    <ul>
+        {% for file in files %}
+        <li>{{ file }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
