@@ -1,0 +1,1937 @@
+PokerStars Hand #242575907698: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level II (100/200) - 2023/03/20 16:29:22 ET
+Table '3563424603 1' 8-max
+Seat 2: Hero (3000 in chips) 
+Seat 3: teddottie (2980 in chips) 
+Seat 4: amit (2542 in chips) 
+Seat 5: Alchemist1 (2508 in chips) 
+Seat 6: CidChompsky (3555 in chips) 
+Seat 7: goodwillout (2145 in chips) 
+Seat 8: chrisj992 (3115 in chips) 
+Hero: posts the ante 20
+teddottie: posts the ante 20
+amit: posts the ante 20
+Alchemist1: posts the ante 20
+CidChompsky: posts the ante 20
+goodwillout: posts the ante 20
+chrisj992: posts the ante 20
+*** 3rd STREET ***
+Dealt to Hero [8h 4d Ks]
+Dealt to teddottie [Ac]
+Dealt to amit [4h]
+Dealt to Alchemist1 [8c]
+Dealt to CidChompsky [Kc]
+Dealt to goodwillout [2h]
+Dealt to chrisj992 [Js]
+goodwillout: brings in for 30
+chrisj992: calls 30
+Hero: folds 
+teddottie: raises 70 to 100
+amit: folds 
+Alchemist1: folds 
+CidChompsky: folds 
+goodwillout: folds 
+chrisj992: calls 70
+*** 4th STREET ***
+Dealt to teddottie [Ac] [8d]
+Dealt to chrisj992 [Js] [5d]
+teddottie: bets 100
+chrisj992: calls 100
+*** 5th STREET ***
+Dealt to teddottie [Ac 8d] [6s]
+Dealt to chrisj992 [Js 5d] [9c]
+teddottie: bets 200
+chrisj992: calls 200
+*** 6th STREET ***
+Dealt to teddottie [Ac 8d 6s] [Kd]
+Dealt to chrisj992 [Js 5d 9c] [Qs]
+teddottie: bets 200
+chrisj992: folds 
+Uncalled bet (200) returned to teddottie
+teddottie collected 970 from pot
+*** SUMMARY ***
+Total pot 970 | Rake 0 
+Seat 2: Hero folded on the 3rd Street (didn't bet)
+Seat 3: teddottie collected (970)
+Seat 4: amit folded on the 3rd Street (didn't bet)
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky folded on the 3rd Street (didn't bet)
+Seat 7: goodwillout folded on the 3rd Street
+Seat 8: chrisj992 folded on the 6th Street
+
+
+
+PokerStars Hand #242575927362: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level II (100/200) - 2023/03/20 16:30:06 ET
+Table '3563424603 1' 8-max
+Seat 2: Hero (2980 in chips) 
+Seat 3: teddottie (3530 in chips) 
+Seat 4: amit (2522 in chips) 
+Seat 5: Alchemist1 (2488 in chips) 
+Seat 6: CidChompsky (3535 in chips) 
+Seat 7: goodwillout (2095 in chips) 
+Seat 8: chrisj992 (2695 in chips) 
+Hero: posts the ante 20
+teddottie: posts the ante 20
+amit: posts the ante 20
+Alchemist1: posts the ante 20
+CidChompsky: posts the ante 20
+goodwillout: posts the ante 20
+chrisj992: posts the ante 20
+*** 3rd STREET ***
+Dealt to Hero [8d 2s 6c]
+Dealt to teddottie [Jd]
+Dealt to amit [3d]
+Dealt to Alchemist1 [9s]
+Dealt to CidChompsky [Th]
+Dealt to goodwillout [2d]
+Dealt to chrisj992 [2h]
+goodwillout: brings in for 30
+chrisj992: folds 
+Hero: calls 30
+teddottie: folds 
+amit: calls 30
+Alchemist1: folds 
+CidChompsky: folds 
+*** 4th STREET ***
+Dealt to Hero [8d 2s 6c] [Tc]
+Dealt to amit [3d] [Qc]
+Dealt to goodwillout [2d] [5d]
+amit: checks 
+goodwillout: checks 
+Hero: checks 
+*** 5th STREET ***
+Dealt to Hero [8d 2s 6c Tc] [5c]
+Dealt to amit [3d Qc] [Kc]
+Dealt to goodwillout [2d 5d] [8c]
+amit: checks 
+goodwillout: checks 
+Hero: checks 
+*** 6th STREET ***
+Dealt to Hero [8d 2s 6c Tc 5c] [Td]
+Dealt to amit [3d Qc Kc] [4d]
+Dealt to goodwillout [2d 5d 8c] [Ah]
+Hero: checks 
+amit: checks 
+goodwillout: bets 200
+Hero: calls 200
+amit: folds 
+*** RIVER ***
+Dealt to Hero [8d 2s 6c Tc 5c Td] [Qd]
+Hero: checks 
+goodwillout: bets 200
+Hero: calls 200
+*** SHOW DOWN ***
+goodwillout: shows [Ac 2c 2d 5d 8c Ah 7c] (HI: two pair, Aces and Deuces; LO: 8,7,5,2,A)
+Hero: mucks hand 
+goodwillout collected 515 from pot
+goodwillout collected 515 from pot
+*** SUMMARY ***
+Total pot 1030 | Rake 0 
+Seat 2: Hero mucked [8d 2s 6c Tc 5c Td Qd]
+Seat 3: teddottie folded on the 3rd Street (didn't bet)
+Seat 4: amit folded on the 6th Street
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky folded on the 3rd Street (didn't bet)
+Seat 7: goodwillout showed [Ac 2c 2d 5d 8c Ah 7c] and won (1030) with HI: two pair, Aces and Deuces; LO: 8,7,5,2,A
+Seat 8: chrisj992 folded on the 3rd Street (didn't bet)
+
+
+
+PokerStars Hand #242575952101: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level II (100/200) - 2023/03/20 16:31:02 ET
+Table '3563424603 1' 8-max
+Seat 2: Hero (2530 in chips) 
+Seat 3: teddottie (3510 in chips) 
+Seat 4: amit (2472 in chips) 
+Seat 5: Alchemist1 (2468 in chips) 
+Seat 6: CidChompsky (3515 in chips) 
+Seat 7: goodwillout (2675 in chips) 
+Seat 8: chrisj992 (2675 in chips) 
+Hero: posts the ante 20
+teddottie: posts the ante 20
+amit: posts the ante 20
+Alchemist1: posts the ante 20
+CidChompsky: posts the ante 20
+goodwillout: posts the ante 20
+chrisj992: posts the ante 20
+*** 3rd STREET ***
+Dealt to Hero [As 4h Kh]
+Dealt to teddottie [Jh]
+Dealt to amit [4c]
+Dealt to Alchemist1 [Jc]
+Dealt to CidChompsky [4s]
+Dealt to goodwillout [5h]
+Dealt to chrisj992 [Ks]
+amit: brings in for 30
+Alchemist1: folds 
+CidChompsky: raises 70 to 100
+goodwillout: folds 
+chrisj992: folds 
+Hero: folds 
+teddottie: calls 100
+amit: calls 70
+*** 4th STREET ***
+Dealt to teddottie [Jh] [Th]
+Dealt to amit [4c] [6c]
+Dealt to CidChompsky [4s] [6s]
+teddottie: checks 
+amit: checks 
+CidChompsky: bets 100
+teddottie: calls 100
+amit: calls 100
+*** 5th STREET ***
+Dealt to teddottie [Jh Th] [Ad]
+Dealt to amit [4c 6c] [3s]
+Dealt to CidChompsky [4s 6s] [3h]
+teddottie: checks 
+amit: checks 
+CidChompsky: bets 200
+teddottie: folds 
+amit: calls 200
+*** 6th STREET ***
+Dealt to amit [4c 6c 3s] [9c]
+Dealt to CidChompsky [4s 6s 3h] [Qd]
+CidChompsky: bets 200
+amit: calls 200
+*** RIVER ***
+CidChompsky: bets 200
+amit: calls 200
+*** SHOW DOWN ***
+CidChompsky: shows [2h 6h 4s 6s 3h Qd 7d] (HI: a pair of Sixes; LO: 7,6,4,3,2)
+amit: mucks hand 
+CidChompsky collected 970 from pot
+CidChompsky collected 970 from pot
+*** SUMMARY ***
+Total pot 1940 | Rake 0 
+Seat 2: Hero folded on the 3rd Street (didn't bet)
+Seat 3: teddottie folded on the 5th Street
+Seat 4: amit mucked [2s 2d 4c 6c 3s 9c Kc]
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky showed [2h 6h 4s 6s 3h Qd 7d] and won (1940) with HI: a pair of Sixes; LO: 7,6,4,3,2
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 folded on the 3rd Street (didn't bet)
+
+
+
+PokerStars Hand #242575993759: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level II (100/200) - 2023/03/20 16:32:36 ET
+Table '3563424603 1' 8-max
+Seat 2: Hero (2510 in chips) 
+Seat 3: teddottie (3290 in chips) 
+Seat 4: amit (1652 in chips) 
+Seat 5: Alchemist1 (2448 in chips) 
+Seat 6: CidChompsky (4635 in chips) 
+Seat 7: goodwillout (2655 in chips) 
+Seat 8: chrisj992 (2655 in chips) 
+Hero: posts the ante 20
+teddottie: posts the ante 20
+amit: posts the ante 20
+Alchemist1: posts the ante 20
+CidChompsky: posts the ante 20
+goodwillout: posts the ante 20
+chrisj992: posts the ante 20
+*** 3rd STREET ***
+Dealt to Hero [8h 7h Ac]
+Dealt to teddottie [Kh]
+Dealt to amit [4d]
+Dealt to Alchemist1 [6c]
+Dealt to CidChompsky [5s]
+Dealt to goodwillout [7c]
+Dealt to chrisj992 [5h]
+amit: brings in for 30
+Alchemist1: folds 
+CidChompsky: folds 
+goodwillout: calls 30
+chrisj992: raises 70 to 100
+Hero: raises 100 to 200
+teddottie: folds 
+amit: folds 
+goodwillout: calls 170
+chrisj992: calls 100
+*** 4th STREET ***
+Dealt to Hero [8h 7h Ac] [7d]
+Dealt to goodwillout [7c] [4s]
+Dealt to chrisj992 [5h] [2d]
+Hero: bets 100
+goodwillout: calls 100
+chrisj992: calls 100
+*** 5th STREET ***
+Dealt to Hero [8h 7h Ac 7d] [3h]
+Dealt to goodwillout [7c 4s] [Kc]
+Dealt to chrisj992 [5h 2d] [5c]
+chrisj992: checks 
+Hero: bets 200
+goodwillout: calls 200
+chrisj992: calls 200
+*** 6th STREET ***
+Dealt to Hero [8h 7h Ac 7d 3h] [3d]
+Dealt to goodwillout [7c 4s Kc] [7s]
+Dealt to chrisj992 [5h 2d 5c] [Js]
+goodwillout: checks 
+chrisj992: bets 200
+Hero: calls 200
+goodwillout: calls 200
+*** RIVER ***
+Dealt to Hero [8h 7h Ac 7d 3h 3d] [9s]
+goodwillout: checks 
+chrisj992: bets 200
+Hero: folds 
+goodwillout: folds 
+Uncalled bet (200) returned to chrisj992
+chrisj992 collected 2270 from pot
+*** SUMMARY ***
+Total pot 2270 | Rake 0 
+Seat 2: Hero folded on the River
+Seat 3: teddottie folded on the 3rd Street (didn't bet)
+Seat 4: amit folded on the 3rd Street
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky folded on the 3rd Street (didn't bet)
+Seat 7: goodwillout folded on the River
+Seat 8: chrisj992 collected (2270)
+
+
+
+PokerStars Hand #242576021813: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level II (100/200) - 2023/03/20 16:33:41 ET
+Table '3563424603 1' 8-max
+Seat 2: Hero (1790 in chips) 
+Seat 3: teddottie (3270 in chips) 
+Seat 4: amit (1602 in chips) 
+Seat 5: Alchemist1 (2428 in chips) 
+Seat 6: CidChompsky (4615 in chips) 
+Seat 7: goodwillout (1935 in chips) 
+Seat 8: chrisj992 (4205 in chips) 
+Hero: posts the ante 20
+teddottie: posts the ante 20
+amit: posts the ante 20
+Alchemist1: posts the ante 20
+CidChompsky: posts the ante 20
+goodwillout: posts the ante 20
+chrisj992: posts the ante 20
+*** 3rd STREET ***
+Dealt to Hero [Jd 3d Jh]
+Dealt to teddottie [Tc]
+Dealt to amit [5s]
+Dealt to Alchemist1 [8h]
+Dealt to CidChompsky [5h]
+Dealt to goodwillout [Th]
+Dealt to chrisj992 [7c]
+CidChompsky: brings in for 30
+goodwillout: calls 30
+chrisj992: calls 30
+xrakete279x is disconnected 
+Hero: folds 
+teddottie: folds 
+amit: raises 70 to 100
+Alchemist1: calls 100
+CidChompsky: folds 
+goodwillout: calls 70
+chrisj992: calls 70
+*** 4th STREET ***
+Dealt to amit [5s] [3h]
+Dealt to Alchemist1 [8h] [4c]
+Dealt to goodwillout [Th] [Js]
+Dealt to chrisj992 [7c] [2d]
+goodwillout: checks 
+chrisj992: checks 
+amit: bets 100
+Alchemist1: calls 100
+goodwillout: calls 100
+chrisj992: calls 100
+*** 5th STREET ***
+Dealt to amit [5s 3h] [9h]
+Dealt to Alchemist1 [8h 4c] [Jc]
+Dealt to goodwillout [Th Js] [6d]
+Dealt to chrisj992 [7c 2d] [6c]
+goodwillout: checks 
+chrisj992: bets 200
+amit: calls 200
+Alchemist1: folds 
+goodwillout: calls 200
+*** 6th STREET ***
+Dealt to amit [5s 3h 9h] [9d]
+Dealt to goodwillout [Th Js 6d] [Ah]
+Dealt to chrisj992 [7c 2d 6c] [4h]
+amit: checks 
+goodwillout: checks 
+chrisj992: checks 
+*** RIVER ***
+amit: bets 200
+goodwillout: folds 
+chrisj992: calls 200
+*** SHOW DOWN ***
+amit: shows [2c 7s 5s 3h 9h 9d 9c] (HI: three of a kind, Nines)
+chrisj992: shows [7d 4s 7c 2d 6c 4h 8d] (HI: two pair, Sevens and Fours; LO: 8,7,6,4,2)
+amit collected 985 from pot
+chrisj992 collected 985 from pot
+*** SUMMARY ***
+Total pot 1970 | Rake 0 
+Seat 2: Hero folded on the 3rd Street (didn't bet)
+Seat 3: teddottie folded on the 3rd Street (didn't bet)
+Seat 4: amit showed [2c 7s 5s 3h 9h 9d 9c] and won (985) with HI: three of a kind, Nines
+Seat 5: Alchemist1 folded on the 5th Street
+Seat 6: CidChompsky folded on the 3rd Street
+Seat 7: goodwillout folded on the River
+Seat 8: chrisj992 showed [7d 4s 7c 2d 6c 4h 8d] and won (985) with HI: two pair, Sevens and Fours; LO: 8,7,6,4,2
+
+
+
+PokerStars Hand #242576059075: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level II (100/200) - 2023/03/20 16:35:06 ET
+Table '3563424603 1' 8-max
+Seat 1: xrakete279x (3000 in chips) 
+Seat 2: Hero (1770 in chips) 
+Seat 3: teddottie (3250 in chips) 
+Seat 4: amit (1967 in chips) 
+Seat 5: Alchemist1 (2208 in chips) 
+Seat 6: CidChompsky (4565 in chips) 
+Seat 7: goodwillout (1515 in chips) 
+Seat 8: chrisj992 (4570 in chips) 
+xrakete279x: posts the ante 20
+Hero: posts the ante 20
+teddottie: posts the ante 20
+amit: posts the ante 20
+Alchemist1: posts the ante 20
+CidChompsky: posts the ante 20
+goodwillout: posts the ante 20
+chrisj992: posts the ante 20
+*** 3rd STREET ***
+Dealt to xrakete279x [Ad]
+Dealt to Hero [Ah Qc Tc]
+Dealt to teddottie [3h]
+Dealt to amit [6h]
+Dealt to Alchemist1 [Kc]
+Dealt to CidChompsky [4s]
+Dealt to goodwillout [5h]
+Dealt to chrisj992 [5d]
+teddottie: brings in for 30
+amit: folds 
+Alchemist1: folds 
+CidChompsky: folds 
+goodwillout: calls 30
+chrisj992: calls 30
+xrakete279x: calls 30
+Hero: folds 
+*** 4th STREET ***
+Dealt to xrakete279x [Ad] [Kd]
+Dealt to teddottie [3h] [Jd]
+Dealt to goodwillout [5h] [7c]
+Dealt to chrisj992 [5d] [7h]
+xrakete279x: checks 
+teddottie: checks 
+goodwillout: checks 
+chrisj992: bets 100
+xrakete279x: folds 
+teddottie: calls 100
+goodwillout: calls 100
+*** 5th STREET ***
+Dealt to teddottie [3h Jd] [Qd]
+Dealt to goodwillout [5h 7c] [6c]
+Dealt to chrisj992 [5d 7h] [9c]
+teddottie: checks 
+goodwillout: checks 
+chrisj992: checks 
+*** 6th STREET ***
+Dealt to teddottie [3h Jd Qd] [Ks]
+Dealt to goodwillout [5h 7c 6c] [4c]
+Dealt to chrisj992 [5d 7h 9c] [Ts]
+teddottie: checks 
+goodwillout: bets 200
+chrisj992: folds 
+teddottie: folds 
+Uncalled bet (200) returned to goodwillout
+goodwillout collected 580 from pot
+goodwillout: doesn't show hand 
+*** SUMMARY ***
+Total pot 580 | Rake 0 
+Seat 1: xrakete279x folded on the 4th Street
+Seat 2: Hero folded on the 3rd Street (didn't bet)
+Seat 3: teddottie folded on the 6th Street
+Seat 4: amit folded on the 3rd Street (didn't bet)
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky folded on the 3rd Street (didn't bet)
+Seat 7: goodwillout collected (580)
+Seat 8: chrisj992 folded on the 6th Street
+
+
+
+PokerStars Hand #242576089706: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level II (100/200) - 2023/03/20 16:36:17 ET
+Table '3563424603 1' 8-max
+Seat 1: xrakete279x (2950 in chips) 
+Seat 2: Hero (1750 in chips) 
+Seat 3: teddottie (3100 in chips) 
+Seat 4: amit (1947 in chips) 
+Seat 5: Alchemist1 (2188 in chips) 
+Seat 6: CidChompsky (4545 in chips) 
+Seat 7: goodwillout (1945 in chips) 
+Seat 8: chrisj992 (4420 in chips) 
+xrakete279x: posts the ante 20
+Hero: posts the ante 20
+teddottie: posts the ante 20
+amit: posts the ante 20
+Alchemist1: posts the ante 20
+CidChompsky: posts the ante 20
+goodwillout: posts the ante 20
+chrisj992: posts the ante 20
+*** 3rd STREET ***
+Dealt to xrakete279x [4d]
+Dealt to Hero [As Ts Jd]
+Dealt to teddottie [Qd]
+Dealt to amit [4c]
+Dealt to Alchemist1 [7c]
+Dealt to CidChompsky [Th]
+Dealt to goodwillout [7h]
+Dealt to chrisj992 [3d]
+chrisj992: bets 100
+xrakete279x: calls 100
+Hero: folds 
+teddottie: raises 100 to 200
+amit: folds 
+Alchemist1: calls 200
+CidChompsky: calls 200
+goodwillout: folds 
+chrisj992: calls 100
+xrakete279x: calls 100
+*** 4th STREET ***
+Dealt to xrakete279x [4d] [7d]
+Dealt to teddottie [Qd] [2h]
+Dealt to Alchemist1 [7c] [Ac]
+Dealt to CidChompsky [Th] [Js]
+Dealt to chrisj992 [3d] [Jc]
+Alchemist1: bets 100
+CidChompsky: folds 
+chrisj992: calls 100
+xrakete279x: calls 100
+teddottie: calls 100
+*** 5th STREET ***
+Dealt to xrakete279x [4d 7d] [Kh]
+Dealt to teddottie [Qd 2h] [3s]
+Dealt to Alchemist1 [7c Ac] [Ah]
+Dealt to chrisj992 [3d Jc] [2s]
+Alchemist1: bets 200
+chrisj992: folds 
+xrakete279x: calls 200
+teddottie: calls 200
+*** 6th STREET ***
+Dealt to xrakete279x [4d 7d Kh] [3c]
+Dealt to teddottie [Qd 2h 3s] [6d]
+Dealt to Alchemist1 [7c Ac Ah] [8s]
+Alchemist1: bets 200
+xrakete279x: raises 200 to 400
+teddottie: calls 400
+Alchemist1: calls 200
+*** RIVER ***
+Alchemist1: checks 
+xrakete279x: bets 200
+teddottie: calls 200
+Alchemist1: calls 200
+*** SHOW DOWN ***
+xrakete279x: shows [Kd Kc 4d 7d Kh 3c 5h] (HI: three of a kind, Kings)
+teddottie: mucks hand 
+Alchemist1: shows [3h Ad 7c Ac Ah 8s 9h] (HI: three of a kind, Aces)
+Alchemist1 collected 3960 from pot
+No low hand qualified
+*** SUMMARY ***
+Total pot 3960 | Rake 0 
+Seat 1: xrakete279x showed [Kd Kc 4d 7d Kh 3c 5h] and lost with HI: three of a kind, Kings
+Seat 2: Hero folded on the 3rd Street (didn't bet)
+Seat 3: teddottie mucked [Qs 5s Qd 2h 3s 6d Qc]
+Seat 4: amit folded on the 3rd Street (didn't bet)
+Seat 5: Alchemist1 showed [3h Ad 7c Ac Ah 8s 9h] and won (3960) with HI: three of a kind, Aces
+Seat 6: CidChompsky folded on the 4th Street
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 folded on the 5th Street
+
+
+
+PokerStars Hand #242576142499: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:38:20 ET
+Table '3563424603 1' 8-max
+Seat 2: Hero (1730 in chips) 
+Seat 3: teddottie (1980 in chips) 
+Seat 4: amit (1927 in chips) 
+Seat 5: Alchemist1 (5028 in chips) 
+Seat 6: CidChompsky (4325 in chips) 
+Seat 7: goodwillout (1925 in chips) 
+Seat 8: chrisj992 (4100 in chips) 
+Hero: posts the ante 30
+teddottie: posts the ante 30
+amit: posts the ante 30
+Alchemist1: posts the ante 30
+CidChompsky: posts the ante 30
+goodwillout: posts the ante 30
+chrisj992: posts the ante 30
+*** 3rd STREET ***
+Dealt to Hero [7s 2h 6h]
+Dealt to teddottie [Kc]
+Dealt to amit [4s]
+Dealt to Alchemist1 [4d]
+Dealt to CidChompsky [3s]
+Dealt to goodwillout [2d]
+Dealt to chrisj992 [Jc]
+goodwillout: brings in for 45
+chrisj992: raises 105 to 150
+Hero: calls 150
+teddottie: folds 
+amit: folds 
+Alchemist1: folds 
+CidChompsky: folds 
+goodwillout: calls 105
+*** 4th STREET ***
+Dealt to Hero [7s 2h 6h] [8d]
+Dealt to goodwillout [2d] [Qd]
+Dealt to chrisj992 [Jc] [Ah]
+chrisj992: checks 
+Hero: bets 150
+goodwillout: folds 
+chrisj992: calls 150
+*** 5th STREET ***
+Dealt to Hero [7s 2h 6h 8d] [5c]
+Dealt to chrisj992 [Jc Ah] [9c]
+chrisj992: checks 
+Hero: bets 300
+chrisj992: calls 300
+*** 6th STREET ***
+Dealt to Hero [7s 2h 6h 8d 5c] [Qh]
+Dealt to chrisj992 [Jc Ah 9c] [Ad]
+chrisj992: bets 300
+Hero: raises 300 to 600
+chrisj992: calls 300
+*** RIVER ***
+Dealt to Hero [7s 2h 6h 8d 5c Qh] [Qc]
+chrisj992: checks 
+Hero: checks 
+*** SHOW DOWN ***
+Hero: shows [7s 2h 6h 8d 5c Qh Qc] (HI: a pair of Queens; LO: 8,7,6,5,2)
+chrisj992: shows [Th 9s Jc Ah 9c Ad 7d] (HI: two pair, Aces and Nines)
+chrisj992 collected 1380 from pot
+Hero collected 1380 from pot
+*** SUMMARY ***
+Total pot 2760 | Rake 0 
+Seat 2: Hero showed [7s 2h 6h 8d 5c Qh Qc] and won (1380) with HI: a pair of Queens; LO: 8,7,6,5,2
+Seat 3: teddottie folded on the 3rd Street (didn't bet)
+Seat 4: amit folded on the 3rd Street (didn't bet)
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky folded on the 3rd Street (didn't bet)
+Seat 7: goodwillout folded on the 4th Street
+Seat 8: chrisj992 showed [Th 9s Jc Ah 9c Ad 7d] and won (1380) with HI: two pair, Aces and Nines
+
+
+
+PokerStars Hand #242576169652: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:39:23 ET
+Table '3563424603 3' 8-max
+Seat 1: dblgutshot (2295 in chips) 
+Seat 2: xrakete279x (2010 in chips) 
+Seat 3: playball17 (2865 in chips) is sitting out
+Seat 4: Hero (1880 in chips) 
+dblgutshot: posts the ante 30
+xrakete279x: posts the ante 30
+playball17: posts the ante 30
+Hero: posts the ante 30
+*** 3rd STREET ***
+Dealt to dblgutshot [6c]
+Dealt to xrakete279x [4d]
+Dealt to playball17 [Ts]
+Dealt to Hero [Jc 4s 9c]
+xrakete279x: brings in for 45
+playball17: folds 
+Hero: folds 
+dblgutshot: folds 
+Uncalled bet (45) returned to xrakete279x
+teddottie is disconnected 
+xrakete279x collected 120 from pot
+xrakete279x: doesn't show hand 
+*** SUMMARY ***
+Total pot 120 | Rake 0 
+Seat 1: dblgutshot folded on the 3rd Street (didn't bet)
+Seat 2: xrakete279x collected (120)
+Seat 3: playball17 folded on the 3rd Street (didn't bet)
+Seat 4: Hero folded on the 3rd Street (didn't bet)
+
+
+
+PokerStars Hand #242576177466: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:39:41 ET
+Table '3563424603 3' 8-max
+Seat 1: dblgutshot (2265 in chips) 
+Seat 2: xrakete279x (2100 in chips) 
+Seat 3: playball17 (2835 in chips) is sitting out
+Seat 4: Hero (1850 in chips) 
+Seat 5: teddottie (2145 in chips) 
+dblgutshot: posts the ante 30
+xrakete279x: posts the ante 30
+playball17: posts the ante 30
+Hero: posts the ante 30
+teddottie: posts the ante 30
+*** 3rd STREET ***
+Dealt to dblgutshot [5d]
+Dealt to xrakete279x [Kc]
+Dealt to playball17 [9d]
+Dealt to Hero [Jd Td 8s]
+Dealt to teddottie [As]
+dblgutshot: brings in for 45
+xrakete279x: folds 
+playball17: folds 
+Hero: folds 
+teddottie: raises 105 to 150
+dblgutshot: calls 105
+*** 4th STREET ***
+Dealt to dblgutshot [5d] [9h]
+Dealt to teddottie [As] [Ks]
+teddottie: bets 150
+dblgutshot: calls 150
+*** 5th STREET ***
+Dealt to dblgutshot [5d 9h] [7c]
+Dealt to teddottie [As Ks] [6s]
+teddottie: bets 300
+dblgutshot: calls 300
+*** 6th STREET ***
+Dealt to dblgutshot [5d 9h 7c] [8d]
+Dealt to teddottie [As Ks 6s] [5c]
+teddottie: bets 300
+dblgutshot: calls 300
+*** RIVER ***
+teddottie: bets 300
+dblgutshot: calls 300
+*** SHOW DOWN ***
+teddottie: shows [8c Ad As Ks 6s 5c 2h] (HI: a pair of Aces; LO: 8,6,5,2,A)
+dblgutshot: mucks hand 
+teddottie collected 1275 from pot
+teddottie collected 1275 from pot
+*** SUMMARY ***
+Total pot 2550 | Rake 0 
+Seat 1: dblgutshot mucked [4c Ac 5d 9h 7c 8d 4h]
+Seat 2: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 3: playball17 folded on the 3rd Street (didn't bet)
+Seat 4: Hero folded on the 3rd Street (didn't bet)
+Seat 5: teddottie showed [8c Ad As Ks 6s 5c 2h] and won (2550) with HI: a pair of Aces; LO: 8,6,5,2,A
+
+
+
+PokerStars Hand #242576197064: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:40:27 ET
+Table '3563424603 3' 8-max
+Seat 1: dblgutshot (1035 in chips) 
+Seat 2: xrakete279x (2070 in chips) 
+Seat 3: playball17 (2805 in chips) is sitting out
+Seat 4: Hero (1820 in chips) 
+Seat 5: teddottie (3465 in chips) 
+dblgutshot: posts the ante 30
+xrakete279x: posts the ante 30
+playball17: posts the ante 30
+Hero: posts the ante 30
+teddottie: posts the ante 30
+*** 3rd STREET ***
+Dealt to dblgutshot [7c]
+Dealt to xrakete279x [9c]
+Dealt to playball17 [6c]
+Dealt to Hero [3d Kd 6s]
+Dealt to teddottie [6h]
+playball17: brings in for 45
+Hero: folds 
+teddottie: folds 
+dblgutshot: folds 
+xrakete279x: raises 105 to 150
+playball17: folds 
+Uncalled bet (105) returned to xrakete279x
+xrakete279x collected 240 from pot
+xrakete279x: doesn't show hand 
+*** SUMMARY ***
+Total pot 240 | Rake 0 
+Seat 1: dblgutshot folded on the 3rd Street (didn't bet)
+Seat 2: xrakete279x collected (240)
+Seat 3: playball17 folded on the 3rd Street
+Seat 4: Hero folded on the 3rd Street (didn't bet)
+Seat 5: teddottie folded on the 3rd Street (didn't bet)
+
+
+
+PokerStars Hand #242576205266: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:40:46 ET
+Table '3563424603 3' 8-max
+Seat 1: dblgutshot (1005 in chips) 
+Seat 2: xrakete279x (2235 in chips) 
+Seat 3: playball17 (2730 in chips) is sitting out
+Seat 4: Hero (1790 in chips) 
+Seat 5: teddottie (3435 in chips) 
+dblgutshot: posts the ante 30
+xrakete279x: posts the ante 30
+playball17: posts the ante 30
+Hero: posts the ante 30
+teddottie: posts the ante 30
+*** 3rd STREET ***
+Dealt to dblgutshot [4c]
+Dealt to xrakete279x [Kd]
+Dealt to playball17 [Ks]
+Dealt to Hero [5s 7s 4h]
+Dealt to teddottie [6s]
+dblgutshot: brings in for 45
+xrakete279x: folds 
+playball17: folds 
+Hero: calls 45
+teddottie: calls 45
+*** 4th STREET ***
+Dealt to dblgutshot [4c] [6d]
+Dealt to Hero [5s 7s 4h] [6c]
+Dealt to teddottie [6s] [2c]
+dblgutshot: checks 
+Hero: bets 150
+teddottie: calls 150
+dblgutshot: folds 
+*** 5th STREET ***
+Dealt to Hero [5s 7s 4h 6c] [Qc]
+Dealt to teddottie [6s 2c] [9c]
+Hero: bets 300
+teddottie: raises 300 to 600
+Hero: raises 300 to 900
+teddottie: calls 300
+*** 6th STREET ***
+Dealt to Hero [5s 7s 4h 6c Qc] [3h]
+Dealt to teddottie [6s 2c 9c] [4d]
+Hero: bets 300
+teddottie: calls 300
+*** RIVER ***
+Dealt to Hero [5s 7s 4h 6c Qc 3h] [9h]
+Hero: bets 300
+teddottie: raises 300 to 600
+Hero: calls 65 and is all-in
+Uncalled bet (235) returned to teddottie
+*** SHOW DOWN ***
+teddottie: shows [9d 7d 6s 2c 9c 4d 9s] (HI: three of a kind, Nines)
+Hero: shows [5s 7s 4h 6c Qc 3h 9h] (HI: a straight, Three to Seven; LO: 7,6,5,4,3)
+Hero collected 1858 from pot
+Hero collected 1857 from pot
+*** SUMMARY ***
+Total pot 3715 | Rake 0 
+Seat 1: dblgutshot folded on the 4th Street
+Seat 2: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 3: playball17 folded on the 3rd Street (didn't bet)
+Seat 4: Hero showed [5s 7s 4h 6c Qc 3h 9h] and won (3715) with HI: a straight, Three to Seven; LO: 7,6,5,4,3
+Seat 5: teddottie showed [9d 7d 6s 2c 9c 4d 9s] and lost with HI: three of a kind, Nines
+
+
+
+PokerStars Hand #242576224321: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:41:30 ET
+Table '3563424603 3' 8-max
+Seat 1: dblgutshot (930 in chips) 
+Seat 2: xrakete279x (2205 in chips) 
+Seat 3: playball17 (2700 in chips) is sitting out
+Seat 4: Hero (3715 in chips) 
+Seat 5: teddottie (1645 in chips) 
+dblgutshot: posts the ante 30
+xrakete279x: posts the ante 30
+playball17: posts the ante 30
+Hero: posts the ante 30
+teddottie: posts the ante 30
+*** 3rd STREET ***
+Dealt to dblgutshot [9d]
+Dealt to xrakete279x [Td]
+Dealt to playball17 [2c]
+Dealt to Hero [8d Ks 7h]
+Dealt to teddottie [5c]
+playball17: brings in for 45
+Hero: folds 
+teddottie: folds 
+dblgutshot: folds 
+xrakete279x: raises 105 to 150
+playball17: folds 
+Uncalled bet (105) returned to xrakete279x
+xrakete279x collected 240 from pot
+xrakete279x: doesn't show hand 
+*** SUMMARY ***
+Total pot 240 | Rake 0 
+Seat 1: dblgutshot folded on the 3rd Street (didn't bet)
+Seat 2: xrakete279x collected (240)
+Seat 3: playball17 folded on the 3rd Street
+Seat 4: Hero folded on the 3rd Street (didn't bet)
+Seat 5: teddottie folded on the 3rd Street (didn't bet)
+
+
+
+PokerStars Hand #242576231762: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:41:48 ET
+Table '3563424603 3' 8-max
+Seat 1: dblgutshot (900 in chips) 
+Seat 2: xrakete279x (2370 in chips) 
+Seat 3: playball17 (2625 in chips) is sitting out
+Seat 4: Hero (3685 in chips) 
+Seat 5: teddottie (1615 in chips) 
+dblgutshot: posts the ante 30
+xrakete279x: posts the ante 30
+playball17: posts the ante 30
+Hero: posts the ante 30
+teddottie: posts the ante 30
+*** 3rd STREET ***
+Dealt to dblgutshot [4h]
+Dealt to xrakete279x [8h]
+Dealt to playball17 [Kd]
+Dealt to Hero [6s As Td]
+Dealt to teddottie [Jh]
+dblgutshot: brings in for 45
+xrakete279x: folds 
+playball17: folds 
+Hero: folds 
+teddottie: raises 105 to 150
+dblgutshot: folds 
+Uncalled bet (105) returned to teddottie
+teddottie collected 240 from pot
+*** SUMMARY ***
+Total pot 240 | Rake 0 
+Seat 1: dblgutshot folded on the 3rd Street
+Seat 2: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 3: playball17 folded on the 3rd Street (didn't bet)
+Seat 4: Hero folded on the 3rd Street (didn't bet)
+Seat 5: teddottie collected (240)
+
+
+
+PokerStars Hand #242576248083: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:42:26 ET
+Table '3563424603 3' 8-max
+Seat 1: dblgutshot (825 in chips) 
+Seat 2: xrakete279x (2340 in chips) 
+Seat 3: playball17 (2595 in chips) is sitting out
+Seat 4: Hero (3655 in chips) 
+Seat 5: teddottie (1780 in chips) 
+dblgutshot: posts the ante 30
+xrakete279x: posts the ante 30
+playball17: posts the ante 30
+Hero: posts the ante 30
+teddottie: posts the ante 30
+*** 3rd STREET ***
+Dealt to dblgutshot [8c]
+Dealt to xrakete279x [2d]
+Dealt to playball17 [5d]
+Dealt to Hero [Kh 4s 7h]
+Dealt to teddottie [2s]
+xrakete279x: brings in for 45
+playball17: folds 
+Hero: folds 
+teddottie: calls 45
+dblgutshot: raises 105 to 150
+xrakete279x: calls 105
+teddottie: calls 105
+*** 4th STREET ***
+Dealt to dblgutshot [8c] [7c]
+Dealt to xrakete279x [2d] [6h]
+Dealt to teddottie [2s] [3h]
+dblgutshot: bets 150
+xrakete279x: folds 
+teddottie: calls 150
+*** 5th STREET ***
+Dealt to dblgutshot [8c 7c] [Jh]
+Dealt to teddottie [2s 3h] [9d]
+dblgutshot: bets 300
+teddottie: calls 300
+*** 6th STREET ***
+Dealt to dblgutshot [8c 7c Jh] [2h]
+Dealt to teddottie [2s 3h 9d] [Tc]
+dblgutshot: bets 195 and is all-in
+teddottie: calls 195
+*** RIVER ***
+*** SHOW DOWN ***
+dblgutshot: shows [Qd Qc 8c 7c Jh 2h 3s] (HI: a pair of Queens)
+teddottie: shows [Ac Jc 2s 3h 9d Tc 7d] (HI: high card Ace)
+dblgutshot collected 1890 from pot
+No low hand qualified
+*** SUMMARY ***
+Total pot 1890 | Rake 0 
+Seat 1: dblgutshot showed [Qd Qc 8c 7c Jh 2h 3s] and won (1890) with HI: a pair of Queens
+Seat 2: xrakete279x folded on the 4th Street
+Seat 3: playball17 folded on the 3rd Street (didn't bet)
+Seat 4: Hero folded on the 3rd Street (didn't bet)
+Seat 5: teddottie showed [Ac Jc 2s 3h 9d Tc 7d] and lost with HI: high card Ace
+
+
+
+PokerStars Hand #242576272368: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:43:22 ET
+Table '3563424603 3' 8-max
+Seat 1: dblgutshot (1890 in chips) 
+Seat 2: xrakete279x (2160 in chips) 
+Seat 3: playball17 (2565 in chips) is sitting out
+Seat 4: Hero (3625 in chips) 
+Seat 5: teddottie (955 in chips) 
+dblgutshot: posts the ante 30
+xrakete279x: posts the ante 30
+playball17: posts the ante 30
+Hero: posts the ante 30
+teddottie: posts the ante 30
+*** 3rd STREET ***
+Dealt to dblgutshot [4h]
+Dealt to xrakete279x [Ad]
+Dealt to playball17 [Qd]
+Dealt to Hero [9c 7d 3s]
+Dealt to teddottie [Jc]
+Hero: brings in for 45
+teddottie: folds 
+dblgutshot: raises 105 to 150
+xrakete279x: folds 
+playball17: folds 
+Hero: folds 
+Uncalled bet (105) returned to dblgutshot
+dblgutshot collected 240 from pot
+dblgutshot: doesn't show hand 
+*** SUMMARY ***
+Total pot 240 | Rake 0 
+Seat 1: dblgutshot collected (240)
+Seat 2: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 3: playball17 folded on the 3rd Street (didn't bet)
+Seat 4: Hero folded on the 3rd Street
+Seat 5: teddottie folded on the 3rd Street (didn't bet)
+
+
+
+PokerStars Hand #242576278437: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:43:36 ET
+Table '3563424603 3' 8-max
+Seat 1: dblgutshot (2055 in chips) 
+Seat 2: xrakete279x (2130 in chips) 
+Seat 3: playball17 (2535 in chips) is sitting out
+Seat 4: Hero (3550 in chips) 
+Seat 5: teddottie (925 in chips) 
+dblgutshot: posts the ante 30
+xrakete279x: posts the ante 30
+playball17: posts the ante 30
+Hero: posts the ante 30
+teddottie: posts the ante 30
+*** 3rd STREET ***
+Dealt to dblgutshot [2c]
+Dealt to xrakete279x [Kh]
+Dealt to playball17 [7s]
+Dealt to Hero [4d 3d Jc]
+Dealt to teddottie [7c]
+dblgutshot: brings in for 45
+xrakete279x: raises 105 to 150
+playball17: folds 
+Hero: folds 
+teddottie: calls 150
+dblgutshot: calls 105
+*** 4th STREET ***
+Dealt to dblgutshot [2c] [5s]
+Dealt to xrakete279x [Kh] [3c]
+Dealt to teddottie [7c] [Ah]
+teddottie: bets 150
+dblgutshot: calls 150
+xrakete279x: calls 150
+*** 5th STREET ***
+Dealt to dblgutshot [2c 5s] [Ac]
+Dealt to xrakete279x [Kh 3c] [5h]
+Dealt to teddottie [7c Ah] [Ks]
+teddottie: bets 300
+dblgutshot: raises 300 to 600
+xrakete279x: folds 
+teddottie: calls 295 and is all-in
+Uncalled bet (5) returned to dblgutshot
+*** 6th STREET ***
+Dealt to dblgutshot [2c 5s Ac] [Js]
+Dealt to teddottie [7c Ah Ks] [8s]
+*** RIVER ***
+*** SHOW DOWN ***
+dblgutshot: shows [8h As 2c 5s Ac Js Kc] (HI: a pair of Aces)
+teddottie: shows [2d 4h 7c Ah Ks 8s Qc] (HI: high card Ace; LO: 8,7,4,2,A)
+dblgutshot collected 1120 from pot
+teddottie collected 1120 from pot
+*** SUMMARY ***
+Total pot 2240 | Rake 0 
+Seat 1: dblgutshot showed [8h As 2c 5s Ac Js Kc] and won (1120) with HI: a pair of Aces
+Seat 2: xrakete279x folded on the 5th Street
+Seat 3: playball17 folded on the 3rd Street (didn't bet)
+Seat 4: Hero folded on the 3rd Street (didn't bet)
+Seat 5: teddottie showed [2d 4h 7c Ah Ks 8s Qc] and won (1120) with HI: high card Ace; LO: 8,7,4,2,A
+
+
+
+PokerStars Hand #242576298574: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:44:22 ET
+Table '3563424603 3' 8-max
+Seat 1: dblgutshot (2250 in chips) 
+Seat 2: xrakete279x (1800 in chips) 
+Seat 3: playball17 (2505 in chips) is sitting out
+Seat 4: Hero (3520 in chips) 
+Seat 5: teddottie (1120 in chips) 
+dblgutshot: posts the ante 30
+xrakete279x: posts the ante 30
+playball17: posts the ante 30
+Hero: posts the ante 30
+teddottie: posts the ante 30
+*** 3rd STREET ***
+Dealt to dblgutshot [4d]
+Dealt to xrakete279x [4c]
+Dealt to playball17 [5h]
+Dealt to Hero [3c 8s 7h]
+Dealt to teddottie [4h]
+xrakete279x: brings in for 45
+playball17: folds 
+Hero: folds 
+teddottie: raises 105 to 150
+dblgutshot: folds 
+xrakete279x: calls 105
+*** 4th STREET ***
+Dealt to xrakete279x [4c] [2h]
+Dealt to teddottie [4h] [5c]
+teddottie: bets 150
+xrakete279x: calls 150
+*** 5th STREET ***
+Dealt to xrakete279x [4c 2h] [2d]
+Dealt to teddottie [4h 5c] [3d]
+playball17 has returned
+xrakete279x: checks 
+teddottie: bets 300
+xrakete279x: calls 300
+*** 6th STREET ***
+Dealt to xrakete279x [4c 2h 2d] [9c]
+Dealt to teddottie [4h 5c 3d] [Tc]
+xrakete279x: checks 
+teddottie: bets 300
+xrakete279x: raises 300 to 600
+teddottie: calls 190 and is all-in
+Uncalled bet (110) returned to xrakete279x
+*** RIVER ***
+*** SHOW DOWN ***
+xrakete279x: shows [6h 5s 4c 2h 2d 9c 9h] (HI: two pair, Nines and Deuces)
+teddottie: shows [As Ks 4h 5c 3d Tc 4s] (HI: a pair of Fours)
+xrakete279x collected 2330 from pot
+No low hand qualified
+teddottie finished the tournament
+*** SUMMARY ***
+Total pot 2330 | Rake 0 
+Seat 1: dblgutshot folded on the 3rd Street (didn't bet)
+Seat 2: xrakete279x showed [6h 5s 4c 2h 2d 9c 9h] and won (2330) with HI: two pair, Nines and Deuces
+Seat 3: playball17 folded on the 3rd Street (didn't bet)
+Seat 4: Hero folded on the 3rd Street (didn't bet)
+Seat 5: teddottie showed [As Ks 4h 5c 3d Tc 4s] and lost with HI: a pair of Fours
+
+
+
+PokerStars Hand #242576325801: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:45:25 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (3490 in chips) 
+Seat 2: playball17 (2475 in chips) 
+Seat 3: xrakete279x (3010 in chips) 
+Seat 4: amit (930 in chips) 
+Seat 5: Alchemist1 (4473 in chips) 
+Seat 6: CidChompsky (2832 in chips) 
+Seat 7: goodwillout (3845 in chips) 
+Seat 8: chrisj992 (4910 in chips) 
+Hero: posts the ante 30
+playball17: posts the ante 30
+xrakete279x: posts the ante 30
+amit: posts the ante 30
+Alchemist1: posts the ante 30
+CidChompsky: posts the ante 30
+goodwillout: posts the ante 30
+chrisj992: posts the ante 30
+*** 3rd STREET ***
+Dealt to Hero [5d Th 7c]
+Dealt to playball17 [7h]
+Dealt to xrakete279x [7s]
+Dealt to amit [9s]
+Dealt to Alchemist1 [Ts]
+Dealt to CidChompsky [6h]
+Dealt to goodwillout [Jc]
+Dealt to chrisj992 [Qd]
+CidChompsky: brings in for 45
+goodwillout: folds 
+chrisj992: folds 
+Hero: folds 
+playball17: folds 
+xrakete279x: raises 105 to 150
+amit: folds 
+Alchemist1: folds 
+CidChompsky: folds 
+Uncalled bet (105) returned to xrakete279x
+xrakete279x collected 330 from pot
+xrakete279x: doesn't show hand 
+*** SUMMARY ***
+Total pot 330 | Rake 0 
+Seat 1: Hero folded on the 3rd Street (didn't bet)
+Seat 2: playball17 folded on the 3rd Street (didn't bet)
+Seat 3: xrakete279x collected (330)
+Seat 4: amit folded on the 3rd Street (didn't bet)
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky folded on the 3rd Street
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 folded on the 3rd Street (didn't bet)
+
+
+
+PokerStars Hand #242576334050: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:45:44 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (3460 in chips) 
+Seat 2: playball17 (2445 in chips) 
+Seat 3: xrakete279x (3265 in chips) 
+Seat 4: amit (900 in chips) 
+Seat 5: Alchemist1 (4443 in chips) 
+Seat 6: CidChompsky (2757 in chips) 
+Seat 7: goodwillout (3815 in chips) 
+Seat 8: chrisj992 (4880 in chips) 
+Hero: posts the ante 30
+playball17: posts the ante 30
+xrakete279x: posts the ante 30
+amit: posts the ante 30
+Alchemist1: posts the ante 30
+CidChompsky: posts the ante 30
+goodwillout: posts the ante 30
+chrisj992: posts the ante 30
+*** 3rd STREET ***
+Dealt to Hero [Ad 5c 8h]
+Dealt to playball17 [4d]
+Dealt to xrakete279x [5s]
+Dealt to amit [Kh]
+Dealt to Alchemist1 [6d]
+Dealt to CidChompsky [Ah]
+Dealt to goodwillout [Kd]
+Dealt to chrisj992 [Ac]
+playball17: brings in for 45
+xrakete279x: folds 
+amit: folds 
+Alchemist1: raises 105 to 150
+CidChompsky: calls 150
+goodwillout: folds 
+chrisj992: calls 150
+Hero: calls 150
+playball17: folds 
+*** 4th STREET ***
+Dealt to Hero [Ad 5c 8h] [Ts]
+Dealt to Alchemist1 [6d] [7d]
+Dealt to CidChompsky [Ah] [3s]
+Dealt to chrisj992 [Ac] [Qc]
+chrisj992: bets 150
+Hero: folds 
+Alchemist1: calls 150
+CidChompsky: folds 
+*** 5th STREET ***
+Dealt to Alchemist1 [6d 7d] [3c]
+Dealt to chrisj992 [Ac Qc] [3h]
+chrisj992: bets 300
+Alchemist1: calls 300
+*** 6th STREET ***
+Dealt to Alchemist1 [6d 7d 3c] [Tc]
+Dealt to chrisj992 [Ac Qc 3h] [9s]
+chrisj992: bets 300
+Alchemist1: calls 300
+*** RIVER ***
+chrisj992: checks 
+Alchemist1: bets 300
+chrisj992: calls 300
+*** SHOW DOWN ***
+Alchemist1: shows [6s As 6d 7d 3c Tc 2c] (HI: a pair of Sixes; LO: 7,6,3,2,A)
+chrisj992: shows [Qd Qh Ac Qc 3h 9s Js] (HI: three of a kind, Queens)
+chrisj992 collected 1493 from pot
+Alchemist1 collected 1492 from pot
+*** SUMMARY ***
+Total pot 2985 | Rake 0 
+Seat 1: Hero folded on the 4th Street
+Seat 2: playball17 folded on the 3rd Street
+Seat 3: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 4: amit folded on the 3rd Street (didn't bet)
+Seat 5: Alchemist1 showed [6s As 6d 7d 3c Tc 2c] and won (1492) with HI: a pair of Sixes; LO: 7,6,3,2,A
+Seat 6: CidChompsky folded on the 4th Street
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 showed [Qd Qh Ac Qc 3h 9s Js] and won (1493) with HI: three of a kind, Queens
+
+
+
+PokerStars Hand #242576367332: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:46:59 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (3280 in chips) 
+Seat 2: playball17 (2370 in chips) 
+Seat 3: xrakete279x (3235 in chips) 
+Seat 4: amit (870 in chips) 
+Seat 5: Alchemist1 (4705 in chips) 
+Seat 6: CidChompsky (2577 in chips) 
+Seat 7: goodwillout (3785 in chips) 
+Seat 8: chrisj992 (5143 in chips) 
+Hero: posts the ante 30
+playball17: posts the ante 30
+xrakete279x: posts the ante 30
+amit: posts the ante 30
+Alchemist1: posts the ante 30
+CidChompsky: posts the ante 30
+goodwillout: posts the ante 30
+chrisj992: posts the ante 30
+*** 3rd STREET ***
+Dealt to Hero [7h Ac 3d]
+Dealt to playball17 [3s]
+Dealt to xrakete279x [Qd]
+Dealt to amit [As]
+Dealt to Alchemist1 [6c]
+Dealt to CidChompsky [5h]
+Dealt to goodwillout [7s]
+Dealt to chrisj992 [4d]
+Hero: brings in for 45
+playball17: raises 105 to 150
+xrakete279x: folds 
+amit: folds 
+Alchemist1: folds 
+CidChompsky: folds 
+goodwillout: folds 
+chrisj992: calls 150
+Hero: raises 150 to 300
+playball17: raises 150 to 450
+chrisj992: calls 300
+Hero: calls 150
+*** 4th STREET ***
+Dealt to Hero [7h Ac 3d] [Qc]
+Dealt to playball17 [3s] [6d]
+Dealt to chrisj992 [4d] [Kc]
+chrisj992: checks 
+Hero: checks 
+playball17: bets 150
+chrisj992: calls 150
+Hero: calls 150
+*** 5th STREET ***
+Dealt to Hero [7h Ac 3d Qc] [9s]
+Dealt to playball17 [3s 6d] [Ah]
+Dealt to chrisj992 [4d Kc] [9d]
+playball17: bets 300
+chrisj992: folds 
+Hero: folds 
+Uncalled bet (300) returned to playball17
+playball17 collected 2040 from pot
+*** SUMMARY ***
+Total pot 2040 | Rake 0 
+Seat 1: Hero folded on the 5th Street
+Seat 2: playball17 collected (2040)
+Seat 3: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 4: amit folded on the 3rd Street (didn't bet)
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky folded on the 3rd Street (didn't bet)
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 folded on the 5th Street
+
+
+
+PokerStars Hand #242576396223: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:48:06 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (2650 in chips) 
+Seat 2: playball17 (3780 in chips) 
+Seat 3: xrakete279x (3205 in chips) 
+Seat 4: amit (840 in chips) 
+Seat 5: Alchemist1 (4675 in chips) 
+Seat 6: CidChompsky (2547 in chips) 
+Seat 7: goodwillout (3755 in chips) 
+Seat 8: chrisj992 (4513 in chips) 
+Hero: posts the ante 30
+playball17: posts the ante 30
+xrakete279x: posts the ante 30
+amit: posts the ante 30
+Alchemist1: posts the ante 30
+CidChompsky: posts the ante 30
+goodwillout: posts the ante 30
+chrisj992: posts the ante 30
+*** 3rd STREET ***
+Dealt to Hero [9h Ac Qd]
+Dealt to playball17 [Ks]
+Dealt to xrakete279x [6h]
+Dealt to amit [8h]
+Dealt to Alchemist1 [3s]
+Dealt to CidChompsky [8s]
+Dealt to goodwillout [5d]
+Dealt to chrisj992 [As]
+Alchemist1: brings in for 45
+CidChompsky: folds 
+goodwillout: calls 45
+chrisj992: folds 
+Hero: folds 
+playball17: folds 
+xrakete279x: folds 
+amit: calls 45
+*** 4th STREET ***
+Dealt to amit [8h] [9c]
+Dealt to Alchemist1 [3s] [Td]
+Dealt to goodwillout [5d] [8d]
+Alchemist1: checks 
+goodwillout: checks 
+amit: checks 
+*** 5th STREET ***
+Dealt to amit [8h 9c] [Ah]
+Dealt to Alchemist1 [3s Td] [4d]
+Dealt to goodwillout [5d 8d] [7c]
+amit: checks 
+Alchemist1: checks 
+goodwillout: checks 
+*** 6th STREET ***
+Dealt to amit [8h 9c Ah] [4h]
+Dealt to Alchemist1 [3s Td 4d] [3h]
+Dealt to goodwillout [5d 8d 7c] [2h]
+Alchemist1: checks 
+goodwillout: checks 
+amit: checks 
+*** RIVER ***
+Alchemist1: checks 
+goodwillout: checks 
+amit: checks 
+*** SHOW DOWN ***
+amit: shows [4s 2c 8h 9c Ah 4h Kh] (HI: a pair of Fours)
+Alchemist1: shows [Qc 9s 3s Td 4d 3h 9d] (HI: two pair, Nines and Threes)
+goodwillout: mucks hand 
+Alchemist1 collected 375 from pot
+No low hand qualified
+*** SUMMARY ***
+Total pot 375 | Rake 0 
+Seat 1: Hero folded on the 3rd Street (didn't bet)
+Seat 2: playball17 folded on the 3rd Street (didn't bet)
+Seat 3: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 4: amit showed [4s 2c 8h 9c Ah 4h Kh] and lost with HI: a pair of Fours
+Seat 5: Alchemist1 showed [Qc 9s 3s Td 4d 3h 9d] and won (375) with HI: two pair, Nines and Threes
+Seat 6: CidChompsky folded on the 3rd Street (didn't bet)
+Seat 7: goodwillout mucked [5c Tc 5d 8d 7c 2h 7d]
+Seat 8: chrisj992 folded on the 3rd Street (didn't bet)
+
+
+
+PokerStars Hand #242576422152: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:49:06 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (2620 in chips) 
+Seat 2: playball17 (3750 in chips) 
+Seat 3: xrakete279x (3175 in chips) 
+Seat 4: amit (765 in chips) 
+Seat 5: Alchemist1 (4975 in chips) 
+Seat 6: CidChompsky (2517 in chips) 
+Seat 7: goodwillout (3680 in chips) 
+Seat 8: chrisj992 (4483 in chips) 
+Hero: posts the ante 30
+playball17: posts the ante 30
+xrakete279x: posts the ante 30
+amit: posts the ante 30
+Alchemist1: posts the ante 30
+CidChompsky: posts the ante 30
+goodwillout: posts the ante 30
+chrisj992: posts the ante 30
+*** 3rd STREET ***
+Dealt to Hero [8h 9d 8s]
+Dealt to playball17 [7d]
+Dealt to xrakete279x [4s]
+Dealt to amit [6c]
+Dealt to Alchemist1 [Qd]
+Dealt to CidChompsky [As]
+Dealt to goodwillout [7h]
+Dealt to chrisj992 [2d]
+chrisj992: brings in for 45
+Hero: folds 
+playball17: folds 
+xrakete279x: folds 
+amit: raises 105 to 150
+Alchemist1: folds 
+CidChompsky: calls 150
+goodwillout: folds 
+chrisj992: folds 
+*** 4th STREET ***
+Dealt to amit [6c] [Qh]
+Dealt to CidChompsky [As] [4d]
+CidChompsky: bets 150
+amit: raises 150 to 300
+CidChompsky: raises 150 to 450
+amit: raises 135 to 585 and is all-in
+Betting is capped
+CidChompsky: calls 135
+*** 5th STREET ***
+Dealt to amit [6c Qh] [4c]
+Dealt to CidChompsky [As 4d] [Qc]
+*** 6th STREET ***
+Dealt to amit [6c Qh 4c] [Td]
+Dealt to CidChompsky [As 4d Qc] [Kd]
+*** RIVER ***
+*** SHOW DOWN ***
+amit: shows [2c Kc 6c Qh 4c Td 7s] (HI: high card King)
+CidChompsky: shows [4h 5d As 4d Qc Kd Jd] (HI: a pair of Fours)
+CidChompsky collected 1755 from pot
+No low hand qualified
+amit finished the tournament
+*** SUMMARY ***
+Total pot 1755 | Rake 0 
+Seat 1: Hero folded on the 3rd Street (didn't bet)
+Seat 2: playball17 folded on the 3rd Street (didn't bet)
+Seat 3: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 4: amit showed [2c Kc 6c Qh 4c Td 7s] and lost with HI: high card King
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky showed [4h 5d As 4d Qc Kd Jd] and won (1755) with HI: a pair of Fours
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 folded on the 3rd Street
+
+
+
+PokerStars Hand #242576443308: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level IV (200/400) - 2023/03/20 16:49:54 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (2590 in chips) 
+Seat 2: playball17 (3720 in chips) 
+Seat 3: xrakete279x (3145 in chips) 
+Seat 5: Alchemist1 (4945 in chips) 
+Seat 6: CidChompsky (3507 in chips) 
+Seat 7: goodwillout (3650 in chips) 
+Seat 8: chrisj992 (4408 in chips) 
+Hero: posts the ante 40
+playball17: posts the ante 40
+xrakete279x: posts the ante 40
+Alchemist1: posts the ante 40
+CidChompsky: posts the ante 40
+goodwillout: posts the ante 40
+chrisj992: posts the ante 40
+*** 3rd STREET ***
+Dealt to Hero [6s Th Ts]
+Dealt to playball17 [Tc]
+Dealt to xrakete279x [3h]
+Dealt to Alchemist1 [Jc]
+Dealt to CidChompsky [Qd]
+Dealt to goodwillout [2s]
+Dealt to chrisj992 [Kc]
+goodwillout: brings in for 60
+chrisj992: folds 
+Hero: folds 
+playball17: folds 
+xrakete279x: folds 
+Alchemist1: folds 
+CidChompsky: raises 140 to 200
+goodwillout: folds 
+Uncalled bet (140) returned to CidChompsky
+CidChompsky collected 400 from pot
+CidChompsky: doesn't show hand 
+*** SUMMARY ***
+Total pot 400 | Rake 0 
+Seat 1: Hero folded on the 3rd Street (didn't bet)
+Seat 2: playball17 folded on the 3rd Street (didn't bet)
+Seat 3: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky collected (400)
+Seat 7: goodwillout folded on the 3rd Street
+Seat 8: chrisj992 folded on the 3rd Street (didn't bet)
+
+
+
+PokerStars Hand #242576454578: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level IV (200/400) - 2023/03/20 16:50:21 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (2550 in chips) 
+Seat 2: playball17 (3680 in chips) 
+Seat 3: xrakete279x (3105 in chips) 
+Seat 5: Alchemist1 (4905 in chips) 
+Seat 6: CidChompsky (3807 in chips) 
+Seat 7: goodwillout (3550 in chips) 
+Seat 8: chrisj992 (4368 in chips) 
+Hero: posts the ante 40
+playball17: posts the ante 40
+xrakete279x: posts the ante 40
+Alchemist1: posts the ante 40
+CidChompsky: posts the ante 40
+goodwillout: posts the ante 40
+chrisj992: posts the ante 40
+*** 3rd STREET ***
+Dealt to Hero [Tc 6h 5d]
+Dealt to playball17 [6s]
+Dealt to xrakete279x [Kd]
+Dealt to Alchemist1 [As]
+Dealt to CidChompsky [6d]
+Dealt to goodwillout [8s]
+Dealt to chrisj992 [Th]
+Hero: brings in for 60
+playball17: folds 
+xrakete279x: folds 
+Alchemist1: raises 140 to 200
+CidChompsky: calls 200
+goodwillout: folds 
+chrisj992: folds 
+Hero: folds 
+*** 4th STREET ***
+Dealt to Alchemist1 [As] [9d]
+Dealt to CidChompsky [6d] [Qd]
+Alchemist1: bets 200
+CidChompsky: calls 200
+*** 5th STREET ***
+Dealt to Alchemist1 [As 9d] [7s]
+Dealt to CidChompsky [6d Qd] [9h]
+Alchemist1: bets 400
+CidChompsky: folds 
+Uncalled bet (400) returned to Alchemist1
+Alchemist1 collected 1140 from pot
+Alchemist1: doesn't show hand 
+*** SUMMARY ***
+Total pot 1140 | Rake 0 
+Seat 1: Hero folded on the 3rd Street
+Seat 2: playball17 folded on the 3rd Street (didn't bet)
+Seat 3: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 5: Alchemist1 collected (1140)
+Seat 6: CidChompsky folded on the 5th Street
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 folded on the 3rd Street (didn't bet)
+
+
+
+PokerStars Hand #242576473538: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level IV (200/400) - 2023/03/20 16:51:05 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (2450 in chips) 
+Seat 2: playball17 (3640 in chips) 
+Seat 3: xrakete279x (3065 in chips) 
+Seat 5: Alchemist1 (5605 in chips) 
+Seat 6: CidChompsky (3367 in chips) 
+Seat 7: goodwillout (3510 in chips) 
+Seat 8: chrisj992 (4328 in chips) 
+Hero: posts the ante 40
+playball17: posts the ante 40
+xrakete279x: posts the ante 40
+Alchemist1: posts the ante 40
+CidChompsky: posts the ante 40
+goodwillout: posts the ante 40
+chrisj992: posts the ante 40
+*** 3rd STREET ***
+Dealt to Hero [Jh Js 3h]
+Dealt to playball17 [Ks]
+Dealt to xrakete279x [Kc]
+Dealt to Alchemist1 [6s]
+Dealt to CidChompsky [6c]
+Dealt to goodwillout [9c]
+Dealt to chrisj992 [7d]
+Hero: brings in for 60
+playball17: folds 
+xrakete279x: raises 140 to 200
+Alchemist1: folds 
+CidChompsky: folds 
+goodwillout: folds 
+chrisj992: calls 200
+Hero: folds 
+*** 4th STREET ***
+Dealt to xrakete279x [Kc] [7c]
+Dealt to chrisj992 [7d] [5d]
+xrakete279x: bets 200
+chrisj992: calls 200
+*** 5th STREET ***
+Dealt to xrakete279x [Kc 7c] [Tc]
+Dealt to chrisj992 [7d 5d] [Qd]
+xrakete279x: checks 
+chrisj992: bets 400
+xrakete279x: calls 400
+*** 6th STREET ***
+Dealt to xrakete279x [Kc 7c Tc] [Ad]
+Dealt to chrisj992 [7d 5d Qd] [Qs]
+chrisj992: bets 400
+xrakete279x: calls 400
+*** RIVER ***
+chrisj992: bets 400
+xrakete279x: calls 400
+*** SHOW DOWN ***
+chrisj992: shows [8d 6d 7d 5d Qd Qs 2d] (HI: a flush, Queen high; LO: 8,7,6,5,2)
+xrakete279x: mucks hand 
+chrisj992 collected 1770 from pot
+chrisj992 collected 1770 from pot
+*** SUMMARY ***
+Total pot 3540 | Rake 0 
+Seat 1: Hero folded on the 3rd Street
+Seat 2: playball17 folded on the 3rd Street (didn't bet)
+Seat 3: xrakete279x mucked [Kh 7s Kc 7c Tc Ad 3s]
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky folded on the 3rd Street (didn't bet)
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 showed [8d 6d 7d 5d Qd Qs 2d] and won (3540) with HI: a flush, Queen high; LO: 8,7,6,5,2
+
+
+
+PokerStars Hand #242576503742: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level IV (200/400) - 2023/03/20 16:52:15 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (2350 in chips) 
+Seat 2: playball17 (3600 in chips) 
+Seat 3: xrakete279x (1425 in chips) 
+Seat 5: Alchemist1 (5565 in chips) 
+Seat 6: CidChompsky (3327 in chips) 
+Seat 7: goodwillout (3470 in chips) 
+Seat 8: chrisj992 (6228 in chips) 
+Hero: posts the ante 40
+playball17: posts the ante 40
+xrakete279x: posts the ante 40
+Alchemist1: posts the ante 40
+CidChompsky: posts the ante 40
+goodwillout: posts the ante 40
+chrisj992: posts the ante 40
+*** 3rd STREET ***
+Dealt to Hero [8d Js Jh]
+Dealt to playball17 [7h]
+Dealt to xrakete279x [6h]
+Dealt to Alchemist1 [As]
+Dealt to CidChompsky [Qh]
+Dealt to goodwillout [Qs]
+Dealt to chrisj992 [Ah]
+xrakete279x: brings in for 60
+Alchemist1: raises 140 to 200
+CidChompsky: folds 
+goodwillout: folds 
+chrisj992: folds 
+Hero: folds 
+playball17: folds 
+xrakete279x: folds 
+Uncalled bet (140) returned to Alchemist1
+Alchemist1 collected 400 from pot
+Alchemist1: doesn't show hand 
+*** SUMMARY ***
+Total pot 400 | Rake 0 
+Seat 1: Hero folded on the 3rd Street (didn't bet)
+Seat 2: playball17 folded on the 3rd Street (didn't bet)
+Seat 3: xrakete279x folded on the 3rd Street
+Seat 5: Alchemist1 collected (400)
+Seat 6: CidChompsky folded on the 3rd Street (didn't bet)
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 folded on the 3rd Street (didn't bet)
+
+
+
+PokerStars Hand #242576509882: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level IV (200/400) - 2023/03/20 16:52:29 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (2310 in chips) 
+Seat 2: playball17 (3560 in chips) 
+Seat 3: xrakete279x (1325 in chips) 
+Seat 5: Alchemist1 (5865 in chips) 
+Seat 6: CidChompsky (3287 in chips) 
+Seat 7: goodwillout (3430 in chips) 
+Seat 8: chrisj992 (6188 in chips) 
+Hero: posts the ante 40
+playball17: posts the ante 40
+xrakete279x: posts the ante 40
+Alchemist1: posts the ante 40
+CidChompsky: posts the ante 40
+goodwillout: posts the ante 40
+chrisj992: posts the ante 40
+*** 3rd STREET ***
+Dealt to Hero [Ks Qd Qh]
+Dealt to playball17 [Kd]
+Dealt to xrakete279x [3s]
+Dealt to Alchemist1 [7h]
+Dealt to CidChompsky [Ad]
+Dealt to goodwillout [5h]
+Dealt to chrisj992 [Jh]
+xrakete279x: brings in for 60
+Alchemist1: folds 
+CidChompsky: calls 60
+goodwillout: folds 
+chrisj992: folds 
+Hero: raises 140 to 200
+playball17: folds 
+xrakete279x: calls 140
+CidChompsky: calls 140
+*** 4th STREET ***
+Dealt to Hero [Ks Qd Qh] [7s]
+Dealt to xrakete279x [3s] [7d]
+Dealt to CidChompsky [Ad] [2s]
+CidChompsky: checks 
+Hero: bets 200
+xrakete279x: calls 200
+CidChompsky: calls 200
+*** 5th STREET ***
+Dealt to Hero [Ks Qd Qh 7s] [8h]
+Dealt to xrakete279x [3s 7d] [Qc]
+Dealt to CidChompsky [Ad 2s] [4c]
+CidChompsky: checks 
+Hero: checks 
+xrakete279x: checks 
+*** 6th STREET ***
+Dealt to Hero [Ks Qd Qh 7s 8h] [Jc]
+Dealt to xrakete279x [3s 7d Qc] [Tc]
+Dealt to CidChompsky [Ad 2s 4c] [Th]
+CidChompsky: checks 
+Hero: checks 
+xrakete279x: checks 
+*** RIVER ***
+Dealt to Hero [Ks Qd Qh 7s 8h Jc] [9h]
+CidChompsky: checks 
+Hero: checks 
+xrakete279x: checks 
+*** SHOW DOWN ***
+Hero: shows [Ks Qd Qh 7s 8h Jc 9h] (HI: a pair of Queens)
+xrakete279x: mucks hand 
+CidChompsky: mucks hand 
+Hero collected 1480 from pot
+No low hand qualified
+*** SUMMARY ***
+Total pot 1480 | Rake 0 
+Seat 1: Hero showed [Ks Qd Qh 7s 8h Jc 9h] and won (1480) with HI: a pair of Queens
+Seat 2: playball17 folded on the 3rd Street (didn't bet)
+Seat 3: xrakete279x mucked [5c 6d 3s 7d Qc Tc Jd]
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky mucked [8c Js Ad 2s 4c Th 2h]
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 folded on the 3rd Street (didn't bet)
+
+
+
+PokerStars Hand #242576533493: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level IV (200/400) - 2023/03/20 16:53:24 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (3350 in chips) 
+Seat 2: playball17 (3520 in chips) 
+Seat 3: xrakete279x (885 in chips) 
+Seat 5: Alchemist1 (5825 in chips) 
+Seat 6: CidChompsky (2847 in chips) 
+Seat 7: goodwillout (3390 in chips) 
+Seat 8: chrisj992 (6148 in chips) 
+Hero: posts the ante 40
+playball17: posts the ante 40
+xrakete279x: posts the ante 40
+Alchemist1: posts the ante 40
+CidChompsky: posts the ante 40
+goodwillout: posts the ante 40
+chrisj992: posts the ante 40
+*** 3rd STREET ***
+Dealt to Hero [7d Kh Qh]
+Dealt to playball17 [6s]
+Dealt to xrakete279x [3s]
+Dealt to Alchemist1 [3h]
+Dealt to CidChompsky [Jh]
+Dealt to goodwillout [Kc]
+Dealt to chrisj992 [2s]
+chrisj992: brings in for 60
+Hero: folds 
+playball17 has timed out
+playball17: folds 
+playball17 is sitting out
+playball17 has returned
+xrakete279x: folds 
+Alchemist1: folds 
+CidChompsky: raises 140 to 200
+goodwillout: folds 
+chrisj992: calls 140
+*** 4th STREET ***
+Dealt to CidChompsky [Jh] [Ad]
+Dealt to chrisj992 [2s] [Jc]
+CidChompsky: bets 200
+chrisj992: folds 
+Uncalled bet (200) returned to CidChompsky
+CidChompsky collected 680 from pot
+CidChompsky: doesn't show hand 
+*** SUMMARY ***
+Total pot 680 | Rake 0 
+Seat 1: Hero folded on the 3rd Street (didn't bet)
+Seat 2: playball17 folded on the 3rd Street (didn't bet)
+Seat 3: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky collected (680)
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 folded on the 4th Street
+
+
+
+PokerStars Hand #242576549220: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level IV (200/400) - 2023/03/20 16:54:01 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (3310 in chips) 
+Seat 2: playball17 (3480 in chips) 
+Seat 3: xrakete279x (845 in chips) 
+Seat 5: Alchemist1 (5785 in chips) 
+Seat 6: CidChompsky (3287 in chips) 
+Seat 7: goodwillout (3350 in chips) 
+Seat 8: chrisj992 (5908 in chips) 
+Hero: posts the ante 40
+playball17: posts the ante 40
+xrakete279x: posts the ante 40
+Alchemist1: posts the ante 40
+CidChompsky: posts the ante 40
+goodwillout: posts the ante 40
+chrisj992: posts the ante 40
+*** 3rd STREET ***
+Dealt to Hero [9d Ad Ah]
+Dealt to playball17 [Js]
+Dealt to xrakete279x [Kd]
+Dealt to Alchemist1 [3s]
+Dealt to CidChompsky [6s]
+Dealt to goodwillout [Jc]
+Dealt to chrisj992 [2d]
+chrisj992: bets 200
+Hero: raises 200 to 400
+playball17: folds 
+xrakete279x: folds 
+Alchemist1: folds 
+CidChompsky: folds 
+goodwillout: folds 
+chrisj992: calls 200
+*** 4th STREET ***
+Dealt to Hero [9d Ad Ah] [4s]
+Dealt to chrisj992 [2d] [Td]
+Hero: bets 200
+chrisj992: calls 200
+*** 5th STREET ***
+Dealt to Hero [9d Ad Ah 4s] [4h]
+Dealt to chrisj992 [2d Td] [As]
+Hero: bets 400
+chrisj992: calls 400
+*** 6th STREET ***
+Dealt to Hero [9d Ad Ah 4s 4h] [2c]
+Dealt to chrisj992 [2d Td As] [Jd]
+Hero: bets 400
+chrisj992: raises 400 to 800
+Hero: calls 400
+*** RIVER ***
+Dealt to Hero [9d Ad Ah 4s 4h 2c] [7s]
+Hero: checks 
+chrisj992: bets 400
+Hero: calls 400
+*** SHOW DOWN ***
+chrisj992: shows [3d 6d 2d Td As Jd Kh] (HI: a flush, Jack high)
+Hero: mucks hand 
+chrisj992 collected 4680 from pot
+No low hand qualified
+*** SUMMARY ***
+Total pot 4680 | Rake 0 
+Seat 1: Hero mucked [9d Ad Ah 4s 4h 2c 7s]
+Seat 2: playball17 folded on the 3rd Street (didn't bet)
+Seat 3: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky folded on the 3rd Street (didn't bet)
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 showed [3d 6d 2d Td As Jd Kh] and won (4680) with HI: a flush, Jack high
+
+
+
+PokerStars Hand #242576567112: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level IV (200/400) - 2023/03/20 16:54:43 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (1070 in chips) 
+Seat 2: playball17 (3440 in chips) 
+Seat 3: xrakete279x (805 in chips) 
+Seat 5: Alchemist1 (5745 in chips) 
+Seat 6: CidChompsky (3247 in chips) 
+Seat 7: goodwillout (3310 in chips) 
+Seat 8: chrisj992 (8348 in chips) 
+Hero: posts the ante 40
+playball17: posts the ante 40
+xrakete279x: posts the ante 40
+Alchemist1: posts the ante 40
+CidChompsky: posts the ante 40
+goodwillout: posts the ante 40
+chrisj992: posts the ante 40
+*** 3rd STREET ***
+Dealt to Hero [9d Jc 2c]
+Dealt to playball17 [6s]
+Dealt to xrakete279x [7c]
+Dealt to Alchemist1 [5d]
+Dealt to CidChompsky [3s]
+Dealt to goodwillout [7d]
+Dealt to chrisj992 [6c]
+Hero: brings in for 60
+playball17: folds 
+xrakete279x: folds 
+Alchemist1: folds 
+CidChompsky: calls 60
+goodwillout: calls 60
+chrisj992: folds 
+*** 4th STREET ***
+Dealt to Hero [9d Jc 2c] [2h]
+Dealt to CidChompsky [3s] [5c]
+Dealt to goodwillout [7d] [As]
+Hero: checks 
+CidChompsky: checks 
+goodwillout: checks 
+*** 5th STREET ***
+Dealt to Hero [9d Jc 2c 2h] [Tc]
+Dealt to CidChompsky [3s 5c] [8d]
+Dealt to goodwillout [7d As] [7h]
+goodwillout: checks 
+Hero: checks 
+CidChompsky: checks 
+*** 6th STREET ***
+Dealt to Hero [9d Jc 2c 2h Tc] [9h]
+Dealt to CidChompsky [3s 5c 8d] [Ad]
+Dealt to goodwillout [7d As 7h] [8c]
+goodwillout: bets 400
+Hero: folds 
+CidChompsky: calls 400
+*** RIVER ***
+goodwillout: checks 
+CidChompsky: bets 400
+goodwillout: calls 400
+*** SHOW DOWN ***
+CidChompsky: shows [3h Kd 3s 5c 8d Ad Ks] (HI: two pair, Kings and Threes)
+goodwillout: shows [3d 5s 7d As 7h 8c 4c] (HI: a pair of Sevens; LO: 7,5,4,3,A)
+CidChompsky collected 1030 from pot
+goodwillout collected 1030 from pot
+*** SUMMARY ***
+Total pot 2060 | Rake 0 
+Seat 1: Hero folded on the 6th Street
+Seat 2: playball17 folded on the 3rd Street (didn't bet)
+Seat 3: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky showed [3h Kd 3s 5c 8d Ad Ks] and won (1030) with HI: two pair, Kings and Threes
+Seat 7: goodwillout showed [3d 5s 7d As 7h 8c 4c] and won (1030) with HI: a pair of Sevens; LO: 7,5,4,3,A
+Seat 8: chrisj992 folded on the 3rd Street (didn't bet)
+
+
+
+

@@ -39,22 +39,20 @@ def save():
 def index():
     if request.method == 'POST':
         mane_player = request.form['mane_player']
-        return redirect(url_for('list_uploads', mane_player=mane_player))
+        session['mane_player'] = mane_player
+        return redirect(url_for('Summary'))
     return render_template('index.html')
-@app.route('/files')
-def list_uploads():
-    mane_player = request.args['mane_player']
-    uploads_dir = os.path.join(app.root_path, 'Game_File\\')
-    files = os.listdir(uploads_dir)
-    return redirect(url_for('Summary', files=files, mane_player=mane_player ))
 
 @app.route('/Summary')
 def Summary():
-    files = request.args['files']
-    mane_player = request.args['mane_player']
-    #game_file = request.get_json()['game_file']
-    summary_table = Summary_json("game1.txt",mane_player)
-    return render_template('summary.html',summary_table = summary_table)
+    uploads_dir = os.path.join(app.root_path, 'Game_File\\')
+    files = os.listdir(uploads_dir)
+    session['files'] = files
+    mane_player = session['mane_player']
+    summary_table = []
+    for f in files:
+        summary_table.append(Summary_json(f,mane_player))
+    return render_template('summary.html',files=files, summary_table = summary_table, mane_player = mane_player)
 '''
 Function Name: phase
 
@@ -67,10 +65,11 @@ Returns:
 Description:
     phase allow to choose what phase we want to try
 '''
-@app.route('/Phases', methods=['GET', 'POST'])
-def phase():
-    file_name = request.args['file_name']
-    mane_player = request.args['mane_player']
+@app.route('/Phases/<int:index>')
+def phase(index):
+    files = session['files']
+    file_name = files[index]
+    mane_player = session['mane_player']
     file_name = "Game_File\\" + file_name
     session['file_name'] = file_name
     session['mane_player'] = mane_player

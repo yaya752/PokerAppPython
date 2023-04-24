@@ -1,0 +1,74 @@
+PokerStars Hand #242575993759: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level II (100/200) - 2023/03/20 16:32:36 ET
+Table '3563424603 1' 8-max
+Seat 2: Hero (2510 in chips) 
+Seat 3: teddottie (3290 in chips) 
+Seat 4: amit (1652 in chips) 
+Seat 5: Alchemist1 (2448 in chips) 
+Seat 6: CidChompsky (4635 in chips) 
+Seat 7: goodwillout (2655 in chips) 
+Seat 8: chrisj992 (2655 in chips) 
+Hero: posts the ante 20
+teddottie: posts the ante 20
+amit: posts the ante 20
+Alchemist1: posts the ante 20
+CidChompsky: posts the ante 20
+goodwillout: posts the ante 20
+chrisj992: posts the ante 20
+*** 3rd STREET ***
+Dealt to Hero [8h 7h Ac]
+Dealt to teddottie [Kh]
+Dealt to amit [4d]
+Dealt to Alchemist1 [6c]
+Dealt to CidChompsky [5s]
+Dealt to goodwillout [7c]
+Dealt to chrisj992 [5h]
+amit: brings in for 30
+Alchemist1: folds 
+CidChompsky: folds 
+goodwillout: calls 30
+chrisj992: raises 70 to 100
+Hero: raises 100 to 200
+teddottie: folds 
+amit: folds 
+goodwillout: calls 170
+chrisj992: calls 100
+*** 4th STREET ***
+Dealt to Hero [8h 7h Ac] [7d]
+Dealt to goodwillout [7c] [4s]
+Dealt to chrisj992 [5h] [2d]
+Hero: bets 100
+goodwillout: calls 100
+chrisj992: calls 100
+*** 5th STREET ***
+Dealt to Hero [8h 7h Ac 7d] [3h]
+Dealt to goodwillout [7c 4s] [Kc]
+Dealt to chrisj992 [5h 2d] [5c]
+chrisj992: checks 
+Hero: bets 200
+goodwillout: calls 200
+chrisj992: calls 200
+*** 6th STREET ***
+Dealt to Hero [8h 7h Ac 7d 3h] [3d]
+Dealt to goodwillout [7c 4s Kc] [7s]
+Dealt to chrisj992 [5h 2d 5c] [Js]
+goodwillout: checks 
+chrisj992: bets 200
+Hero: calls 200
+goodwillout: calls 200
+*** RIVER ***
+Dealt to Hero [8h 7h Ac 7d 3h 3d] [9s]
+goodwillout: checks 
+chrisj992: bets 200
+Hero: folds 
+goodwillout: folds 
+Uncalled bet (200) returned to chrisj992
+chrisj992 collected 2270 from pot
+*** SUMMARY ***
+Total pot 2270 | Rake 0 
+Seat 2: Hero folded on the River
+Seat 3: teddottie folded on the 3rd Street (didn't bet)
+Seat 4: amit folded on the 3rd Street
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky folded on the 3rd Street (didn't bet)
+Seat 7: goodwillout folded on the River
+Seat 8: chrisj992 collected (2270)
