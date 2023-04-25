@@ -1,0 +1,86 @@
+PokerStars Hand #242576089706: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level II (100/200) - 2023/03/20 16:36:17 ET
+Table '3563424603 1' 8-max
+Seat 1: xrakete279x (2950 in chips) 
+Seat 2: Hero (1750 in chips) 
+Seat 3: teddottie (3100 in chips) 
+Seat 4: amit (1947 in chips) 
+Seat 5: Alchemist1 (2188 in chips) 
+Seat 6: CidChompsky (4545 in chips) 
+Seat 7: goodwillout (1945 in chips) 
+Seat 8: chrisj992 (4420 in chips) 
+xrakete279x: posts the ante 20
+Hero: posts the ante 20
+teddottie: posts the ante 20
+amit: posts the ante 20
+Alchemist1: posts the ante 20
+CidChompsky: posts the ante 20
+goodwillout: posts the ante 20
+chrisj992: posts the ante 20
+*** 3rd STREET ***
+Dealt to xrakete279x [4d]
+Dealt to Hero [As Ts Jd]
+Dealt to teddottie [Qd]
+Dealt to amit [4c]
+Dealt to Alchemist1 [7c]
+Dealt to CidChompsky [Th]
+Dealt to goodwillout [7h]
+Dealt to chrisj992 [3d]
+chrisj992: bets 100
+xrakete279x: calls 100
+Hero: folds 
+teddottie: raises 100 to 200
+amit: folds 
+Alchemist1: calls 200
+CidChompsky: calls 200
+goodwillout: folds 
+chrisj992: calls 100
+xrakete279x: calls 100
+*** 4th STREET ***
+Dealt to xrakete279x [4d] [7d]
+Dealt to teddottie [Qd] [2h]
+Dealt to Alchemist1 [7c] [Ac]
+Dealt to CidChompsky [Th] [Js]
+Dealt to chrisj992 [3d] [Jc]
+Alchemist1: bets 100
+CidChompsky: folds 
+chrisj992: calls 100
+xrakete279x: calls 100
+teddottie: calls 100
+*** 5th STREET ***
+Dealt to xrakete279x [4d 7d] [Kh]
+Dealt to teddottie [Qd 2h] [3s]
+Dealt to Alchemist1 [7c Ac] [Ah]
+Dealt to chrisj992 [3d Jc] [2s]
+Alchemist1: bets 200
+chrisj992: folds 
+xrakete279x: calls 200
+teddottie: calls 200
+*** 6th STREET ***
+Dealt to xrakete279x [4d 7d Kh] [3c]
+Dealt to teddottie [Qd 2h 3s] [6d]
+Dealt to Alchemist1 [7c Ac Ah] [8s]
+Alchemist1: bets 200
+xrakete279x: raises 200 to 400
+teddottie: calls 400
+Alchemist1: calls 200
+*** RIVER ***
+Alchemist1: checks 
+xrakete279x: bets 200
+teddottie: calls 200
+Alchemist1: calls 200
+*** SHOW DOWN ***
+xrakete279x: shows [Kd Kc 4d 7d Kh 3c 5h] (HI: three of a kind, Kings)
+teddottie: mucks hand 
+Alchemist1: shows [3h Ad 7c Ac Ah 8s 9h] (HI: three of a kind, Aces)
+Alchemist1 collected 3960 from pot
+No low hand qualified
+*** SUMMARY ***
+Total pot 3960 | Rake 0 
+Seat 1: xrakete279x showed [Kd Kc 4d 7d Kh 3c 5h] and lost with HI: three of a kind, Kings
+Seat 2: Hero folded on the 3rd Street (didn't bet)
+Seat 3: teddottie mucked [Qs 5s Qd 2h 3s 6d Qc]
+Seat 4: amit folded on the 3rd Street (didn't bet)
+Seat 5: Alchemist1 showed [3h Ad 7c Ac Ah 8s 9h] and won (3960) with HI: three of a kind, Aces
+Seat 6: CidChompsky folded on the 4th Street
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 folded on the 5th Street

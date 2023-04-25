@@ -1,0 +1,75 @@
+PokerStars Hand #242576059075: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level II (100/200) - 2023/03/20 16:35:06 ET
+Table '3563424603 1' 8-max
+Seat 1: xrakete279x (3000 in chips) 
+Seat 2: Hero (1770 in chips) 
+Seat 3: teddottie (3250 in chips) 
+Seat 4: amit (1967 in chips) 
+Seat 5: Alchemist1 (2208 in chips) 
+Seat 6: CidChompsky (4565 in chips) 
+Seat 7: goodwillout (1515 in chips) 
+Seat 8: chrisj992 (4570 in chips) 
+xrakete279x: posts the ante 20
+Hero: posts the ante 20
+teddottie: posts the ante 20
+amit: posts the ante 20
+Alchemist1: posts the ante 20
+CidChompsky: posts the ante 20
+goodwillout: posts the ante 20
+chrisj992: posts the ante 20
+*** 3rd STREET ***
+Dealt to xrakete279x [Ad]
+Dealt to Hero [Ah Qc Tc]
+Dealt to teddottie [3h]
+Dealt to amit [6h]
+Dealt to Alchemist1 [Kc]
+Dealt to CidChompsky [4s]
+Dealt to goodwillout [5h]
+Dealt to chrisj992 [5d]
+teddottie: brings in for 30
+amit: folds 
+Alchemist1: folds 
+CidChompsky: folds 
+goodwillout: calls 30
+chrisj992: calls 30
+xrakete279x: calls 30
+Hero: folds 
+*** 4th STREET ***
+Dealt to xrakete279x [Ad] [Kd]
+Dealt to teddottie [3h] [Jd]
+Dealt to goodwillout [5h] [7c]
+Dealt to chrisj992 [5d] [7h]
+xrakete279x: checks 
+teddottie: checks 
+goodwillout: checks 
+chrisj992: bets 100
+xrakete279x: folds 
+teddottie: calls 100
+goodwillout: calls 100
+*** 5th STREET ***
+Dealt to teddottie [3h Jd] [Qd]
+Dealt to goodwillout [5h 7c] [6c]
+Dealt to chrisj992 [5d 7h] [9c]
+teddottie: checks 
+goodwillout: checks 
+chrisj992: checks 
+*** 6th STREET ***
+Dealt to teddottie [3h Jd Qd] [Ks]
+Dealt to goodwillout [5h 7c 6c] [4c]
+Dealt to chrisj992 [5d 7h 9c] [Ts]
+teddottie: checks 
+goodwillout: bets 200
+chrisj992: folds 
+teddottie: folds 
+Uncalled bet (200) returned to goodwillout
+goodwillout collected 580 from pot
+goodwillout: doesn't show hand 
+*** SUMMARY ***
+Total pot 580 | Rake 0 
+Seat 1: xrakete279x folded on the 4th Street
+Seat 2: Hero folded on the 3rd Street (didn't bet)
+Seat 3: teddottie folded on the 6th Street
+Seat 4: amit folded on the 3rd Street (didn't bet)
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky folded on the 3rd Street (didn't bet)
+Seat 7: goodwillout collected (580)
+Seat 8: chrisj992 folded on the 6th Street

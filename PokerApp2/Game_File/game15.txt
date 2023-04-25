@@ -1,0 +1,54 @@
+PokerStars Hand #242576177466: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:39:41 ET
+Table '3563424603 3' 8-max
+Seat 1: dblgutshot (2265 in chips) 
+Seat 2: xrakete279x (2100 in chips) 
+Seat 3: playball17 (2835 in chips) is sitting out
+Seat 4: Hero (1850 in chips) 
+Seat 5: teddottie (2145 in chips) 
+dblgutshot: posts the ante 30
+xrakete279x: posts the ante 30
+playball17: posts the ante 30
+Hero: posts the ante 30
+teddottie: posts the ante 30
+*** 3rd STREET ***
+Dealt to dblgutshot [5d]
+Dealt to xrakete279x [Kc]
+Dealt to playball17 [9d]
+Dealt to Hero [Jd Td 8s]
+Dealt to teddottie [As]
+dblgutshot: brings in for 45
+xrakete279x: folds 
+playball17: folds 
+Hero: folds 
+teddottie: raises 105 to 150
+dblgutshot: calls 105
+*** 4th STREET ***
+Dealt to dblgutshot [5d] [9h]
+Dealt to teddottie [As] [Ks]
+teddottie: bets 150
+dblgutshot: calls 150
+*** 5th STREET ***
+Dealt to dblgutshot [5d 9h] [7c]
+Dealt to teddottie [As Ks] [6s]
+teddottie: bets 300
+dblgutshot: calls 300
+*** 6th STREET ***
+Dealt to dblgutshot [5d 9h 7c] [8d]
+Dealt to teddottie [As Ks 6s] [5c]
+teddottie: bets 300
+dblgutshot: calls 300
+*** RIVER ***
+teddottie: bets 300
+dblgutshot: calls 300
+*** SHOW DOWN ***
+teddottie: shows [8c Ad As Ks 6s 5c 2h] (HI: a pair of Aces; LO: 8,6,5,2,A)
+dblgutshot: mucks hand 
+teddottie collected 1275 from pot
+teddottie collected 1275 from pot
+*** SUMMARY ***
+Total pot 2550 | Rake 0 
+Seat 1: dblgutshot mucked [4c Ac 5d 9h 7c 8d 4h]
+Seat 2: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 3: playball17 folded on the 3rd Street (didn't bet)
+Seat 4: Hero folded on the 3rd Street (didn't bet)
+Seat 5: teddottie showed [8c Ad As Ks 6s 5c 2h] and won (2550) with HI: a pair of Aces; LO: 8,6,5,2,A

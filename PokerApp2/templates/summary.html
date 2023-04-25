@@ -61,14 +61,37 @@
     <table>
         <thead>
             <tr>
+                <th>Mean</th>
+                <th>tournament</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(1) %}
+            <tr>
+                <td>{{ mean }}</td>
+                <td>{{ generalities_list[0][1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
                 <th>File Name</th>
+                <th>Hand</th>
+                <th>Times</th>
+                <th>Cards</th>
                 <th>Summary</th>
             </tr>
         </thead>
         <tbody>
             {% for i in range(files|length) %}
             <tr onclick="window.location.href='/Phases/{{ i }}';">
-                <td>{{ files[i] }}</td>
+                <td>{{ files[i] }}</td> 
+                <td>{{ generalities_list[i][0] }}</td>
+                <td>{{ generalities_list[i][2] }}</td>
+                <td>{{ hand_table[i] }}</td>
                 <td>{{ summary_table[i] }}</td>
             </tr>
             {% endfor %}

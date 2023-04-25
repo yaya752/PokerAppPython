@@ -1,0 +1,67 @@
+PokerStars Hand #242576367332: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:46:59 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (3280 in chips) 
+Seat 2: playball17 (2370 in chips) 
+Seat 3: xrakete279x (3235 in chips) 
+Seat 4: amit (870 in chips) 
+Seat 5: Alchemist1 (4705 in chips) 
+Seat 6: CidChompsky (2577 in chips) 
+Seat 7: goodwillout (3785 in chips) 
+Seat 8: chrisj992 (5143 in chips) 
+Hero: posts the ante 30
+playball17: posts the ante 30
+xrakete279x: posts the ante 30
+amit: posts the ante 30
+Alchemist1: posts the ante 30
+CidChompsky: posts the ante 30
+goodwillout: posts the ante 30
+chrisj992: posts the ante 30
+*** 3rd STREET ***
+Dealt to Hero [7h Ac 3d]
+Dealt to playball17 [3s]
+Dealt to xrakete279x [Qd]
+Dealt to amit [As]
+Dealt to Alchemist1 [6c]
+Dealt to CidChompsky [5h]
+Dealt to goodwillout [7s]
+Dealt to chrisj992 [4d]
+Hero: brings in for 45
+playball17: raises 105 to 150
+xrakete279x: folds 
+amit: folds 
+Alchemist1: folds 
+CidChompsky: folds 
+goodwillout: folds 
+chrisj992: calls 150
+Hero: raises 150 to 300
+playball17: raises 150 to 450
+chrisj992: calls 300
+Hero: calls 150
+*** 4th STREET ***
+Dealt to Hero [7h Ac 3d] [Qc]
+Dealt to playball17 [3s] [6d]
+Dealt to chrisj992 [4d] [Kc]
+chrisj992: checks 
+Hero: checks 
+playball17: bets 150
+chrisj992: calls 150
+Hero: calls 150
+*** 5th STREET ***
+Dealt to Hero [7h Ac 3d Qc] [9s]
+Dealt to playball17 [3s 6d] [Ah]
+Dealt to chrisj992 [4d Kc] [9d]
+playball17: bets 300
+chrisj992: folds 
+Hero: folds 
+Uncalled bet (300) returned to playball17
+playball17 collected 2040 from pot
+*** SUMMARY ***
+Total pot 2040 | Rake 0 
+Seat 1: Hero folded on the 5th Street
+Seat 2: playball17 collected (2040)
+Seat 3: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 4: amit folded on the 3rd Street (didn't bet)
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky folded on the 3rd Street (didn't bet)
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 folded on the 5th Street

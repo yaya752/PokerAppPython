@@ -1,0 +1,74 @@
+PokerStars Hand #242576334050: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:45:44 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (3460 in chips) 
+Seat 2: playball17 (2445 in chips) 
+Seat 3: xrakete279x (3265 in chips) 
+Seat 4: amit (900 in chips) 
+Seat 5: Alchemist1 (4443 in chips) 
+Seat 6: CidChompsky (2757 in chips) 
+Seat 7: goodwillout (3815 in chips) 
+Seat 8: chrisj992 (4880 in chips) 
+Hero: posts the ante 30
+playball17: posts the ante 30
+xrakete279x: posts the ante 30
+amit: posts the ante 30
+Alchemist1: posts the ante 30
+CidChompsky: posts the ante 30
+goodwillout: posts the ante 30
+chrisj992: posts the ante 30
+*** 3rd STREET ***
+Dealt to Hero [Ad 5c 8h]
+Dealt to playball17 [4d]
+Dealt to xrakete279x [5s]
+Dealt to amit [Kh]
+Dealt to Alchemist1 [6d]
+Dealt to CidChompsky [Ah]
+Dealt to goodwillout [Kd]
+Dealt to chrisj992 [Ac]
+playball17: brings in for 45
+xrakete279x: folds 
+amit: folds 
+Alchemist1: raises 105 to 150
+CidChompsky: calls 150
+goodwillout: folds 
+chrisj992: calls 150
+Hero: calls 150
+playball17: folds 
+*** 4th STREET ***
+Dealt to Hero [Ad 5c 8h] [Ts]
+Dealt to Alchemist1 [6d] [7d]
+Dealt to CidChompsky [Ah] [3s]
+Dealt to chrisj992 [Ac] [Qc]
+chrisj992: bets 150
+Hero: folds 
+Alchemist1: calls 150
+CidChompsky: folds 
+*** 5th STREET ***
+Dealt to Alchemist1 [6d 7d] [3c]
+Dealt to chrisj992 [Ac Qc] [3h]
+chrisj992: bets 300
+Alchemist1: calls 300
+*** 6th STREET ***
+Dealt to Alchemist1 [6d 7d 3c] [Tc]
+Dealt to chrisj992 [Ac Qc 3h] [9s]
+chrisj992: bets 300
+Alchemist1: calls 300
+*** RIVER ***
+chrisj992: checks 
+Alchemist1: bets 300
+chrisj992: calls 300
+*** SHOW DOWN ***
+Alchemist1: shows [6s As 6d 7d 3c Tc 2c] (HI: a pair of Sixes; LO: 7,6,3,2,A)
+chrisj992: shows [Qd Qh Ac Qc 3h 9s Js] (HI: three of a kind, Queens)
+chrisj992 collected 1493 from pot
+Alchemist1 collected 1492 from pot
+*** SUMMARY ***
+Total pot 2985 | Rake 0 
+Seat 1: Hero folded on the 4th Street
+Seat 2: playball17 folded on the 3rd Street
+Seat 3: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 4: amit folded on the 3rd Street (didn't bet)
+Seat 5: Alchemist1 showed [6s As 6d 7d 3c Tc 2c] and won (1492) with HI: a pair of Sixes; LO: 7,6,3,2,A
+Seat 6: CidChompsky folded on the 4th Street
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 showed [Qd Qh Ac Qc 3h 9s Js] and won (1493) with HI: three of a kind, Queens

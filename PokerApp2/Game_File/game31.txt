@@ -1,0 +1,65 @@
+PokerStars Hand #242576473538: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level IV (200/400) - 2023/03/20 16:51:05 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (2450 in chips) 
+Seat 2: playball17 (3640 in chips) 
+Seat 3: xrakete279x (3065 in chips) 
+Seat 5: Alchemist1 (5605 in chips) 
+Seat 6: CidChompsky (3367 in chips) 
+Seat 7: goodwillout (3510 in chips) 
+Seat 8: chrisj992 (4328 in chips) 
+Hero: posts the ante 40
+playball17: posts the ante 40
+xrakete279x: posts the ante 40
+Alchemist1: posts the ante 40
+CidChompsky: posts the ante 40
+goodwillout: posts the ante 40
+chrisj992: posts the ante 40
+*** 3rd STREET ***
+Dealt to Hero [Jh Js 3h]
+Dealt to playball17 [Ks]
+Dealt to xrakete279x [Kc]
+Dealt to Alchemist1 [6s]
+Dealt to CidChompsky [6c]
+Dealt to goodwillout [9c]
+Dealt to chrisj992 [7d]
+Hero: brings in for 60
+playball17: folds 
+xrakete279x: raises 140 to 200
+Alchemist1: folds 
+CidChompsky: folds 
+goodwillout: folds 
+chrisj992: calls 200
+Hero: folds 
+*** 4th STREET ***
+Dealt to xrakete279x [Kc] [7c]
+Dealt to chrisj992 [7d] [5d]
+xrakete279x: bets 200
+chrisj992: calls 200
+*** 5th STREET ***
+Dealt to xrakete279x [Kc 7c] [Tc]
+Dealt to chrisj992 [7d 5d] [Qd]
+xrakete279x: checks 
+chrisj992: bets 400
+xrakete279x: calls 400
+*** 6th STREET ***
+Dealt to xrakete279x [Kc 7c Tc] [Ad]
+Dealt to chrisj992 [7d 5d Qd] [Qs]
+chrisj992: bets 400
+xrakete279x: calls 400
+*** RIVER ***
+chrisj992: bets 400
+xrakete279x: calls 400
+*** SHOW DOWN ***
+chrisj992: shows [8d 6d 7d 5d Qd Qs 2d] (HI: a flush, Queen high; LO: 8,7,6,5,2)
+xrakete279x: mucks hand 
+chrisj992 collected 1770 from pot
+chrisj992 collected 1770 from pot
+*** SUMMARY ***
+Total pot 3540 | Rake 0 
+Seat 1: Hero folded on the 3rd Street
+Seat 2: playball17 folded on the 3rd Street (didn't bet)
+Seat 3: xrakete279x mucked [Kh 7s Kc 7c Tc Ad 3s]
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky folded on the 3rd Street (didn't bet)
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 showed [8d 6d 7d 5d Qd Qs 2d] and won (3540) with HI: a flush, Queen high; LO: 8,7,6,5,2

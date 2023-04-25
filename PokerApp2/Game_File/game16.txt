@@ -1,0 +1,34 @@
+PokerStars Hand #242576197064: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:40:27 ET
+Table '3563424603 3' 8-max
+Seat 1: dblgutshot (1035 in chips) 
+Seat 2: xrakete279x (2070 in chips) 
+Seat 3: playball17 (2805 in chips) is sitting out
+Seat 4: Hero (1820 in chips) 
+Seat 5: teddottie (3465 in chips) 
+dblgutshot: posts the ante 30
+xrakete279x: posts the ante 30
+playball17: posts the ante 30
+Hero: posts the ante 30
+teddottie: posts the ante 30
+*** 3rd STREET ***
+Dealt to dblgutshot [7c]
+Dealt to xrakete279x [9c]
+Dealt to playball17 [6c]
+Dealt to Hero [3d Kd 6s]
+Dealt to teddottie [6h]
+playball17: brings in for 45
+Hero: folds 
+teddottie: folds 
+dblgutshot: folds 
+xrakete279x: raises 105 to 150
+playball17: folds 
+Uncalled bet (105) returned to xrakete279x
+xrakete279x collected 240 from pot
+xrakete279x: doesn't show hand 
+*** SUMMARY ***
+Total pot 240 | Rake 0 
+Seat 1: dblgutshot folded on the 3rd Street (didn't bet)
+Seat 2: xrakete279x collected (240)
+Seat 3: playball17 folded on the 3rd Street
+Seat 4: Hero folded on the 3rd Street (didn't bet)
+Seat 5: teddottie folded on the 3rd Street (didn't bet)

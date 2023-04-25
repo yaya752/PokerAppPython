@@ -1,0 +1,72 @@
+PokerStars Hand #242575952101: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level II (100/200) - 2023/03/20 16:31:02 ET
+Table '3563424603 1' 8-max
+Seat 2: Hero (2530 in chips) 
+Seat 3: teddottie (3510 in chips) 
+Seat 4: amit (2472 in chips) 
+Seat 5: Alchemist1 (2468 in chips) 
+Seat 6: CidChompsky (3515 in chips) 
+Seat 7: goodwillout (2675 in chips) 
+Seat 8: chrisj992 (2675 in chips) 
+Hero: posts the ante 20
+teddottie: posts the ante 20
+amit: posts the ante 20
+Alchemist1: posts the ante 20
+CidChompsky: posts the ante 20
+goodwillout: posts the ante 20
+chrisj992: posts the ante 20
+*** 3rd STREET ***
+Dealt to Hero [As 4h Kh]
+Dealt to teddottie [Jh]
+Dealt to amit [4c]
+Dealt to Alchemist1 [Jc]
+Dealt to CidChompsky [4s]
+Dealt to goodwillout [5h]
+Dealt to chrisj992 [Ks]
+amit: brings in for 30
+Alchemist1: folds 
+CidChompsky: raises 70 to 100
+goodwillout: folds 
+chrisj992: folds 
+Hero: folds 
+teddottie: calls 100
+amit: calls 70
+*** 4th STREET ***
+Dealt to teddottie [Jh] [Th]
+Dealt to amit [4c] [6c]
+Dealt to CidChompsky [4s] [6s]
+teddottie: checks 
+amit: checks 
+CidChompsky: bets 100
+teddottie: calls 100
+amit: calls 100
+*** 5th STREET ***
+Dealt to teddottie [Jh Th] [Ad]
+Dealt to amit [4c 6c] [3s]
+Dealt to CidChompsky [4s 6s] [3h]
+teddottie: checks 
+amit: checks 
+CidChompsky: bets 200
+teddottie: folds 
+amit: calls 200
+*** 6th STREET ***
+Dealt to amit [4c 6c 3s] [9c]
+Dealt to CidChompsky [4s 6s 3h] [Qd]
+CidChompsky: bets 200
+amit: calls 200
+*** RIVER ***
+CidChompsky: bets 200
+amit: calls 200
+*** SHOW DOWN ***
+CidChompsky: shows [2h 6h 4s 6s 3h Qd 7d] (HI: a pair of Sixes; LO: 7,6,4,3,2)
+amit: mucks hand 
+CidChompsky collected 970 from pot
+CidChompsky collected 970 from pot
+*** SUMMARY ***
+Total pot 1940 | Rake 0 
+Seat 2: Hero folded on the 3rd Street (didn't bet)
+Seat 3: teddottie folded on the 5th Street
+Seat 4: amit mucked [2s 2d 4c 6c 3s 9c Kc]
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky showed [2h 6h 4s 6s 3h Qd 7d] and won (1940) with HI: a pair of Sixes; LO: 7,6,4,3,2
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 folded on the 3rd Street (didn't bet)

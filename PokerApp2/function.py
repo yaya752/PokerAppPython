@@ -1,4 +1,13 @@
 import json
+def Generalities(line):
+    gene = []
+    words = line.split()
+    gene.append(words[2])
+    gene.append(words[4])
+    gene.append(words[17:19])
+    return gene
+
+
 def raises(index,lines,mane_player):
     Sum = 0
     i = index
@@ -15,7 +24,6 @@ def raises(index,lines,mane_player):
             elif words[1] == "bets":
                 Sum-= int(words[2])
         i-=1
-    print(Sum)
     return Sum
 def Count_Chips(mane_player,lines, idSummary):
     Sum = 0
@@ -41,8 +49,9 @@ def Count_Chips(mane_player,lines, idSummary):
                 i = idSummary
         i+=1
     return Sum
-
-def Summary_json(game_file,mane_player):
+def Average(lst):
+    return sum(lst) / len(lst)
+def Summary_Chips(game_file,mane_player):
     file_name ='Game_File\\' + game_file
     lines = []
     i = 0
@@ -80,7 +89,66 @@ def Summary_json(game_file,mane_player):
             if words[12] == "won" :
                 return int(words[13][1:-1]) - Count_Chips(mane_player,lines, idSummary)
             else:
-                return -    Count_Chips(mane_player,lines, idSummary)
+                return -Count_Chips(mane_player,lines, idSummary)
         i+=1
     return Count_Chips(mane_player,lines, idSummary)
+def Card_street(word,street_index, lines, mane_player):
+    i = 0
+    if word == '3rd':
+        i = street_index[0]
+    elif word == '4th':
+        i = street_index[1]
+    elif word == '5th':
+        i = street_index[2]
+    elif word == '6th':
+        i = street_index[3]
+    elif word == 'River':
+        i = street_index[4]
+    print(i)
+    words = lines[i].split()
+    while (words[0] != 'Dealt' or words[2] != mane_player):
+        i+=1
+        print(lines[i])
+        words = lines[i].split()
+    print("--------------")  
+    return words[3:]
+
+def Summary_Hands(game_file,mane_player):
+    file_name ='Game_File\\' + game_file
+    lines = []
+    i = 0
+    with open(file_name, "r") as f:
+        for line in f:
+            lines.append(line.strip())
+        street_index = []
         
+        for line in lines:
+            if line[:5] == '*** 3':
+
+                street_index.append(i)
+            elif line[:5] == '*** 4':
+
+                street_index.append(i)
+            elif line[:5] == '*** 5':
+
+                street_index.append(i)
+            elif line[:5] == '*** 6':
+
+                street_index.append(i)
+            elif line[:5] == '*** R':
+
+                street_index.append(i)
+            elif line[:6] == '*** SH':
+
+                street_index.append(i)
+            elif line[:6] == '*** SU':
+                idSummary = i
+            i+=1     
+    i = idSummary
+    while i < len(lines):
+        words = lines[i].split()
+        if words[2] == mane_player and (words[3] == "showed" or words[3] == "mucked") :
+            return words[4:9]
+        elif words[2] == mane_player and words[3] == "folded" :
+            return Card_street(words[6],street_index, lines, mane_player)
+        i+=1

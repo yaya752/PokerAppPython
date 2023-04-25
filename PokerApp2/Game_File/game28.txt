@@ -1,0 +1,68 @@
+PokerStars Hand #242576422152: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:49:06 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (2620 in chips) 
+Seat 2: playball17 (3750 in chips) 
+Seat 3: xrakete279x (3175 in chips) 
+Seat 4: amit (765 in chips) 
+Seat 5: Alchemist1 (4975 in chips) 
+Seat 6: CidChompsky (2517 in chips) 
+Seat 7: goodwillout (3680 in chips) 
+Seat 8: chrisj992 (4483 in chips) 
+Hero: posts the ante 30
+playball17: posts the ante 30
+xrakete279x: posts the ante 30
+amit: posts the ante 30
+Alchemist1: posts the ante 30
+CidChompsky: posts the ante 30
+goodwillout: posts the ante 30
+chrisj992: posts the ante 30
+*** 3rd STREET ***
+Dealt to Hero [8h 9d 8s]
+Dealt to playball17 [7d]
+Dealt to xrakete279x [4s]
+Dealt to amit [6c]
+Dealt to Alchemist1 [Qd]
+Dealt to CidChompsky [As]
+Dealt to goodwillout [7h]
+Dealt to chrisj992 [2d]
+chrisj992: brings in for 45
+Hero: folds 
+playball17: folds 
+xrakete279x: folds 
+amit: raises 105 to 150
+Alchemist1: folds 
+CidChompsky: calls 150
+goodwillout: folds 
+chrisj992: folds 
+*** 4th STREET ***
+Dealt to amit [6c] [Qh]
+Dealt to CidChompsky [As] [4d]
+CidChompsky: bets 150
+amit: raises 150 to 300
+CidChompsky: raises 150 to 450
+amit: raises 135 to 585 and is all-in
+Betting is capped
+CidChompsky: calls 135
+*** 5th STREET ***
+Dealt to amit [6c Qh] [4c]
+Dealt to CidChompsky [As 4d] [Qc]
+*** 6th STREET ***
+Dealt to amit [6c Qh 4c] [Td]
+Dealt to CidChompsky [As 4d Qc] [Kd]
+*** RIVER ***
+*** SHOW DOWN ***
+amit: shows [2c Kc 6c Qh 4c Td 7s] (HI: high card King)
+CidChompsky: shows [4h 5d As 4d Qc Kd Jd] (HI: a pair of Fours)
+CidChompsky collected 1755 from pot
+No low hand qualified
+amit finished the tournament
+*** SUMMARY ***
+Total pot 1755 | Rake 0 
+Seat 1: Hero folded on the 3rd Street (didn't bet)
+Seat 2: playball17 folded on the 3rd Street (didn't bet)
+Seat 3: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 4: amit showed [2c Kc 6c Qh 4c Td 7s] and lost with HI: high card King
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky showed [4h 5d As 4d Qc Kd Jd] and won (1755) with HI: a pair of Fours
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 folded on the 3rd Street

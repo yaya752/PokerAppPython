@@ -1,0 +1,75 @@
+PokerStars Hand #242576509882: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level IV (200/400) - 2023/03/20 16:52:29 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (2310 in chips) 
+Seat 2: playball17 (3560 in chips) 
+Seat 3: xrakete279x (1325 in chips) 
+Seat 5: Alchemist1 (5865 in chips) 
+Seat 6: CidChompsky (3287 in chips) 
+Seat 7: goodwillout (3430 in chips) 
+Seat 8: chrisj992 (6188 in chips) 
+Hero: posts the ante 40
+playball17: posts the ante 40
+xrakete279x: posts the ante 40
+Alchemist1: posts the ante 40
+CidChompsky: posts the ante 40
+goodwillout: posts the ante 40
+chrisj992: posts the ante 40
+*** 3rd STREET ***
+Dealt to Hero [Ks Qd Qh]
+Dealt to playball17 [Kd]
+Dealt to xrakete279x [3s]
+Dealt to Alchemist1 [7h]
+Dealt to CidChompsky [Ad]
+Dealt to goodwillout [5h]
+Dealt to chrisj992 [Jh]
+xrakete279x: brings in for 60
+Alchemist1: folds 
+CidChompsky: calls 60
+goodwillout: folds 
+chrisj992: folds 
+Hero: raises 140 to 200
+playball17: folds 
+xrakete279x: calls 140
+CidChompsky: calls 140
+*** 4th STREET ***
+Dealt to Hero [Ks Qd Qh] [7s]
+Dealt to xrakete279x [3s] [7d]
+Dealt to CidChompsky [Ad] [2s]
+CidChompsky: checks 
+Hero: bets 200
+xrakete279x: calls 200
+CidChompsky: calls 200
+*** 5th STREET ***
+Dealt to Hero [Ks Qd Qh 7s] [8h]
+Dealt to xrakete279x [3s 7d] [Qc]
+Dealt to CidChompsky [Ad 2s] [4c]
+CidChompsky: checks 
+Hero: checks 
+xrakete279x: checks 
+*** 6th STREET ***
+Dealt to Hero [Ks Qd Qh 7s 8h] [Jc]
+Dealt to xrakete279x [3s 7d Qc] [Tc]
+Dealt to CidChompsky [Ad 2s 4c] [Th]
+CidChompsky: checks 
+Hero: checks 
+xrakete279x: checks 
+*** RIVER ***
+Dealt to Hero [Ks Qd Qh 7s 8h Jc] [9h]
+CidChompsky: checks 
+Hero: checks 
+xrakete279x: checks 
+*** SHOW DOWN ***
+Hero: shows [Ks Qd Qh 7s 8h Jc 9h] (HI: a pair of Queens)
+xrakete279x: mucks hand 
+CidChompsky: mucks hand 
+Hero collected 1480 from pot
+No low hand qualified
+*** SUMMARY ***
+Total pot 1480 | Rake 0 
+Seat 1: Hero showed [Ks Qd Qh 7s 8h Jc 9h] and won (1480) with HI: a pair of Queens
+Seat 2: playball17 folded on the 3rd Street (didn't bet)
+Seat 3: xrakete279x mucked [5c 6d 3s 7d Qc Tc Jd]
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky mucked [8c Js Ad 2s 4c Th 2h]
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 folded on the 3rd Street (didn't bet)

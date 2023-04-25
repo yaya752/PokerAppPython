@@ -8,8 +8,7 @@ from Player import Player
 import base64
 import random
 import json
-from function import Summary_json
-
+from function import Summary_Chips ,Average, Generalities, Summary_Hands
 app = Flask(__name__, static_folder='static')
 app.secret_key = "PokerApp"
 
@@ -50,14 +49,24 @@ def Summary():
     session['files'] = files
     mane_player = session['mane_player']
     summary_table = []
+    first_lines = []
+    generalities_list = []
+    hand_table = []
     for f in files:
-        summary_table.append(Summary_json(f,mane_player))
-    return render_template('summary.html',files=files, summary_table = summary_table, mane_player = mane_player)
+        summary_table.append(Summary_Chips(f,mane_player))
+        hand_table.append(Summary_Hands(f,mane_player) )
+        with open("Game_File\\" + f, "r") as f:
+            line = f.readline()
+            first_lines.append(line.strip())
+            generalities_list.append(Generalities(line.strip()))
+    mean = Average(summary_table)
+    return render_template('summary.html',files=files,first_lines = first_lines,hand_table = hand_table, generalities_list = generalities_list ,summary_table = summary_table, mane_player = mane_player, mean = mean)
 '''
 Function Name: phase
 
 Parameters:
- - file_name : Name of the text file that we want to use to generate a new game (this file has to be put in the " Game_File" folder)
+ - file_name : Name of the text file that we want to use to generate a new game
+        (this file has to be put in the " Game_File" folder)
  - session : allow to save the name file between
 
 Returns: 

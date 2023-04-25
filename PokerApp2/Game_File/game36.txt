@@ -1,0 +1,70 @@
+PokerStars Hand #242576567112: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level IV (200/400) - 2023/03/20 16:54:43 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (1070 in chips) 
+Seat 2: playball17 (3440 in chips) 
+Seat 3: xrakete279x (805 in chips) 
+Seat 5: Alchemist1 (5745 in chips) 
+Seat 6: CidChompsky (3247 in chips) 
+Seat 7: goodwillout (3310 in chips) 
+Seat 8: chrisj992 (8348 in chips) 
+Hero: posts the ante 40
+playball17: posts the ante 40
+xrakete279x: posts the ante 40
+Alchemist1: posts the ante 40
+CidChompsky: posts the ante 40
+goodwillout: posts the ante 40
+chrisj992: posts the ante 40
+*** 3rd STREET ***
+Dealt to Hero [9d Jc 2c]
+Dealt to playball17 [6s]
+Dealt to xrakete279x [7c]
+Dealt to Alchemist1 [5d]
+Dealt to CidChompsky [3s]
+Dealt to goodwillout [7d]
+Dealt to chrisj992 [6c]
+Hero: brings in for 60
+playball17: folds 
+xrakete279x: folds 
+Alchemist1: folds 
+CidChompsky: calls 60
+goodwillout: calls 60
+chrisj992: folds 
+*** 4th STREET ***
+Dealt to Hero [9d Jc 2c] [2h]
+Dealt to CidChompsky [3s] [5c]
+Dealt to goodwillout [7d] [As]
+Hero: checks 
+CidChompsky: checks 
+goodwillout: checks 
+*** 5th STREET ***
+Dealt to Hero [9d Jc 2c 2h] [Tc]
+Dealt to CidChompsky [3s 5c] [8d]
+Dealt to goodwillout [7d As] [7h]
+goodwillout: checks 
+Hero: checks 
+CidChompsky: checks 
+*** 6th STREET ***
+Dealt to Hero [9d Jc 2c 2h Tc] [9h]
+Dealt to CidChompsky [3s 5c 8d] [Ad]
+Dealt to goodwillout [7d As 7h] [8c]
+goodwillout: bets 400
+Hero: folds 
+CidChompsky: calls 400
+*** RIVER ***
+goodwillout: checks 
+CidChompsky: bets 400
+goodwillout: calls 400
+*** SHOW DOWN ***
+CidChompsky: shows [3h Kd 3s 5c 8d Ad Ks] (HI: two pair, Kings and Threes)
+goodwillout: shows [3d 5s 7d As 7h 8c 4c] (HI: a pair of Sevens; LO: 7,5,4,3,A)
+CidChompsky collected 1030 from pot
+goodwillout collected 1030 from pot
+*** SUMMARY ***
+Total pot 2060 | Rake 0 
+Seat 1: Hero folded on the 6th Street
+Seat 2: playball17 folded on the 3rd Street (didn't bet)
+Seat 3: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky showed [3h Kd 3s 5c 8d Ad Ks] and won (1030) with HI: two pair, Kings and Threes
+Seat 7: goodwillout showed [3d 5s 7d As 7h 8c 4c] and won (1030) with HI: a pair of Sevens; LO: 7,5,4,3,A
+Seat 8: chrisj992 folded on the 3rd Street (didn't bet)

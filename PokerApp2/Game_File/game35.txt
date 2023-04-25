@@ -1,0 +1,67 @@
+PokerStars Hand #242576549220: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level IV (200/400) - 2023/03/20 16:54:01 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (3310 in chips) 
+Seat 2: playball17 (3480 in chips) 
+Seat 3: xrakete279x (845 in chips) 
+Seat 5: Alchemist1 (5785 in chips) 
+Seat 6: CidChompsky (3287 in chips) 
+Seat 7: goodwillout (3350 in chips) 
+Seat 8: chrisj992 (5908 in chips) 
+Hero: posts the ante 40
+playball17: posts the ante 40
+xrakete279x: posts the ante 40
+Alchemist1: posts the ante 40
+CidChompsky: posts the ante 40
+goodwillout: posts the ante 40
+chrisj992: posts the ante 40
+*** 3rd STREET ***
+Dealt to Hero [9d Ad Ah]
+Dealt to playball17 [Js]
+Dealt to xrakete279x [Kd]
+Dealt to Alchemist1 [3s]
+Dealt to CidChompsky [6s]
+Dealt to goodwillout [Jc]
+Dealt to chrisj992 [2d]
+chrisj992: bets 200
+Hero: raises 200 to 400
+playball17: folds 
+xrakete279x: folds 
+Alchemist1: folds 
+CidChompsky: folds 
+goodwillout: folds 
+chrisj992: calls 200
+*** 4th STREET ***
+Dealt to Hero [9d Ad Ah] [4s]
+Dealt to chrisj992 [2d] [Td]
+Hero: bets 200
+chrisj992: calls 200
+*** 5th STREET ***
+Dealt to Hero [9d Ad Ah 4s] [4h]
+Dealt to chrisj992 [2d Td] [As]
+Hero: bets 400
+chrisj992: calls 400
+*** 6th STREET ***
+Dealt to Hero [9d Ad Ah 4s 4h] [2c]
+Dealt to chrisj992 [2d Td As] [Jd]
+Hero: bets 400
+chrisj992: raises 400 to 800
+Hero: calls 400
+*** RIVER ***
+Dealt to Hero [9d Ad Ah 4s 4h 2c] [7s]
+Hero: checks 
+chrisj992: bets 400
+Hero: calls 400
+*** SHOW DOWN ***
+chrisj992: shows [3d 6d 2d Td As Jd Kh] (HI: a flush, Jack high)
+Hero: mucks hand 
+chrisj992 collected 4680 from pot
+No low hand qualified
+*** SUMMARY ***
+Total pot 4680 | Rake 0 
+Seat 1: Hero mucked [9d Ad Ah 4s 4h 2c 7s]
+Seat 2: playball17 folded on the 3rd Street (didn't bet)
+Seat 3: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 5: Alchemist1 folded on the 3rd Street (didn't bet)
+Seat 6: CidChompsky folded on the 3rd Street (didn't bet)
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 showed [3d 6d 2d Td As Jd Kh] and won (4680) with HI: a flush, Jack high

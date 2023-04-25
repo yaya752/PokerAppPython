@@ -1,0 +1,44 @@
+PokerStars Hand #242576503742: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level IV (200/400) - 2023/03/20 16:52:15 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (2350 in chips) 
+Seat 2: playball17 (3600 in chips) 
+Seat 3: xrakete279x (1425 in chips) 
+Seat 5: Alchemist1 (5565 in chips) 
+Seat 6: CidChompsky (3327 in chips) 
+Seat 7: goodwillout (3470 in chips) 
+Seat 8: chrisj992 (6228 in chips) 
+Hero: posts the ante 40
+playball17: posts the ante 40
+xrakete279x: posts the ante 40
+Alchemist1: posts the ante 40
+CidChompsky: posts the ante 40
+goodwillout: posts the ante 40
+chrisj992: posts the ante 40
+*** 3rd STREET ***
+Dealt to Hero [8d Js Jh]
+Dealt to playball17 [7h]
+Dealt to xrakete279x [6h]
+Dealt to Alchemist1 [As]
+Dealt to CidChompsky [Qh]
+Dealt to goodwillout [Qs]
+Dealt to chrisj992 [Ah]
+xrakete279x: brings in for 60
+Alchemist1: raises 140 to 200
+CidChompsky: folds 
+goodwillout: folds 
+chrisj992: folds 
+Hero: folds 
+playball17: folds 
+xrakete279x: folds 
+Uncalled bet (140) returned to Alchemist1
+Alchemist1 collected 400 from pot
+Alchemist1: doesn't show hand 
+*** SUMMARY ***
+Total pot 400 | Rake 0 
+Seat 1: Hero folded on the 3rd Street (didn't bet)
+Seat 2: playball17 folded on the 3rd Street (didn't bet)
+Seat 3: xrakete279x folded on the 3rd Street
+Seat 5: Alchemist1 collected (400)
+Seat 6: CidChompsky folded on the 3rd Street (didn't bet)
+Seat 7: goodwillout folded on the 3rd Street (didn't bet)
+Seat 8: chrisj992 folded on the 3rd Street (didn't bet)

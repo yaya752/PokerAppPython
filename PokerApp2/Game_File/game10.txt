@@ -1,0 +1,81 @@
+PokerStars Hand #242576021813: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level II (100/200) - 2023/03/20 16:33:41 ET
+Table '3563424603 1' 8-max
+Seat 2: Hero (1790 in chips) 
+Seat 3: teddottie (3270 in chips) 
+Seat 4: amit (1602 in chips) 
+Seat 5: Alchemist1 (2428 in chips) 
+Seat 6: CidChompsky (4615 in chips) 
+Seat 7: goodwillout (1935 in chips) 
+Seat 8: chrisj992 (4205 in chips) 
+Hero: posts the ante 20
+teddottie: posts the ante 20
+amit: posts the ante 20
+Alchemist1: posts the ante 20
+CidChompsky: posts the ante 20
+goodwillout: posts the ante 20
+chrisj992: posts the ante 20
+*** 3rd STREET ***
+Dealt to Hero [Jd 3d Jh]
+Dealt to teddottie [Tc]
+Dealt to amit [5s]
+Dealt to Alchemist1 [8h]
+Dealt to CidChompsky [5h]
+Dealt to goodwillout [Th]
+Dealt to chrisj992 [7c]
+CidChompsky: brings in for 30
+goodwillout: calls 30
+chrisj992: calls 30
+xrakete279x is disconnected 
+Hero: folds 
+teddottie: folds 
+amit: raises 70 to 100
+Alchemist1: calls 100
+CidChompsky: folds 
+goodwillout: calls 70
+chrisj992: calls 70
+*** 4th STREET ***
+Dealt to amit [5s] [3h]
+Dealt to Alchemist1 [8h] [4c]
+Dealt to goodwillout [Th] [Js]
+Dealt to chrisj992 [7c] [2d]
+goodwillout: checks 
+chrisj992: checks 
+amit: bets 100
+Alchemist1: calls 100
+goodwillout: calls 100
+chrisj992: calls 100
+*** 5th STREET ***
+Dealt to amit [5s 3h] [9h]
+Dealt to Alchemist1 [8h 4c] [Jc]
+Dealt to goodwillout [Th Js] [6d]
+Dealt to chrisj992 [7c 2d] [6c]
+goodwillout: checks 
+chrisj992: bets 200
+amit: calls 200
+Alchemist1: folds 
+goodwillout: calls 200
+*** 6th STREET ***
+Dealt to amit [5s 3h 9h] [9d]
+Dealt to goodwillout [Th Js 6d] [Ah]
+Dealt to chrisj992 [7c 2d 6c] [4h]
+amit: checks 
+goodwillout: checks 
+chrisj992: checks 
+*** RIVER ***
+amit: bets 200
+goodwillout: folds 
+chrisj992: calls 200
+*** SHOW DOWN ***
+amit: shows [2c 7s 5s 3h 9h 9d 9c] (HI: three of a kind, Nines)
+chrisj992: shows [7d 4s 7c 2d 6c 4h 8d] (HI: two pair, Sevens and Fours; LO: 8,7,6,4,2)
+amit collected 985 from pot
+chrisj992 collected 985 from pot
+*** SUMMARY ***
+Total pot 1970 | Rake 0 
+Seat 2: Hero folded on the 3rd Street (didn't bet)
+Seat 3: teddottie folded on the 3rd Street (didn't bet)
+Seat 4: amit showed [2c 7s 5s 3h 9h 9d 9c] and won (985) with HI: three of a kind, Nines
+Seat 5: Alchemist1 folded on the 5th Street
+Seat 6: CidChompsky folded on the 3rd Street
+Seat 7: goodwillout folded on the River
+Seat 8: chrisj992 showed [7d 4s 7c 2d 6c 4h 8d] and won (985) with HI: two pair, Sevens and Fours; LO: 8,7,6,4,2

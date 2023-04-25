@@ -1,0 +1,61 @@
+PokerStars Hand #242576205266: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:40:46 ET
+Table '3563424603 3' 8-max
+Seat 1: dblgutshot (1005 in chips) 
+Seat 2: xrakete279x (2235 in chips) 
+Seat 3: playball17 (2730 in chips) is sitting out
+Seat 4: Hero (1790 in chips) 
+Seat 5: teddottie (3435 in chips) 
+dblgutshot: posts the ante 30
+xrakete279x: posts the ante 30
+playball17: posts the ante 30
+Hero: posts the ante 30
+teddottie: posts the ante 30
+*** 3rd STREET ***
+Dealt to dblgutshot [4c]
+Dealt to xrakete279x [Kd]
+Dealt to playball17 [Ks]
+Dealt to Hero [5s 7s 4h]
+Dealt to teddottie [6s]
+dblgutshot: brings in for 45
+xrakete279x: folds 
+playball17: folds 
+Hero: calls 45
+teddottie: calls 45
+*** 4th STREET ***
+Dealt to dblgutshot [4c] [6d]
+Dealt to Hero [5s 7s 4h] [6c]
+Dealt to teddottie [6s] [2c]
+dblgutshot: checks 
+Hero: bets 150
+teddottie: calls 150
+dblgutshot: folds 
+*** 5th STREET ***
+Dealt to Hero [5s 7s 4h 6c] [Qc]
+Dealt to teddottie [6s 2c] [9c]
+Hero: bets 300
+teddottie: raises 300 to 600
+Hero: raises 300 to 900
+teddottie: calls 300
+*** 6th STREET ***
+Dealt to Hero [5s 7s 4h 6c Qc] [3h]
+Dealt to teddottie [6s 2c 9c] [4d]
+Hero: bets 300
+teddottie: calls 300
+*** RIVER ***
+Dealt to Hero [5s 7s 4h 6c Qc 3h] [9h]
+Hero: bets 300
+teddottie: raises 300 to 600
+Hero: calls 65 and is all-in
+Uncalled bet (235) returned to teddottie
+*** SHOW DOWN ***
+teddottie: shows [9d 7d 6s 2c 9c 4d 9s] (HI: three of a kind, Nines)
+Hero: shows [5s 7s 4h 6c Qc 3h 9h] (HI: a straight, Three to Seven; LO: 7,6,5,4,3)
+Hero collected 1858 from pot
+Hero collected 1857 from pot
+*** SUMMARY ***
+Total pot 3715 | Rake 0 
+Seat 1: dblgutshot folded on the 4th Street
+Seat 2: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 3: playball17 folded on the 3rd Street (didn't bet)
+Seat 4: Hero showed [5s 7s 4h 6c Qc 3h 9h] and won (3715) with HI: a straight, Three to Seven; LO: 7,6,5,4,3
+Seat 5: teddottie showed [9d 7d 6s 2c 9c 4d 9s] and lost with HI: three of a kind, Nines

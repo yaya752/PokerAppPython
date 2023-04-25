@@ -1,0 +1,55 @@
+PokerStars Hand #242576248083: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:42:26 ET
+Table '3563424603 3' 8-max
+Seat 1: dblgutshot (825 in chips) 
+Seat 2: xrakete279x (2340 in chips) 
+Seat 3: playball17 (2595 in chips) is sitting out
+Seat 4: Hero (3655 in chips) 
+Seat 5: teddottie (1780 in chips) 
+dblgutshot: posts the ante 30
+xrakete279x: posts the ante 30
+playball17: posts the ante 30
+Hero: posts the ante 30
+teddottie: posts the ante 30
+*** 3rd STREET ***
+Dealt to dblgutshot [8c]
+Dealt to xrakete279x [2d]
+Dealt to playball17 [5d]
+Dealt to Hero [Kh 4s 7h]
+Dealt to teddottie [2s]
+xrakete279x: brings in for 45
+playball17: folds 
+Hero: folds 
+teddottie: calls 45
+dblgutshot: raises 105 to 150
+xrakete279x: calls 105
+teddottie: calls 105
+*** 4th STREET ***
+Dealt to dblgutshot [8c] [7c]
+Dealt to xrakete279x [2d] [6h]
+Dealt to teddottie [2s] [3h]
+dblgutshot: bets 150
+xrakete279x: folds 
+teddottie: calls 150
+*** 5th STREET ***
+Dealt to dblgutshot [8c 7c] [Jh]
+Dealt to teddottie [2s 3h] [9d]
+dblgutshot: bets 300
+teddottie: calls 300
+*** 6th STREET ***
+Dealt to dblgutshot [8c 7c Jh] [2h]
+Dealt to teddottie [2s 3h 9d] [Tc]
+dblgutshot: bets 195 and is all-in
+teddottie: calls 195
+*** RIVER ***
+*** SHOW DOWN ***
+dblgutshot: shows [Qd Qc 8c 7c Jh 2h 3s] (HI: a pair of Queens)
+teddottie: shows [Ac Jc 2s 3h 9d Tc 7d] (HI: high card Ace)
+dblgutshot collected 1890 from pot
+No low hand qualified
+*** SUMMARY ***
+Total pot 1890 | Rake 0 
+Seat 1: dblgutshot showed [Qd Qc 8c 7c Jh 2h 3s] and won (1890) with HI: a pair of Queens
+Seat 2: xrakete279x folded on the 4th Street
+Seat 3: playball17 folded on the 3rd Street (didn't bet)
+Seat 4: Hero folded on the 3rd Street (didn't bet)
+Seat 5: teddottie showed [Ac Jc 2s 3h 9d Tc 7d] and lost with HI: high card Ace

@@ -1,0 +1,76 @@
+PokerStars Hand #242576396223: Tournament #3563424603, $14.70+$1.80 USD 7 Card Stud Hi/Lo Limit - Level III (150/300) - 2023/03/20 16:48:06 ET
+Table '3563424603 1' 8-max
+Seat 1: Hero (2650 in chips) 
+Seat 2: playball17 (3780 in chips) 
+Seat 3: xrakete279x (3205 in chips) 
+Seat 4: amit (840 in chips) 
+Seat 5: Alchemist1 (4675 in chips) 
+Seat 6: CidChompsky (2547 in chips) 
+Seat 7: goodwillout (3755 in chips) 
+Seat 8: chrisj992 (4513 in chips) 
+Hero: posts the ante 30
+playball17: posts the ante 30
+xrakete279x: posts the ante 30
+amit: posts the ante 30
+Alchemist1: posts the ante 30
+CidChompsky: posts the ante 30
+goodwillout: posts the ante 30
+chrisj992: posts the ante 30
+*** 3rd STREET ***
+Dealt to Hero [9h Ac Qd]
+Dealt to playball17 [Ks]
+Dealt to xrakete279x [6h]
+Dealt to amit [8h]
+Dealt to Alchemist1 [3s]
+Dealt to CidChompsky [8s]
+Dealt to goodwillout [5d]
+Dealt to chrisj992 [As]
+Alchemist1: brings in for 45
+CidChompsky: folds 
+goodwillout: calls 45
+chrisj992: folds 
+Hero: folds 
+playball17: folds 
+xrakete279x: folds 
+amit: calls 45
+*** 4th STREET ***
+Dealt to amit [8h] [9c]
+Dealt to Alchemist1 [3s] [Td]
+Dealt to goodwillout [5d] [8d]
+Alchemist1: checks 
+goodwillout: checks 
+amit: checks 
+*** 5th STREET ***
+Dealt to amit [8h 9c] [Ah]
+Dealt to Alchemist1 [3s Td] [4d]
+Dealt to goodwillout [5d 8d] [7c]
+amit: checks 
+Alchemist1: checks 
+goodwillout: checks 
+*** 6th STREET ***
+Dealt to amit [8h 9c Ah] [4h]
+Dealt to Alchemist1 [3s Td 4d] [3h]
+Dealt to goodwillout [5d 8d 7c] [2h]
+Alchemist1: checks 
+goodwillout: checks 
+amit: checks 
+*** RIVER ***
+Alchemist1: checks 
+goodwillout: checks 
+amit: checks 
+*** SHOW DOWN ***
+amit: shows [4s 2c 8h 9c Ah 4h Kh] (HI: a pair of Fours)
+Alchemist1: shows [Qc 9s 3s Td 4d 3h 9d] (HI: two pair, Nines and Threes)
+goodwillout: mucks hand 
+Alchemist1 collected 375 from pot
+No low hand qualified
+*** SUMMARY ***
+Total pot 375 | Rake 0 
+Seat 1: Hero folded on the 3rd Street (didn't bet)
+Seat 2: playball17 folded on the 3rd Street (didn't bet)
+Seat 3: xrakete279x folded on the 3rd Street (didn't bet)
+Seat 4: amit showed [4s 2c 8h 9c Ah 4h Kh] and lost with HI: a pair of Fours
+Seat 5: Alchemist1 showed [Qc 9s 3s Td 4d 3h 9d] and won (375) with HI: two pair, Nines and Threes
+Seat 6: CidChompsky folded on the 3rd Street (didn't bet)
+Seat 7: goodwillout mucked [5c Tc 5d 8d 7c 2h 7d]
+Seat 8: chrisj992 folded on the 3rd Street (didn't bet)
