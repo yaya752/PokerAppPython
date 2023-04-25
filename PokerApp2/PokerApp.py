@@ -30,15 +30,15 @@ Description:
 def save():
     if request.method == 'POST':
         file_name = request.form['file_name']
-        mane_player = request.form['mane_player']
-        return redirect(url_for('phase', file_name=file_name, mane_player=mane_player))
+        main_player = request.form['main_player']
+        return redirect(url_for('phase', file_name=file_name, main_player=main_player))
     return render_template('save.html')
 
 @app.route('/', methods=['GET', 'POST']) # define the main route (first page)
 def index():
     if request.method == 'POST':
-        mane_player = request.form['mane_player']
-        session['mane_player'] = mane_player
+        main_player = request.form['main_player']
+        session['main_player'] = main_player
         return redirect(url_for('Summary'))
     return render_template('index.html')
 
@@ -47,20 +47,20 @@ def Summary():
     uploads_dir = os.path.join(app.root_path, 'Game_File\\')
     files = os.listdir(uploads_dir)
     session['files'] = files
-    mane_player = session['mane_player']
+    main_player = session['main_player']
     summary_table = []
     first_lines = []
     generalities_list = []
     hand_table = []
     for f in files:
-        summary_table.append(Summary_Chips(f,mane_player))
-        hand_table.append(Summary_Hands(f,mane_player) )
+        summary_table.append(Summary_Chips(f,main_player))
+        hand_table.append(Summary_Hands(f,main_player) )
         with open("Game_File\\" + f, "r") as f:
             line = f.readline()
             first_lines.append(line.strip())
             generalities_list.append(Generalities(line.strip()))
     mean = Average(summary_table)
-    return render_template('summary.html',files=files,first_lines = first_lines,hand_table = hand_table, generalities_list = generalities_list ,summary_table = summary_table, mane_player = mane_player, mean = mean)
+    return render_template('summary.html',files=files,first_lines = first_lines,hand_table = hand_table, generalities_list = generalities_list ,summary_table = summary_table, main_player = main_player, mean = mean)
 '''
 Function Name: phase
 
@@ -78,10 +78,10 @@ Description:
 def phase(index):
     files = session['files']
     file_name = files[index]
-    mane_player = session['mane_player']
+    main_player = session['main_player']
     file_name = "Game_File\\" + file_name
     session['file_name'] = file_name
-    session['mane_player'] = mane_player
+    session['main_player'] = main_player
     return render_template('Phase.html')
 '''
 Function Name: phase 3
@@ -102,9 +102,9 @@ def serve_js():
 @app.route('/Phases/phase3', methods=['GET', 'POST'])
 def phase3():
     file_name = session['file_name']
-    mane_player = session['mane_player']
-    Table_game = Table([],0,0,mane_player,0)
-    Table_game1 = Table([],0,0,mane_player,0)
+    main_player = session['main_player']
+    Table_game = Table([],0,0,main_player,0)
+    Table_game1 = Table([],0,0,main_player,0)
     pos = 0
     pos1 = 0
     with open(file_name, "r") as f:
@@ -121,7 +121,7 @@ def phase3():
                 Table_game.Ante=ante 
                 Table_game.Pot+=ante  
             elif mots[0] == "Dealt":
-                if mots[2] == mane_player:
+                if mots[2] == main_player:
                     card1 = Card(mots[3][1],mots[3][2])
                     card2 = Card(mots[4][0],mots[4][1])
                     card3 = Card(mots[5][0],mots[5][1])

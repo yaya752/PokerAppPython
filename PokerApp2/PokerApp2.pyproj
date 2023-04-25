@@ -41,7 +41,7 @@
   <ItemGroup>
     <Content Include="Game_File\game1.txt" />
     <Content Include="Game_File\game2.txt" />
-    <Content Include="Game_File\games.txt" />
+    <Content Include="static\summary.css" />
     <Content Include="templates\Phase.html" />
     <Content Include="static\Phase3.css" />
     <Content Include="templates\Phase3.html" />
