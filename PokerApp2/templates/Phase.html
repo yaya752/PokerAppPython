@@ -1,64 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>7 Stud Hi-Lo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            background-color: #f2f2f2;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-top: 50px;
-        }
-
-        form {
-            max-width: 500px;
-            margin: 0 auto;
-            text-align: center;
-            padding-top: 50px;
-        }
-
-        input[type="submit"] {
-            font-size: 16px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease-in-out;
-        }
-
-            input[type="submit"]:hover {
-                background-color: #3e8e41;
-            }
-    </style>
+    <meta charset="UTF-8">
+    <title>Click Counter</title>
 </head>
 <body>
-    <h1>7 Stud Hi-Lo</h1>
-    <form action="/Phases/phase3" method="GET">
-        <input type="submit" value="Third Street">
-    </form>
-    <form action="/phase4" method="GET">
-        <input type="submit" value="Fourth Street">
-    </form>
-    <form action="/phase5" method="GET">
-        <input type="submit" value="Fifth Street">
-    </form>
-    <form action="/phase6" method="GET">
-        <input type="submit" value="Sixth Street">
-    </form>
-    <form action="/phase7" method="GET">
-        <input type="submit" value="Seventh Street">
-    </form>
-    <form action="/Summary" method="GET">
-        <input type="submit" value="Summary">
-    </form>
+    <h1>Click Counter</h1>
+    <p>Counter: <span id="counter">0</span></p>
+    <button id="incrementButton">Increment</button>
+    <button id="decrementButton">Decrement</button>
+    <script>
+        var counter = 0;
+        var counterElement = document.getElementById('counter');
+        var incrementButton = document.getElementById('incrementButton');
+        var decrementButton = document.getElementById('decrementButton');
+
+        incrementButton.addEventListener('click', function () {
+            counter++;
+            counterElement.textContent = counter;
+        });
+
+        decrementButton.addEventListener('click', function () {
+            counter--;
+            counterElement.textContent = counter;
+        });
+    </script>
 </body>
 </html>
