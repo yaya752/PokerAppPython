@@ -1,29 +1,149 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Click Counter</title>
+    <title>Action List</title>
+    <style>
+        .disabled {
+            background-color: gray;
+            color: white;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 <body>
-    <h1>Click Counter</h1>
-    <p>Counter: <span id="counter">0</span></p>
-    <button id="incrementButton">Increment</button>
-    <button id="decrementButton">Decrement</button>
+    <h1>Action List</h1>
+    <div id="actionContainer"></div>
+    <button id="previousButton">Previous Action</button>
+    <button id="nextButton">Next Action</button>
+    <button id="previousStreet">Previous Street</button>
+    <button id="nextStreet">Next Street</button>
     <script>
-        var counter = 0;
-        var counterElement = document.getElementById('counter');
-        var incrementButton = document.getElementById('incrementButton');
-        var decrementButton = document.getElementById('decrementButton');
+        // Retrieve the list of actions from Flask
+        var actions = {{ list_actions|tojson }};
 
-        incrementButton.addEventListener('click', function () {
-            counter++;
-            counterElement.textContent = counter;
+        // HTML elements
+        var actionContainer = document.getElementById("actionContainer");
+        var nextButton = document.getElementById("nextButton");
+        var previousButton = document.getElementById("previousButton");
+        var nextStreet = document.getElementById("nextStreet");
+        var previousStreet = document.getElementById("previousStreet");
+
+        // Index of the current action
+        var currentActionIndex = 0;
+
+        // Display the current action
+        displayAction();
+
+        // Event for the next action button
+        nextButton.addEventListener("click", function () {
+            currentActionIndex++;
+            if (currentActionIndex >= actions.length -1) {
+                currentActionIndex = actions.length - 1;
+                nextButton.disabled = true;
+                nextButton.classList.add("disabled");
+                nextStreet.disabled = true;
+                nextStreet.classList.add("disabled");
+            }
+            if (currentActionIndex > 0) {
+                previousButton.disabled = false;
+                previousButton.classList.remove("disabled");
+                previousStreet.disabled = false;
+                previousStreet.classList.remove("disabled");
+            }
+            displayAction();
         });
 
-        decrementButton.addEventListener('click', function () {
-            counter--;
-            counterElement.textContent = counter;
+        // Event for the previous action button
+        previousButton.addEventListener("click", function () {
+            currentActionIndex--;
+            if (currentActionIndex <= 0) {
+                currentActionIndex = 0;
+                previousButton.disabled = true;
+                previousButton.classList.add("disabled");
+                previousStreet.disabled = true;
+                previousStreet.classList.add("disabled");
+            }
+            if (currentActionIndex < actions.length - 1) {
+                nextButton.disabled = false;
+                nextButton.classList.remove("disabled");
+                nextStreet.disabled = false;
+                nextStreet.classList.remove("disabled");
+            }
+            displayAction();
         });
+        // Event for the next action Street
+        nextStreet.addEventListener("click", function () {
+            
+            
+            currentActionIndex++
+            if (currentActionIndex >= actions.length - 1) {
+                currentActionIndex = actions.length - 1;
+                nextStreet.disabled = true;
+                nextStreet.classList.add("disabled");
+                nextButton.disabled = true;
+                nextButton.classList.add("disabled");
+            }
+
+
+            else {
+                if (currentActionIndex > 0) {
+
+                    previousStreet.disabled = false;
+                    previousStreet.classList.remove("disabled");
+                    previousButton.disabled = false;
+                    previousButton.classList.remove("disabled");
+                    while (actions[currentActionIndex][0].slice(-1) != "*" && currentActionIndex < actions.length - 1) {
+                        currentActionIndex++;
+                    };
+                }
+            }
+            displayAction();
+        });
+
+        // Event for the previous action Street
+        previousStreet.addEventListener("click", function () {
+            currentActionIndex--;
+            
+            
+            if (currentActionIndex <= 0) {
+                currentActionIndex = 0;
+                previousStreet.disabled = true;
+                previousStreet.classList.add("disabled");
+                previousButton.disabled = true;
+                previousButton.classList.add("disabled");
+            }
+        
+            if (currentActionIndex < actions.length - 1 ) {
+                nextStreet.disabled = false;
+                nextStreet.classList.remove("disabled");
+                nextButton.disabled = false;
+                nextButton.classList.remove("disabled");
+                while (actions[currentActionIndex][0].slice(-1) != "*") {
+                    currentActionIndex--;
+                };
+            }
+            displayAction();
+        });
+
+        // Disable the previous Street at the beginning
+        previousStreet.disabled = true;
+        previousStreet.classList.add("disabled");
+        // Disable the previous Street at the beginning
+        previousButton.disabled = true;
+        previousButton.classList.add("disabled");
+
+
+        // Function to display the current action
+        function displayAction() {
+            var action = actions[currentActionIndex];
+            var actionHtml = "";
+            for (var i = 0; i < action.length; i++) {
+                //for (var j = 0; j < action[i].length; j++) {
+                    actionHtml += "<span>" + "&" + action[i] + "</span>";
+                //}
+            }
+            actionContainer.innerHTML = actionHtml;
+        }
     </script>
 </body>
 </html>

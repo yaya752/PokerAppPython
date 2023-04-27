@@ -44,11 +44,10 @@ def Summary():
     first_lines = []
     generalities_list = []
     hand_table = []
-    
+    l =Play("game17.txt")
     for f in files:
         summary_table.append(Summary_Chips(f,main_player))
-        hand_table.append(Summary_Hands(f,main_player) )
-        l =     Play("game17.txt")   
+        hand_table.append(Summary_Hands(f,main_player) )  
         with open("Game_File\\" + f, "r") as f:
             line = f.readline()
             first_lines.append(line.strip())
@@ -73,10 +72,11 @@ def phase(index):
     files = session['files']
     file_name = files[index]
     main_player = session['main_player']
-    file_name = "Game_File\\" + file_name
     session['file_name'] = file_name
     session['main_player'] = main_player
-    return render_template('Phase.html')
+    list_actions = Play(file_name)
+    initialisation = Init(file_name)
+    return render_template('Phase.html',list_actions = list_actions, initialisation = initialisation)
 '''
 Function Name: phase 3
 

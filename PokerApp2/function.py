@@ -229,21 +229,28 @@ def Init(game_file):
             Pot += int(words[4])
         i+=1
     return (Players_Init,Pot)
-def Action(lines,line,street):
+def Action(lines,line,street,street_index):
     words = line.split()
     action = [words[0][:-1],words[1]]
-    if words[1] == 'folds' or words[1] == 'checks':
-        return action
+    if words[0] == 'Dealt':
+            street_words = lines[street].split()
+            return [words[2],'Dealt',Card_to_html(Card_street(street_words[1],street_index, lines, words[2]))]
     elif words[1] == 'raises':
-        return action.append(raises(street,lines,words[0][:-1]))
+        action.append(raises(street,lines,words[0][:-1]))
+        return action
     elif words[1] == 'calls' or words[1] == 'bets':
-        return action.append(int(words[2]))
+        action.append(int(words[2]))
+        return action
+    elif words[1] == 'folds' or words[1] == 'checks':
+        return action
+    else:
+        return [line]
 
 def Play(game_file):
     Players_Actions = []
     Street_Change = []
     (lines,street_index) = file_index(game_file)
-    i = street_index[1]
+    i = street_index[0]
     street = i 
     while i < street_index[-1]:
         if i in street_index:
@@ -251,11 +258,11 @@ def Play(game_file):
         words = lines[i].split()
         if words[0] == '***':
             Street_Change.append(i)
-        elif words[0] == 'Dealt':
-            street_words = lines[street].split()
-            Players_Actions.append([words[2],Card_to_html(Card_street(street_words[1],street_index, lines, words[2]))])
+            Players_Actions.append([lines[i]])
         else:
-            Players_Actions.append(Action(lines,lines[i],street))
+            print(lines[i])
+            Players_Actions.append(Action(lines,lines[i],street,street_index))
         i+=1
+    Players_Actions.append([lines[i]])
     print(Players_Actions)
     return Players_Actions
