@@ -228,7 +228,7 @@ def Init(game_file):
         elif words[1] == 'posts':
             Pot += int(words[4])
         i+=1
-    return (Players_Init,Pot)
+    return [Players_Init,Pot]
 def Action(lines,line,street,street_index):
     words = line.split()
     action = [words[0][:-1],words[1]]

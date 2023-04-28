@@ -2,25 +2,50 @@
 <html>
 <head>
     <title>Action List</title>
-    <style>
-        .disabled {
-            background-color: gray;
-            color: white;
-            cursor: not-allowed;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Phase.css') }}">
+    
 </head>
 <body>
     <h1>Action List</h1>
     <div id="actionContainer"></div>
     <button id="previousButton">Previous Action</button>
     <button id="nextButton">Next Action</button>
-    <button id="previousStreet">Previous Street</button>
-    <button id="nextStreet">Next Street</button>
+    <p>
+        <button id="previousStreet">Previous Street</button>
+        <button id="nextStreet">Next Street</button>
+    </p>
+    <div id="tableContainer"></div>
     <script>
         // Retrieve the list of actions from Flask
-        var actions = {{ list_actions|tojson }};
+        var actions = {{ list_actions| tojson }};
+        var list_init = {{ initialisation| tojson }}
 
+        function Init() {
+            var i = 0;
+            var len = list_init[0].length
+            var actionHtml = "<div class = \"containerplayer\"> ";
+            for (let pas = 0; pas < 15; pas++) {
+                if (pas == 0 || pas == 4 || pas == 6 || pas == 8 || pas == 10 || pas == 14) {
+                    actionHtml += "<div class= \"player\"></div>";
+                }
+                else if (pas == 7) {
+                    actionHtml += "<div class= \"pot\">" + list_init[1] + "</div>";
+                }
+                else {
+                    if (i < len) {
+                        actionHtml += "<div class= \"player\"><div class=\"action\"></div><div class=\"bet\"></div><div class=\"image\"></div><div class=\"name\">" + list_init[0][i][0] + "</div><div class=\"chips\">" + list_init[0][i][1] + "</div><div class=\"cards\"></div></div>"
+                        i++
+                    }
+                    else {
+                        actionHtml += "<div class= \"player\"></div>"
+                    }
+                }  
+            };
+            actionHtml += "</div>"
+        tableContainer.innerHTML = actionHtml;
+        }
+        Init()
         // HTML elements
         var actionContainer = document.getElementById("actionContainer");
         var nextButton = document.getElementById("nextButton");
@@ -28,11 +53,9 @@
         var nextStreet = document.getElementById("nextStreet");
         var previousStreet = document.getElementById("previousStreet");
 
+
         // Index of the current action
         var currentActionIndex = 0;
-
-        // Display the current action
-        displayAction();
 
         // Event for the next action button
         nextButton.addEventListener("click", function () {
@@ -73,8 +96,8 @@
         });
         // Event for the next action Street
         nextStreet.addEventListener("click", function () {
-            
-            
+
+
             currentActionIndex++
             if (currentActionIndex >= actions.length - 1) {
                 currentActionIndex = actions.length - 1;
@@ -94,17 +117,26 @@
                     previousButton.classList.remove("disabled");
                     while (actions[currentActionIndex][0].slice(-1) != "*" && currentActionIndex < actions.length - 1) {
                         currentActionIndex++;
+                        if (currentActionIndex >= actions.length - 1) {
+                            currentActionIndex = actions.length - 1;
+                            nextStreet.disabled = true;
+                            nextStreet.classList.add("disabled");
+                            nextButton.disabled = true;
+                            nextButton.classList.add("disabled");
+                        }
                     };
                 }
             }
             displayAction();
+
+
         });
 
         // Event for the previous action Street
         previousStreet.addEventListener("click", function () {
             currentActionIndex--;
-            
-            
+
+
             if (currentActionIndex <= 0) {
                 currentActionIndex = 0;
                 previousStreet.disabled = true;
@@ -112,15 +144,24 @@
                 previousButton.disabled = true;
                 previousButton.classList.add("disabled");
             }
-        
-            if (currentActionIndex < actions.length - 1 ) {
-                nextStreet.disabled = false;
-                nextStreet.classList.remove("disabled");
-                nextButton.disabled = false;
-                nextButton.classList.remove("disabled");
-                while (actions[currentActionIndex][0].slice(-1) != "*") {
-                    currentActionIndex--;
-                };
+
+            else {
+                if (currentActionIndex < actions.length - 1) {
+                    nextStreet.disabled = false;
+                    nextStreet.classList.remove("disabled");
+                    nextButton.disabled = false;
+                    nextButton.classList.remove("disabled");
+                    while (actions[currentActionIndex][0].slice(-1) != "*" && currentActionIndex > 0) {
+                        currentActionIndex--;
+                        if (currentActionIndex <= 0) {
+                            currentActionIndex = 0;
+                            previousStreet.disabled = true;
+                            previousStreet.classList.add("disabled");
+                            previousButton.disabled = true;
+                            previousButton.classList.add("disabled");
+                        }
+                    };
+                }
             }
             displayAction();
         });
@@ -135,6 +176,7 @@
 
         // Function to display the current action
         function displayAction() {
+
             var action = actions[currentActionIndex];
             var actionHtml = "";
             for (var i = 0; i < action.length; i++) {

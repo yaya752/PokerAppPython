@@ -1,0 +1,81 @@
+
+.disabled {
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+}
+
+.circle {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #428bca;
+    color: #ffffff;
+    font-size: 24px;
+    line-height: 50px;
+    text-align: center;
+    margin: 10px;
+}
+
+.containerplayer {
+    align-content: flex-start;
+    background-color: darkslategrey;
+    border: thick;
+    border-color: black;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.pot {
+    margin: 0px;
+    font-size: 23px;
+    width: 18%;
+    height: 30%;
+}
+
+.player {
+    margin: 0px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 18%;
+    height: 30%;
+}
+
+.name {
+    font-size: 23px;
+    width: 100%;
+    height: 30px;
+}
+
+.cards {
+    font-size: 23px;
+    width: 100%;
+    height: 30px;
+}
+
+.chips {
+    font-size: 23px;
+    width: 100%;
+    height: 100px;
+}
+
+.action {
+    font-size: 23px;
+    width: 50%;
+    height: 100px;
+}
+div {
+    display:flex;
+}
+.bet {
+    font-size: 23px;
+    width: 50%;
+    height: 100px;
+}
+
+.image {
+    width: 100%;
+    height: 30%;
+}
+
