@@ -1,46 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Action List</title>
+    <title>7 Stud Hi-Lo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Phase.css') }}">
-    
 </head>
 <body>
-    <h1>Action List</h1>
-    <div id="actionContainer"></div>
-    <button id="previousButton">Previous Action</button>
-    <button id="nextButton">Next Action</button>
-    <p>
-        <button id="previousStreet">Previous Street</button>
-        <button id="nextStreet">Next Street</button>
-    </p>
     <div id="tableContainer"></div>
+    <div id="actionContainer"></div>
+    <div class="Button">
+        <button id="previousStreet">Previous Street</button>
+        <button id="previousButton">Previous Action</button>
+        <button id="nextButton">Next Action</button>
+        <button id="nextStreet">Next Street</button>
+    </div>
     <script>
         // Retrieve the list of actions from Flask
         var actions = {{ list_actions| tojson }};
         var list_init = {{ initialisation| tojson }}
-
         function Init() {
             var i = 0;
+            var h = 2;
             var len = list_init[0].length
             var actionHtml = "<div class = \"containerplayer\"> ";
             for (let pas = 0; pas < 15; pas++) {
                 if (pas == 0 || pas == 4 || pas == 6 || pas == 8 || pas == 10 || pas == 14) {
-                    actionHtml += "<div class= \"player\"></div>";
+                    actionHtml += "<div class= \"vide\"></div>";
                 }
                 else if (pas == 7) {
                     actionHtml += "<div class= \"pot\">" + list_init[1] + "</div>";
                 }
                 else {
-                    if (i < len) {
-                        actionHtml += "<div class= \"player\"><div class=\"action\"></div><div class=\"bet\"></div><div class=\"image\"></div><div class=\"name\">" + list_init[0][i][0] + "</div><div class=\"chips\">" + list_init[0][i][1] + "</div><div class=\"cards\"></div></div>"
+                    if (i < len && list_init[0][i][0] == "Hero" ) {
+                        actionHtml += "<div class= \"player\"><div class=\"action\"></div><div class=\"bet\"></div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list_init[0][i][0] + "</div><div class=\"chips\">" + list_init[0][i][1] + "</div><div class=\"cards\"></div></div>"
                         i++
                     }
-                    else {
-                        actionHtml += "<div class= \"player\"></div>"
+                    else if (i < len && h == 2){
+                        actionHtml += "<div class= 'player'><div class='action'></div><div class='bet'></div><div class='image'><img src='{{ url_for('static', filename='Head/2.png') }}' alt='caracter'></div><div class='name'>" + list_init[0][i][0] + "</div><div class='chips'>" + list_init[0][i][1] + "</div><div class='cards'></div></div>"
+                        i++
+                        h++
                     }
-                }  
+                    else if (i < len && h == 3) {
+                        actionHtml += "<div class= 'player'><div class='action'></div><div class='bet'></div><div class='image'><img src='{{ url_for('static', filename='Head/3.png') }}' alt='caracter'></div><div class='name'>" + list_init[0][i][0] + "</div><div class='chips'>" + list_init[0][i][1] + "</div><div class='cards'></div></div>"
+                        i++
+                        h++
+                    }
+                    else if (i < len && h == 4) {
+                        actionHtml += "<div class= 'player'><div class='action'></div><div class='bet'></div><div class='image'><img src='{{ url_for('static', filename='Head/4.png') }}' alt='caracter'></div><div class='name'>" + list_init[0][i][0] + "</div><div class='chips'>" + list_init[0][i][1] + "</div><div class='cards'></div></div>"
+                        i++
+                        h++
+                    }
+                    else if (i < len && h == 5) {
+                        actionHtml += "<div class= 'player'><div class='action'></div><div class='bet'></div><div class='image'><img src='{{ url_for('static', filename='Head/5.png') }}' alt='caracter'></div><div class='name'>" + list_init[0][i][0] + "</div><div class='chips'>" + list_init[0][i][1] + "</div><div class='cards'></div></div>"
+                        i++
+                        h++
+                    }
+                    else if (i < len && h == 6) {
+                        actionHtml += "<div class= 'player'><div class='action'></div><div class='bet'></div><div class='image'><img src='{{ url_for('static', filename='Head/6.png') }}' alt='caracter'></div><div class='name'>" + list_init[0][i][0] + "</div><div class='chips'>" + list_init[0][i][1] + "</div><div class='cards'></div></div>"
+                        i++
+                        h++
+                    }
+                    else if (i < len && h == 7) {
+                        actionHtml += "<div class= 'player'><div class='action'></div><div class='bet'></div><div class='image'><img src='{{ url_for('static', filename='Head/7.png') }}' alt='caracter'></div><div class='name'>" + list_init[0][i][0] + "</div><div class='chips'>" + list_init[0][i][1] + "</div><div class='cards'></div></div>"
+                        i++
+                        h++
+                    }
+                    else if (i < len && h == 8) {
+                        actionHtml += "<div class= 'player'><div class='action'></div><div class='bet'></div><div class='image'><img src='{{ url_for('static', filename='Head/8.png') }}' alt='caracter'></div><div class='name'>" + list_init[0][i][0] + "</div><div class='chips'>" + list_init[0][i][1] + "</div><div class='cards'></div></div>"
+                        i++
+                        h++
+                    }
+                    else {
+                        actionHtml += "<div class= \"vide\"></div>"
+                    }
+                }
             };
             actionHtml += "</div>"
         tableContainer.innerHTML = actionHtml;

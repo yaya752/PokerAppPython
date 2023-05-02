@@ -4,21 +4,25 @@
     color: white;
     cursor: not-allowed;
 }
-
-.circle {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+button {
     background-color: #428bca;
-    color: #ffffff;
-    font-size: 24px;
-    line-height: 50px;
-    text-align: center;
-    margin: 10px;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
 }
-
+body {
+    background-color:sienna;
+}
+.Button {
+    align-content: flex-start;
+}
 .containerplayer {
+    width: auto;
+    height: auto;
     align-content: flex-start;
     background-color: darkslategrey;
     border: thick;
@@ -28,13 +32,25 @@
 }
 
 .pot {
+    
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0px;
     font-size: 23px;
     width: 18%;
     height: 30%;
 }
-
+.vide {
+    margin: 0px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 18%;
+    height: 30%;
+}
 .player {
+    border: 1px solid black;
     margin: 0px;
     justify-content: center;
     flex-wrap: wrap;
@@ -43,38 +59,64 @@
 }
 
 .name {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 23px;
     width: 100%;
     height: 30px;
 }
 
 .cards {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 23px;
     width: 100%;
     height: 30px;
 }
 
 .chips {
+    text-align: center;
+    display: flex;
+    justify-content: center;
     font-size: 23px;
     width: 100%;
     height: 100px;
 }
 
 .action {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 23px;
     width: 50%;
     height: 100px;
 }
 div {
-    display:flex;
-}
+    
+    text-align: center;
+    display: flex;
+}    
+
 .bet {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 23px;
     width: 50%;
     height: 100px;
 }
 
 .image {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 30%;
 }
