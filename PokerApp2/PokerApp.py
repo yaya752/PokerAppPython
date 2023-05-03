@@ -44,7 +44,6 @@ def Summary():
     first_lines = []
     generalities_list = []
     hand_table = []
-    l =Play("game17.txt")
     for f in files:
         summary_table.append(Summary_Chips(f,main_player))
         hand_table.append(Summary_Hands(f,main_player) )  
@@ -52,7 +51,7 @@ def Summary():
             line = f.readline()
             first_lines.append(line.strip())
             generalities_list.append(Generalities(line.strip()))
-    mean = Average(summary_table)
+    mean = round(Average(summary_table),2)
     return render_template('summary.html',files=files,first_lines = first_lines,hand_table = hand_table, generalities_list = generalities_list ,summary_table = summary_table, main_player = main_player, mean = mean)
 '''
 Function Name: phase

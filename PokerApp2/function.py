@@ -10,7 +10,6 @@ Returns:
 Description:
     allow to get the date, the tournament id and the hand id
 '''
-from sqlite3 import SQLITE_CREATE_TEMP_INDEX
 
 
 def Generalities(line):
@@ -65,21 +64,24 @@ Description:
     When a player raised the way we calculate the amount of chips put on the table
     is determined by what the players have done befire
 '''
-def raises(index,lines,main_player):
+def raises(index,lines,player):
     Sum = 0
     i = index
-    words = lines[i].split()
+    print(lines[i])
     while lines[i][:3] !="***" and i > 0:
         words = lines[i].split()
-        if words[1] == "raises" and words[0] == main_player + ":": 
+        print(lines[i])
+        if words[1] == "raises" and words[0] == player + ':':
             Sum +=int(words[4])
-        elif words[0] == main_player + ":":
-            if words[1] == "brings":
-                Sum-= int(words[4])
-            elif words[1] == "calls":
-                Sum-= int(words[2])
-            elif words[1] == "bets":
-                Sum-= int(words[2])
+            while lines[i][:3] !="***" and i > 0:
+                if words[0] == player + ":":
+                    if words[1] == 'brings':
+                        Sum-= int(words[4])
+                    elif words[1] == 'calls':
+                        Sum-= int(words[2])
+                    elif words[1] == 'bets':
+                        Sum-= int(words[2])
+                i-=1
         i-=1
     return Sum
 
@@ -100,18 +102,16 @@ def Count_Chips(main_player,lines, idSummary):
     words = lines[i].split()
     while i < idSummary:        
         words = lines[i].split()
-        if words[0] == "Seat" and words[2] == main_player : 
-            Chips = int(words[3][1:])
-        elif words[1] == "posts" and words[0] == main_player + ":":
+        if words[1] == 'posts' and words[0] == main_player + ":":
             Sum += int(words[4])
         elif words[0] == main_player + ":":
-            if words[1] == "brings":
+            if words[1] == 'brings':
                 Sum+= int(words[4])
-            elif words[1] == "calls":
+            elif words[1] == 'calls':
                 Sum+= int(words[2])
-            elif words[1] == "bets":
+            elif words[1] == 'bets':
                 Sum+= int(words[2])
-            elif words[1] == "raises":
+            elif words[1] == 'raises':
                 Sum+= raises(i,lines,main_player)
             elif words[1] == "folds" or words[1] == "mucks":
                 Sum =-Sum
@@ -139,19 +139,29 @@ only need the game_file
 Returns: 
  - how much the player have won or have lost 
 '''
+def max_bet(line):
+    index = 0
+    i = 0
+    words = line.split()
+    for letter in words[15]:
+        if (letter == '/'):
+            index = i
+        i+=1
+    return int(words[15][index+1:-1])
 def Summary_Chips(game_file,main_player):
     (lines,street_index) = file_index(game_file)
     idSummary = street_index[-1]
     i = idSummary
+    
     while i < len(lines):
         words = lines[i].split()
         if words[2] == main_player and words[3] == "showed":
             if words[12] == "won" :
-                return int(words[13][1:-1]) - Count_Chips(main_player,lines, idSummary)
+                return round((int(words[13][1:-1]) - Count_Chips(main_player,lines, idSummary))/max_bet(lines[0]),2)
             else:
-                return -Count_Chips(main_player,lines, idSummary)
+                return round(-Count_Chips(main_player,lines, idSummary)/max_bet(lines[0]),2)
         i+=1
-    return Count_Chips(main_player,lines, idSummary)
+    return round(Count_Chips(main_player,lines, idSummary)/max_bet(lines[0]),2)
 '''
 Function Name: Card_Street
 
@@ -221,12 +231,18 @@ def Init(game_file):
     Pot = 0
     i  = 2
     Players_Init = []
+    ante  = 0
+    while i < street_index[0]:
+        words = lines[i].split()
+        if words[1] =='posts':
+           ante = int(words[4])
+           Pot += ante
+        i+=1
+    i=0
     while i < street_index[0]:
         words = lines[i].split()
         if words[0] =='Seat':
-            Players_Init.append([words[2],int(words[3][1:])])
-        elif words[1] == 'posts':
-            Pot += int(words[4])
+            Players_Init.append([words[2],int(words[3][1:])-ante])
         i+=1
     return [Players_Init,Pot]
 def Action(lines,line,street,street_index):
@@ -236,15 +252,18 @@ def Action(lines,line,street,street_index):
             street_words = lines[street].split()
             return [words[2],'Dealt',Card_to_html(Card_street(street_words[1],street_index, lines, words[2]))]
     elif words[1] == 'raises':
-        action.append(raises(street,lines,words[0][:-1]))
+        i = lines.index(line)
+        action.append(raises(i,lines,words[0][:-1]))
+        return action
+    elif words[1] == 'brings':
+        action.append(int(words[4]))
         return action
     elif words[1] == 'calls' or words[1] == 'bets':
         action.append(int(words[2]))
         return action
     elif words[1] == 'folds' or words[1] == 'checks':
         return action
-    else:
-        return [line]
+    
 
 def Play(game_file):
     Players_Actions = []
@@ -260,9 +279,9 @@ def Play(game_file):
             Street_Change.append(i)
             Players_Actions.append([lines[i]])
         else:
-            print(lines[i])
+            
             Players_Actions.append(Action(lines,lines[i],street,street_index))
         i+=1
     Players_Actions.append([lines[i]])
-    print(Players_Actions)
+    
     return Players_Actions
