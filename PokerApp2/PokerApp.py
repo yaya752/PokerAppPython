@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
 import os
 from function import Summary_Chips ,Average, Generalities, Summary_Hands, Init, Play
+
+
 app = Flask(__name__, static_folder='static')
 app.secret_key = "PokerApp"
 
@@ -91,6 +93,10 @@ Description:
 def serve_js():
     return send_from_directory(app.static_folder, 'Phase3.js')
 
+
+@app.route('/static/Phase.js')
+def phase_js():
+    return send_from_directory(app.static_folder, 'Phase.js')
 
 @app.route('/Phases/phase3', methods=['GET', 'POST'])
 def phase3():

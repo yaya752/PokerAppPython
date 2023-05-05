@@ -7,7 +7,6 @@
 </head>
 <body>
     <div id="tableContainer"></div>
-    <div id="actionContainer"></div>
     <div class="Button">
         <button id="previousStreet">Previous Street</button>
         <button id="previousButton">Previous Action</button>
@@ -51,19 +50,28 @@
                 nextStreet.disabled = true;
                 nextStreet.classList.add("disabled");
             }
-            if (currentActionIndex > 0) {
+            else if (currentActionIndex > 0) {
                 previousButton.disabled = false;
                 previousButton.classList.remove("disabled");
                 previousStreet.disabled = false;
                 previousStreet.classList.remove("disabled");
-            }
-            if (actions[currentActionIndex][0].slice(-1) == "*") {
-                street = actions[currentActionIndex][0]
-                update_pot(list)
-            }
-            console.log(currentActionIndex)
-            if (currentActionIndex-1 == 0) {
-                street = "*** 3rd STREET ***";
+
+                if (currentActionIndex - 1 == 0) {
+                    street = "*** 3rd STREET ***";
+                }
+                
+                if (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows') {
+                    updatelist(list, currentActionIndex)
+                    while (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows') {
+                        updatelist(list, currentActionIndex);
+                        currentActionIndex++;   
+                    }
+                }
+                else if (actions[currentActionIndex][0].slice(-1) == "*") {
+                    street = actions[currentActionIndex][0]
+                    update_pot(list)
+                }
+                
             }
             updatelist(list,currentActionIndex)
             displayAction(list,street);
@@ -72,6 +80,7 @@
         // Event for the previous action button
         previousButton.addEventListener("click", function () {
             currentActionIndex--;
+            
             if (currentActionIndex <= 0) {
                 currentActionIndex = 0;
                 previousButton.disabled = true;
@@ -84,14 +93,22 @@
                 nextButton.classList.remove("disabled");
                 nextStreet.disabled = false;
                 nextStreet.classList.remove("disabled");
-            }
-            if (actions[currentActionIndex][0].slice(-1) == "*") {
-                update_pot(list)
-                street = actions[currentActionIndex][0]
+                if (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows') {
+                    updatelist(list, currentActionIndex)
+                    while (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows') {
+                        currentActionIndex--;
+                    }
+                }
             }
             list = Init();
             for (let i = 0; i < currentActionIndex; i++) {
-                updatelist(list,i)
+                if (actions[i][0].slice(-1) == "*") {
+                    street = actions[i][0];
+                }
+                else {
+                    updatelist(list, i)
+                }
+                
             }
             updatelist(list,currentActionIndex)
             displayAction(list,street);
@@ -107,16 +124,15 @@
                 nextButton.disabled = true;
                 nextButton.classList.add("disabled");
             }
-
-
             else {
                 if (currentActionIndex > 0) {
-
+                    currentActionIndex++;
+                    updatelist(list, currentActionIndex)
                     previousStreet.disabled = false;
                     previousStreet.classList.remove("disabled");
                     previousButton.disabled = false;
                     previousButton.classList.remove("disabled");
-                    while (actions[currentActionIndex][0].slice(-1) != "*" && currentActionIndex < actions.length - 1) {
+                    while (actions[currentActionIndex][0].slice(-1) != "*" && currentActionIndex != actions.length - 1) {
                         currentActionIndex++;
                         updatelist(list, currentActionIndex)
                         if (currentActionIndex >= actions.length - 1) {
@@ -127,6 +143,14 @@
                             nextButton.disabled = true;
                             nextButton.classList.add("disabled");
                         }
+                    }
+                    if (currentActionIndex >= actions.length - 1) {
+                        currentActionIndex = actions.length - 1;
+                        updatelist(list, currentActionIndex)
+                        nextStreet.disabled = true;
+                        nextStreet.classList.add("disabled");
+                        nextButton.disabled = true;
+                        nextButton.classList.add("disabled");
                     }
                 }
             }
@@ -170,7 +194,12 @@
             }
             list = Init();
             for (let i = 0; i < currentActionIndex; i++) {
-                updatelist(list, i)
+                if (actions[i][0].slice(-1) == "*") {
+                    street = actions[i][0];
+                }
+                else {
+                    updatelist(list, i)
+                }
             }
             updatelist(list, currentActionIndex)
             update_pot(list)
@@ -199,16 +228,15 @@
         function updatelist(list,i) {
             var action = actions[i];
             var len_list = list.length-1
-            console.log(action)
             if (action!= null) {
                 var name = action[0];
                 var done = action[1];
-                
+
                 for (let i = 0; i < len_list; i++) {
                     if (list[i][0] == name) {
                         list[i][2] = done;
-                        if (done == 'Dealt') {
-                            list[i][1] =action[2];
+                        if (done == 'Dealt' || done == 'shows' ) {
+                            list[i][1] = action[2];
                         }
                         else if (done == 'brings') {
                             list[i][4] = action[2];
@@ -250,13 +278,13 @@
             var actionHtml = "<div class = \"containerplayer\"> ";
             var len = list.length -1
             for (let pas = 0; pas < 15; pas++) {
-                if (pas == 4 || pas == 6 || pas == 8 || pas == 10 || pas == 14) {
+                if (pas == 4 || pas == 0 || pas == 8 || pas == 10 || pas == 14) {
                     actionHtml += "<div class= \"vide\"></div>";
                 }
                 else if (pas == 7) {
                     actionHtml += "<div class= \"pot\">" + list[len] + "</div>";
                 }
-                else if (pas == 0)
+                else if (pas == 6)
                 {
                     actionHtml += "<div class= \"vide\">"+street+"</div>";
                 }

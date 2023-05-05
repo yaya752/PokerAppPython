@@ -45,10 +45,8 @@ def file_index(game_file):
 
                 street_index.append(i)
             elif line[:6] == '*** SH':
-
                 street_index.append(i)
             elif line[:6] == '*** SU':
-                idSummary = i
                 street_index.append(i)
             i+=1
     return (lines,street_index)
@@ -67,10 +65,8 @@ Description:
 def raises(index,lines,player):
     Sum = 0
     i = index
-    print(lines[i])
     while lines[i][:3] !="***" and i > 0:
         words = lines[i].split()
-        print(lines[i])
         if words[1] == "raises" and words[0] == player + ':':
             Sum +=int(words[4])
             while lines[i][:3] !="***" and i > 0:
@@ -169,6 +165,7 @@ Function Name: Card_Street
 '''
 def Card_street(word,street_index, lines, player):
     i = 0
+
     if word == '3rd':
         i = street_index[0]
     elif word == '4th':
@@ -177,19 +174,32 @@ def Card_street(word,street_index, lines, player):
         i = street_index[2]
     elif word == '6th':
         i = street_index[3]
-    elif word == 'River':
+    elif word == 'RIVER' or word == 'River':   
         i = street_index[4]
+    elif word == 'SHOW':   
+        i = street_index[-2]
     words = lines[i].split()
-    while (words[0] != 'Dealt' or words[2] != player):
+    while ((words[0] != 'Dealt' or words[1] != 'shows' ) and words[2] != player  ):
         i+=1
         words = lines[i].split()
+    
     hand = []
-    for card in words[3:]:
-        c = ''
-        for letter in card:
-            if letter != "[" and  letter != "]":
-                c += letter
-        hand.append(c)
+    if  words[1] == 'shows': 
+        
+        for card in words[2:9]:
+            c = ''
+            for letter in card:
+                if letter != "[" and  letter != "]":
+                    c += letter
+            hand.append(c)
+
+    else :
+        for card in words[3:]:
+            c = ''
+            for letter in card:
+                if letter != "[" and  letter != "]":
+                    c += letter
+            hand.append(c)
     return hand
 '''
 Function Name: Card_to_html
@@ -263,25 +273,36 @@ def Action(lines,line,street,street_index):
         return action
     elif words[1] == 'folds' or words[1] == 'checks':
         return action
-    
+    elif words[1] == 'shows':
+        street_words = lines[street].split()
+        return [words[0][:-1],words[1],Card_to_html(Card_street(street_words[1],street_index, lines, words[2]))]
+    elif words[1] == 'mucks':
+        return [words[0][:-1],words[1]]
+    elif words[0] == 'Seat':
+        if words[3] == 'showed' and words[12] == 'won':
+            return [words[2],'Won']
+        elif words[3] == 'collected':
+            return [words[2],words[3:]]
+    elif words[0] == 'Seat':
+        if words[3] == 'showed' and words[12] == 'won':
+            return [words[2],'Won']
+        elif words[3] == 'collected':
+            return [words[2],words[3:]]
 
 def Play(game_file):
     Players_Actions = []
-    Street_Change = []
+
     (lines,street_index) = file_index(game_file)
     i = street_index[0]
     street = i 
-    while i < street_index[-1]:
+    while i < len(lines):
         if i in street_index:
             street = i
+            
         words = lines[i].split()
         if words[0] == '***':
-            Street_Change.append(i)
             Players_Actions.append([lines[i]])
-        else:
-            
+        elif (Action(lines,lines[i],street,street_index)):
             Players_Actions.append(Action(lines,lines[i],street,street_index))
         i+=1
-    Players_Actions.append([lines[i]])
-    
     return Players_Actions
