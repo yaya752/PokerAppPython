@@ -13,6 +13,161 @@
         <button id="nextButton">Next Action</button>
         <button id="nextStreet">Next Street</button>
     </div>
+    <table>
+        <tr>
+            <td></td>
+            <td class="titre">A</td>
+            <td class="titre">K</td>
+            <td class="titre">Q</td>
+            <td class="titre">J</td>
+            <td class="titre">T</td>
+            <td class="titre">9</td>
+            <td class="titre">8</td>
+            <td class="titre">7</td>
+            <td class="titre">6</td>
+            <td class="titre">5</td>
+            <td class="titre">4</td>
+            <td class="titre">3</td>
+            <td class="titre">2</td>
+            <td class="titre">Straight</td>
+            <td class="titre">Flush</td>
+            <td class="titre">Straight flush</td>
+        </tr>
+        <tr>
+            <td class="titre">H</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="titre">D</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="titre">S</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="titre">C</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="titre">pair</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td class="titre">three of a kind</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="titre">fourth of kind</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
     <script>
         // Retrieve the list of actions from Flask
         var actions = {{ list_actions| tojson }};
@@ -59,19 +214,19 @@
                 if (currentActionIndex - 1 == 0) {
                     street = "*** 3rd STREET ***";
                 }
-                
+
                 if (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows') {
                     updatelist(list, currentActionIndex)
                     while (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows') {
                         updatelist(list, currentActionIndex);
-                        currentActionIndex++;   
+                        currentActionIndex++;
                     }
                 }
                 else if (actions[currentActionIndex][0].slice(-1) == "*") {
                     street = actions[currentActionIndex][0]
                     update_pot(list)
                 }
-                
+
             }
             updatelist(list,currentActionIndex)
             displayAction(list,street);
@@ -80,7 +235,7 @@
         // Event for the previous action button
         previousButton.addEventListener("click", function () {
             currentActionIndex--;
-            
+
             if (currentActionIndex <= 0) {
                 currentActionIndex = 0;
                 previousButton.disabled = true;
@@ -108,7 +263,7 @@
                 else {
                     updatelist(list, i)
                 }
-                
+
             }
             updatelist(list,currentActionIndex)
             displayAction(list,street);

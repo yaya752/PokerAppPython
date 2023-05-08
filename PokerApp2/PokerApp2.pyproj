@@ -32,15 +32,20 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Card.py" />
     <Compile Include="function.py" />
-    <Compile Include="Player.py" />
     <Compile Include="PokerApp.py" />
-    <Compile Include="table.py" />
+    <Compile Include="PokerOddsCalC\exceptions.py" />
+    <Compile Include="PokerOddsCalC\hand.py" />
+    <Compile Include="PokerOddsCalC\ranker.py" />
+    <Compile Include="PokerOddsCalC\table.py" />
+    <Compile Include="PokerOddsCalC\utils.py" />
+    <Compile Include="PokerOddsCalC\__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game_File\game1.txt" />
     <Content Include="Game_File\game2.txt" />
+    <Content Include="PokerOddsCalC\Demo.ipynb" />
+    <Content Include="PokerOddsCalC\README.md" />
     <Content Include="static\Phase.css" />
     <Content Include="static\Phase.js" />
     <Content Include="static\summary.css" />
@@ -56,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Game_File\" />
+    <Folder Include="PokerOddsCalC\" />
     <Folder Include="static\" />
     <Folder Include="templates\" />
   </ItemGroup>

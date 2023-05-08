@@ -17,6 +17,19 @@ button {
 body {
     background-color:sienna;
 }
+table {
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid #333333;
+    padding: 2px 5px 2px 5px;
+    text-align: center;
+}
+
+.titre {
+    font-weight: bold;
+}
 .Button {
     align-content: center;
     align-items: center;
