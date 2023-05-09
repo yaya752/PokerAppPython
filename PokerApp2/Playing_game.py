@@ -1,3 +1,4 @@
+from Odds import Table, Append_cards, Calculate_odds
 '''
 Function Name: Generalities
 
@@ -163,7 +164,7 @@ Function Name: Card_Street
 
 
 '''
-def Card_street(word,street_index, lines, player):
+def Card_street(word,street_index, lines, player, occur,main_player):
     i = 0
 
     if word == '3rd':
@@ -200,6 +201,7 @@ def Card_street(word,street_index, lines, player):
                 if letter != "[" and  letter != "]":
                     c += letter
             hand.append(c)
+    Append_cards(hand,occur,main_player,player)
     return hand
 '''
 Function Name: Card_to_html
@@ -221,6 +223,7 @@ Function Name: Summary_Hands
 def Summary_Hands(game_file,main_player):
     (lines,street_index) = file_index(game_file)
     i = street_index[-1]
+    occur =Table()
     while i < len(lines):
         words = lines[i].split()
         if words[2] == main_player and (words[3] == "showed" or words[3] == "mucked") :
@@ -233,7 +236,7 @@ def Summary_Hands(game_file,main_player):
                 hand.append(c)
             return Card_to_html(hand)
         elif words[2] == main_player and words[3] == "folded" :
-            return Card_to_html(Card_street(words[6],street_index, lines, main_player))
+            return Card_to_html(Card_street(words[6],street_index, lines, main_player,occur,main_player))
         i+=1
 
 def Init(game_file):
@@ -255,12 +258,12 @@ def Init(game_file):
             Players_Init.append([words[2],int(words[3][1:])-ante])
         i+=1
     return [Players_Init,Pot]
-def Action(lines,line,street,street_index):
+def Action(lines,line,street,street_index, occur, main_player):
     words = line.split()
     action = [words[0][:-1],words[1]]
     if words[0] == 'Dealt':
             street_words = lines[street].split()
-            return [words[2],'Dealt',Card_to_html(Card_street(street_words[1],street_index, lines, words[2]))]
+            return [words[2],'Dealt',Card_to_html(Card_street(street_words[1],street_index, lines, words[2],occur,main_player))]
     elif words[1] == 'raises':
         i = lines.index(line)
         action.append(raises(i,lines,words[0][:-1]))
@@ -275,7 +278,7 @@ def Action(lines,line,street,street_index):
         return action
     elif words[1] == 'shows':
         street_words = lines[street].split()
-        return [words[0][:-1],words[1],Card_to_html(Card_street(street_words[1],street_index, lines, words[2]))]
+        return [words[0][:-1],words[1],Card_to_html(Card_street(street_words[1],street_index, lines, words[2],occur,main_player))]
     elif words[1] == 'mucks':
         return [words[0][:-1],words[1]]
     elif words[0] == 'Seat':
@@ -289,20 +292,27 @@ def Action(lines,line,street,street_index):
         elif words[3] == 'collected':
             return [words[2],words[3:]]
 
-def Play(game_file):
+def Play(game_file,main_player):
     Players_Actions = []
-
+    occur = Table()
+    tab_street = []
     (lines,street_index) = file_index(game_file)
     i = street_index[0]
-    street = i 
+    street = i
+    j = 0
     while i < len(lines):
         if i in street_index:
-            street = i
-            
+            street = i  
         words = lines[i].split()
         if words[0] == '***':
+            occur1 = []
             Players_Actions.append([lines[i]])
-        elif (Action(lines,lines[i],street,street_index)):
-            Players_Actions.append(Action(lines,lines[i],street,street_index))
+            occur1= Calculate_odds(occur,words[1])
+            tab_street.append(occur1)
+            j+=1
+            print(tab_street)
+        elif (Action(lines,lines[i],street,street_index,occur,main_player)):
+            Players_Actions.append(Action(lines,lines[i],street,street_index,occur,main_player))
         i+=1
-    return Players_Actions
+    
+    return (Players_Actions,tab_street)

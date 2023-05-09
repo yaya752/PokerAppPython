@@ -17,152 +17,78 @@
         <tr>
             <td></td>
             <td class="titre">A</td>
-            <td class="titre">K</td>
-            <td class="titre">Q</td>
-            <td class="titre">J</td>
-            <td class="titre">T</td>
-            <td class="titre">9</td>
-            <td class="titre">8</td>
-            <td class="titre">7</td>
-            <td class="titre">6</td>
-            <td class="titre">5</td>
-            <td class="titre">4</td>
-            <td class="titre">3</td>
             <td class="titre">2</td>
+            <td class="titre">3</td>
+            <td class="titre">4</td>
+            <td class="titre">5</td>
+            <td class="titre">6</td>
+            <td class="titre">7</td>
+            <td class="titre">8</td>
+            <td class="titre">9</td>
+            <td class="titre">T</td>
+            <td class="titre">J</td>
+            <td class="titre">Q</td>
+            <td class="titre">K</td>
             <td class="titre">Straight</td>
             <td class="titre">Flush</td>
             <td class="titre">Straight flush</td>
         </tr>
         <tr>
+            <td class="titre">S</td>
+            {% for i in range(tab_street[0][1]|length) %}
+            <td>{{ tab_street[0][0][i] }}</td>
+            {% endfor %}
+
+
+        </tr>
+        
+     
+        <tr>
             <td class="titre">H</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            {% for i in range(tab_street[0][1]|length) %}
+            <td>{{ tab_street[0][1][i] }}</td>
+            {% endfor %}
         </tr>
         <tr>
             <td class="titre">D</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td class="titre">S</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            {% for i in range(tab_street[0][1]|length) %}
+            <td>{{ tab_street[0][2][i] }}</td>
+            {% endfor %}
+
         </tr>
         <tr>
             <td class="titre">C</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            {% for i in range(tab_street[0][1]|length) %}
+            <td>{{ tab_street[0][3][i] }}</td>
+            {% endfor %}
+
         </tr>
         <tr>
             <td class="titre">pair</td>
+            {% for i in range((tab_street[0][1]|length)-3) %}
+            <td>{{ tab_street[0][4][i] }}</td>
+            {% endfor %}
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+
         </tr>
 
         <tr>
             <td class="titre">three of a kind</td>
+            {% for i in range((tab_street[0][1]|length)-3) %}
+            <td>{{ tab_street[0][5][i] }}</td>
+            {% endfor %}
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+
         </tr>
         <tr>
             <td class="titre">fourth of kind</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            {% for i in range((tab_street[0][1]|length)-3) %}
+            <td>{{ tab_street[0][5][i] }}</td>
+            {% endfor %}
             <td></td>
             <td></td>
             <td></td>
@@ -171,7 +97,7 @@
     <script>
         // Retrieve the list of actions from Flask
         var actions = {{ list_actions| tojson }};
-        var list_init = {{ initialisation| tojson }}
+        var list_init = {{ initialisation| tojson }};
         function Init() {
             var street =""
             var list = []

@@ -19,6 +19,14 @@ body {
 }
 table {
     border-collapse: collapse;
+    height: 100%;
+    width: 100%;
+    align-content: center;
+    background-color: darkred;
+    border: thick;
+    border-color: black;
+    flex-wrap: wrap;
+    color: white;
 }
 
 td {

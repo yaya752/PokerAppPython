@@ -32,7 +32,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="function.py" />
+    <Compile Include="Odds.py" />
+    <Compile Include="Playing_game.py" />
     <Compile Include="PokerApp.py" />
     <Compile Include="PokerOddsCalC\exceptions.py" />
     <Compile Include="PokerOddsCalC\hand.py" />
