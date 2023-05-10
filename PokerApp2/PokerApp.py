@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
 import os
+import numpy as np
 from Playing_game import Summary_Chips ,Average, Generalities, Summary_Hands, Init, Play
 from Odds import Table
 Table()
@@ -76,6 +77,7 @@ def phase(index):
     session['file_name'] = file_name
     session['main_player'] = main_player
     (list_actions,tab_street) = Play(file_name,main_player)
+   
     initialisation = Init(file_name)
     return render_template('Phase.html',list_actions = list_actions,
                           initialisation = initialisation, tab_street = tab_street)

@@ -12,7 +12,41 @@ def Flush(occur,i,cards,street):
     odd = 0
     return odd
 
-def Pair(tab_occur,column,cards,street):
+def Pair(occur,column,cards,street):
+    odd = 0.
+    hand = 0
+    remaining = 0
+    other = 0 
+    tour = 0
+    if street == "3rd":
+        tour = 4
+    elif street == "4rd":
+        tour = 3
+    elif street == "5rd":
+        tour = 2
+    elif street == "6rd":
+        tour = 1
+
+    for i in range (len(occur)-3):
+        if occur[i][column] == 1:
+            hand += 1
+        elif occur[i][column] == 0:
+            remaining +=1
+        else:
+            other +=1
+    if (hand >=2):
+        return 1.
+    elif other >2:
+        return 0.
+    else:
+        if street != "river" or street != "Summary" or street != "SHOW":
+            #calculer les probas
+            odd = 0.5
+        else:
+            odd = 0.
+    return round(odd,2)
+
+def Three_Kind(tab_occur,column,cards,street):
     odd = 0.
     hand = 0
     remaining = 0
@@ -24,34 +58,41 @@ def Pair(tab_occur,column,cards,street):
             remaining +=1
         else:
             other +=1
-    if (hand >=2):
+    if (hand >=3):
         return 1.
-    elif other >2:
+    elif other >1:
         return 0.
     else:
-        if street == "3rd":
-            odd = 1-((cards-remaining)*(cards-remaining-1)*(cards-remaining-2)*(cards-remaining-3))/(cards*(cards-1)*(cards-2)*(cards-3))
-        elif street =="4th":
-            odd = 1-((cards-remaining)*(cards-remaining-1)*(cards-remaining-2))/(cards*(cards-1)*(cards-2))
-        elif street == "5th":
-            odd = 1-((cards-remaining)*(cards-remaining-1))/(cards*(cards-1))
-        elif street == "6th":
-            odd = 1-(cards-remaining)/cards
-        elif street == "river":
-            odd = 0.
+        if street != "river" or street != "Summary" or street != "SHOW":
+            odd = remaining/cards
+
         else:
             odd = 0.
     return round(odd,2)
 
-def Three_Kind(tab_occur,column,cards,street):
-    #for i in range (len(tab_occur)-3):
-    odd = 0
-    return odd
-
 def Four_Kind(tab_occur,column,cards,street):
-    #for i in range (len(tab_occur)-3):
-    odd = 0
-    return odd
+    odd = 0.
+    hand = 0
+    remaining = 0
+    other = 0 
+    for i in range (len(tab_occur)-3):
+        if tab_occur[i][column] == 1:
+            hand += 1
+        elif tab_occur[i][column] == 0:
+            remaining +=1
+        else:
+            other +=1
+    if (hand >=4):
+        return 1.
+    elif other >0:
+        return 0.
+    else:
+        if street != "river" or street != "Summary" or street != "SHOW":
+            odd = remaining/cards
+
+        else:
+            odd = 0.
+    return round(odd,2)
 
 def Table():
     num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']

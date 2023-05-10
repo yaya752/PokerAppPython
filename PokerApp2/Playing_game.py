@@ -308,7 +308,7 @@ def Play(game_file,main_player):
             occur1 = []
             Players_Actions.append([lines[i]])
             occur1= Calculate_odds(occur,words[1])
-            tab_street.append(occur1)
+            tab_street.append(occur1.tolist())
             j+=1
             print(tab_street)
         elif (Action(lines,lines[i],street,street_index,occur,main_player)):

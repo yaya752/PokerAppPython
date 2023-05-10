@@ -50,6 +50,7 @@
     <Content Include="static\Phase.css" />
     <Content Include="static\Phase.js" />
     <Content Include="static\summary.css" />
+    <Content Include="templates\Phase_test.html" />
     <Content Include="templates\Phase.html" />
     <Content Include="static\Phase3.css" />
     <Content Include="templates\Phase3.html" />
