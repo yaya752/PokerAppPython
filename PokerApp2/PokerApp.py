@@ -76,9 +76,9 @@ def phase(index):
     main_player = session['main_player']
     session['file_name'] = file_name
     session['main_player'] = main_player
-    (list_actions,tab_street) = Play(file_name,main_player)
-   
-    initialisation = Init(file_name)
+    (initialisation,list_numplayers) = Init(file_name)
+    (list_actions,tab_street) = Play(file_name,main_player,list_numplayers)
+    
     return render_template('Phase.html',list_actions = list_actions,
                           initialisation = initialisation, tab_street = tab_street)
 '''

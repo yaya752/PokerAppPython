@@ -242,6 +242,7 @@ def Summary_Hands(game_file,main_player):
 def Init(game_file):
     (lines,street_index) = file_index(game_file)
     Pot = 0
+    players = 0
     i  = 2
     Players_Init = []
     ante  = 0
@@ -256,8 +257,9 @@ def Init(game_file):
         words = lines[i].split()
         if words[0] =='Seat':
             Players_Init.append([words[2],int(words[3][1:])-ante])
+            players +=1
         i+=1
-    return [Players_Init,Pot]
+    return ([Players_Init,Pot],[players])
 def Action(lines,line,street,street_index, occur, main_player):
     words = line.split()
     action = [words[0][:-1],words[1]]
@@ -292,27 +294,33 @@ def Action(lines,line,street,street_index, occur, main_player):
         elif words[3] == 'collected':
             return [words[2],words[3:]]
 
-def Play(game_file,main_player):
+def Play(game_file,main_player,list_numplayers):
     Players_Actions = []
     occur = Table()
     tab_street = []
     (lines,street_index) = file_index(game_file)
     i = street_index[0]
     street = i
+    
     j = 0
+    players = list_numplayers[-1]
     while i < len(lines):
         if i in street_index:
             street = i  
         words = lines[i].split()
         if words[0] == '***':
+            if words[1] != "3rd":
+                list_numplayers.append(players)
             occur1 = []
             Players_Actions.append([lines[i]])
-            occur1= Calculate_odds(occur,words[1])
+            occur1= Calculate_odds(occur,words[1],list_numplayers)
             tab_street.append(occur1.tolist())
             j+=1
-            print(tab_street)
         elif (Action(lines,lines[i],street,street_index,occur,main_player)):
+            words = lines[i].split()
+            if words[1] == 'folds':
+                players-=1
             Players_Actions.append(Action(lines,lines[i],street,street_index,occur,main_player))
+            
         i+=1
-    
     return (Players_Actions,tab_street)
