@@ -311,10 +311,9 @@ def Play(game_file,main_player,list_numplayers):
         if words[0] == '***':
             if words[1] != "3rd":
                 list_numplayers.append(players)
-            occur1 = []
+                occur1 = Calculate_odds(occur,words[1],list_numplayers)
+                tab_street.append(occur1.tolist())
             Players_Actions.append([lines[i]])
-            occur1= Calculate_odds(occur,words[1],list_numplayers)
-            tab_street.append(occur1.tolist())
             j+=1
         elif (Action(lines,lines[i],street,street_index,occur,main_player)):
             words = lines[i].split()
