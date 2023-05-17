@@ -87,7 +87,6 @@
 
         // Event for the next action button
         nextButton.addEventListener("click", function () {
-            currentActionIndex++;
             if (currentActionIndex >= actions.length - 1) {
                 currentActionIndex = actions.length - 1;
                 Index_tab = tableau.length - 1
@@ -97,16 +96,19 @@
                 nextStreet.disabled = true;
                 nextStreet.classList.add("disabled");
             }
-            else if (currentActionIndex >0) {
+            else if (currentActionIndex >= 0) {
+                console.log("yo")
+                currentActionIndex++
                 previousButton.disabled = false;
                 previousButton.classList.remove("disabled");
                 previousStreet.disabled = false;
                 previousStreet.classList.remove("disabled");
-                if (currentActionIndex - 1 == 0) {
+                if (currentActionIndex - 1 == beginindex || currentActionIndex - 1 == 0 ) {
                     street = "*** 3rd STREET ***";
                     Index_tab = 0;
+                    updatelist(list, currentActionIndex);
                 }
-                else if (actions[currentActionIndex][0].slice(-1) == '*') {
+                if (actions[currentActionIndex][0].slice(-1) == '*') {
                     street = actions[currentActionIndex][0];
                     currentActionIndex++;
                     if (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows') {
@@ -133,13 +135,14 @@
                     updatelist(list, currentActionIndex);
                 }
             }
+            
             displayAction(list, street, Index_tab);
         });
 
         // Event for the previous action button
         previousButton.addEventListener("click", function () {
             currentActionIndex--;
-            if (currentActionIndex < beginindex) {
+            if (currentActionIndex < beginindex ) {
                 currentActionIndex = beginindex;
                 Index_tab = 0;
                 street = "*** 3rd STREET ***"
@@ -148,13 +151,13 @@
                 previousStreet.disabled = true;
                 previousStreet.classList.add("disabled");
             }
-            else if (currentActionIndex < actions.length ) {
+            else if (currentActionIndex < actions.length) {
+                
                 nextButton.disabled = false;
                 nextButton.classList.remove("disabled");
                 nextStreet.disabled = false;
                 nextStreet.classList.remove("disabled");
                 if (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows') {
-                    updatelist(list, currentActionIndex)
                     while (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows') {
                         currentActionIndex--;
                     }
@@ -165,24 +168,38 @@
                     else {
                         street = "*** SUMMARY ***"
                     }
-                    list = Init();
+                    
+                }
+                else if (actions[currentActionIndex][0].slice(-1) == '*') {
+                    street = actions[currentActionIndex][0]
+                    Index_tab--;
+                }
+                if (currentActionIndex < beginindex) {
+                    currentActionIndex = beginindex;
                     Index_tab = 0;
                     street = "*** 3rd STREET ***"
-                    for (let i = 0; i < currentActionIndex; i++) {
-                        console.log(actions[i])
-                        if (actions[i][0].slice(-1) == '*') {
-                            update_pot(list)
-                            street = actions[i][0]
-                            Index_tab++;
-                        }
-                        else {
-                            updatelist(list, i)
-                        }
-
-                    }
+                    previousButton.disabled = true;
+                    previousButton.classList.add("disabled");
+                    previousStreet.disabled = true;
+                    previousStreet.classList.add("disabled");
+                }
+            }
+            list = Init();
+            Index_tab = 0;
+            street = "*** 3rd STREET ***"
+            for (let i = 0; i < currentActionIndex; i++) {
+                console.log(actions[i])
+                if (actions[i][0].slice(-1) == '*') {
+                    update_pot(list)
+                    street = actions[i][0]
+                    Index_tab++;
+                }
+                else {
+                    updatelist(list, i)
                 }
 
             }
+            console.log(currentActionIndex)
             updatelist(list, currentActionIndex);
             displayAction(list, street, Index_tab);
         });
@@ -337,20 +354,24 @@
 
                 for (let i = 0; i < len_list; i++) {
                     if (list[i][0] == name) {
-                        list[i][2] = done;
+                        
                         if (done == 'Dealt' || done == 'shows' ) {
                             list[i][1] = action[2];
                         }
                         else if (done == 'brings') {
                             list[i][4] = action[2];
+                            list[i][2] = done;
                         }
                         else if (done == 'raises') {
                             list[i][4] = action[2];
+                            list[i][2] = done;
                         }
                         else if (done == 'folds' || done == 'checks') {
+                            list[i][2] = done;
                         }
                         else {
                             list[i][4] = list[i][4] + action[2];
+                            list[i][2] = done;
                         }
                     }
                 }
