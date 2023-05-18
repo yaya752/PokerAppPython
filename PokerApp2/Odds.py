@@ -40,23 +40,24 @@ def odd_card(card,occur,street,list_numplayers):
         if street == "4th":
             poss = (52 - 3 * list_numplayers[0]) * (51 - 4 * list_numplayers[0]) * (50 - 5 * list_numplayers[0]) * (49 - 6 * list_numplayers[0])
             case_fav = poss - (52 - 3 * list_numplayers[0] -1) * (51 - 4 * list_numplayers[0] - 1) * (50 - 5 * list_numplayers[0] - 1) * (49 - 6 * list_numplayers[0] - 1)
-            odd = case_fav / poss
+            odd = (1 / (52 - 3 * list_numplayers[0])) + (1 / (52 - 4 * list_numplayers[0]) ) + (1 / (52 - 5 * list_numplayers[0]) ) + (1 /( 52 - 6 * list_numplayers[0]))
         elif street == "5th":
             poss = (51 - 3 * list_numplayers[0]-list_numplayers[1]) * (50 -3 * list_numplayers[0]- 2 * list_numplayers[1]) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1])
             case_fav = poss - (51 - 3 * list_numplayers[0]-list_numplayers[1] - 1) * (50 -3 * list_numplayers[0]- 2 * list_numplayers[1] - 1) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1] - 1)
-            odd = case_fav / poss   
+            odd = (case_fav / poss) * ((52-(3*list_numplayers[0]+list_numplayers[1]))/(52-(list_numplayers[0]+2+list_numplayers[1])))   
         elif street == "6th":
             poss = (50 - 3 * list_numplayers[0] - list_numplayers[1]- list_numplayers[2]) * (49 - 3 * list_numplayers[0]- list_numplayers[1]- 2 * list_numplayers[2])
             case_fav = poss - (50 - 3 * list_numplayers[0] - list_numplayers[1]- list_numplayers[2]- 1) * (49 - 3 * list_numplayers[0]- list_numplayers[1]- 2 * list_numplayers[2]- 1)
-            odd = case_fav / poss
+            odd = (case_fav / poss) * ((52-(3 * list_numplayers[0]+list_numplayers[1]+list_numplayers[2]))/(52-(list_numplayers[0]+2+list_numplayers[1]+list_numplayers[2])))
  
         elif street == "RIVER": 
             poss = (49 - 3 * list_numplayers[0]-list_numplayers[1]-list_numplayers[2]-list_numplayers[3])
             case_fav = 1
-            odd = case_fav / poss
+            odd = (case_fav / poss) * ((52-(3 * list_numplayers[0]+list_numplayers[1]+list_numplayers[2]+list_numplayers[3]))/(52-(list_numplayers[0]+2+list_numplayers[1]+list_numplayers[2]+list_numplayers[3])))
         else:
             odd = 0.
-    return odd
+
+    return odd 
 def odd_Straight_flush(straight,occur,street,list_numplayers):
     odd = 1
     remaining = 5 
@@ -85,10 +86,16 @@ def odd_Straight(straight,occur,street,list_numplayers):
         odd_num = 0
         for suit in suits:
             cards =card+suit
-            odd_num += odd_card(cards,occur,street,list_numplayers)
+            if odd_card(cards,occur,street,list_numplayers) == 1:
+                odd_num = 1
+                remaining-=1
+            else:
+                odd_num += odd_card(cards,occur,street,list_numplayers)
+            print(odd_num)
         if (odd_num>1):
             odd *= 1
-            remaining-=1
+            if remaining == 0:
+                return 1.
         else:
             odd *= odd_num
     if street == '4th' and remaining > 4:
@@ -103,6 +110,7 @@ def odd_Straight(straight,occur,street,list_numplayers):
         odd = 0
     elif street == 'SUMMARY':
         odd = 0
+    print("-------",odd )
     return odd
 def Straight(occur,street,list_numplayers):
     odd = 0.
@@ -110,14 +118,15 @@ def Straight(occur,street,list_numplayers):
     for straight in poss :
         odd+=odd_Straight(straight,occur,street,list_numplayers)
         if odd_Straight(straight,occur,street,list_numplayers) == 1:
-            return 1
-    return odd/len(poss)
-def Straight_flush(occur,row,street,list_numplayers,poss):
+            return 1. 
+    return round(odd/len(poss),3)
+def Straight_flush(occur,street,list_numplayers,poss):
     odd = 0.
-    poss = list_Straight_flush(row)
     for straight in poss :
         odd+=odd_Straight_flush(straight,occur,street,list_numplayers)
-    return odd
+        if odd_Straight_flush(straight,occur,street,list_numplayers) == 1:
+            return 1.
+    return round(odd/len(poss),3)
 
 def Flush(occur, row, street, list_numplayers):
     odd = 0.
@@ -430,7 +439,7 @@ def Calculate_odds(occur,street,list_numplayers):
         poss = list_Straight_flush(i)
         occur1[i][13] = staight_odds
         occur1[i][14] = Flush(occur, i, street, list_numplayers)
-        occur1[i][15] = Straight_flush(occur,i,street,list_numplayers,poss)
+        occur1[i][15] = Straight_flush(occur,street,list_numplayers,poss)
     for j in range (len(occur[0])-3):
         occur1[4][j] = Pair(occur,j,street,list_numplayers)
         occur1[5][j] = Three_Kind(occur,j,street,list_numplayers)
