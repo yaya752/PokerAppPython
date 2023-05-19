@@ -38,22 +38,31 @@ def odd_card(card,occur,street,list_numplayers):
         odd = 0
     else:
         if street == "4th":
-            poss = (52 - 3 * list_numplayers[0]) * (51 - 4 * list_numplayers[0]) * (50 - 5 * list_numplayers[0]) * (49 - 6 * list_numplayers[0])
-            case_fav = poss - (52 - 3 * list_numplayers[0] -1) * (51 - 4 * list_numplayers[0] - 1) * (50 - 5 * list_numplayers[0] - 1) * (49 - 6 * list_numplayers[0] - 1)
-            odd = (1 / (52 - 3 * list_numplayers[0])) + (1 / (52 - 4 * list_numplayers[0]) ) + (1 / (52 - 5 * list_numplayers[0]) ) + (1 /( 52 - 6 * list_numplayers[0]))
+            num3 = list_numplayers[0]
+            fav = 1*(51-(2+ 2*num3))*(51-(2+ 3*num3))*(51-(2+ 4*num3))+(51-(2+ num3))*(51-(2+ 3*num3))*(51-(2+ 4*num3))+(51-(2+ num3))*(51-(2+ 2*num3))*(51-(2+ 4*num3))+(51-(2+ num3))*(51-(2+ 2*num3))*(51-(2+ 3*num3))
+            poss = (52-(2+ num3))*(52-(2+ 2*num3))*(52-(2+ 3*num3))*(52-(2+ 4*num3))
+            odd = fav/poss
         elif street == "5th":
-            poss = (51 - 3 * list_numplayers[0]-list_numplayers[1]) * (50 -3 * list_numplayers[0]- 2 * list_numplayers[1]) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1])
-            case_fav = poss - (51 - 3 * list_numplayers[0]-list_numplayers[1] - 1) * (50 -3 * list_numplayers[0]- 2 * list_numplayers[1] - 1) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1] - 1)
-            odd = (case_fav / poss) * ((52-(3*list_numplayers[0]+list_numplayers[1]))/(52-(list_numplayers[0]+2+list_numplayers[1])))   
+            num3 = list_numplayers[0]
+            num4 = list_numplayers[1]
+            fav = (51-(2+ num3+2*num4))*(51-(2+ num3+3*num4))+(51-(2+ num3+num4))*(51-(2+ num3+3*num4))+(51-(2+ num3+num4))*(51-(2+ num3+2*num4))
+            poss = (52-(2+ num3+num4))*(52-(2+ num3+2*num4))*(52-(2+ num3+3*num4))
+            odd = fav/poss   
         elif street == "6th":
-            poss = (50 - 3 * list_numplayers[0] - list_numplayers[1]- list_numplayers[2]) * (49 - 3 * list_numplayers[0]- list_numplayers[1]- 2 * list_numplayers[2])
-            case_fav = poss - (50 - 3 * list_numplayers[0] - list_numplayers[1]- list_numplayers[2]- 1) * (49 - 3 * list_numplayers[0]- list_numplayers[1]- 2 * list_numplayers[2]- 1)
-            odd = (case_fav / poss) * ((52-(3 * list_numplayers[0]+list_numplayers[1]+list_numplayers[2]))/(52-(list_numplayers[0]+2+list_numplayers[1]+list_numplayers[2])))
- 
+            num3 = list_numplayers[0]
+            num4 = list_numplayers[1]
+            num5 = list_numplayers[2]
+            fav = (51-(2+ num3+num4+num5))+(51-(2+num3+num4+2*num5))
+            poss = (52-(2+ num3+num4+num5))*(52-(2+num3+num4+2*num5))
+            odd = fav/poss  
         elif street == "RIVER": 
-            poss = (49 - 3 * list_numplayers[0]-list_numplayers[1]-list_numplayers[2]-list_numplayers[3])
-            case_fav = 1
-            odd = (case_fav / poss) * ((52-(3 * list_numplayers[0]+list_numplayers[1]+list_numplayers[2]+list_numplayers[3]))/(52-(list_numplayers[0]+2+list_numplayers[1]+list_numplayers[2]+list_numplayers[3])))
+            num3 = list_numplayers[0]
+            num4 = list_numplayers[1]
+            num5 = list_numplayers[2]
+            num6 = list_numplayers[3]
+            fav = 1
+            poss = (52-(2+ num3+num4+num5+num6))
+            odd = fav/poss 
         else:
             odd = 0.
 
@@ -65,18 +74,7 @@ def odd_Straight_flush(straight,occur,street,list_numplayers):
         odd *= odd_card(cards,occur,street,list_numplayers)
         if odd_card(cards,occur,street,list_numplayers) == 1:
             remaining-=1
-    if street == '4th' and remaining > 4:
-        odd = 0
-    elif street == '5th' and remaining > 3:
-        odd = 0
-    elif street == '6th' and remaining > 2:
-        odd = 0
-    elif street == 'RIVER' and remaining > 1:
-        odd = 0
-    elif street == 'SHOW' :
-        odd = 0
-    elif street == 'SUMMARY':
-        odd = 0
+    
     return odd
 def odd_Straight(straight,occur,street,list_numplayers):
     odd = 1
@@ -119,7 +117,7 @@ def Straight(occur,street,list_numplayers):
         odd+=odd_Straight(straight,occur,street,list_numplayers)
         if odd_Straight(straight,occur,street,list_numplayers) == 1:
             return 1. 
-    return round(odd/len(poss),3)
+    return odd/len(poss)
 def Straight_flush(occur,street,list_numplayers,poss):
     odd = 0.
     for straight in poss :
@@ -129,6 +127,8 @@ def Straight_flush(occur,street,list_numplayers,poss):
     return round(odd/len(poss),3)
 
 def Flush(occur, row, street, list_numplayers):
+    num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    suit = ['s','h','d','c']
     odd = 0.
     other = 0
     remaining = 0
@@ -198,17 +198,18 @@ def Flush(occur, row, street, list_numplayers):
         else:
             odd = 0
     return round(odd,3)
-
 def Pair(occur, column, street, list_numplayers):
+    num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    suit = ['s','h','d','c']
     odd = 0.
     hand = 0
-    remaining = 0
+    remaining = []
     other = 0
     for i in range(len(occur)-3):
-        if occur[i][column] == 1:
-            hand += 1
-        elif occur[i][column] == 0:
-            remaining +=1
+        if occur[i][column] == 0 or occur[i][column] == 1:
+            if occur[i][column] == 1:
+                hand +=1
+            remaining.append(num[column] + suit[i])
         else:
             other +=1
     if hand >= 2:
@@ -217,188 +218,95 @@ def Pair(occur, column, street, list_numplayers):
         return 0.
     else:
         if street != "SUMMARY" or street != "SHOW":
-            if hand ==1:
-                if street == "4th":
-                    poss = (52 - 3 * list_numplayers[0]) * (51 - 4 * list_numplayers[0]) * (50 - 5 * list_numplayers[0]) * (49 - 6 * list_numplayers[0])
-                    case_fav = poss - (52 - 3 * list_numplayers[0] - remaining) * (51 - 4 * list_numplayers[0] - remaining) * (50 - 5 * list_numplayers[0] - remaining) * (49 - 6 * list_numplayers[0] - remaining)
-                    odd = case_fav / poss
-
-                elif street == "5th":
-                    poss = (51 - 3 * list_numplayers[0]-list_numplayers[1]) * (50 -3 * list_numplayers[0]- 2 * list_numplayers[1]) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1])
-                    case_fav = poss - (51 - 3 * list_numplayers[0]-list_numplayers[1] - remaining) * (50 -3 * list_numplayers[0]- 2 * list_numplayers[1] - remaining) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1] - remaining)
-                    odd = case_fav / poss   
-                elif street == "6th":
-                    poss = (50 - 3 * list_numplayers[0] - list_numplayers[1]- list_numplayers[2]) * (49 - 3 * list_numplayers[0]- list_numplayers[1]- 2 * list_numplayers[2])
-                    case_fav = poss - (50 - 3 * list_numplayers[0] - list_numplayers[1]- list_numplayers[2]- remaining) * (49 - 3 * list_numplayers[0]- list_numplayers[1]- 2 * list_numplayers[2]- remaining)
-                    odd = case_fav / poss
- 
-                elif street == "RIVER": 
-                    poss = (49 - 3 * list_numplayers[0]-list_numplayers[1]-list_numplayers[2]-list_numplayers[3])
-                    case_fav = remaining
-                    odd = case_fav / poss
+                odd = 0
+                i = 0
+                if hand == 0 and street == "RIVER":
+                    odd = 0
                 else:
-                    odd = 0.
-            else:
-                if street == "4th":
-                    poss = (52 - 3 * list_numplayers[0]) * (51 - 4 * list_numplayers[0]) * (50 - 5 * list_numplayers[0]) * (49 - 6 * list_numplayers[0])
-                    case_fav =poss -((52 - 3 * list_numplayers[0] - remaining) * (51 - 4 * list_numplayers[0] - remaining) * (50 - 5 * list_numplayers[0] - remaining) * (49 - 6 * list_numplayers[0] - remaining)+(52 - 3 * list_numplayers[0] - remaining) * (51 - 4 * list_numplayers[0] - remaining) * (50 - 5 * list_numplayers[0] - remaining) * (remaining)+(52 - 3 * list_numplayers[0] - remaining) * (51 - 4 * list_numplayers[0] - remaining) * (remaining) * (49 - 6 * list_numplayers[0] - remaining)+(52 - 3 * list_numplayers[0] - remaining) * (remaining) * (50 - 5 * list_numplayers[0] - remaining) * (49 - 6 * list_numplayers[0] - remaining)+(remaining) * (51 - 4 * list_numplayers[0] - remaining) * (50 - 5 * list_numplayers[0] - remaining) * (49 - 6 * list_numplayers[0] - remaining))
-                    odd = case_fav / poss
-                elif street == "5th":
-                    poss = (51 - 3 * list_numplayers[0]-list_numplayers[1]) * (50 -3 * list_numplayers[0]- 2 * list_numplayers[1]) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1])
-                    case_fav = poss -((remaining) *(50 -3 * list_numplayers[0]- 2 * list_numplayers[1] - remaining) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1] - remaining)+(51 - 3 * list_numplayers[0]-list_numplayers[1] - remaining) *(remaining) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1] - remaining)+(51 - 3 * list_numplayers[0]-list_numplayers[1] - remaining) *(50 -3 * list_numplayers[0]- 2 * list_numplayers[1] - remaining) * (remaining)+(51 - 3 * list_numplayers[0]-list_numplayers[1] - remaining) *(50 -3 * list_numplayers[0]- 2 * list_numplayers[1] - remaining) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1] - remaining))
-                    odd = case_fav / poss   
-                elif street == "6th":
-                    poss = (50 - 3 * list_numplayers[0] - list_numplayers[1]- list_numplayers[2]) * (49 - 3 * list_numplayers[0]- list_numplayers[1]- 2 * list_numplayers[2])
-                    case_fav = (remaining)*(remaining-1)
-                    odd = case_fav / poss
-                else:
-                    odd = 0.
+                    for i in range (len(remaining)-1):
+                        card1 = remaining[i]
+                        for j in range (i+1,len(remaining)):
+                            card2 = remaining[j]
+                            odd += odd_card(card1,occur,street,list_numplayers) * odd_card(card2,occur,street,list_numplayers)
+                    if odd > 1:
+                        odd =1
         else:
             odd = 0
     return round(odd,3)
 
 def Three_Kind(occur,column,street,list_numplayers):
+    num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    suit = ['s','h','d','c']
     odd = 0.
     hand = 0
-    remaining = 0
+    remaining = []
     other = 0
     for i in range(len(occur)-3):
-        if occur[i][column] == 1:
-            hand += 1
-        elif occur[i][column] == 0:
-            remaining +=1
+        if occur[i][column] == 0 or occur[i][column] == 1:
+            if occur[i][column] == 1:
+                hand +=1
+            remaining.append(num[column] + suit[i])
         else:
             other +=1
     if hand >= 3:
         return 1.
-    elif other > 1:
+    elif len(remaining) < 3:
         return 0.
     else:
         if street != "SUMMARY" or street != "SHOW":
-            if hand ==0:
-                if street == "4th":
-                    poss = (52 - 3 * list_numplayers[0]) * (51 - 4 * list_numplayers[0]) * (50 - 5 * list_numplayers[0]) * (49 - 6 * list_numplayers[0])
-                    case_fav = remaining*(remaining-1)*(remaining-2)*(remaining-3)+(52 - 3 * list_numplayers[0] - remaining)*remaining*(remaining-1)*(remaining-2)+remaining*(51 - 4 * list_numplayers[0] - (remaining-1))*(remaining-2)*(remaining-3)+remaining*(remaining-1)*(50 - 5 * list_numplayers[0] - (remaining-2))*(remaining-3)+remaining*(remaining-1)*(remaining-2)*(49 - 6 * list_numplayers[0] - (remaining-3))
-                    odd = case_fav / poss
-                elif street == "5th":
-                    poss = (51 - 3 * list_numplayers[0]-list_numplayers[1]) * (50 -3 * list_numplayers[0]- 2 * list_numplayers[1]) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1])
-                    case_fav = remaining*(remaining-1)*(remaining-2)
-                    odd = case_fav / poss   
-                else:
-                    odd = 0.
-            elif hand ==1 :
-                if street == "4th":
-                    poss = (52 - 3 * list_numplayers[0]) * (51 - 4 * list_numplayers[0]) * (50 - 5 * list_numplayers[0]) * (49 - 6 * list_numplayers[0])
-                    case_fav = poss - (((remaining) * (51 - 4 * list_numplayers[0] - (remaining-1)) * (50 - 5 * list_numplayers[0] - (remaining-1)) * (49 - 6 * list_numplayers[0] - (remaining-1)))+((52 - 3 * list_numplayers[0] - remaining) * (remaining) * (50 - 5 * list_numplayers[0] - (remaining-1)) * (49 - 6 * list_numplayers[0] - (remaining-1)))+((52 - 3 * list_numplayers[0] - remaining) * (51 - 4 * list_numplayers[0] - remaining) * (remaining) * (49 - 6 * list_numplayers[0] - (remaining-1)))+((52 - 3 * list_numplayers[0] - remaining) * (51 - 4 * list_numplayers[0] - remaining) * (50 - 5 * list_numplayers[0] - remaining) * (remaining))+(52 - 3 * list_numplayers[0] - remaining) * (51 - 4 * list_numplayers[0] - remaining) * (50 - 5 * list_numplayers[0] - remaining) * (49 - 6 * list_numplayers[0] - remaining))
-                    odd = case_fav / poss
-                elif street == "5th":
-                    poss = (51 - 3 * list_numplayers[0]-list_numplayers[1]) * (50 -3 * list_numplayers[0]- 2 * list_numplayers[1]) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1])
-                    case_fav = poss - ((remaining) * (50 -3 * list_numplayers[0]- 2 * list_numplayers[1] - (remaining-1)) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1] - (remaining-1))+(51 - 3 * list_numplayers[0]-list_numplayers[1] - remaining) * (remaining) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1] - (remaining-1))+(51 - 3 * list_numplayers[0]-list_numplayers[1] - remaining) * (50 -3 * list_numplayers[0]- 2 * list_numplayers[1] - remaining) * (remaining)+(51 - 3 * list_numplayers[0]-list_numplayers[1] - remaining) * (50 -3 * list_numplayers[0]- 2 * list_numplayers[1] - remaining) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1] - remaining))
-                    odd = case_fav / poss   
-                elif street == "6th":
-                    poss = (50 - 3 * list_numplayers[0] - list_numplayers[1]- list_numplayers[2]) * (49 - 3 * list_numplayers[0]- list_numplayers[1]- 2 * list_numplayers[2])
-                    case_fav = remaining*(remaining-1)
-                    odd = case_fav / poss
-                else:
-                    odd = 0.
+            if hand == 0 and (street =="6th" or street == "5th" or street == "RIVER" ):
+                odd = 0
+            elif hand ==1 and (street == "RIVER"):
+                odd =0
             else:
-                if street == "4th":
-                    poss = (52 - 3 * list_numplayers[0]) * (51 - 4 * list_numplayers[0]) * (50 - 5 * list_numplayers[0]) * (49 - 6 * list_numplayers[0])
-                    case_fav = poss - (52 - 3 * list_numplayers[0] - remaining) * (51 - 4 * list_numplayers[0] - remaining) * (50 - 5 * list_numplayers[0] - remaining) * (49 - 6 * list_numplayers[0] - remaining)
-                    odd = case_fav / poss
-
-                elif street == "5th":
-                    poss = (51 - 3 * list_numplayers[0]-list_numplayers[1]) * (50 -3 * list_numplayers[0]- 2 * list_numplayers[1]) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1])
-                    case_fav = poss - (51 - 3 * list_numplayers[0]-list_numplayers[1] - remaining) * (50 -3 * list_numplayers[0]- 2 * list_numplayers[1] - remaining) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1] - remaining)
-                    odd = case_fav / poss   
-                elif street == "6th":
-                    poss = (50 - 3 * list_numplayers[0] - list_numplayers[1]- list_numplayers[2]) * (49 - 3 * list_numplayers[0]- list_numplayers[1]- 2 * list_numplayers[2])
-                    case_fav = poss - (50 - 3 * list_numplayers[0] - list_numplayers[1]- list_numplayers[2]- remaining) * (49 - 3 * list_numplayers[0]- list_numplayers[1]- 2 * list_numplayers[2]- remaining)
-                    odd = case_fav / poss
- 
-                elif street == "RIVER": 
-                    poss = (49 - 3 * list_numplayers[0]-list_numplayers[1]-list_numplayers[2]-list_numplayers[3])
-                    case_fav = remaining
-                    odd = case_fav / poss
-                else:
-                    odd = 0.
+                i = 0
+                for i in range (len(remaining)-2):
+                        card1 = remaining[i]
+                        for j in range (i+1,len(remaining)-1):
+                            card2 = remaining[j]
+                            for k in range (j+1,len(remaining)):
+                                card3 = remaining[k]
+                                odd += odd_card(card1,occur,street,list_numplayers) * odd_card(card2,occur,street,list_numplayers)* odd_card(card3,occur,street,list_numplayers)
+                if odd > 1:
+                    odd = 1
         else:
             odd = 0
-    return round(odd,3)
+    return round(odd,4)
 def Four_Kind(occur,column,street,list_numplayers):
+    num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    suit = ['s','h','d','c']
     odd = 0.
     hand = 0
-    remaining = 0
+    remaining = []
     other = 0
     for i in range(len(occur)-3):
-        if occur[i][column] == 1:
-            hand += 1
-        elif occur[i][column] == 0:
-            remaining +=1
+        if occur[i][column] == 0 or occur[i][column] == 1:
+            if occur[i][column] == 1:
+                hand +=1
+            remaining.append(num[column] + suit[i])
         else:
             other +=1
-    if hand >= 3:
+    if hand == 4:
         return 1.
-    elif other > 1:
+    elif len(remaining) != 4:
         return 0.
     else:
-        if street != "RIVER" or street != "SUMMARY" or street != "SHOW":
-            if hand == 0:
-                if street == "4th":
-                    poss = (52 - 3 * list_numplayers[0]) * (51 - 4 * list_numplayers[0]) * (50 - 5 * list_numplayers[0]) * (49 - 6 * list_numplayers[0])
-                    case_fav = remaining*(remaining-1)*(remaining-2)*(remaining-3)
-                    odd = case_fav / poss
-                else:
-                    odd = 0.
-            elif hand ==1 :
-                if street == "4th":
-                    poss = (52 - 3 * list_numplayers[0]) * (51 - 4 * list_numplayers[0]) * (50 - 5 * list_numplayers[0]) * (49 - 6 * list_numplayers[0])
-                    case_fav = (52 - 3 * list_numplayers[0])*remaining*(remaining-1)*(remaining-2)+remaining*(51 - 4 * list_numplayers[0]-remaining+1)*(remaining-1)*(remaining-2)+remaining*(remaining-1)*(50 - 5 * list_numplayers[0] -remaining + 2)*(remaining-2)+remaining*(remaining-1)*(remaining-2)*(49 - 6 * list_numplayers[0] - remaining+3)
-                    odd = case_fav / poss
-                elif street == "5th":
-                    poss = (51 - 3 * list_numplayers[0]-list_numplayers[1]) * (50 -3 * list_numplayers[0]- 2 * list_numplayers[1]) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1])
-                    case_fav = remaining*(remaining-1)*(remaining-2)
-                    odd = case_fav / poss   
-                
-                else:
-                    odd = 0.
-            elif hand == 2 :
-                if street == "4th":
-                    poss = (52 - 3 * list_numplayers[0]) * (51 - 4 * list_numplayers[0]) * (50 - 5 * list_numplayers[0]) * (49 - 6 * list_numplayers[0])
-                    case_fav = poss - (((remaining) * (51 - 4 * list_numplayers[0] - (remaining-1)) * (50 - 5 * list_numplayers[0] - (remaining-1)) * (49 - 6 * list_numplayers[0] - (remaining-1)))+((52 - 3 * list_numplayers[0] - remaining) * (remaining) * (50 - 5 * list_numplayers[0] - (remaining-1)) * (49 - 6 * list_numplayers[0] - (remaining-1)))+((52 - 3 * list_numplayers[0] - remaining) * (51 - 4 * list_numplayers[0] - remaining) * (remaining) * (49 - 6 * list_numplayers[0] - (remaining-1)))+((52 - 3 * list_numplayers[0] - remaining) * (51 - 4 * list_numplayers[0] - remaining) * (50 - 5 * list_numplayers[0] - remaining) * (remaining))+(52 - 3 * list_numplayers[0] - remaining) * (51 - 4 * list_numplayers[0] - remaining) * (50 - 5 * list_numplayers[0] - remaining) * (49 - 6 * list_numplayers[0] - remaining))
-                    odd = case_fav / poss
-                elif street == "5th":
-                    poss = (51 - 3 * list_numplayers[0]-list_numplayers[1]) * (50 -3 * list_numplayers[0]- 2 * list_numplayers[1]) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1])
-                    case_fav = (51 - 3 * list_numplayers[0]-list_numplayers[1]-remaining)*(remaining)*(remaining-1)+remaining*(50 -3 * list_numplayers[0]- 2 * list_numplayers[1]-remaining+1)*(remaining-1)+remaining*(remaining-1)*(49-3 * list_numplayers[0] - 3 * list_numplayers[1]-remaining+2)
-                    odd = case_fav / poss
-                elif street == "6th":
-                    poss = (50 -3 * list_numplayers[0]- list_numplayers[1]-list_numplayers[2]) * (49-3 * list_numplayers[0]-list_numplayers[1] - 2 * list_numplayers[2])
-                    case_fav = remaining*(remaining-1)
-                    odd = case_fav / poss   
-                
-                else:
-                    odd = 0.
+        if street != "SUMMARY" or street != "SHOW":
+            if (hand == 0 and (street !="4th")) or( hand ==1 and (street != "4th" or  street != "5th")) or (hand == 2 and (street != "4th" or  street != "5th" or street != "6th" ))or(hand == 3 and (street != "4th" or  street != "5th" or street != "6th" or street != "RIVER")) :
+                odd = 0
             else:
-                if street == "4th":
-                    poss = (52 - 3 * list_numplayers[0]) * (51 - 4 * list_numplayers[0]) * (50 - 5 * list_numplayers[0]) * (49 - 6 * list_numplayers[0])
-                    case_fav = poss - (52 - 3 * list_numplayers[0] - remaining) * (51 - 4 * list_numplayers[0] - remaining) * (50 - 5 * list_numplayers[0] - remaining) * (49 - 6 * list_numplayers[0] - remaining)
-                    odd = case_fav / poss
-                    
-                elif street == "5th":
-                    poss = (51 - 3 * list_numplayers[0]-list_numplayers[1]) * (50 -3 * list_numplayers[0]- 2 * list_numplayers[1]) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1])
-                    case_fav = poss - (51 - 3 * list_numplayers[0]-list_numplayers[1] - remaining) * (50 -3 * list_numplayers[0]- 2 * list_numplayers[1] - remaining) * (49-3 * list_numplayers[0] - 3 * list_numplayers[1] - remaining)
-                    odd = case_fav / poss   
-                elif street == "6th":
-                    poss = (50 - 3 * list_numplayers[0] - list_numplayers[1]-list_numplayers[2]) * (49 - 3 * list_numplayers[0]- 2 *list_numplayers[2]- list_numplayers[1])
-                    case_fav = poss - (50 - 3 * list_numplayers[0] - list_numplayers[1]- remaining) * (49 - 3 * list_numplayers[0]- 2 * list_numplayers[1]- remaining)
-                    odd = case_fav / poss
- 
-                elif street == "RIVER": 
-                    poss = (49 - 3 * list_numplayers[0]-list_numplayers[1]-list_numplayers[2]-list_numplayers[3])
-                    case_fav = remaining
-                    odd = case_fav / poss
-                else:
-                    odd = 0.
+                i = 0
+                for i in range (len(remaining)-3):
+                        card1 = remaining[i]
+                        for j in range (i+1,len(remaining)-2):
+                            card2 = remaining[j]
+                            for k in range (j+1,len(remaining)-1):
+                                card3 = remaining[k]
+                                for l in range (k+1,len(remaining)):
+                                    card4 = remaining[l]
+                                    odd += odd_card(card1,occur,street,list_numplayers) * odd_card(card2,occur,street,list_numplayers)* odd_card(card3,occur,street,list_numplayers)* odd_card(card4,occur,street,list_numplayers)
+                if odd > 1:
+                    odd =1
         else:
             odd = 0
     return round(odd,4)
