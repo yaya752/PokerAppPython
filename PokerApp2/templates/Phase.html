@@ -291,9 +291,22 @@
                     nextStreet.classList.remove("disabled");
                     nextButton.disabled = false;
                     nextButton.classList.remove("disabled");
-                    while (actions[currentActionIndex][0].slice(-1) != "*" && currentActionIndex > beginindex && actions[currentActionIndex][0] != "*** SUMMARY ***") {
+                    while (actions[currentActionIndex][0].slice(-1) != "*" && currentActionIndex != beginindex && actions[currentActionIndex][0] != "*** SUMMARY ***") {
                         currentActionIndex--;
-                        if (currentActionIndex == beginindex) {
+                        if (currentActionIndex <= beginindex) {
+                            currentActionIndex = beginindex;
+                            Index_tab = 0;
+                            street = "*** 3rd STREET ***"
+                            previousStreet.disabled = true;
+                            previousStreet.classList.add("disabled");
+                            previousButton.disabled = true;
+                            previousButton.classList.add("disabled");
+                        }
+                    };
+                    currentActionIndex--;
+                    while (actions[currentActionIndex][1] != "Dealt" && currentActionIndex != beginindex && actions[currentActionIndex][0] != "*** SUMMARY ***") {
+                        currentActionIndex--;
+                        if (currentActionIndex <= beginindex) {
                             currentActionIndex = beginindex;
                             Index_tab = 0;
                             street = "*** 3rd STREET ***"
@@ -305,9 +318,7 @@
                     };
 
                 }
-                if (Index_tab != 0){
-                    street = actions[currentActionIndex][0]
-                }
+          
             }
             list = Init();
             begin(list)
@@ -316,7 +327,7 @@
             for (let i = beginindex; i < currentActionIndex; i++) {
 
                 if (actions[i][0].slice(-1) == "*") {
-
+                    street = actions[i][0]
                     Index_tab++;
                 }
                 else {
