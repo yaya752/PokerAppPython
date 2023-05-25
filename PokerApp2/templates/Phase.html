@@ -16,7 +16,7 @@
 
     <script>
         var tableau = {{ tab_street | tojson }};
-        console.log(tableau.length)
+        console.log(tableau)
 		var tableauxContainer = document.getElementById("tableauxContainer");
         // Index of the current action
         var currentActionIndex = 0;
@@ -24,7 +24,6 @@
         var Index_tab = 0;
         // Retrieve the list of actions from Flask
         var actions = {{ list_actions| tojson }};
-        console.log(actions)
         var list_init = {{ initialisation| tojson }};
         function Init() {
             var list = []
@@ -316,9 +315,7 @@
                             previousButton.classList.add("disabled");
                         }
                     };
-
                 }
-          
             }
             list = Init();
             begin(list)
@@ -478,15 +475,15 @@
         }
         function row(t, index, row_index) {
             var html = ""
-            for (let pas = 0; pas < t[index][1].length; pas++) {
-                html += "<td>" + t[index][row_index][pas]+" </td>"
+            for (let pas = 0; pas < t[index][0][1].length; pas++) {
+                html += "<td>" + t[index][0][row_index][pas]+" </td>"
             }
             return html
         }
         function row3(t, index, row_index) {
             var html = ""
-            for (let pas = 0; pas < t[index][1].length-3; pas++) {
-                html += "<td>" + t[index][row_index][pas] + " </td>"
+            for (let pas = 0; pas < t[index][0][1].length-3; pas++) {
+                html += "<td>" + t[index][0][row_index][pas] + " </td>"
             }
             return html
         }
@@ -550,6 +547,16 @@
             tab_html += "<td></td>"
             tab_html += "<td></td>"
             tab_html += "</tr>"
+            tab_html += "</table></div>"
+            tab_html += "<div><table><tr><td class=\"titre\">Hand</td><td class=\"titre\">odd</td>"
+            tab_html += "</tr>"
+            for (let pas = 0; pas < t[index][1].length; pas++) {
+                
+                tab_html += "<tr><td>" + t[index][1][pas][0] + " </td>"
+                tab_html += "<td>" + t[index][1][pas][1] + " </td></tr>"
+                
+            }
+            
             tab_html += "</table></div>"
         return tab_html
         }

@@ -10,6 +10,7 @@ def list_Straight_flush(row):
     poss.append(['T'+suit,'J'+suit,'Q'+suit,'K'+suit,'A'+suit])
 
     return poss
+
 def list_Straight():
     num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     poss = []
@@ -283,6 +284,22 @@ def count_card(j,occur):
         if occur[i][j] == 0:
             S+=1
     return S
+low_hand = [['8','7','6','5','4'],
+            ['8','7','6','5','3'],
+            ['8','6','4','2','A'],
+            ['8','4','3','2','A'],
+            ['7','6','5','4','2'],
+            ['7','6','5','2','A'],
+            ['7','5','4','3','2'],
+            ['6','5','4','3','2'],
+            ['6','4','3','2','A'],
+            ['5','4','3','2','A']]
+def low_hand_odd(occur,street,list_numplayers):
+    odd = 0.
+    low_hand_odds = []
+    for hand in low_hand :
+        low_hand_odds.append([hand,round(odd_Straight(hand,occur,street,list_numplayers),3)])
+    return low_hand_odds
 def odd_Straight(straight,occur,street,list_numplayers):
     nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     suits = ['s','h','d','c']
@@ -826,10 +843,12 @@ def NumCards(occur):
     return 52-S
 def Calculate_odds(occur,street,list_numplayers):
     occur1 = np.zeros((len(occur),len(occur[0])))
+    low_hand_odds = []
     for i in range (len(occur)):
         for j in range(len(occur[1])):
             occur1[i][j] = occur[i][j]
     staight_odds = round(Straight(occur,street,list_numplayers),2)
+    low_hand_odds = low_hand_odd(occur,street,list_numplayers)
     for i in range (len(occur)-3):
         poss = list_Straight_flush(i)
         occur1[i][13] = staight_odds
@@ -839,4 +858,4 @@ def Calculate_odds(occur,street,list_numplayers):
         occur1[4][j] = round(Pair(occur,j,street,list_numplayers),2)
         occur1[5][j] = round(Three_Kind(occur,j,street,list_numplayers),2)
         occur1[6][j] = round(Four_Kind(occur,j,street,list_numplayers),2)
-    return occur1
+    return (occur1,low_hand_odds)

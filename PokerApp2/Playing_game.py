@@ -311,8 +311,8 @@ def Play(game_file,main_player,list_numplayers):
         if words[0] == '***':
             if words[1] != "3rd":
                 list_numplayers.append(players)
-                occur1 = Calculate_odds(occur,words[1],list_numplayers)
-                tab_street.append(occur1.tolist())
+                (occur1,low_hand_odds)= Calculate_odds(occur,words[1],list_numplayers)
+                tab_street.append([occur1.tolist(),low_hand_odds])
             Players_Actions.append([lines[i]])
             j+=1
         elif (Action(lines,lines[i],street,street_index,occur,main_player)):
