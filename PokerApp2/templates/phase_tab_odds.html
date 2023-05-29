@@ -13,80 +13,93 @@
         <button id="nextStreet">Next Street</button>
     </div>
     <div id="tableContainer" class="page"></div>
+    <h1>Questionnaire</h1>
 
     <form>
-        <h2>What action should you take in this position ?</h2>
+        <h2>Question 1:</h2>
         <label for="q1_option1">
             <input type="radio" name="q1" id="q1_option1" value="option1">
-            continue
+            Option 1
         </label>
         <label for="q1_option2">
             <input type="radio" name="q1" id="q1_option2" value="option2">
-            fold
+            Option 2
         </label>
+        <label for="q1_option3">
+            <input type="radio" name="q1" id="q1_option3" value="option3">
+            Option 3
+        </label>
+        <br><br>
 
-        <input type="submit" value="submit response">
+        <h2>Question 2:</h2>
+        <label for="q2_option1">
+            <input type="radio" name="q2" id="q2_option1" value="option1">
+            Option 1
+        </label>
+        <label for="q2_option2">
+            <input type="radio" name="q2" id="q2_option2" value="option2">
+            Option 2
+        </label>
+        <label for="q2_option3">
+            <input type="radio" name="q2" id="q2_option3" value="option3">
+            Option 3
+        </label>
+        <br><br>
 
-        <div>
-            <div class="dropdown">
-                <h1>Low odds</h1>
-                <div class="dropdown-content">
-                    <div id="lowtab" class="page"></div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="dropdown">
-                <h1>Flush</h1>
-                <div class="dropdown-content">
-                    <div id="flush" class="page"></div>
-                </div>
-            </div>
-        </div>
+        <h2>Question 3:</h2>
+        <label for="q3_option1">
+            <input type="radio" name="q3" id="q3_option1" value="option1">
+            Option 1
+        </label>
+        <label for="q3_option2">
+            <input type="radio" name="q3" id="q3_option2" value="option2">
+            Option 2
+        </label>
+        <label for="q3_option3">
+            <input type="radio" name="q3" id="q3_option3" value="option3">
+            Option 3
+        </label>
+        <br><br>
+
+        <input type="submit" value="Verifier les reponses">
     </form>
     <script>
-        var decision_json = {{ decision | tojson }}
-        console.log(decision_json)
+        
         document.querySelector('form').addEventListener('submit', function (event) {
-            event.preventDefault(); 
+            event.preventDefault();
 
-            
+
             var q1Answer = document.querySelector('input[name="q1"]:checked');
-            
+            var q2Answer = document.querySelector('input[name="q2"]:checked');
+            var q3Answer = document.querySelector('input[name="q3"]:checked');
 
-            
-            if (q1Answer.value === 'option1') {
-                
-                if (decision_json == 0) {
-                    q1Answer.parentElement.classList.add('correct');
-                }
-                else {
-                    q1Answer.parentElement.classList.add('incorrect');
-                }
+
+            if (q1Answer.value === 'option2') {
+                q1Answer.parentElement.classList.add('correct');
+            } else {
+                q1Answer.parentElement.classList.add('incorrect');
             }
-            else
-            {
-                if (decision_json == -1) {
-                    q1Answer.parentElement.classList.add('correct');
-                }
-                else {
-                    q1Answer.parentElement.classList.add('incorrect');
-                }
 
+            if (q2Answer.value === 'option3') {
+                q2Answer.parentElement.classList.add('correct');
+            } else {
+                q2Answer.parentElement.classList.add('incorrect');
+            }
+
+            if (q3Answer.value === 'option1') {
+                q3Answer.parentElement.classList.add('correct');
+            } else {
+                q3Answer.parentElement.classList.add('incorrect');
             }
         });
         var tableau = {{ tab_street | tojson }};
-        console.log(tableau)
-        var tableauxContainer = document.getElementById("tableauxContainer");
-        var lowtab = document.getElementById("lowtab")
-        var flush = document.getElementById("flush")
+		var tableauxContainer = document.getElementById("tableauxContainer");
         // Index of the current action
         var currentActionIndex = 0;
         var beginindex = 0;
         var Index_tab = 0;
         // Retrieve the list of actions from Flask
         var actions = {{ list_actions| tojson }};
-        console.log(actions)
         var list_init = {{ initialisation| tojson }};
         function Init() {
             var list = []
@@ -159,7 +172,6 @@
                 nextStreet.classList.add("disabled");
             }
             else if (currentActionIndex >= 0) {
-                console.log("yo")
                 currentActionIndex++
                 previousButton.disabled = false;
                 previousButton.classList.remove("disabled");
@@ -250,7 +262,6 @@
             Index_tab = 0;
             street = "*** 3rd STREET ***"
             for (let i = 0; i < currentActionIndex; i++) {
-                console.log(actions[i])
                 if (actions[i][0].slice(-1) == '*') {
                     update_pot(list)
                     street = actions[i][0]
@@ -264,7 +275,6 @@
                 }
 
             }
-            console.log(currentActionIndex)
             updatelist(list, currentActionIndex);
             displayAction(list, street, Index_tab);
         });
@@ -328,7 +338,6 @@
             updatelist(list, currentActionIndex)
 
             update_pot(list)
-            console.log(Index_tab)
             displayAction(list, street, Index_tab);
 
 
@@ -533,36 +542,95 @@
                 }
             };
             actionHtml += "</div>"
-            
+            actionHtml += displayTab(tableau, index)
             tableContainer.innerHTML = actionHtml;
         }
-        Low_hand_odds = ""
-        Low_hand_odds = displayLow(tableau, Index_tab)
-        flush_odds = ""
-        flush_odds = displayFlush(tableau, Index_tab)
-        lowtab.innerHTML = Low_hand_odds;
-        flush.innerHTML = flush_odds;
-        function displayLow(t, index) {
-            tab_html ="<table>"
+        function row(t, index, row_index) {
+            var html = ""
+            for (let pas = 0; pas < t[index][0][1].length; pas++) {
+                html += "<td>" + t[index][0][row_index][pas]+" </td>"
+            }
+            return html
+        }
+        function row3(t, index, row_index) {
+            var html = ""
+            for (let pas = 0; pas < t[index][0][1].length-3; pas++) {
+                html += "<td>" + t[index][0][row_index][pas] + " </td>"
+            }
+            return html
+        }
+        function displayTab(t, index) {
+            var tab_html = "<div><table><tr><td></td><td class=\"titre\">A</td><td class=\"titre\">2</td><td class=\"titre\"> 3</td>"
+            tab_html += "<td class=\"titre\">4</td>"
+            tab_html += "<td class=\"titre\">5</td>"
+            tab_html += "<td class=\"titre\">6</td>"
+            tab_html += "<td class=\"titre\">7</td>"
+            tab_html += "<td class=\"titre\">8</td>"
+            tab_html += "<td class=\"titre\">9</td>"
+            tab_html += "<td class=\"titre\">T</td>"
+            tab_html += "<td class=\"titre\">J</td>"
+            tab_html += "<td class=\"titre\">Q</td>"
+            tab_html += "<td class=\"titre\">K</td>"
+            tab_html += "<td class=\"titre\">Straight</td>"
+            tab_html += "<td class=\"titre\">Flush</td>"
+            tab_html += "<td class=\"titre\">Straight flush</td>"
+            tab_html += "</tr>"
+
+            tab_html += "<tr>"
+            tab_html += "<td class=\"titre\">S</td>"
+            tab_html += row(t,index,0)
+            tab_html += "</tr>"
+
+            tab_html += "<tr>"
+            tab_html += "<td class=\"titre\">H</td>"
+            tab_html += row(t, index, 1)
+            tab_html += "</tr>"
+
+            tab_html += "<tr>"
+            tab_html += "<td class=\"titre\">D</td>"
+            tab_html += row(t, index, 2)
+            tab_html += "</tr>"
+
+            tab_html += "<tr>"
+            tab_html += "<td class=\"titre\">C</td>"
+            tab_html += row(t, index, 3)
+            tab_html += "</tr>"
+
+            tab_html += "<tr>"
+            tab_html += "<td class=\"titre\">pair</td>"
+            tab_html += row3(t, index, 4)
+            tab_html += "<td></td>"
+            tab_html += "<td></td>"
+            tab_html += "<td></td>"
+            tab_html += "</tr>"
+
+            tab_html += "<tr>"
+            tab_html += "<td class=\"titre\">three of a kind</td>"
+            tab_html += row3(t, index, 5)
+            tab_html += "<td></td>"
+            tab_html += "<td></td>"
+            tab_html += "<td></td>"
+
+            tab_html += "</tr>"
+            tab_html += "<tr>"
+            tab_html += "<td class=\"titre\">fourth of kind</td>"
+            tab_html += row3(t, index, 6)
+            tab_html += "<td></td>"
+            tab_html += "<td></td>"
+            tab_html += "<td></td>"
+            tab_html += "</tr>"
+            tab_html += "</table></div>"
+            tab_html += "<div><table><tr><td class=\"titre\">Hand</td><td class=\"titre\">odd</td>"
+            tab_html += "</tr>"
             for (let pas = 0; pas < t[index][1].length; pas++) {
 
                 tab_html += "<tr><td>" + t[index][1][pas][0] + " </td>"
-                tab_html += "<td>" + t[index][1][pas][1] + "</td></tr>"
+                tab_html += "<td>" + t[index][1][pas][1] + " </td></tr>"
 
             }
 
-            tab_html += "</table>"
-            return tab_html
-        }
-        
-        function displayFlush(t, index) {
-            tab_html = "<table>"
-            tab_html += "<tr><td>s</td><td>" + t[index][0][0][14] + " </td>"
-            tab_html += "<tr><td>h</td><td>" + t[index][0][1][14] + " </td>"
-            tab_html += "<tr><td>d</td><td>" + t[index][0][2][14] + " </td>"
-            tab_html += "<tr><td>c</td><td>" + t[index][0][3][14] + " </td>"
-            tab_html += "</table>"
-            return tab_html
+            tab_html += "</table></div>"
+        return tab_html
         }
     </script>
 </body>

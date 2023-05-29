@@ -32,6 +32,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Decisions.py" />
     <Compile Include="Odds.py" />
     <Compile Include="Playing_game.py" />
     <Compile Include="PokerApp.py" />
@@ -50,6 +51,7 @@
     <Content Include="static\Phase.css" />
     <Content Include="static\Phase.js" />
     <Content Include="static\summary.css" />
+    <Content Include="templates\phase_tab_odds.html" />
     <Content Include="templates\Phase_test.html" />
     <Content Include="templates\Phase.html" />
     <Content Include="static\Phase3.css" />

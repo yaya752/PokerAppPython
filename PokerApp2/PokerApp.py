@@ -3,6 +3,7 @@ import os
 import numpy as np
 from Playing_game import Summary_Chips ,Average, Generalities, Summary_Hands, Init, Play
 from Odds import Table
+
 Table()
 app = Flask(__name__, static_folder='static')
 app.secret_key = "PokerApp"
@@ -76,15 +77,17 @@ def phase(index):
     main_player = session['main_player']
     session['file_name'] = file_name
     session['main_player'] = main_player
+    decision = -1
     (initialisation,list_numplayers) = Init(file_name)
-    (list_actions,tab_street) = Play(file_name,main_player,list_numplayers)
+    (list_actions,tab_street,decision) = Play(file_name,main_player,list_numplayers)
+    
     return render_template('Phase.html',list_actions = list_actions,
-                          initialisation = initialisation, tab_street = tab_street)
+                          initialisation = initialisation, tab_street = tab_street , decision = decision)
 '''
 Function Name: phase 3
 
 Parameters:
-    
+     
 Returns: 
     HTML of the first Phase
 Description:

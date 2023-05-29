@@ -1,4 +1,5 @@
 from Odds import Table, Append_cards, Calculate_odds
+from Decisions import third_street_decision
 '''
 Function Name: Generalities
 
@@ -71,12 +72,16 @@ def raises(index,lines,player):
         if words[1] == "raises" and words[0] == player + ':':
             Sum +=int(words[4])
             while lines[i][:3] !="***" and i > 0:
+                words = lines[i].split()
                 if words[0] == player + ":":
-                    if words[1] == 'brings':
+                    if words[1] == "brings":
+
                         Sum-= int(words[4])
-                    elif words[1] == 'calls':
+                    elif words[1] == "calls":
+
                         Sum-= int(words[2])
-                    elif words[1] == 'bets':
+                    elif words[1] == "bets":
+
                         Sum-= int(words[2])
                 i-=1
         i-=1
@@ -261,11 +266,12 @@ def Init(game_file):
         i+=1
     return ([Players_Init,Pot],[players])
 def Action(lines,line,street,street_index, occur, main_player):
-    words = line.split()
+    words = line.split()    
     action = [words[0][:-1],words[1]]
+    
     if words[0] == 'Dealt':
-            street_words = lines[street].split()
-            return [words[2],'Dealt',Card_to_html(Card_street(street_words[1],street_index, lines, words[2],occur,main_player))]
+        street_words = lines[street].split()
+        return [words[2],'Dealt',Card_to_html(Card_street(street_words[1],street_index, lines, words[2],occur,main_player))]
     elif words[1] == 'raises':
         i = lines.index(line)
         action.append(raises(i,lines,words[0][:-1]))
@@ -301,7 +307,7 @@ def Play(game_file,main_player,list_numplayers):
     (lines,street_index) = file_index(game_file)
     i = street_index[0]
     street = i
-    
+    first_time = 0
     j = 0
     players = list_numplayers[-1]
     while i < len(lines):
@@ -313,6 +319,10 @@ def Play(game_file,main_player,list_numplayers):
                 list_numplayers.append(players)
                 (occur1,low_hand_odds)= Calculate_odds(occur,words[1],list_numplayers)
                 tab_street.append([occur1.tolist(),low_hand_odds])
+                if first_time == 0:
+                    decision = third_street_decision(occur)
+                    print(decision)
+                    first_time = 1
             Players_Actions.append([lines[i]])
             j+=1
         elif (Action(lines,lines[i],street,street_index,occur,main_player)):
@@ -322,4 +332,5 @@ def Play(game_file,main_player,list_numplayers):
             Players_Actions.append(Action(lines,lines[i],street,street_index,occur,main_player))
             
         i+=1
-    return (Players_Actions,tab_street)
+    
+    return (Players_Actions,tab_street,decision)

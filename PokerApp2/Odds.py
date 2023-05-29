@@ -285,7 +285,7 @@ def count_card(j,occur):
             S+=1
     return S
 low_hand = [['5','4','3','2','A'],
-            ['6','4','3','2','A'], 
+            ['6','4','3','2','A'],
             ['6','5','4','3','2'],
             ['7','5','4','3','2'],
             ['7','6','5','2','A'],
@@ -294,12 +294,14 @@ low_hand = [['5','4','3','2','A'],
             ['8','6','4','2','A'],
             ['8','7','6','5','3'],
             ['8','7','6','5','4']]
+
 def low_hand_odd(occur,street,list_numplayers):
     odd = 0.
     low_hand_odds = []
     for hand in low_hand :
         low_hand_odds.append([hand,round(odd_Straight(hand,occur,street,list_numplayers),3)])
     return low_hand_odds
+
 def odd_Straight(straight,occur,street,list_numplayers):
     nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     suits = ['s','h','d','c']
