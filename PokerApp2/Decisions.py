@@ -1,3 +1,5 @@
+
+
 def hand(occur):
     x = 0
     y = -1
@@ -19,11 +21,19 @@ def hand(occur):
         if occur[5][j] == 1 and (index_high <= j or index_high != 0) :
             y = 0
     return [x,y]
+def pair_suited_ace(occur):
+    result = False
+    j = 0
+    while j < 13 and not(result):
+        if occur[4][j] == 1:
+            if (occur[3][j]== 1 and occur[3][0]) or (occur[2][j]== 1 and occur[2][0]) or (occur[1][j]== 1 and occur[1][0]) or (occur[0][j]== 1 and occur[0][0]):
+                result = True
+        j+=1
 def good_hand(occur):
     action = ""
     z=0
     for i in range(0,4):
-        if occur[i][13]>0.11 or occur[i][14] > 0.2:
+        if (occur[i][13]>0.11 or occur[i][14] > 0.2) or pair_suited_ace(occur):
             action = [0]
         else:
             action = -1 

@@ -8,7 +8,7 @@ Parameters:
         (this file has to be put in the " Game_File" folder)
 
 Returns: 
- - gene : list of generalitites about the games
+ - gene : list of generalities about the games
 Description:
     allow to get the date, the tournament id and the hand id
 '''
