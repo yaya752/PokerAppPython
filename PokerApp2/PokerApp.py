@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
 import os
-import numpy as np
 from Playing_game import Summary_Chips ,Average, Generalities, Summary_Hands, Init, Play
 from Odds import Table
 

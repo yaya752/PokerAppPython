@@ -1,4 +1,4 @@
-import numpy as np
+from numpy import zeros
 
 def list_Straight_flush(row):
     num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
@@ -820,7 +820,7 @@ def Four_Kind(occur,column,street,list_numplayers):
 def Table():
     num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     suit = ['s','h','d','c']
-    occur = np.zeros((len(suit)+3,len(num)+3))
+    occur = zeros((len(suit)+3,len(num)+3))
     return occur
 
 
@@ -844,7 +844,7 @@ def NumCards(occur):
                 S+=1
     return 52-S
 def Calculate_odds(occur,street,list_numplayers):
-    occur1 = np.zeros((len(occur),len(occur[0])))
+    occur1 = zeros((len(occur),len(occur[0])))
     low_hand_odds = []
     for i in range (len(occur)):
         for j in range(len(occur[1])):
