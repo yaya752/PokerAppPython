@@ -22,7 +22,7 @@ def Generalities(line):
     gene.append(words[17:19])
     return gene
 def file_index(game_file):
-    file_name ='Game_File\\' + game_file
+    file_name ='./Game_File/' + game_file
     lines = []
     i = 0
     with open(file_name, "r") as f:

@@ -40,7 +40,7 @@ def index():
 
 @app.route('/Summary')
 def Summary():
-    uploads_dir = os.path.join(app.root_path, 'Game_File\\')
+    uploads_dir = os.path.join(app.root_path, './Game_File/')
     files = os.listdir(uploads_dir)
     session['files'] = files
     main_player = session['main_player']
@@ -51,7 +51,7 @@ def Summary():
     for f in files:
         summary_table.append(Summary_Chips(f,main_player))
         hand_table.append(Summary_Hands(f,main_player) )  
-        with open("Game_File\\" + f, "r") as f:
+        with open("./Game_File/" + f, "r") as f:
             line = f.readline()
             first_lines.append(line.strip())
             generalities_list.append(Generalities(line.strip()))
