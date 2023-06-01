@@ -1,26 +1,43 @@
 from Odds import Table, Append_cards, Calculate_odds
 from Decisions import third_street_decision
-'''
-Function Name: Generalities
 
-Parameters:
- - line : first line of one of a file game of a tournament
-        (this file has to be put in the " Game_File" folder)
-
-Returns: 
- - gene : list of generalities about the games
-Description:
-    allow to get the date, the tournament id and the hand id
-'''
-
+########################################################################################
+#   Function Name: Generalities                                                        #
+#                                                                                      #
+#   Parameters:                                                                        #
+#       - line : first line of one of a file game of a tournament                      #
+#                   (this file has to be put in the " Game_File" folder)               #
+#                                                                                      #
+#   Returns:                                                                           #
+#       - game_generalities : list of generalities about the game                      #
+#                                                                                      #
+#   Description:                                                                       #
+#       - Allow to get the date, the tournament id and the hand id                     #
+#                                                                                      #
+########################################################################################
 
 def Generalities(line):
-    gene = []
+    game_generalities = []
     words = line.split()
-    gene.append(words[2])
-    gene.append(words[4])
-    gene.append(words[17:19])
-    return gene
+    game_generalities.append(words[2])
+    game_generalities.append(words[4])
+    game_generalities.append(words[17:19])
+    return game_generalities
+
+########################################################################################
+#   Function Name: file_index                                                          #
+#                                                                                      #
+#   Parameters:                                                                        #
+#       - game_file : the name of the game file .txt                                   #
+#                                                                                      #
+#   Returns:                                                                           #
+#       - lines : list of lines of the game file                                       #
+#       - street_index : list of index, each index is link to a street                 #
+#                                                                                      #
+#   Description:                                                                       #
+#       - This function is used in other function to browse into the file easly        #
+#                                                                                      #
+########################################################################################
 def file_index(game_file):
     file_name ='Game_File\\' + game_file
     lines = []
@@ -32,38 +49,41 @@ def file_index(game_file):
         
         for line in lines:
             if line[:5] == '*** 3':
-
                 street_index.append(i)
+
             elif line[:5] == '*** 4':
-
                 street_index.append(i)
+
             elif line[:5] == '*** 5':
-
                 street_index.append(i)
+
             elif line[:5] == '*** 6':
-
                 street_index.append(i)
+
             elif line[:5] == '*** R':
-
                 street_index.append(i)
+
             elif line[:6] == '*** SH':
                 street_index.append(i)
+
             elif line[:6] == '*** SU':
                 street_index.append(i)
+
             i+=1
     return (lines,street_index)
-'''
-Function Name: raises
 
-Parameters:
- - Sum : get the amount of chips put by on the table when he raised
-
-Returns: 
- - Sum
-Description:
-    When a player raised the way we calculate the amount of chips put on the table
-    is determined by what the players have done befire
-'''
+########################################################################################
+#   Function Name: raises                                                              #
+#                                                                                      #
+#   Parameters:                                                                        #
+#       - Sum :  get the amount of chips put by on the table when a player is raising  #
+#                                                                                      #
+#   Returns:                                                                           #
+#       - Sum                                                                          #
+#   Description:                                                                       #
+#       - When a player raised the way we calculate the amount of chips                #
+#       put on the table is determined by what the players have done before            #
+########################################################################################
 def raises(index,lines,player):
     Sum = 0
     i = index
@@ -87,26 +107,30 @@ def raises(index,lines,player):
         i-=1
     return Sum
 
-'''
-Function Name: Count_Chips
-
-Parameters:
- - Sum
-
-Returns: 
- - Sum : How much a player put chips
-Description:
-    calculate how much a player put chips during the game 
-'''
-def Count_Chips(main_player,lines, idSummary):
+########################################################################################
+#   Function Name: Count_Chips                                                         #
+#                                                                                      #
+#   Parameters:                                                                        #
+#       - player : used to identify quickly the player whose chips we want to count    #
+#       - lines  : list of the lines of the game file                                  #
+#       - idSummary :  used to stop earlier the programme                              #
+#                                                                                      #
+#   Returns:                                                                           #
+#       - Sum : How much a player put chips                                            #
+#                                                                                      #
+#   Description:                                                                       #
+#       - Calculate how much a player put chips during the game                        #
+#                                                                                      #
+########################################################################################
+def Count_Chips(player,lines, idSummary):
     Sum = 0
     i = 0
     words = lines[i].split()
     while i < idSummary:        
         words = lines[i].split()
-        if words[1] == 'posts' and words[0] == main_player + ":":
+        if words[1] == 'posts' and words[0] == player + ":":
             Sum += int(words[4])
-        elif words[0] == main_player + ":":
+        elif words[0] == player + ":":
             if words[1] == 'brings':
                 Sum+= int(words[4])
             elif words[1] == 'calls':
@@ -114,34 +138,45 @@ def Count_Chips(main_player,lines, idSummary):
             elif words[1] == 'bets':
                 Sum+= int(words[2])
             elif words[1] == 'raises':
-                Sum+= raises(i,lines,main_player)
+                Sum+= raises(i,lines,player)
             elif words[1] == "folds" or words[1] == "mucks":
                 Sum =-Sum
                 i = idSummary
         i+=1
     return Sum
-'''
-Function Name: average
 
-Parameters:
-- lst : list of all the chips won or lost played in all game
-
-Returns: 
- - average of chips won or lost
-Description:
-'''
+########################################################################################
+#   Function Name : Average                                                            #
+#                                                                                      #
+#   Parameters:                                                                        #
+#       - lst : list of all the chips won or lost played in all game                   #
+#                                                                                      #
+#   Returns:                                                                           #
+#       - average of chips won or lost                                                 #
+#                                                                                      #
+#   Description:                                                                       #
+#       - calculates on average how many poker chips the player has won or lost        #
+#                                                                                      #
+########################################################################################
 def Average(lst):
     return sum(lst) / len(lst)
-'''
-Function Name: Summary_Chips
 
-Parameters:
-only need the game_file
 
-Returns: 
- - how much the player have won or have lost 
-'''
-def max_bet(line):
+########################################################################################
+#   Function Name : Max_Bet                                                            #
+#                                                                                      #
+#   Parameters:                                                                        #
+#       - line : the first line of a game file                                         #
+#                                                                                      #
+#   Returns:                                                                           #
+#       - the maximum bet that a player can bet                                        #
+#                                                                                      #
+#   Description:                                                                       #
+#       - This function is used to have a concrete idea of the amount of chips the     #
+#           player put on the table (if he was aggressive or not for exemple)          #
+#                                                                                      #
+########################################################################################
+def Max_Bet(line):
     index = 0
     i = 0
     words = line.split()
@@ -150,6 +185,22 @@ def max_bet(line):
             index = i
         i+=1
     return int(words[15][index+1:-1])
+
+########################################################################################
+#   Function Name : Summary_Chips                                                      #
+#                                                                                      #
+#   Parameters:                                                                        #
+#       - game_file : the file of the game                                             #
+#       - main_player : the "HERO" of the game                                         #
+#                                                                                      #
+#   Returns:                                                                           #
+#       - the number of chips bet divided by the max_bet possible                      #
+#                                                                                      #
+#   Description:                                                                       #
+#       - This function is used to have a concrete idea of the amount of chips the     #
+#           player put on the table (if he lost or won lot or not)                     #
+#                                                                                      #
+########################################################################################
 def Summary_Chips(game_file,main_player):
     (lines,street_index) = file_index(game_file)
     idSummary = street_index[-1]
@@ -159,17 +210,34 @@ def Summary_Chips(game_file,main_player):
         words = lines[i].split()
         if words[2] == main_player and words[3] == "showed":
             if words[12] == "won" :
-                return round((int(words[13][1:-1]) - Count_Chips(main_player,lines, idSummary))/max_bet(lines[0]),2)
+                return round((int(words[13][1:-1]) - Count_Chips(main_player,lines, idSummary))/Max_Bet(lines[0]),2)
             else:
-                return round(-Count_Chips(main_player,lines, idSummary)/max_bet(lines[0]),2)
+                return round(-Count_Chips(main_player,lines, idSummary)/Max_Bet(lines[0]),2)
         i+=1
-    return round(Count_Chips(main_player,lines, idSummary)/max_bet(lines[0]),2)
-'''
-Function Name: Card_Street
-
-
-'''
-def Card_street(word,street_index, lines, player, occur,main_player):
+    return round(Count_Chips(main_player,lines, idSummary)/Max_Bet(lines[0]),2)
+ 
+########################################################################################
+#   Function Name : Card_Street                                                        #
+#                                                                                      #
+#   Parameters:                                                                        #
+#       - word : The word define the street where we work                              #
+#       - lines : list of the lines of the game file                                   #
+#       - street_index : list of the index of the different streets                    #
+#                              in the list of the game files                           #
+#       - player : name of the player we are interested in                             #
+#       - occur : table of card that have been dealt during the game                   #
+#                   (divide between each street of the game)                           #
+#       - main_player : name of the "HERO", it's used in the Append_cards function     #
+#                                                                                      #
+#   Returns:                                                                           #
+#       - hand : list of cards                                                         #
+#                                                                                      #
+#   Description:                                                                       #
+#       - This function allow to extract cards                                         #
+#               from the file to create the hand of the players during the game        #
+#                                                                                      #
+########################################################################################
+def Card_Street(word,street_index, lines, player, occur,main_player):
     i = 0
 
     if word == '3rd':
@@ -208,11 +276,21 @@ def Card_street(word,street_index, lines, player, occur,main_player):
             hand.append(c)
     Append_cards(hand,occur,main_player,player)
     return hand
-'''
-Function Name: Card_to_html
-
-'''
-def Card_to_html(hand):
+########################################################################################
+#   Function Name : Card_To_Html                                                       #
+#                                                                                      #
+#   Parameters:                                                                        #
+#       - hand : list of cards                                                         #
+#                                                                                      #
+#   Returns:                                                                           #
+#       - Html_cards : list of html code for each cards in the hand                    #
+#                                                                                      #
+#   Description:                                                                       #
+#       - convert the card (like As or 2h) to their equivalent in html code            #
+#           to display them properly                                                   #
+#                                                                                      #
+########################################################################################
+def Card_To_Html(hand):
     Html_Cards = []
     num_cards = ['A','2','3','4','5','6','7','8','9','T','J','C','Q','K']
     shape_card = ['s','h','d','c']
@@ -221,10 +299,20 @@ def Card_to_html(hand):
         j= shape_card.index(card[1])
         Html_Cards.append(["#1271" + str(i+16*j + 37)+";",j])
     return Html_Cards
-'''
-Function Name: Summary_Hands
-
-'''
+########################################################################################
+#   Function Name : Summary_Hands                                                      #
+#                                                                                      #
+#   Parameters:                                                                        #
+#       - game_file : name of the file of the game                                     #
+#       - main_player : name of the "HERO"                                             #
+#                                                                                      #
+#   Returns:                                                                           #
+#       - Html cards of the hand of the main player at the end of the game             #
+#                                                                                      #
+#   Description:                                                                       #
+#       - extrat the last hand of the player                                           #
+#                                                                                      #
+########################################################################################
 def Summary_Hands(game_file,main_player):
     (lines,street_index) = file_index(game_file)
     i = street_index[-1]
@@ -239,11 +327,27 @@ def Summary_Hands(game_file,main_player):
                     if letter != "[" and  letter != "]":
                         c += letter
                 hand.append(c)
-            return Card_to_html(hand)
+            return Card_To_Html(hand)
         elif words[2] == main_player and words[3] == "folded" :
-            return Card_to_html(Card_street(words[6],street_index, lines, main_player,occur,main_player))
+            return Card_To_Html(Card_Street(words[6],street_index, lines, main_player,occur,main_player))
         i+=1
-
+########################################################################################
+#   Function Name : Summary_Hands                                                      #
+#                                                                                      #
+#   Parameters:                                                                        #
+#       - game_file : name of the file of the game                                     #
+#                                                                                      #
+#   Returns:                                                                           #
+#       - players : number of the player at the beggining                              #
+#       - Pot : amount of chips in the middle of the table at the beginning            #
+#            with the ante                                                             #
+#       - Players_Init : list of players with their name                               #
+#           and the amount of chips they have at the beginning                         #
+#                                                                                      #
+#   Description:                                                                       #
+#       - Initialise the game                                                          #
+#                                                                                      #
+########################################################################################
 def Init(game_file):
     (lines,street_index) = file_index(game_file)
     Pot = 0
@@ -265,13 +369,34 @@ def Init(game_file):
             players +=1
         i+=1
     return ([Players_Init,Pot],[players])
+
+########################################################################################
+#   Function Name : Action                                                             #
+#                                                                                      #
+#   Parameters:                                                                        #
+#       - lines : list of the lines of the game file                                   #
+#       - line : line of the file of the action to identify                            #
+#       - street : index of the street where the action have been done                 #
+#       - street_index : list of the index of the different streets                    #
+#                              in the list of the game files                           #
+#       - occur : table of card that have been dealt during the game                   #
+#                   (divide between each street of the game)                           #
+#       - main_player : name of the "HERO"                                             #
+#                                                                                      #
+#   Returns:                                                                           #
+#       - list of the action                                                           #
+#                                                                                      #
+#   Description:                                                                       #
+#       - allow to identify who did the action and what he did                         #
+#                                                                                      #
+########################################################################################
 def Action(lines,line,street,street_index, occur, main_player):
     words = line.split()    
     action = [words[0][:-1],words[1]]
     
     if words[0] == 'Dealt':
         street_words = lines[street].split()
-        return [words[2],'Dealt',Card_to_html(Card_street(street_words[1],street_index, lines, words[2],occur,main_player))]
+        return [words[2],'Dealt',Card_To_Html(Card_Street(street_words[1],street_index, lines, words[2],occur,main_player))]
     elif words[1] == 'raises':
         i = lines.index(line)
         action.append(raises(i,lines,words[0][:-1]))
@@ -286,7 +411,7 @@ def Action(lines,line,street,street_index, occur, main_player):
         return action
     elif words[1] == 'shows':
         street_words = lines[street].split()
-        return [words[0][:-1],words[1],Card_to_html(Card_street(street_words[1],street_index, lines, words[2],occur,main_player))]
+        return [words[0][:-1],words[1],Card_To_Html(Card_Street(street_words[1],street_index, lines, words[2],occur,main_player))]
     elif words[1] == 'mucks':
         return [words[0][:-1],words[1]]
     elif words[0] == 'Seat':
@@ -300,6 +425,23 @@ def Action(lines,line,street,street_index, occur, main_player):
         elif words[3] == 'collected':
             return [words[2],words[3:]]
 
+########################################################################################
+#   Function Name : Action                                                             #
+#                                                                                      #
+#   Parameters:                                                                        #
+#       - game_file : name of the file of the game                                     #
+#       - main_player : name of the "HERO"                                             #
+#       - list_numplayers : list of numbers of player currently playing for each street#
+#                                                                                      #
+#   Returns:                                                                           #
+#       - Players_Actions : list of action made by players during the game             #
+#       - tab_street : table of table of state of the game (odds + cards dealt)        #
+#       - decision : response to the quiz of the third street                          #
+#                                                                                      #
+#   Description:                                                                       #
+#       - recreate the game and add odds and quiz                                      #
+#                                                                                      #
+########################################################################################
 def Play(game_file,main_player,list_numplayers):
     Players_Actions = []
     occur = Table()
@@ -321,7 +463,6 @@ def Play(game_file,main_player,list_numplayers):
                 tab_street.append([occur1.tolist(),low_hand_odds])
                 if first_time == 0:
                     decision = third_street_decision(occur)
-                    print(decision)
                     first_time = 1
             Players_Actions.append([lines[i]])
             j+=1
