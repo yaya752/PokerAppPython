@@ -17,11 +17,17 @@ from Decisions import third_street_decision
 ########################################################################################
 
 def Generalities(line):
+    #Intialisation of the variable
     game_generalities = []
+
+    #split a line into a list of words
     words = line.split()
+    
+    # Retrieved the list of words the good data (date, id etc...)
     game_generalities.append(words[2])
     game_generalities.append(words[4])
     game_generalities.append(words[17:19])
+
     return game_generalities
 
 ########################################################################################
@@ -39,14 +45,18 @@ def Generalities(line):
 #                                                                                      #
 ########################################################################################
 def file_index(game_file):
-    file_name ='Game_File\\' + game_file
+    #Intialisation of the variable
+    file_name ='Game_File\\' + game_file #change Game_file\\ into ./Game_file/ if you are on linux
     lines = []
     i = 0
+
+    #open the file 
     with open(file_name, "r") as f:
+        # put/add each line into a list
         for line in f:
             lines.append(line.strip())
         street_index = []
-        
+        # read each lines and retrieved the index of the lines where the street changes
         for line in lines:
             if line[:5] == '*** 3':
                 street_index.append(i)
@@ -68,8 +78,9 @@ def file_index(game_file):
 
             elif line[:6] == '*** SU':
                 street_index.append(i)
-
+            # i = index of the current line in the lines ' s list 
             i+=1
+    #return the list of lines and the list of index of the beginning of a new street
     return (lines,street_index)
 
 ########################################################################################
@@ -79,32 +90,34 @@ def file_index(game_file):
 #       - Sum :  get the amount of chips put by on the table when a player is raising  #
 #                                                                                      #
 #   Returns:                                                                           #
-#       - Sum                                                                          #
+#       - index : index of the raise action                                            #
+#       - lines : lines of the game file                                               #
+#       - player : player who raised                                                   #
 #   Description:                                                                       #
 #       - When a player raised the way we calculate the amount of chips                #
 #       put on the table is determined by what the players have done before            #
 ########################################################################################
 def raises(index,lines,player):
+    #Intialisation of the variable
     Sum = 0
     i = index
-    while lines[i][:3] !="***" and i > 0:
-        words = lines[i].split()
-        if words[1] == "raises" and words[0] == player + ':':
-            Sum +=int(words[4])
-            while lines[i][:3] !="***" and i > 0:
-                words = lines[i].split()
-                if words[0] == player + ":":
-                    if words[1] == "brings":
-
-                        Sum-= int(words[4])
-                    elif words[1] == "calls":
-
-                        Sum-= int(words[2])
-                    elif words[1] == "bets":
-
-                        Sum-= int(words[2])
-                i-=1
-        i-=1
+    #split a line into words
+    words = lines[i].split()
+    if words[1] == "raises" and words[0] == player + ':':
+        # when raises the player will add chips to update is bet to a certain amount
+        Sum +=int(words[4]) # amount wanted 
+        # We look each line until we meet a street line or we get to the beginning of the list of lines
+        while lines[i][:3] !="***" and i > 0:
+            words = lines[i].split()
+            #if the player have called brung or bet during the street the amount of chips that he have to put on the table is less than if has done nothing
+            if words[0] == player + ":":
+                if words[1] == "brings":
+                    Sum-= int(words[4])
+                elif words[1] == "calls":
+                    Sum-= int(words[2])
+                elif words[1] == "bets":
+                    Sum-= int(words[2])
+            i-=1
     return Sum
 
 ########################################################################################
@@ -123,11 +136,14 @@ def raises(index,lines,player):
 #                                                                                      #
 ########################################################################################
 def Count_Chips(player,lines, idSummary):
+    #Intialisation of the variable
     Sum = 0
     i = 0
     words = lines[i].split()
+    #we look just at the playing phase (like the 3rd 4th ... to the show down)
     while i < idSummary:        
         words = lines[i].split()
+        # we count every chips that the player put on the table
         if words[1] == 'posts' and words[0] == player + ":":
             Sum += int(words[4])
         elif words[0] == player + ":":
@@ -177,13 +193,16 @@ def Average(lst):
 #                                                                                      #
 ########################################################################################
 def Max_Bet(line):
+    #Intialisation of the variable
     index = 0
     i = 0
     words = line.split()
+    #we look each letter to find the / caracter to supress it and acess to the max bet
     for letter in words[15]:
         if (letter == '/'):
             index = i
         i+=1
+    # int("1") will return the int 1 so in our case it willl be retrun a bet in a the type : Number (it's easier to manipulate number than caracter)
     return int(words[15][index+1:-1])
 
 ########################################################################################
@@ -202,18 +221,22 @@ def Max_Bet(line):
 #                                                                                      #
 ########################################################################################
 def Summary_Chips(game_file,main_player):
+    # For this function we need the list of line of the file and the index of the street so we used the file_index function
     (lines,street_index) = file_index(game_file)
     idSummary = street_index[-1]
+    # We juste need to look at the summary part because we can find the necessary to calculate how many chips did the player played during the game
     i = idSummary
     
     while i < len(lines):
         words = lines[i].split()
+        # if the player played all the game the amount is accessible directly in the summary part 
         if words[2] == main_player and words[3] == "showed":
             if words[12] == "won" :
                 return round((int(words[13][1:-1]) - Count_Chips(main_player,lines, idSummary))/Max_Bet(lines[0]),2)
             else:
                 return round(-Count_Chips(main_player,lines, idSummary)/Max_Bet(lines[0]),2)
         i+=1
+    # else we can go through all the file and count line by line how chips the player played
     return round(Count_Chips(main_player,lines, idSummary)/Max_Bet(lines[0]),2)
  
 ########################################################################################
@@ -238,8 +261,9 @@ def Summary_Chips(game_file,main_player):
 #                                                                                      #
 ########################################################################################
 def Card_Street(word,street_index, lines, player, occur,main_player):
+    #Intialisation of the variable
     i = 0
-
+    # each street all the past cards and the new cards are given so we can just look at the street that we need and retrieved the hand
     if word == '3rd':
         i = street_index[0]
     elif word == '4th':
@@ -253,11 +277,13 @@ def Card_Street(word,street_index, lines, player, occur,main_player):
     elif word == 'SHOW':   
         i = street_index[-2]
     words = lines[i].split()
+    # When we have the index of the street we go through lines and find the lines where the cards of the player are given 
     while ((words[0] != 'Dealt' or words[1] != 'shows' ) and words[2] != player  ):
         i+=1
         words = lines[i].split()
     
     hand = []
+    # when we have the good line we extract the cards from the text 
     if  words[1] == 'shows': 
         
         for card in words[2:9]:
@@ -291,12 +317,14 @@ def Card_Street(word,street_index, lines, player, occur,main_player):
 #                                                                                      #
 ########################################################################################
 def Card_To_Html(hand):
+    #Intialisation of the variable
     Html_Cards = []
     num_cards = ['A','2','3','4','5','6','7','8','9','T','J','C','Q','K']
     shape_card = ['s','h','d','c']
     for card in hand:
         i= num_cards.index(card[0])
         j= shape_card.index(card[1])
+        #in html we can display graphical card by using a unicode
         Html_Cards.append(["#1271" + str(i+16*j + 37)+";",j])
     return Html_Cards
 ########################################################################################
@@ -314,11 +342,14 @@ def Card_To_Html(hand):
 #                                                                                      #
 ########################################################################################
 def Summary_Hands(game_file,main_player):
+    # For this function we need the list of line of the file and the index of the street so we used the file_index function
     (lines,street_index) = file_index(game_file)
-    i = street_index[-1]
-    occur =Table()
+    # We juste need to look at the summary part because we can find the necessary to calculate how many chips did the player played during the game
+    i = street_index[-1] # street_index[-1] is the index of the summary
+    occur =Table() 
     while i < len(lines):
         words = lines[i].split()
+        # if he showed or mucked is card we have access to his finnal hand directly
         if words[2] == main_player and (words[3] == "showed" or words[3] == "mucked") :
             hand = []
             for card in words[4:11]:
@@ -328,11 +359,13 @@ def Summary_Hands(game_file,main_player):
                         c += letter
                 hand.append(c)
             return Card_To_Html(hand)
+        # else we can find in which street he folded and retrieved his hand by using Card Street function 
+        # ( Card-To_ html function is only used for displaying the card on the html page)
         elif words[2] == main_player and words[3] == "folded" :
             return Card_To_Html(Card_Street(words[6],street_index, lines, main_player,occur,main_player))
         i+=1
 ########################################################################################
-#   Function Name : Summary_Hands                                                      #
+#   Function Name : Init                                                               #
 #                                                                                      #
 #   Parameters:                                                                        #
 #       - game_file : name of the file of the game                                     #
@@ -349,12 +382,15 @@ def Summary_Hands(game_file,main_player):
 #                                                                                      #
 ########################################################################################
 def Init(game_file):
+    # For this function we need the list of line of the file and the index of the street so we used the file_index function
     (lines,street_index) = file_index(game_file)
+    #Intialisation of the variable
     Pot = 0
     players = 0
     i  = 2
     Players_Init = []
     ante  = 0
+    # We need to calculate the beginning pot because each player have to put an ante even if they fold directly
     while i < street_index[0]:
         words = lines[i].split()
         if words[1] =='posts':
@@ -362,9 +398,12 @@ def Init(game_file):
            Pot += ante
         i+=1
     i=0
+    # at the beginning of the file the player are given when we know their seat
     while i < street_index[0]:
         words = lines[i].split()
         if words[0] =='Seat':
+            # words[3][1:] amount of chips own by the player at the beginning 
+            # words[2] name of the player
             Players_Init.append([words[2],int(words[3][1:])-ante])
             players +=1
         i+=1
@@ -392,8 +431,10 @@ def Init(game_file):
 ########################################################################################
 def Action(lines,line,street,street_index, occur, main_player):
     words = line.split()    
+    # words[0][:-1] name of the player
+    # words(1) generally an action 
     action = [words[0][:-1],words[1]]
-    
+    # We read the line of the action and if it feats a specific patern we can acees to all the information we nead 
     if words[0] == 'Dealt':
         street_words = lines[street].split()
         return [words[2],'Dealt',Card_To_Html(Card_Street(street_words[1],street_index, lines, words[2],occur,main_player))]
@@ -413,7 +454,7 @@ def Action(lines,line,street,street_index, occur, main_player):
         street_words = lines[street].split()
         return [words[0][:-1],words[1],Card_To_Html(Card_Street(street_words[1],street_index, lines, words[2],occur,main_player))]
     elif words[1] == 'mucks':
-        return [words[0][:-1],words[1]]
+        return action
     elif words[0] == 'Seat':
         if words[3] == 'showed' and words[12] == 'won':
             return [words[2],'Won']
@@ -443,6 +484,7 @@ def Action(lines,line,street,street_index, occur, main_player):
 #                                                                                      #
 ########################################################################################
 def Play(game_file,main_player,list_numplayers):
+    #Intialisation of the variable
     Players_Actions = []
     occur = Table()
     tab_street = []
@@ -456,16 +498,19 @@ def Play(game_file,main_player,list_numplayers):
         if i in street_index:
             street = i  
         words = lines[i].split()
+        # if we mmet a new street we calculate the new occurence tab and odds associate to it 
         if words[0] == '***':
             if words[1] != "3rd":
                 list_numplayers.append(players)
-                (occur1,low_hand_odds)= Calculate_odds(occur,words[1],list_numplayers)
+                (occur1,low_hand_odds)= Calculate_odds(occur,words[1],list_numplayers) # calculate odds callcutate the odds using the occur tab (occurence of the cards)
                 tab_street.append([occur1.tolist(),low_hand_odds])
+                # we need this part to create the decision quiz only one time 
                 if first_time == 0:
                     decision = third_street_decision(occur)
                     first_time = 1
             Players_Actions.append([lines[i]])
             j+=1
+       #else we add the action to the list with a specific pattern 
         elif (Action(lines,lines[i],street,street_index,occur,main_player)):
             words = lines[i].split()
             if words[1] == 'folds':
