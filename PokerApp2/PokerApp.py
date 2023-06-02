@@ -1,17 +1,12 @@
-from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory, run_with_ngrok
+from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
 import os
 
 from Playing_game import Summary_Chips ,Average, Generalities, Summary_Hands, Init, Play
 from Odds import Table
 
 Table()
-from google.colab import drive
-drive.mount('/content/gdrive')
-PEOPLE_FOLDER = os.path.join('static', 'people_photo')
-app = Flask(__name__, template_folder='/content/static')
-app.config['UPLOAD_FOLDER'] = PEOPLE_FOLDER
 app = Flask(__name__, static_folder='static')
-run_with_ngrok(app)
+
 app.secret_key = "PokerApp"
 
 
