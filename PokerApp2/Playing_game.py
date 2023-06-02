@@ -46,7 +46,7 @@ def Generalities(line):
 ########################################################################################
 def file_index(game_file):
     #Intialisation of the variable
-    file_name ='Game_File\\' + game_file #change Game_file\\ into ./Game_file/ if you are on linux
+    file_name ='./Game_File/' + game_file #change ./Game_File/ into ./Game_file/ if you are on linux
     lines = []
     i = 0
 
