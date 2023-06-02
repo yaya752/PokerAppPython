@@ -15,7 +15,7 @@ def hand(occur):
         for j in range(0,8):
             if occur[i][j] == -1 and index_low > j:
                 x = -1
-    for j in range(0,len(occur[0]-3)):
+    for j in range(0,len(occur[0])-3):
         if occur[4][j] == 1 and j>8 and (index_high <= j or index_high != 0) :
             y = 0
         if occur[5][j] == 1 and (index_high <= j or index_high != 0) :

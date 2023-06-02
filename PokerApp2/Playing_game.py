@@ -46,7 +46,7 @@ def Generalities(line):
 ########################################################################################
 def file_index(game_file):
     #Intialisation of the variable
-    file_name ='./Game_File/' + game_file #change ./Game_File/ into ./Game_file/ if you are on linux
+    file_name ='./Game_File/' + game_file #change ./Game_File/ into ./Game_File/ if you are on linux
     lines = []
     i = 0
 
@@ -503,7 +503,7 @@ def Play(game_file,main_player,list_numplayers):
             if words[1] != "3rd":
                 list_numplayers.append(players)
                 (occur1,low_hand_odds)= Calculate_odds(occur,words[1],list_numplayers) # calculate odds callcutate the odds using the occur tab (occurence of the cards)
-                tab_street.append([occur1.tolist(),low_hand_odds])
+                tab_street.append([occur1,low_hand_odds])
                 # we need this part to create the decision quiz only one time 
                 if first_time == 0:
                     decision = third_street_decision(occur)
