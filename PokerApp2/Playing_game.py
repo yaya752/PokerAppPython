@@ -1,5 +1,7 @@
+from re import T
+from tkinter import W
 from Odds import Table, Append_cards, Calculate_odds
-from Decisions import third_street_decision
+from Decisions import third_street_decision,add,index_poss,sumarry_tab, quiz_4th
 
 ########################################################################################
 #   Function Name: Generalities                                                        #
@@ -46,7 +48,7 @@ def Generalities(line):
 ########################################################################################
 def file_index(game_file):
     #Intialisation of the variable
-    file_name ='./Game_File/' + game_file #change ./Game_File/ into ./Game_File/ if you are on linux
+    file_name ='Game_File\\' + game_file #change Game_File\\ into Game_File\\ if you are on linux
     lines = []
     i = 0
 
@@ -421,7 +423,7 @@ def Init(game_file):
 #       - occur : table of card that have been dealt during the game                   #
 #                   (divide between each street of the game)                           #
 #       - main_player : name of the "HERO"                                             #
-#                                                                                      #
+#       -tab_player : used in the decision system                                      #
 #   Returns:                                                                           #
 #       - list of the action                                                           #
 #                                                                                      #
@@ -429,26 +431,82 @@ def Init(game_file):
 #       - allow to identify who did the action and what he did                         #
 #                                                                                      #
 ########################################################################################
-def Action(lines,line,street,street_index, occur, main_player):
-    words = line.split()    
+def Action(lines,line,street,street_index, occur, main_player,tab_player,order):
+    words = line.split()
+
     # words[0][:-1] name of the player
-    # words(1) generally an action 
+    # words[1] is generally an action 
     action = [words[0][:-1],words[1]]
     # We read the line of the action and if it feats a specific patern we can acees to all the information we nead 
+    # pour mettre à jour la liste des joueurs on crèe les listes quand les cartes sont distribué et on incrémente un compteur pour savoir dans quel ordre les joeurs ont joué
     if words[0] == 'Dealt':
         street_words = lines[street].split()
+        tab_player.append([words[2],Card_Street(street_words[1],street_index, lines, words[2],occur,main_player),-1,0,[]])
         return [words[2],'Dealt',Card_To_Html(Card_Street(street_words[1],street_index, lines, words[2],occur,main_player))]
     elif words[1] == 'raises':
         i = lines.index(line)
+        j = index_poss(words[0][:-1],tab_player)
+        if tab_player[j][2] == -1:
+            tab_player[j][2] = order
+            order += 1
+            tab_player[j][3]+=0
+        else:
+            tab_player.append([tab_player[j][0],tab_player[j][1],order,tab_player[j][3] + 3 ,[]])
+            order += 1
         action.append(raises(i,lines,words[0][:-1]))
         return action
     elif words[1] == 'brings':
         action.append(int(words[4]))
+        j = index_poss(words[0][:-1],tab_player)
+        if tab_player[j][2] == -1:
+            tab_player[j][2] = order
+            order += 1
+            tab_player[j][3]+=0
+        else:
+            tab_player.append([tab_player[j][0],tab_player[j][1],order,tab_player[j][3] ,[]])
+            order += 1
         return action
-    elif words[1] == 'calls' or words[1] == 'bets':
+    elif words[1] == 'calls' :
         action.append(int(words[2]))
+        j = index_poss(words[0][:-1],tab_player)
+        if tab_player[j][2] == -1:
+            tab_player[j][2] = order
+            order += 1
+            tab_player[j][3]+=1
+        else:
+            tab_player.append([tab_player[j][0],tab_player[j][1],order,tab_player[j][3] + 1 ,[]])
+            order += 1
         return action
-    elif words[1] == 'folds' or words[1] == 'checks':
+    elif words[1] == 'bets':
+        action.append(int(words[2]))
+        j = index_poss(words[0][:-1],tab_player)
+        if tab_player[j][2] == -1:
+            tab_player[j][2] = order
+            order += 1
+            tab_player[j][3]+=2
+        else:
+            tab_player.append([tab_player[j][0],tab_player[j][1],order,tab_player[j][3] + 2 ,[]])
+            order += 1
+        return action
+    elif words[1] == 'folds' :
+        j = index_poss(words[0][:-1],tab_player)
+        if tab_player[j][2] == -1:
+            tab_player[j][2] = order
+            order += 1
+            tab_player[j][3]==-1
+        else:
+            tab_player.append([tab_player[j][0],tab_player[j][1],order,-1 ,[]])
+            order += 1
+        return action
+    elif words[1] == 'checks':
+        j = index_poss(words[0][:-1],tab_player)
+        if tab_player[j][2] == -1:
+            tab_player[j][2] = order
+            order += 1
+            tab_player[j][3]+=0
+        else:
+            tab_player.append([tab_player[j][0],tab_player[j][1],order,tab_player[j][3] ,[]])
+            order += 1
         return action
     elif words[1] == 'shows':
         street_words = lines[street].split()
@@ -488,34 +546,47 @@ def Play(game_file,main_player,list_numplayers):
     Players_Actions = []
     occur = Table()
     tab_street = []
+    tab_player = [] #List of info about player, [[name,list_cards,position during the street, if he has been aggressive, what hand he can play],....]
+    tab_prec_player = [] #Same as before but for the previous street  
     (lines,street_index) = file_index(game_file)
     i = street_index[0]
     street = i
-    first_time = 0
+    time = 0 # where we are in the game
     j = 0
+    order = 0
+    decision = []
     players = list_numplayers[-1]
     while i < len(lines):
         if i in street_index:
             street = i  
         words = lines[i].split()
-        # if we mmet a new street we calculate the new occurence tab and odds associate to it 
+        # if we met a new street we calculate the new occurence tab and odds associate to it 
         if words[0] == '***':
-            if words[1] != "3rd":
+            order = 0
+            if words[1] != "3rd": 
                 list_numplayers.append(players)
                 (occur1,low_hand_odds)= Calculate_odds(occur,words[1],list_numplayers) # calculate odds callcutate the odds using the occur tab (occurence of the cards)
                 tab_street.append([occur1,low_hand_odds])
-                # we need this part to create the decision quiz only one time 
-                if first_time == 0:
-                    decision = third_street_decision(occur)
-                    first_time = 1
+                # we need this part to create the decision quiz for each street
+                if time == 0:
+                    decision.append(third_street_decision(occur))
+                    tab_prec_player = tab_player
+                    tab_player = []
+                    
+                elif time == 1:
+                    quiz_4th(decision,tab_player,tab_prec_player)
+                    add(tab_player,tab_prec_player)
+                    tab_prec_player = sumarry_tab(tab_player)
+                    tab_player = []
+                time += 1
             Players_Actions.append([lines[i]])
             j+=1
        #else we add the action to the list with a specific pattern 
-        elif (Action(lines,lines[i],street,street_index,occur,main_player)):
+        elif (Action(lines,lines[i],street,street_index,occur,main_player,tab_player,order)):
             words = lines[i].split()
             if words[1] == 'folds':
                 players-=1
-            Players_Actions.append(Action(lines,lines[i],street,street_index,occur,main_player))
+            Players_Actions.append(Action(lines,lines[i],street,street_index,occur,main_player,tab_player,order))
             
         i+=1
     
