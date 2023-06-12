@@ -9,58 +9,66 @@ def Card_To_Html(hand):
         #in html we can display graphical card by using a unicode
         Html_Cards.append(["#1271" + str(i+16*j + 37)+";",j])
     return Html_Cards
-def pair_4th(hand,aggresive_prec):
+def pair_4th(hand,aggresive_prec,aggressive):
     result = False
-    if hand[0][:-1] == 'T' or hand[0][:-1] == 'J' or hand[0][:-1] == 'Q' or hand[0][:-1] == 'K' or hand[0][:-1] == 'A':
-        if aggresive_prec >= 2:
-            result = True
+    if aggressive != -1 :
+        if hand[0][:-1] == 'T' or hand[0][:-1] == 'J' or hand[0][:-1] == 'Q' or hand[0][:-1] == 'K' or hand[0][:-1] == 'A':
+            if aggresive_prec >= 2:
+                result = True
     return result
 
 def brelan_4th(hand,aggressive_prec, aggressive):
     result = False
-    if hand[0][:-1] == 'T' or hand[0][:-1] == 'J' or hand[0][:-1] == 'Q' or hand[0][:-1] == 'K' or hand[0][:-1] == 'A':
-            if hand[0][:-1] == hand[1][:-1]:
-                if aggressive_prec < 2 and aggressive >= 2 :
-                    result = True
+    if aggressive != -1 :
+        if hand[0][:-1] == 'T' or hand[0][:-1] == 'J' or hand[0][:-1] == 'Q' or hand[0][:-1] == 'K' or hand[0][:-1] == 'A':
+                if hand[0][:-1] == hand[1][:-1]:
+                    if aggressive_prec < 2 and aggressive >= 2 :
+                        result = True
     return result
-def flush_4th(hand):
+def flush_4th(hand,aggressive):
     result = False
-    if hand[0][:-1] == hand[1][:-1]:
-        result = True
+    if aggressive != -1 :
+        if hand[0][:-1] == hand[1][:-1]:
+            result = True
     return result
-def quiz_4th(decision,tab_player,tab_prec_player):
+def quiz_4th(decision,tab_player,tab_prec_player,main_player):
     player_name = []
     player_possibilities =[]
     round2 = 0
     for i in range (0, len (tab_player)):
-        player = tab_player[0]
+        player = tab_player[i]
         aggressive = player[3]
         j = index_poss(player[0],tab_prec_player)
         aggressive_prec = tab_prec_player[j][3]
-        if player[0] in player_name:
-            hand = player[1]
-            if round2 == 0:
-                decision.append(player_possibilities)
-                player_possibilities = []
-            if flush_4th(hand):
-                player_possibilities.append([player[0],Card_To_Html(hand),'might have flush'])
-            elif brelan_4th(hand,aggressive_prec, aggressive):
-                player_possibilities.append([player[0],Card_To_Html(hand),'might have brelan'])
-            elif pair_4th(hand,aggressive_prec):
-                player_possibilities.append([player[0],Card_To_Html(hand),'might have pair'])
+        print(tab_player)
+        if player[0] != main_player:
+            if player[0] in player_name:
+                hand = player[1]
+                if round2 == 0:
+                    decision.append(player_possibilities)
+                    player_possibilities = []
+                if flush_4th(hand):
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have flush'])
+                elif brelan_4th(hand,aggressive_prec, aggressive):
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have brelan'])
+                elif pair_4th(hand,aggressive_prec):
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have pair'])
+                elif aggressive == -1:
+                    player_possibilities.append([player[0],Card_To_Html(hand),'folded'])
+                else:
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have low'])
             else:
-                player_possibilities.append([player[0],Card_To_Html(hand),'might have low'])
-            return 1
-        else:
-            hand = player[1]
-            if flush_4th:
-                player_possibilities.append([player[0],Card_To_Html(hand),'might have flush'])
-            elif brelan_4th:
-                player_possibilities.append([player[0],Card_To_Html(hand),'might have brelan'])
-            elif pair_4th:
-                player_possibilities.append([player[0],Card_To_Html(hand),'might have pair'])
-            else:
-                player_possibilities.append([player[0],Card_To_Html(hand),'might have low'])
+                hand = player[1]
+                if flush_4th(hand,aggressive):
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have flush'])
+                elif brelan_4th(hand,aggressive_prec, aggressive):
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have brelan'])
+                elif pair_4th(hand,aggressive_prec,aggressive):
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have pair'])
+                elif aggressive == -1:
+                    player_possibilities.append([player[0],Card_To_Html(hand),'folded'])
+                else:
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have low'])
     decision.append(player_possibilities)
     
     
@@ -79,13 +87,9 @@ def sumarry_tab(tab_player):
     player_name = []
     i = 0
     new_tab_player = []
-    print(tab_player)
     while i< len(tab_player):
         if tab_player[i][0] in player_name:
             j = player_name.index(tab_player[i][0])
-            print(j,"-------------")
-            print(player_name)
-            print(tab_player[i][0])
             new_tab_player[j][3] = tab_player[i][3]
         else:
             new_tab_player.append(tab_player[i])

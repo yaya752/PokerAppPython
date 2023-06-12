@@ -433,7 +433,6 @@ def Init(game_file):
 ########################################################################################
 def Action(lines,line,street,street_index, occur, main_player,tab_player,order):
     words = line.split()
-
     # words[0][:-1] name of the player
     # words[1] is generally an action 
     action = [words[0][:-1],words[1]]
@@ -446,67 +445,68 @@ def Action(lines,line,street,street_index, occur, main_player,tab_player,order):
     elif words[1] == 'raises':
         i = lines.index(line)
         j = index_poss(words[0][:-1],tab_player)
+         
         if tab_player[j][2] == -1:
-            tab_player[j][2] = order
-            order += 1
+            tab_player[j][2] = order[0]
             tab_player[j][3]+=0
         else:
-            tab_player.append([tab_player[j][0],tab_player[j][1],order,tab_player[j][3] + 3 ,[]])
-            order += 1
+            tab_player.append([tab_player[j][0],tab_player[j][1],order[0],tab_player[j][3] + 3 ,[]])
         action.append(raises(i,lines,words[0][:-1]))
+        order[0]+=1
         return action
     elif words[1] == 'brings':
         action.append(int(words[4]))
         j = index_poss(words[0][:-1],tab_player)
+         
         if tab_player[j][2] == -1:
-            tab_player[j][2] = order
-            order += 1
+            tab_player[j][2] = order[0]
             tab_player[j][3]+=0
         else:
-            tab_player.append([tab_player[j][0],tab_player[j][1],order,tab_player[j][3] ,[]])
-            order += 1
+            tab_player.append([tab_player[j][0],tab_player[j][1],order[0],tab_player[j][3] ,[]])
+        order[0]+=1
         return action
     elif words[1] == 'calls' :
         action.append(int(words[2]))
         j = index_poss(words[0][:-1],tab_player)
+         
         if tab_player[j][2] == -1:
-            tab_player[j][2] = order
-            order += 1
+            tab_player[j][2] = order[0]
             tab_player[j][3]+=1
         else:
-            tab_player.append([tab_player[j][0],tab_player[j][1],order,tab_player[j][3] + 1 ,[]])
-            order += 1
+            tab_player.append([tab_player[j][0],tab_player[j][1],order[0],tab_player[j][3] + 1 ,[]])
+        order[0]+=1
         return action
     elif words[1] == 'bets':
         action.append(int(words[2]))
         j = index_poss(words[0][:-1],tab_player)
+         
         if tab_player[j][2] == -1:
-            tab_player[j][2] = order
-            order += 1
-            tab_player[j][3]+=2
+            tab_player[j][2] = order[0]
+            tab_player[j][3] += 2
         else:
-            tab_player.append([tab_player[j][0],tab_player[j][1],order,tab_player[j][3] + 2 ,[]])
-            order += 1
+            tab_player.append([tab_player[j][0],tab_player[j][1],order[0],tab_player[j][3] + 2 ,[]])
+        order[0]+=1
         return action
     elif words[1] == 'folds' :
         j = index_poss(words[0][:-1],tab_player)
+        print("here",words[0][:-1])
         if tab_player[j][2] == -1:
-            tab_player[j][2] = order
-            order += 1
-            tab_player[j][3]==-1
+            tab_player[j][2] = order[0]
+            tab_player[j][3] = -1
+            print("here",tab_player[j])
         else:
-            tab_player.append([tab_player[j][0],tab_player[j][1],order,-1 ,[]])
-            order += 1
+            tab_player.append([tab_player[j][0],tab_player[j][1],order[0],-1 ,[]])
+        order[0]+=1
         return action
     elif words[1] == 'checks':
         j = index_poss(words[0][:-1],tab_player)
+         
         if tab_player[j][2] == -1:
-            tab_player[j][2] = order
-            order += 1
+            tab_player[j][2] = order[0]
             tab_player[j][3]+=0
         else:
-            tab_player.append([tab_player[j][0],tab_player[j][1],order,tab_player[j][3] ,[]])
-            order += 1
+            tab_player.append([tab_player[j][0],tab_player[j][1],order[0],tab_player[j][3] ,[]])
+        order[0]+=1
         return action
     elif words[1] == 'shows':
         street_words = lines[street].split()
@@ -535,7 +535,7 @@ def Action(lines,line,street,street_index, occur, main_player,tab_player,order):
 #   Returns:                                                                           #
 #       - Players_Actions : list of action made by players during the game             #
 #       - tab_street : table of table of state of the game (odds + cards dealt)        #
-#       - decision : response to the quiz of the third street                          #
+#       - decision : decision tab                                                      #
 #                                                                                      #
 #   Description:                                                                       #
 #       - recreate the game and add odds and quiz                                      #
@@ -553,7 +553,8 @@ def Play(game_file,main_player,list_numplayers):
     street = i
     time = 0 # where we are in the game
     j = 0
-    order = 0
+    order = [] 
+    order.append(0)
     decision = []
     players = list_numplayers[-1]
     while i < len(lines):
@@ -562,7 +563,7 @@ def Play(game_file,main_player,list_numplayers):
         words = lines[i].split()
         # if we met a new street we calculate the new occurence tab and odds associate to it 
         if words[0] == '***':
-            order = 0
+            order = [0]
             if words[1] != "3rd": 
                 list_numplayers.append(players)
                 (occur1,low_hand_odds)= Calculate_odds(occur,words[1],list_numplayers) # calculate odds callcutate the odds using the occur tab (occurence of the cards)
@@ -574,19 +575,21 @@ def Play(game_file,main_player,list_numplayers):
                     tab_player = []
                     
                 elif time == 1:
-                    quiz_4th(decision,tab_player,tab_prec_player)
+                    quiz_4th(decision,tab_player,tab_prec_player,main_player)
                     add(tab_player,tab_prec_player)
                     tab_prec_player = sumarry_tab(tab_player)
                     tab_player = []
                 time += 1
             Players_Actions.append([lines[i]])
             j+=1
-       #else we add the action to the list with a specific pattern 
-        elif (Action(lines,lines[i],street,street_index,occur,main_player,tab_player,order)):
-            words = lines[i].split()
-            if words[1] == 'folds':
-                players-=1
-            Players_Actions.append(Action(lines,lines[i],street,street_index,occur,main_player,tab_player,order))
+       #else we add the action to the list with a specific pattern [name of the player,action, chips or cards]
+        else:
+            act = (Action(lines,lines[i],street,street_index,occur,main_player,tab_player,order))
+            if act :
+                words = lines[i].split()
+                if words[1] == 'folds':
+                    players-=1
+                Players_Actions.append(act)
             
         i+=1
     
