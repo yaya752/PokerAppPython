@@ -6,9 +6,34 @@ def Card_To_Html(hand):
     for card in hand:
         i= num_cards.index(card[0])
         j= shape_card.index(card[1])
-        #in html we can display graphical card by using a unicode
+        #in html we can display graphical card by using a unicode value
         Html_Cards.append(["#1271" + str(i+16*j + 37)+";",j])
     return Html_Cards
+def add(tab_player,tab_prec_player):
+    for i in range (0,len(tab_player)):
+        for j in range(0,len(tab_prec_player)):
+            if tab_player[i][0] == tab_prec_player[j][0]:
+                tab_player[i][3] +=tab_prec_player[j][3]
+def index_poss(name,tab_player):
+    i = 0
+    while i < len(tab_player) and tab_player[i][0] != name:
+        i+=1
+    return i
+def sumarry_tab(tab_player):
+    player_name = []
+    i = 0
+    new_tab_player = []
+    while i< len(tab_player):
+        if tab_player[i][0] in player_name:
+            j = player_name.index(tab_player[i][0])
+            new_tab_player[j][3] = tab_player[i][3]
+        else:
+            new_tab_player.append(tab_player[i])
+            player_name.append(tab_player[i][0])
+        i+=1
+    return new_tab_player 
+# 4th street
+
 def pair_4th(hand,aggresive_prec,aggressive):
     result = False
     if aggressive != -1 :
@@ -25,12 +50,14 @@ def brelan_4th(hand,aggressive_prec, aggressive):
                     if aggressive_prec < 2 and aggressive >= 2 :
                         result = True
     return result
+
 def flush_4th(hand,aggressive):
     result = False
     if aggressive != -1 :
         if hand[0][:-1] == hand[1][:-1]:
             result = True
     return result
+
 def quiz_4th(decision,tab_player,tab_prec_player,main_player):
     player_name = []
     player_possibilities =[]
@@ -70,32 +97,117 @@ def quiz_4th(decision,tab_player,tab_prec_player,main_player):
                 else:
                     player_possibilities.append([player[0],Card_To_Html(hand),'might have low'])
     decision.append(player_possibilities)
-    
-    
-
-def add(tab_player,tab_prec_player):
-    for i in range (0,len(tab_player)):
-        for j in range(0,len(tab_prec_player)):
-            if tab_player[i][0] == tab_prec_player[j][0]:
-                tab_player[i][3] +=tab_prec_player[j][3]
-def index_poss(name,tab_player):
-    i = 0
-    while i < len(tab_player) and tab_player[i][0] != name:
-        i+=1
-    return i
-def sumarry_tab(tab_player):
-    player_name = []
-    i = 0
-    new_tab_player = []
-    while i< len(tab_player):
-        if tab_player[i][0] in player_name:
-            j = player_name.index(tab_player[i][0])
-            new_tab_player[j][3] = tab_player[i][3]
+def odd_full_house(occur):
+    odd = 0
+    column = -1
+    column1 = -1
+    count = 0
+    for j in range(0,13):
+        if occur[5][j] == 1:
+            column = j
+        elif occur[4][j] == 1 and occur[5][j] != 1:
+            column1 = j
+    for j in range(0,13):
+        if occur[4][j] == 1 and j != column and column != -1:
+            return  1
+        elif j != column and column != -1:
+            odd += occur[4][j]
+            count +=1
+        if occur[5][j] == 1 and j != column1 and column1 != -1:
+            return  1
+        elif j != column1 and column1 != -1:
+            odd += occur[5][j]
+            count +=1
+    return odd/count
+def odds_better_hand(occur):
+    odd = 0
+    row = -1
+    column = -1
+    row1 = -1
+    column1= -1
+    for i in range (0,3):
+        for j in range(13,16):
+            if occur[i][j] == 1:
+                row1 = i
+                column1 = j
+    for i in range (4,7):
+        for j in range(0,13):
+            if occur[i][j] == 1:
+                row = i
+                column = j
+    # The player don't have any high hand
+    if row == -1 and row1 == -1 and column == -1 and column1 == -1:
+        count = 0
+        for i in range (0,3):
+            for j in range(14,16):
+                odd += occur[i][j]
+                count +=1
+        for i in range (4,7):
+            for j in range(0,12):
+                odd += occur[i][j]
+                count +=1
+        odd += occur[13][0]
+        count +=1
+        odd/=count
+    # The player have a pair a three of kind or a four of kind
+    elif row != -1  and column != -1 and row1 == -1 and column1 == -1:
+        #has a pair
+        if row  == 4:
+            count = 0
+            for j in range(0,13):
+                if j!=column:
+                    odd += occur[4][j]
+                    count +=1
+            for i in range (0,3):
+                for j in range(14,16):
+                    odd += occur[i][j]
+                    count +=1
+            for i in range (5,7):
+                for j in range(0,12):
+                    odd += occur[i][j]
+                    count +=1
+            odd += occur[13][0]
+            count +=1
+            odd/=count
+        #has a three of kind 
+        elif row == 5:
+            count = 0
+            for j in range(column,13):
+                odd += occur[5][j]
+                count +=1
+            for i in range (0,3):
+                for j in range(14,16):
+                    odd += occur[i][j]
+                    count +=1
+            for j in range(0,12):
+                odd += occur[6][j]
+                count +=1
+            odd += occur[13][0]
+            count +=1
+            odd/=count
+        #has a four of kind
         else:
-            new_tab_player.append(tab_player[i])
-            player_name.append(tab_player[i][0])
-        i+=1
-    return new_tab_player   
+            odd = 0
+    elif row1 != -1 and column1 != -1:
+        #has a straight
+        if column1  == 13:
+            #if he has a straight the only hand that is higher is a straight flush or a better straight (not done )
+            odd = occur[0][15]+occur[1][15]+occur[2][15]+occur[3][15]
+            odd/=4
+        #has a flush 
+        
+        elif row == 5:
+            #if he has a flush the only hand that is higher is a straight flush or a better flush(higher card) (not done )
+            odd = occur[0][15]+occur[1][15]+occur[2][15]+occur[3][15]
+            odd/=4
+        #has a straight flush
+        else:
+            odd = 0
+    return odd
+
+
+ 
+# 3rd Street
 def hand(occur):
     x = 0
     y = -1

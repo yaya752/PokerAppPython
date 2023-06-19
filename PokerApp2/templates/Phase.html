@@ -45,7 +45,7 @@
         </div>
     </form>
     <script>
-        var decision_json = {{ decision | tojson }}
+        var decision_json = {{ decision| tojson }}
         console.log(decision_json)
         document.querySelector('form').addEventListener('submit', function (event) {
             event.preventDefault(); 
@@ -54,10 +54,10 @@
             var q1Answer = document.querySelector('input[name="q1"]:checked');
             
 
-            
-            if (q1Answer.value === 'option1') {
+            console.log(decision_json)
+            if (q1Answer.value == 'option1') {
                 
-                if (decision_json == 0) {
+                if (decision_json[0] == 0) {
                     q1Answer.parentElement.classList.add('correct');
                 }
                 else {
@@ -66,7 +66,7 @@
             }
             else
             {
-                if (decision_json == -1) {
+                if (decision_json[0] == -1) {
                     q1Answer.parentElement.classList.add('correct');
                 }
                 else {
@@ -116,12 +116,12 @@
                         else if (done == 'raises') {
                             list[i][4] = action[2];
                         }
-                        else if (done == 'folds' || done == 'checks') {
-
+                        else if (done == 'folds' || done == 'checks')
+                        {
                         }
-                        else {
+                        else
+                        {
                         list[i][4] = list[i][4] + action[2];
-
                         }
                     }
                 }

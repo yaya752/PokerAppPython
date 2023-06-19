@@ -1,6 +1,3 @@
-
-
-
 def list_Straight_flush(row):
     num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     suits = ['s','h','d','c']
@@ -15,12 +12,12 @@ def list_Straight_flush(row):
 def list_Straight():
     num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     poss = []
-    
     for i in range (9):
         poss.append([num[i] ,num[i+1],num[i+2],num[i+3],num[i+4]])
     poss.append(['T','J','Q','K','A'])
-    
     return poss
+
+
 def list_remove_straight_flush(poss,i,j):
     num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     suit = ['s','h','d','c']
@@ -31,6 +28,8 @@ def list_remove_straight_flush(poss,i,j):
         if not (card in poss[k]):
             new_poss.append(poss[k])
     return poss
+
+
 def odd_first_card(card,occur,street,list_numplayers):
     odd = 0
     num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']

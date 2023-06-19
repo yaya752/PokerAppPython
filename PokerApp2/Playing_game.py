@@ -571,6 +571,7 @@ def Play(game_file,main_player,list_numplayers):
                 # we need this part to create the decision quiz for each street
                 if time == 0:
                     decision.append(third_street_decision(occur))
+                    print(third_street_decision(occur))
                     tab_prec_player = tab_player
                     tab_player = []
                     
