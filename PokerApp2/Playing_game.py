@@ -580,6 +580,11 @@ def Play(game_file,main_player,list_numplayers):
                     add(tab_player,tab_prec_player)
                     tab_prec_player = sumarry_tab(tab_player)
                     tab_player = []
+                elif time == 2:
+                    quiz_4th(decision,tab_player,tab_prec_player,main_player)
+                    add(tab_player,tab_prec_player)
+                    tab_prec_player = sumarry_tab(tab_player)
+                    tab_player = []
                 time += 1
             Players_Actions.append([lines[i]])
             j+=1

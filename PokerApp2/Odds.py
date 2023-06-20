@@ -6,7 +6,6 @@ def list_Straight_flush(row):
     for i in range (9):
         poss.append([num[i] +suit,num[i+1]+suit,num[i+2]+suit,num[i+3]+suit,num[i+4]+suit])
     poss.append(['T'+suit,'J'+suit,'Q'+suit,'K'+suit,'A'+suit])
-
     return poss
 
 def list_Straight():
@@ -296,11 +295,45 @@ low_hand = [['5','4','3','2','A'],
             ['8','7','6','5','4']]
 
 def low_hand_odd(occur,street,list_numplayers):
+    
     odd = 0.
     low_hand_odds = []
     for hand in low_hand :
         low_hand_odds.append([hand,round(odd_Straight(hand,occur,street,list_numplayers),3)])
+    
     return low_hand_odds
+def have_better_low_hand(low_hand_odds,occur):
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    odds= 0
+    i = 0
+    num = 0
+    count = 0
+    while i < len(occur)-3 and num == 0:
+        j = 4 
+        while j < len(occur[0])-8 and num == 0:
+            if occur[i][j] == -1:
+                    num = int(nums[j])
+            j+=1
+        i+=1
+    if num == 0 :
+        for i in range (len(low_hand_odds)):
+            odds += low_hand_odds[i][1]
+            count +=1
+    elif num == 5:
+        odds = 0
+        count +=1
+    elif num == 6:
+        odds = low_hand_odds[0][1]
+        count +=1
+    elif num == 7:
+        for i in range (len(low_hand_odds)-7):
+            odds += low_hand_odds[i][1]
+            count +=1
+    elif num == 8:
+        for i in range (len(low_hand_odds)-4):
+            odds += low_hand_odds[i][1]
+            count +=1
+    return odds/count
 
 def odd_Straight(straight,occur,street,list_numplayers):
     nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
