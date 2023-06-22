@@ -474,9 +474,32 @@
         function displayAction(list,street,index) {
             var i = 0
             var h = 2
+            var index_hero = 0
+            var pos = 0
             var actionHtml = "<div class = \"containerplayer\"> ";
-            var len = list.length -1
+            var len = list.length - 1
+            var player = []
+            var j = 0
+            while (list[j][0] != "Hero") {
+                j++
+            }
+            index_hero = j
+            if (len > 5) {
+                
+                player = list[5]
+                
+                list[5] = list[index_hero]
+                
+                list[index_hero] = player
+            }
+            else {
+                player = list[len-1]
+                list[len-1] = list[index_hero]
+                list[index_hero] = player
+            }
+            console.log(list)
             for (let pas = 0; pas < 15; pas++) {
+                
                 if (pas == 4 || pas == 0 || pas == 8 || pas == 10 || pas == 14) {
                     actionHtml += "<div class= \"vide\"></div>";
                 }
@@ -487,10 +510,45 @@
                 {
                     actionHtml += "<div class= \"vide\">"+street+"</div>";
                 }
+                else if (len <  5  && pas == 11) {
+                     var len1 = list[len-1].length - 1
+                     actionHtml += "<div class= \"player\"><div class=\"action\">" + list[len-1][2] + "</div><div class=\"bet\">" + list[len-1][len1] + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[len-1][0] + "</div><div class=\"chips\">" + list[len-1][3] + "</div><div class=\"cards\">" + displaycards(list[len-1][1]) + "</div></div>";
+                     
+                }
                 else {
-                    var len1 = list[i].length -1
-                    if (i < len && list[i][0] == "Hero") {
-                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">"+displaycards(list[i][1])+"</div></div>"
+                    
+                    var len1 = list[0].length - 1
+                    
+                    if (i < 5 && len < 6 && list[i][0] == "Hero")
+                    {
+                        while (pas < 11) {
+                            if (pas == 4 || pas == 0 || pas == 8 || pas == 10 || pas == 14) {
+                                actionHtml += "<div class= \"vide\"></div>";
+                            }
+                            else if (pas == 7) {
+                                actionHtml += "<div class= \"pot\">" + list[len] + "</div>";
+                            }
+                            else if (pas == 6) {
+                                actionHtml += "<div class= \"vide\">" + street + "</div>";
+                            }
+                            else {
+                                console.log("yo")
+                                actionHtml += "<div class= \"vide\"></div>";
+                                
+                            }
+                            
+                            
+                            pas++
+                        }
+                        if (pas == 11)
+                        {
+                            actionHtml += "<div class= \"player\"><div class=\"action\">" + list[len - 1][2] + "</div><div class=\"bet\">" + list[len - 1][4] + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[len - 1][0] + "</div><div class=\"chips\">" + list[len - 1][3] + "</div><div class=\"cards\">" + displaycards(list[len - 1][1]) + "</div></div>";
+                            pas ++
+                        }
+                    }
+                    else if (i < len && list[i][0] == "Hero") {
+
+                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>";
                         i++
                     }
                     else if (i < len && h == 2) {
@@ -498,7 +556,7 @@
                         i++
                         h++
                     }
-                    else if (i < len && h == 3) {
+                    else if (i < len && h == 3)  {
                         actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/3.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
                         i++
                         h++
