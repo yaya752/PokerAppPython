@@ -1,7 +1,7 @@
 from re import T
 from tkinter import W
 from Odds import Table, Append_cards, Calculate_odds
-from Decisions import third_street_decision,add,index_poss,sumarry_tab, quiz_4th
+from Decisions import third_street_decision,add,index_poss,sumarry_tab, quiz_4th, quiz_5th
 
 ########################################################################################
 #   Function Name: Generalities                                                        #
@@ -489,11 +489,11 @@ def Action(lines,line,street,street_index, occur, main_player,tab_player,order):
         return action
     elif words[1] == 'folds' :
         j = index_poss(words[0][:-1],tab_player)
-        print("here",words[0][:-1])
+
         if tab_player[j][2] == -1:
             tab_player[j][2] = order[0]
             tab_player[j][3] = -1
-            print("here",tab_player[j])
+
         else:
             tab_player.append([tab_player[j][0],tab_player[j][1],order[0],-1 ,[]])
         order[0]+=1
@@ -571,17 +571,17 @@ def Play(game_file,main_player,list_numplayers):
                 # we need this part to create the decision quiz for each street
                 if time == 0:
                     decision.append(third_street_decision(occur))
-                    print(third_street_decision(occur))
                     tab_prec_player = tab_player
                     tab_player = []
                     
                 elif time == 1:
-                    quiz_4th(decision,tab_player,tab_prec_player,main_player)
+                    quiz_4th(decision,tab_player,tab_prec_player,main_player,occur,words[1])
                     add(tab_player,tab_prec_player)
                     tab_prec_player = sumarry_tab(tab_player)
                     tab_player = []
+
                 elif time == 2:
-                    quiz_4th(decision,tab_player,tab_prec_player,main_player)
+                    quiz_5th(decision,tab_player,tab_prec_player,main_player)
                     add(tab_player,tab_prec_player)
                     tab_prec_player = sumarry_tab(tab_player)
                     tab_player = []

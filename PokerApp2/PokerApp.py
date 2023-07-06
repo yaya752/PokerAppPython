@@ -90,7 +90,7 @@ Function Name: phase 3
 Parameters:
      
 Returns: 
-    HTML of the first Phase
+    HTML of the first Phase, 
 Description:
     Create the first phase
 

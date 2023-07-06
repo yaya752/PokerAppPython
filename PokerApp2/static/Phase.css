@@ -58,10 +58,7 @@ input[type="submit"] {
         background-color: #555;
     }
 
-.correct {
-    background-color: green;
-    color: #fff;
-}
+
 
 .incorrect {
     background-color: red;
@@ -86,31 +83,24 @@ input[type="submit"] {
     }
 }
 
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
 .dropdown {
     position: relative;
     display: inline-block;
     cursor: pointer;
 }
 
-    .dropdown span {
-        display: block;
-        padding: 10px 20px;
-        background-color: #333;
-        color: #fff;
-        font-size: 18px;
-        transition: background-color 0.3s ease;
-    }
+.dropdown span {
+    display: block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
 
-    .dropdown:hover span {
-        background-color: #555;
-    }
+.dropdown:hover span {
+    background-color: #555;
+}
 
 .dropdown-content {
     display: none;
@@ -138,35 +128,16 @@ input[type="submit"] {
         margin-bottom: 10px;
     }
 
-        .dropdown span {
-            border-radius: 5px;
-        }
+    .dropdown span {
+        border-radius: 5px;
+    }
 
     .dropdown-content {
         position: static;
         box-shadow: none;
     }
 }
-.incorrect {
-    background-color: red;
-}
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
 button {
     background-color: #428bca;
     color: white;
@@ -183,7 +154,7 @@ button {
 }
 
 body {
-    background-color:sienna;
+    background-color:slategrey;
 }
 table {
     border-collapse: collapse;

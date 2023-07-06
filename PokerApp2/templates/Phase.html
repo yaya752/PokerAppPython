@@ -26,8 +26,8 @@
         </label>
 
         <input type="submit" value="submit response">
-
-        <div>
+        
+        <div style='display: inline-block; margin-right: 10px;'>
             <div class="dropdown">
                 <h1>Low odds</h1>
                 <div class="dropdown-content">
@@ -35,7 +35,7 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div style='display: inline-block; margin-right: 10px;'>
             <div class="dropdown">
                 <h1>Flush</h1>
                 <div class="dropdown-content">
@@ -43,6 +43,7 @@
                 </div>
             </div>
         </div>
+        
     </form>
     <script>
         var decision_json = {{ decision| tojson }}

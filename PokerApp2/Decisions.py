@@ -1,3 +1,4 @@
+from Odds import odd_better_Flush
 def Card_To_Html(hand):
     #Intialisation of the variable
     Html_Cards = []
@@ -42,7 +43,7 @@ def pair_4th(hand,aggresive_prec,aggressive):
                 result = True
     return result
 
-def brelan_4th(hand,aggressive_prec, aggressive):
+def Three_of_kind_4th(hand,aggressive_prec, aggressive):
     result = False
     if aggressive != -1 :
         if hand[0][:-1] == 'T' or hand[0][:-1] == 'J' or hand[0][:-1] == 'Q' or hand[0][:-1] == 'K' or hand[0][:-1] == 'A':
@@ -50,75 +51,208 @@ def brelan_4th(hand,aggressive_prec, aggressive):
                     if aggressive_prec < 2 and aggressive >= 2 :
                         result = True
     return result
-
-def flush_4th(hand,aggressive):
+# I assume that the player might have the best high card possible
+def comparaison_flush(card1,card2,occur):
+    shape_card = ['s','h','d','c']
+    num_cards = ['A','2','3','4','5','6','7','8','9','T','J','C','Q','K']
+    shape_flush = shape_card.index(card1[1:])
+    if card1[:-1] == 'A' or card2[:-1] == 'A':
+        return 'A'
+    for j in range (11):
+        if occur[0]== 0 :
+            return 'A' + card1[1:]
+        elif occur[shape_flush][12-j] == -1:
+            if card1[:-1] == num_cards[12-j] or card2[:-1] == num_cards[12-j]:
+                return num_cards[12-j] + card1[1:]
+        elif occur[shape_flush][12-j] == 0:
+            return num_cards[12-j] + card1[1:]
+def flush_4th(hand,aggressive,occur):
     result = False
+    card_max = ''
     if aggressive != -1 :
         if hand[0][:-1] == hand[1][:-1]:
-            result = True
+            result= True
+            card_max = comparaison_flush(hand[0],hand[1],occur)
+    return (result,card_max)
+#ok² 
+def is_straight_flush(best_hand):
+    num_cards = ['A','2','3','4','5','6','7','8','9','T','J','C','Q','K']
+    royal_flush = ['A','T','J','C','Q','K']
+    best_hand_sorted = []
+    index = []
+    result = False
+    for card in best_hand:
+        index.append(num_cards.index(card[:-1]))
+    index.sort()
+    for ind in index:
+        best_hand_sorted.append(num_cards[ind])
+    if best_hand_sorted == royal_flush:
+        result = True
+    #if I have a straight then the difference between the highest index and the lowest will be equal to 4
+    elif index[0]-index[4] == 4:
+        result = True
     return result
-
-def quiz_4th(decision,tab_player,tab_prec_player,main_player):
+def better_flush(card_max_flush,occur,street,list_numplayers):
+    card = card_max_flush# rajouter le fait qu'on a pas 
+    odd =odd_full_house(occur)
+    odd_max1 = 0
+    best_hand1 = []
+    for i in range (4):
+        (odd_max,best_hand,odd1) = odd_better_Flush(occur, i,street, list_numplayers,card)
+        if odd_max > odd_max1:
+            odd_max1 = odd_max
+            best_hand1 = best_hand
+        odd+=odd1
+    if best_hand != []:
+        if not(is_straight_flush(best_hand)):
+            best_hand = []#best_hand = regarder si la proba d'avoir une foul house n'est pas plus grande
+         
+    return odd  
+#look
+def better_three_of_kind():
+    return 0
+def better_pair(occur):
+    return 0
+# To do: je dois transformer les résultats en une probabilité d'avoir mieux ( ie; flush -> meilleur flush idem low)
+def quiz_4th(decision,tab_player,tab_prec_player,main_player,occur, street):
     player_name = []
     player_possibilities =[]
+    card_max_flush = ''
     round2 = 0
     for i in range (0, len (tab_player)):
         player = tab_player[i]
         aggressive = player[3]
         j = index_poss(player[0],tab_prec_player)
         aggressive_prec = tab_prec_player[j][3]
-        print(tab_player)
         if player[0] != main_player:
             if player[0] in player_name:
                 hand = player[1]
                 if round2 == 0:
                     decision.append(player_possibilities)
                     player_possibilities = []
-                if flush_4th(hand):
+                (result,card_max_flush) = flush_4th(hand, aggressive,occur)
+                if flush_4th(hand, aggressive,occur):
                     player_possibilities.append([player[0],Card_To_Html(hand),'might have flush'])
-                elif brelan_4th(hand,aggressive_prec, aggressive):
-                    player_possibilities.append([player[0],Card_To_Html(hand),'might have brelan'])
-                elif pair_4th(hand,aggressive_prec):
+                elif Three_of_kind_4th(hand,aggressive_prec, aggressive):
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have three of kind'])
+                elif pair_4th(hand,aggressive_prec, aggressive):
                     player_possibilities.append([player[0],Card_To_Html(hand),'might have pair'])
                 elif aggressive == -1:
                     player_possibilities.append([player[0],Card_To_Html(hand),'folded'])
                 else:
-                    player_possibilities.append([player[0],Card_To_Html(hand),'might have low'])
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have low1'])
             else:
+                player_name.append(player[0])
                 hand = player[1]
-                if flush_4th(hand,aggressive):
+                if flush_4th(hand,aggressive,occur,card_max_flush):
                     player_possibilities.append([player[0],Card_To_Html(hand),'might have flush'])
-                elif brelan_4th(hand,aggressive_prec, aggressive):
-                    player_possibilities.append([player[0],Card_To_Html(hand),'might have brelan'])
+                elif Three_of_kind_4th(hand,aggressive_prec, aggressive):
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have Three of kind'])
                 elif pair_4th(hand,aggressive_prec,aggressive):
                     player_possibilities.append([player[0],Card_To_Html(hand),'might have pair'])
                 elif aggressive == -1:
                     player_possibilities.append([player[0],Card_To_Html(hand),'folded'])
                 else:
-                    player_possibilities.append([player[0],Card_To_Html(hand),'might have low'])
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have low2'])
     decision.append(player_possibilities)
+# 5th Street
+def pair_5th(hand,aggresive_prec,aggressive):
+    result = False
+    if aggressive != -1 :
+        if hand[0][:-1] == 'T' or hand[0][:-1] == 'J' or hand[0][:-1] == 'Q' or hand[0][:-1] == 'K' or hand[0][:-1] == 'A' or hand[1][:-1] == 'T' or hand[1][:-1] == 'J' or hand[1][:-1] == 'Q' or hand[1][:-1] == 'K' or hand[1][:-1] == 'A':
+            if aggresive_prec >= 2:
+                result = True
+    return result
+
+def Three_of_kind_5th(hand,aggressive_prec, aggressive):
+    result = False
+    if aggressive != -1 :
+        if hand[0][:-1] == 'T' or hand[0][:-1] == 'J' or hand[0][:-1] == 'Q' or hand[0][:-1] == 'K' or hand[0][:-1] == 'A':
+                if hand[0][:-1] == hand[1][:-1] or hand[0][:-1] == hand[2][:-1]:
+                    if aggressive_prec < 2 and aggressive >= 2 :
+                        result = True
+        elif hand[1][:-1] == 'T' or hand[1][:-1] == 'J' or hand[1][:-1] == 'Q' or hand[1][:-1] == 'K' or hand[1][:-1] == 'A':
+                if hand[1][:-1] == hand[0][:-1] or hand[1][:-1] == hand[2][:-1]:
+                    if aggressive_prec < 2 and aggressive >= 2 :
+                        result = True
+    return result
+
+def flush_5th(hand,aggressive,occur,card_max):
+    result = False
+    
+    if aggressive != -1 :
+        if hand[0][:-1] == hand[1][:-1] or hand[0][:-1] == hand[2][:-1] or hand[1][:-1] == hand[2][:-1] :
+            result = True
+            if hand[0][:-1] == hand[1][:-1]:
+                card_max = comparaison_flush(hand[0],hand[1],occur)
+            elif  hand[0][:-1] == hand[2][:-1]:
+                card_max = comparaison_flush(hand[0],hand[2],occur)
+            else:
+                card_max = comparaison_flush(hand[1],hand[2],occur) 
+    return result
+
+def quiz_5th(decision,tab_player,tab_prec_player,main_player):
+    player_name = []
+    player_possibilities =[]
+    round2 = 0
+
+    for player in tab_player:
+        aggressive = player[3]
+        j = index_poss(player[0],tab_prec_player)
+        aggressive_prec = tab_prec_player[j][3]
+
+        if player[0] != main_player:
+            if player[0] in player_name:
+                hand = player[1]
+                if round2 == 0:
+                    decision.append(player_possibilities)
+                    player_possibilities = []
+                if flush_5th(hand,aggressive):
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have flush'])
+                elif Three_of_kind_5th(hand,aggressive_prec, aggressive):
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have Three of kind'])
+                elif pair_5th(hand,aggressive_prec, aggressive):
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have pair'])
+                elif aggressive == -1:
+                    player_possibilities.append([player[0],Card_To_Html(hand),'folded'])
+                else:
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have low3'])
+            else:
+                player_name.append(player[0])
+                hand = player[1]
+                if flush_5th(hand,aggressive):
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have flush'])
+                elif Three_of_kind_5th(hand,aggressive_prec, aggressive):
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have Three of kind'])
+                elif pair_5th(hand,aggressive_prec,aggressive):
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have pair'])
+                elif aggressive == -1:
+                    player_possibilities.append([player[0],Card_To_Html(hand),'folded'])
+                else:
+                    player_possibilities.append([player[0],Card_To_Html(hand),'might have low4'])
+    decision.append(player_possibilities)
+
 def odd_full_house(occur):
     odd = 0
     column = -1
     column1 = -1
-    count = 0
     for j in range(0,13):
         if occur[5][j] == 1:
             column = j
         elif occur[4][j] == 1 and occur[5][j] != 1:
             column1 = j
+        
     for j in range(0,13):
         if occur[4][j] == 1 and j != column and column != -1:
             return  1
         elif j != column and column != -1:
             odd += occur[4][j]
-            count +=1
+
         if occur[5][j] == 1 and j != column1 and column1 != -1:
             return  1
         elif j != column1 and column1 != -1:
             odd += occur[5][j]
-            count +=1
-    return odd/count
+    return odd
 def odds_better_hand(occur):
     odd = 0
     row = -1
