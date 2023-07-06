@@ -51,13 +51,21 @@ def Three_of_kind_4th(hand,aggressive_prec, aggressive):
                     if aggressive_prec < 2 and aggressive >= 2 :
                         result = True
     return result
-# I assume that the player might have the best high card possible
+# I assume that the player might have the best high card possible if their are no card higher than a 8 
 def comparaison_flush(card1,card2,occur):
     shape_card = ['s','h','d','c']
     num_cards = ['A','2','3','4','5','6','7','8','9','T','J','C','Q','K']
     shape_flush = shape_card.index(card1[1:])
+    ind1 = num_cards.index(card1[:-1])
+    ind2= num_cards.index(card2[:-1])
     if card1[:-1] == 'A' or card2[:-1] == 'A':
-        return 'A'
+        return 'A' +card1[1:]
+    
+    elif ind1 >=7 or ind2 >= 7:
+        if ind1 > ind2:
+            return card1
+        else:
+            return card2
     for j in range (11):
         if occur[0]== 0 :
             return 'A' + card1[1:]
