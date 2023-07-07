@@ -1,3 +1,79 @@
+def odd_full_house(occur):
+    num_cards = ['A','2','3','4','5','6','7','8','9','T','J','C','Q','K']
+    shape_card = ['s','h','d','c']
+    odd = 0
+    column = -1
+    column1 = -1
+    best_hand = []
+    odd_max=0.
+    for j in range(0,13):
+        if occur[5][j] == 1:
+            column = j
+        elif occur[4][j] == 1 and occur[5][j] != 1:
+            column1 = j
+    for j in range(0,13):
+        if occur[4][j] == 1 and j != column and column != -1:
+            best_hand =[]
+            for i in range (4):
+                if occur[i][j] == 1 :
+                    best_hand.append(num_cards.index(j) + shape_card.index(i))
+                if occur[i][column] == 1 :
+                    best_hand.append(num_cards.index(column) + shape_card.index(i))
+            return  (1,1,best_hand)
+        elif j != column and column != -1:
+            odd += occur[4][j]
+            if occur[4][j] > odd_max:
+                odd_max = occur[4][j]
+                best_hand = []
+                count = 0
+                for i in range (4):
+                    if occur[i][j] == 1 :
+                        count += 1
+                for i in range (4):
+                    if occur[i][j] == 1 :
+                        best_hand.append(num_cards.index(j) + shape_card.index(i))
+                    elif count == 1 and occur[i][j] == 0:
+                        best_hand.append(num_cards.index(j) + shape_card.index(i))
+                        count+=1
+                    elif count == 0 and occur[i][j] == 0:
+                        best_hand.append(num_cards.index(j) + shape_card.index(i))
+                        count+=1
+                    if occur[i][column] == 1 :
+                        best_hand.append(num_cards.index(column) + shape_card.index(i))
+        if occur[5][j] == 1 and j != column1 and column1 != -1:
+            best_hand =[]
+
+            for i in range (4):
+                if occur[i][j] == 1 :
+                    best_hand.append(num_cards.index(j) + shape_card.index(i))
+                if occur[i][column1] == 1 :
+                    best_hand.append(num_cards.index(column1) + shape_card.index(i))
+            return  (1,1,best_hand)
+        elif j != column1 and column1 != -1:
+            odd += occur[5][j]
+            if occur[5][j] > odd_max:
+                odd_max = occur[5][j]
+                best_hand = []
+                count = 0
+            for i in range (4):
+                if occur[i][j] == 1 :
+                    count += 1
+            for i in range (4):
+                if occur[i][j] == 1 :
+                    best_hand.append(num_cards.index(j) + shape_card.index(i))
+                elif count == 2 and occur[i][j] == 0:
+                    best_hand.append(num_cards.index(j) + shape_card.index(i))
+                    count+=1
+                elif count == 1 and occur[i][j] == 0:
+                    best_hand.append(num_cards.index(j) + shape_card.index(i))
+                    count+=1
+                elif count == 0 and occur[i][j] == 0:
+                    best_hand.append(num_cards.index(j) + shape_card.index(i))
+                    count+=1
+                if occur[i][column1] == 1 :
+                    best_hand.append(num_cards.index(column1) + shape_card.index(i))        
+    return (odd,odd_max,best_hand)
+
 def list_Straight_flush(row):
     num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     suits = ['s','h','d','c']
@@ -610,9 +686,7 @@ def Flush(occur, row, street, list_numplayers):
         else:
             odd = 0
     return odd
-# je dois trouver la probas d'avoir un meilleur flush je connais la valeur de la plus haute carte
-# donc je dois éliminer toutes les combinaisons de flush sans la carte sup
-#à faire pour chaque suit
+
 def odd_better_Flush(occur, row,street, list_numplayers,card_max):
     num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     index = num.index(card_max[:-1])
@@ -636,7 +710,7 @@ def odd_better_Flush(occur, row,street, list_numplayers,card_max):
         if occur[row][j] == 1:
             hand += 1
             hand_cards.append(num[j] + suit[row])
-            if j>index or j == 0:
+            if j>index or j == 0 or index == 1 :
                 better = True
         elif occur[row][j] == 0:
             remaining.append(num[j] + suit[row])

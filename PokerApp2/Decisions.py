@@ -1,4 +1,4 @@
-from Odds import odd_better_Flush
+from Odds import odd_better_Flush, odd_full_house
 def Card_To_Html(hand):
     #Intialisation of the variable
     Html_Cards = []
@@ -101,26 +101,44 @@ def is_straight_flush(best_hand):
         result = True
     return result
 def better_flush(card_max_flush,occur,street,list_numplayers):
-    card = card_max_flush# rajouter le fait qu'on a pas 
-    odd =odd_full_house(occur)
-    odd_max1 = 0
-    best_hand1 = []
+    card = card_max_flush# rajouter le fait qu'on a pas
+    (odd_full,odd_max_full,best_hand_full) = odd_full_house(occur)
+    odd = odd_full
+    odd_max = odd_max_full
+    best_hand = best_hand_full 
     for i in range (4):
-        (odd_max,best_hand,odd1) = odd_better_Flush(occur, i,street, list_numplayers,card)
-        if odd_max > odd_max1:
-            odd_max1 = odd_max
-            best_hand1 = best_hand
-        odd+=odd1
-    if best_hand != []:
-        if not(is_straight_flush(best_hand)):
-            best_hand = []#best_hand = regarder si la proba d'avoir une foul house n'est pas plus grande
-         
-    return odd  
+        (odd_max_flush,best_hand_flush,odd_flush) = odd_better_Flush(occur, i,street, list_numplayers,card)
+        if odd_max_flush > odd_max:
+            odd_max = odd_max_flush
+            best_hand = best_hand_flush
+        odd+=odd_flush      
+    return (odd,best_hand,odd_max)
 #look
-def better_three_of_kind():
-    return 0
-def better_pair(occur):
-    return 0
+def better_three_of_kind(occur,street,list_numplayers):
+    (odd_full,odd_max_full,best_hand_full) = odd_full_house(occur)
+    odd = odd_full
+    odd_max = odd_max_full
+    best_hand = best_hand_full 
+    for i in range (4):
+        (odd_max_flush,best_hand_flush,odd_flush) = odd_better_Flush(occur, i,street, list_numplayers,'2s')#we look for all flush because even with
+        if odd_max_flush > odd_max:
+            odd_max = odd_max_flush
+            best_hand = best_hand_flush
+        odd+=odd_flush      
+    return (odd,best_hand,odd_max)
+
+def better_pair(occur,street,list_numplayers):
+    (odd_full,odd_max_full,best_hand_full) = odd_full_house(occur)
+    odd = odd_full
+    odd_max = odd_max_full
+    best_hand = best_hand_full 
+    for i in range (4):
+        (odd_max_flush,best_hand_flush,odd_flush) = odd_better_Flush(occur, i,street, list_numplayers,'2s')#on va regarder chaque 
+        if odd_max_flush > odd_max:
+            odd_max = odd_max_flush
+            best_hand = best_hand_flush
+        odd+=odd_flush      
+    return (odd,best_hand,odd_max)
 # To do: je dois transformer les résultats en une probabilité d'avoir mieux ( ie; flush -> meilleur flush idem low)
 def quiz_4th(decision,tab_player,tab_prec_player,main_player,occur, street):
     player_name = []
@@ -240,27 +258,7 @@ def quiz_5th(decision,tab_player,tab_prec_player,main_player):
                     player_possibilities.append([player[0],Card_To_Html(hand),'might have low4'])
     decision.append(player_possibilities)
 
-def odd_full_house(occur):
-    odd = 0
-    column = -1
-    column1 = -1
-    for j in range(0,13):
-        if occur[5][j] == 1:
-            column = j
-        elif occur[4][j] == 1 and occur[5][j] != 1:
-            column1 = j
-        
-    for j in range(0,13):
-        if occur[4][j] == 1 and j != column and column != -1:
-            return  1
-        elif j != column and column != -1:
-            odd += occur[4][j]
 
-        if occur[5][j] == 1 and j != column1 and column1 != -1:
-            return  1
-        elif j != column1 and column1 != -1:
-            odd += occur[5][j]
-    return odd
 def odds_better_hand(occur):
     odd = 0
     row = -1
