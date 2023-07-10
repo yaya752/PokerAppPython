@@ -80,8 +80,7 @@ def phase(index):
     session['main_player'] = main_player
     decision = -1
     (initialisation,list_numplayers) = Init(file_name)
-    (list_actions,tab_street,decision) = Play(file_name,main_player,list_numplayers)
-    print(decision)
+    (list_actions,tab_street,decision) = Play(file_name,main_player,list_numplayers)    
     return render_template('Phase.html',list_actions = list_actions,
                           initialisation = initialisation, tab_street = tab_street , decision = decision)
 '''

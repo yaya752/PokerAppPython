@@ -537,6 +537,7 @@ def odd_Straight(straight,occur,street,list_numplayers):
         else:
             odd = 0
     return odd
+
 def Straight(occur,street,list_numplayers):
     odd = 0.
     poss = list_Straight()
@@ -545,6 +546,21 @@ def Straight(occur,street,list_numplayers):
         if odd_Straight(straight,occur,street,list_numplayers) == 1:
             return 1. 
     return odd
+def odd_better_Straight(occur,street,list_numplayers):
+    odd = 0.
+    odd_straight = 0
+    odd_max = 0
+    best_hand = []
+    poss = list_Straight()
+    for straight in poss :
+        odd_straight=odd_Straight(straight,occur,street,list_numplayers)
+        odd+=odd_straight
+        if odd_Straight(straight,occur,street,list_numplayers) == 1:
+            return (1.,straight,1)
+        elif odd_straight > odd_max:
+            odd_max = odd_straight
+            best_hand = straight
+    return (odd,best_hand,odd_max)
 def Straight_flush(occur,street,list_numplayers,poss):
     odd = 0.
     for straight in poss :
@@ -557,9 +573,8 @@ def Flush(occur, row, street, list_numplayers):
     num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     suit = ['s','h','d','c']
     odd = 0.
-
     hand = 0
-    
+    other=0
     remaining = []
     
     for j in range(len(occur[0])-3):
@@ -603,7 +618,7 @@ def Flush(occur, row, street, list_numplayers):
                                             odd11 = list_function[o](card3,occur,street,list_numplayers)
                                             odd12 = list_function[o](card4,occur,street,list_numplayers)
                                             for p in range (o+1,len(list_function)):
-                                                count +=24
+                                                
                                                 odd13 = list_function[p](card1,occur,street,list_numplayers)
                                                 odd14 = list_function[p](card2,occur,street,list_numplayers)
                                                 odd15 = list_function[p](card3,occur,street,list_numplayers)
@@ -651,7 +666,7 @@ def Flush(occur, row, street, list_numplayers):
                                     odd6 = list_function[n](card2,occur,street,list_numplayers)
                                     odd7 = list_function[n](card3,occur,street,list_numplayers)
                                     for o in range (n+1,len(list_function)):
-                                        count+=6
+                                        
                                         odd9 = list_function[o](card1,occur,street,list_numplayers)
                                         odd10 = list_function[o](card2,occur,street,list_numplayers)
                                         odd11 = list_function[o](card3,occur,street,list_numplayers)
@@ -686,7 +701,161 @@ def Flush(occur, row, street, list_numplayers):
         else:
             odd = 0
     return odd
+def odd_two_pairs(occur):
+    num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    shape = ['s','h','d','c']
+    odd=0
+    odd_max = 0
+    best_hand = []
+    index_pair1 = -1
+    index_pair2 = -1
+    count1 = 0
+    count2= 0
+    l = 0
+    for j in range (len(occur[0])-4):
+        for k in range (len(occur[0])-3):
+            odd_two_pairs = occur[4][k]*occur[4][j]
+            odd+= odd_two_pairs
+            if odd_two_pairs >  odd_max:
+                odd_max = odd_two_pairs
+                index_pair1 = j
+                index_pair2 = k
+    if index_pair1 != -1:
+        for i in range (len(occur)-3):
+            if occur[i][index_pair1] == 1:
+                best_hand.append(num[index_pair1] + shape[i])
+                count1+= 1
+            if occur[i][index_pair2] == 1:
+                best_hand.append(num[index_pair2] + shape[i])
+                count2+= 1
+        while count1 !=2 and l < 4:
+            if occur[l][index_pair1] == 0:
+                best_hand.append(num[index_pair1] + shape[i])
+                count1+= 1
+            l+=1
+        l =0
+        while count2 !=2:
+            if occur[l][index_pair2] == 0:
+                best_hand.append(num[index_pair2] + shape[i])
+                count2+= 1
+    return(odd,best_hand,odd_max)
+def odd_better_pair(occur,card):
+    num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    shape = ['s','h','d','c']
+    
+    odd = 0
+    odd_max = 0
+    best_hand = []
+    odd_pair = 0
+    count = 0
+    l = 0
+    index_card_max = num.index(card[:-1])
+    if index_card_max!=0:
+        odd_max = occur[4][0]
+        if odd_max != 0:
+            for i in range (len(occur)-3):
+                if occur[i][0] == 1:
+                    best_hand.append(num[0] + shape[i])
+                    count += 1
+            while count !=2 and l < 4:
+                if occur[l][0] == 0:
+                    best_hand.append(num[0] + shape[i])
+                    count1+= 1
+                l+=1
+        for j in range (index_card_max +1,len(occur[0])-3):
+            odd_pair = occur[4][j]
+            odd += odd_pair
+            if odd_pair > odd_max:
+                odd_max =odd_pair
+                for i in range (len(occur)-3):
+                    if occur[i][j] == 1:
+                        best_hand.append(num[j] + shape[i])
+                        count += 1
+                while count !=2 and l < 4:
+                    if occur[l][j] == 0:
+                        best_hand.append(num[j] + shape[i])
+                        count+= 1
+                    l+=1
+    return(odd,best_hand,odd_max)
 
+def odd_better_three_of_kind(occur,card):
+    num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    shape = ['s','h','d','c']
+    odd = 0
+    odd_max = 0
+    best_hand = []
+    odd_three = 0
+    count = 0
+    l = 0
+    if card =='':
+        for j in range (len(occur[0])-3):
+            odd_three = occur[5][j]
+            odd += odd_three
+            if odd_three > odd_max:
+                odd_max =odd_three
+                for i in range (len(occur)-3):
+                    if occur[i][j] == 1:
+                        best_hand.append(num[j] + shape[i])
+                        count += 1
+                while count !=3 and l < 4:
+                    if occur[l][j] == 0:
+                        best_hand.append(num[j] + shape[i])
+                        count+= 1
+                    l+=1
+    else:
+        index_card_max = num.index(card[:-1])
+        if index_card_max!=0:
+            odd_max = occur[4][0]
+            if odd_max != 0:
+                for i in range (len(occur)-3):
+                    if occur[i][0] == 1:
+                        best_hand.append(num[0] + shape[i])
+                        count += 1
+                while count !=2 and l < 4:
+                    if occur[l][0] == 0:
+                        best_hand.append(num[0] + shape[i])
+                        count1+= 1
+                    l+=1
+            for j in range (index_card_max +1,len(occur[0])-3):
+                odd_three = occur[5][j]
+                odd += odd_three
+                if odd_three > odd_max:
+                    odd_max =odd_three
+                    for i in range (len(occur)-3):
+                        if occur[i][j] == 1:
+                            best_hand.append(num[j] + shape[i])
+                            count += 1
+                    while count !=3 and l < 4:
+                        if occur[l][j] == 0:
+                            best_hand.append(num[j] + shape[i])
+                            count+= 1
+                        l+=1
+
+    return(odd,best_hand,odd_max)
+def odd_better_four_of_kind(occur):
+    num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    shape = ['s','h','d','c']
+    odd = 0
+    odd_max = 0
+    best_hand = []
+    odd_four = 0
+    count = 0
+    l = 0
+    for j in range (len(occur[0])-3):
+        odd_four = occur[6][j]
+        odd += odd_four
+        if odd_four > odd_max:
+            odd_max =odd_four
+            for i in range (len(occur)-3):
+                if occur[i][j] == 1:
+                    best_hand.append(num[j] + shape[i])
+                    count += 1
+            while count !=3 and l < 4:
+                if occur[l][j] == 0:
+                    best_hand.append(num[j] + shape[i])
+                    count+= 1
+                l+=1
+    return(odd,best_hand,odd_max)
 def odd_better_Flush(occur, row,street, list_numplayers,card_max):
     num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     index = num.index(card_max[:-1])
@@ -815,6 +984,9 @@ def odd_better_Flush(occur, row,street, list_numplayers,card_max):
                                         odd6 = list_function[n](card2,occur,street,list_numplayers)
                                         odd7 = list_function[n](card3,occur,street,list_numplayers)
                                         for o in range (n+1,len(list_function)):
+                                            odd9 = list_function[o](card1,occur,street,list_numplayers)
+                                            odd10 = list_function[o](card2,occur,street,list_numplayers)
+                                            odd11 = list_function[o](card3,occur,street,list_numplayers)
                                             odd_3 = (odd1*odd6*odd11+
                                                 odd1*odd7*odd10+
                                                 odd2*odd5*odd11+
@@ -843,7 +1015,6 @@ def odd_better_Flush(occur, row,street, list_numplayers,card_max):
                                 odd1 = list_function[m](card1,occur,street,list_numplayers)
                                 odd2 = list_function[m](card2,occur,street,list_numplayers)
                                 for n in range (m+1,len(list_function)):
-                                    
                                     odd5 = list_function[n](card1,occur,street,list_numplayers)
                                     odd6 = list_function[n](card2,occur,street,list_numplayers)
                                     odd_2 = (odd1*odd6 + odd2*odd5)

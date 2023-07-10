@@ -566,22 +566,22 @@ def Play(game_file,main_player,list_numplayers):
             order = [0]
             if words[1] != "3rd": 
                 list_numplayers.append(players)
-                (occur1,low_hand_odds)= Calculate_odds(occur,words[1],list_numplayers) # calculate odds callcutate the odds using the occur tab (occurence of the cards)
+                (occur1,low_hand_odds)= Calculate_odds(occur,words[1],list_numplayers) #calculate the odds using the occur tab (occurence of the cards)
                 tab_street.append([occur1,low_hand_odds])
                 # we need this part to create the decision quiz for each street
                 if time == 0:
                     decision.append(third_street_decision(occur))
                     tab_prec_player = tab_player
                     tab_player = []
-                    
                 elif time == 1:
-                    quiz_4th(decision,tab_player,tab_prec_player,main_player,occur,words[1])
+                    (decision,possibilities_4th,odd_4th,best_hand_4th,odd_max_4th)  = quiz_4th(decision,tab_player,tab_prec_player,main_player,occur,words[1],list_numplayers)
+                    print("4th",possibilities_4th ,odd_4th, best_hand_4th,odd_max_4th)
                     add(tab_player,tab_prec_player)
                     tab_prec_player = sumarry_tab(tab_player)
                     tab_player = []
-
                 elif time == 2:
-                    quiz_5th(decision,tab_player,tab_prec_player,main_player)
+                    (decision,possibilities_5th,odd_5th,best_hand_5th,odd_max_5th) = quiz_5th(occur,decision,tab_player,tab_prec_player,main_player,words[1],list_numplayers)
+                    print("5th",possibilities_5th,odd_5th,best_hand_5th,odd_max_5th)
                     add(tab_player,tab_prec_player)
                     tab_prec_player = sumarry_tab(tab_player)
                     tab_player = []
@@ -596,7 +596,5 @@ def Play(game_file,main_player,list_numplayers):
                 if words[1] == 'folds':
                     players-=1
                 Players_Actions.append(act)
-            
         i+=1
-    
     return (Players_Actions,tab_street,decision)
