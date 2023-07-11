@@ -14,19 +14,7 @@
     </div>
     <div id="tableContainer" class="page"></div>
 
-    <form>
-        <h2>What action should you take in this position ?</h2>
-        <label for="q1_option1">
-            <input type="radio" name="q1" id="q1_option1" value="option1">
-            continue
-        </label>
-        <label for="q1_option2">
-            <input type="radio" name="q1" id="q1_option2" value="option2">
-            fold
-        </label>
-
-        <input type="submit" value="submit response">
-        
+    <div>
         <div style='display: inline-block; margin-right: 10px;'>
             <div class="dropdown">
                 <h1>Low odds</h1>
@@ -42,45 +30,23 @@
                     <div id="flush" class="page"></div>
                 </div>
             </div>
+
         </div>
         
-    </form>
+            <div id="HandContainer" class="page"></div>
+        
+    </div>
+    
     <script>
         var decision_json = {{ decision| tojson }}
-        console.log(decision_json)
-        document.querySelector('form').addEventListener('submit', function (event) {
-            event.preventDefault(); 
-
-            
-            var q1Answer = document.querySelector('input[name="q1"]:checked');
-            
-
-            console.log(decision_json)
-            if (q1Answer.value == 'option1') {
-                
-                if (decision_json[0] == 0) {
-                    q1Answer.parentElement.classList.add('correct');
-                }
-                else {
-                    q1Answer.parentElement.classList.add('incorrect');
-                }
-            }
-            else
-            {
-                if (decision_json[0] == -1) {
-                    q1Answer.parentElement.classList.add('correct');
-                }
-                else {
-                    q1Answer.parentElement.classList.add('incorrect');
-                }
-
-            }
-        });
+        
+      
         var tableau = {{ tab_street | tojson }};
         console.log(tableau)
         var tableauxContainer = document.getElementById("tableauxContainer");
         var lowtab = document.getElementById("lowtab")
         var flush = document.getElementById("flush")
+        var handtab = document.getElementById("HandContainer")
         // Index of the current action
         var currentActionIndex = 0;
         var beginindex = 0;
@@ -136,6 +102,9 @@
             }
             beginindex = i-1;
             displayAction(list, '*** 3rd STREET ***', 0)
+            displayLow(tableau, Index_tab)
+            displayHand(decision_json, Index_tab)
+            displayFlush(tableau, Index_tab)
             return beginindex
         }
         beginindex = begin(list)
@@ -200,6 +169,9 @@
             }
 
             displayAction(list, street, Index_tab);
+            displayLow(tableau, Index_tab)
+            displayHand(decision_json, Index_tab)
+            displayFlush(tableau, Index_tab)
         });
 
         // Event for the previous action button
@@ -268,6 +240,9 @@
             console.log(currentActionIndex)
             updatelist(list, currentActionIndex);
             displayAction(list, street, Index_tab);
+            displayLow(tableau, Index_tab)
+            displayHand(decision_json, Index_tab)
+            displayFlush(tableau, Index_tab)
         });
         // Event for the next action Street
         nextStreet.addEventListener("click", function () {
@@ -332,7 +307,9 @@
             update_pot(list)
             console.log(Index_tab)
             displayAction(list, street, Index_tab);
-
+            displayLow(tableau, Index_tab)
+            displayHand(decision_json, Index_tab)
+            displayFlush(tableau, Index_tab)
 
         });
 
@@ -400,6 +377,9 @@
             updatelist(list, currentActionIndex)
             update_pot(list)
             displayAction(list, street, Index_tab);
+            displayLow(tableau, Index_tab)
+            displayHand(decision_json, Index_tab)
+            displayFlush(tableau, Index_tab)
         });
 
         // Disable the previous Street at the beginning
@@ -593,36 +573,94 @@
                 }
             };
             actionHtml += "</div>"
-            
-            tableContainer.innerHTML = actionHtml;
-        }
-        Low_hand_odds = ""
-        Low_hand_odds = displayLow(tableau, Index_tab)
-        flush_odds = ""
-        flush_odds = displayFlush(tableau, Index_tab)
-        lowtab.innerHTML = Low_hand_odds;
-        flush.innerHTML = flush_odds;
-        function displayLow(t, index) {
-            tab_html ="<table>"
-            for (let pas = 0; pas < t[index][1].length; pas++) {
+            if (index == 0) {
+                actionHtml +="<form>"
+                actionHtml +="<h2>What action should you take in this position ?</h2>"
+                actionHtml +="<label for=\"q1_option1\">"
+                actionHtml +="<input type=\"radio\" name=\"q1\" id=\"q1_option1\" value=\"option1\">"
+                actionHtml += "continue"
+                actionHtml +="</label>"
+                    actionHtml +="<label for=\"q1_option2\">"
+                        actionHtml +="<input type=\"radio\" name=\"q1\" id=\"q1_option2\" value=\"option2\">"
+                            actionHtml +="fold"
+                    actionHtml +="</label>"
 
-                tab_html += "<tr><td>" + t[index][1][pas][0] + " </td>"
-                tab_html += "<td>" + t[index][1][pas][1] + "</td></tr>"
-
+                            actionHtml +="<input type=\"submit\" value=\"submit response\">"
+                    actionHtml +="</form>"
             }
+            tableContainer.innerHTML = actionHtml;
+            if (index == 0) { 
+            document.querySelector('form').addEventListener('submit', function (event) {
+                event.preventDefault();
 
-            tab_html += "</table>"
-            return tab_html
+
+                var q1Answer = document.querySelector('input[name="q1"]:checked');
+
+
+                console.log(decision_json)
+                if (q1Answer.value == 'option1') {
+
+                    if (decision_json[0] == 0) {
+                        q1Answer.parentElement.classList.add('correct');
+                    }
+                    else {
+                        q1Answer.parentElement.classList.add('incorrect');
+                    }
+                }
+                else {
+                    if (decision_json[0] == -1) {
+                        q1Answer.parentElement.classList.add('correct');
+                    }
+                    else {
+                        q1Answer.parentElement.classList.add('incorrect');
+                    }
+
+                }
+            });
+            }
         }
         
+        function displayLow(t, index) {
+           
+            var hand = -1
+            low_html ="<table>"
+            for (let pas = 0; pas < t[index][1].length; pas++) {
+                if (t[index][1][pas][1] > 0.1) { 
+                low_html += "<tr><td>" + t[index][1][pas][0] + " </td>"
+                low_html += "<td>" + t[index][1][pas][1] + "</td></tr>"
+                }
+                if (t[index][1][pas][1] == 1) {
+                    hand = pas
+                }
+            }
+            
+            low_html += "</table>"
+            lowtab.innerHTML = low_html;
+        }
+        function displayHand(decision_json, index) {
+
+            
+            hand_html = "<table class= \"hand\">"
+            if (index == 1) {
+                hand_html += "<tr><td> Odd to have a better High hand</td><td> what is the biggest hand with the biggest odd that allow me to win </td><td> Odd to have it</td><td> Odd to have a better low hand</td><td> what is the lowest hand with the biggest odd that allow me to win </td><td> Odd to have it</td></tr>"
+                hand_html += "<tr><td>" + decision_json[1][0][0] + "</td><td  class=\"cards\">" + displaycards(decision_json[1][0][1]) + "</td ><td>" + decision_json[1][0][2] + "</td><td>" + decision_json[1][1][0] + "</td><td class=\"cards\">" + displaycards(decision_json[1][1][1]) + "</td><td>" + decision_json[1][1][2] + "</td></tr>"
+            }
+            else if (index == 2) {
+                hand_html += "<tr><td> Odd to have a better High hand</td><td> what is the biggest hand with the biggest odd that allow me to win </td><td> Odd to have it</td><td> Odd to have a better low hand</td><td> what is the lowest hand with the biggest odd that allow me to win </td><td> Odd to have it</td></tr>"
+                hand_html += "<tr><td>" + decision_json[2][0][0] + "</td><td class=\"cards\" > " + displaycards(decision_json[2][0][1]) + "</td ><td>" + decision_json[2][0][2] + "</td><td>" + decision_json[2][1][0] + "</td><td class=\"cards\">" + displaycards(decision_json[2][1][1]) + "</td><td>" + decision_json[2][1][2] + "</td></tr>"
+            }
+            hand_html += "</table>"
+            handtab.innerHTML = hand_html;
+        }
         function displayFlush(t, index) {
-            tab_html = "<table>"
-            tab_html += "<tr><td>s</td><td>" + t[index][0][0][14] + " </td>"
-            tab_html += "<tr><td>h</td><td>" + t[index][0][1][14] + " </td>"
-            tab_html += "<tr><td>d</td><td>" + t[index][0][2][14] + " </td>"
-            tab_html += "<tr><td>c</td><td>" + t[index][0][3][14] + " </td>"
-            tab_html += "</table>"
-            return tab_html
+            flush_html = "<table>"
+            flush_html += "<tr><td>s</td><td>" + t[index][0][0][14] + " </td>"
+            flush_html += "<tr><td>h</td><td>" + t[index][0][1][14] + " </td>"
+            flush_html += "<tr><td>d</td><td>" + t[index][0][2][14] + " </td>"
+            flush_html += "<tr><td>c</td><td>" + t[index][0][3][14] + " </td>"
+            flush_html += "</table>"
+            flush.innerHTML = flush_html;
+
         }
     </script>
 </body>

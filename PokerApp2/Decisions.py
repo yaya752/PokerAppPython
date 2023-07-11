@@ -1,5 +1,5 @@
-from decimal import DecimalException
-from Odds import odd_better_Flush, odd_full_house,odd_two_pairs, odd_better_pair,odd_better_three_of_kind, odd_better_four_of_kind, odd_better_Straight
+
+from Odds import odd_better_Flush, odd_full_house,odd_two_pairs, odd_better_pair,odd_better_three_of_kind, odd_better_four_of_kind, odd_better_Straight, better_low_hand
 def Card_To_Html(hand):
     #Intialisation of the variable
     Html_Cards = []
@@ -207,7 +207,7 @@ def better_pair(card,occur,street,list_numplayers):
        odd_max = odd_max_straight
     return (odd,best_hand,odd_max)
 # To do: je dois transformer les résultats en une probabilité d'avoir mieux ( ie; flush -> meilleur flush idem low)
-def quiz_4th(decision,tab_player,tab_prec_player,main_player,occur, street, list_numplayers):
+def quiz_4th(tab_player,tab_prec_player,main_player,occur, street, list_numplayers, low_hand_odds):
     player_name = []
     player_possibilities =[]
     possibilities = []
@@ -215,6 +215,12 @@ def quiz_4th(decision,tab_player,tab_prec_player,main_player,occur, street, list
     odd = 0.
     best_hand = []
     odd_max = 0.
+
+    odd_low = 0.
+    lowest_hand = []
+    odd_max_low = 0.
+    i_lowest = 13
+
     num_cards = ['2','3','4','5','6','7','8','9','T','J','Q','K','A']
     card_max = ''
     best_opponent_hand = -1
@@ -224,11 +230,15 @@ def quiz_4th(decision,tab_player,tab_prec_player,main_player,occur, street, list
         aggressive_prec = tab_prec_player[j][3]
         if player[0] != main_player:
             if player[0] in player_name:
-                hand = player[1]
+                '''hand = player[1]
                 if round2 == 0:
                     decision.append(player_possibilities)
-                    possibilities.append((odd,best_hand,odd_max))
+                    possibilities.append([[odd,best_hand,odd_max],[odd_low,lowest_hand,odd_max_low]])
+                    
                     player_possibilities = []
+                    odd_low = 0.
+                    lowest_hand = []
+                    odd_max_low = 0.
                     odd = 0.
                     best_hand = []
                     odd_max = 0.
@@ -262,26 +272,29 @@ def quiz_4th(decision,tab_player,tab_prec_player,main_player,occur, street, list
                         best_opponent_hand == 2
                         (odd,best_hand,odd_max,card_max)=(odd_pair,best_hand_pair,odd_max_pair,card_max_pair)
                 else:
-                    player_possibilities.append([player[0],Card_To_Html(hand),'might have low3'])
+                    
+                    (odd_low1,lowest_hand1,odd_max1,i_low1) = better_low_hand(low_hand_odds,occur,hand)
+                    if i_low1 < i_lowest:
+                        odd_low = odd_low1
+                        lowest_hand = lowest_hand1
+                        odd_max_low = odd_max1'''
             else:
                 player_name.append(player[0])
                 hand = player[1]
                 (result_flush,odd_flush,best_hand_flush,odd_max_flush,card_max_flush)  = flush_4th(hand,aggressive,occur,street,list_numplayers)
                 (result_three,odd_three,best_hand_three,odd_max_three,card_max_three) = Three_of_kind_4th(hand,aggressive_prec, aggressive,occur,street,list_numplayers)
                 (result_pair,odd_pair,best_hand_pair,odd_max_pair,card_max_pair) = pair_4th(hand,aggressive_prec,aggressive,occur,street,list_numplayers)
+                
                 if result_flush:
-                    print("1")
-                    print(best_opponent_hand)
+                    
                     if best_opponent_hand == 4:
                         if num_cards.index(card_max_flush[:-1]) > num_cards.index(card_max[:-1]):
                             (odd,best_hand,odd_max,card_max)=(odd_flush,best_hand_flush,odd_max_flush,card_max_flush)
-                            print((odd_flush,best_hand_flush,odd_max_flush,card_max_flush))
                     elif best_opponent_hand < 4:
                         best_opponent_hand = 4
                         (odd,best_hand,odd_max,card_max)=(odd_flush,best_hand_flush,odd_max_flush,card_max_flush)
-                        print((odd_flush,best_hand_flush,odd_max_flush,card_max_flush))
                 elif result_three:
-                    print("2")
+                    
                     if best_opponent_hand == 3:
                         if num_cards.index(card_max_three[:-1]) > num_cards.index(card_max[:-1]):
                             (odd,best_hand,odd_max,card_max)=(odd_three,best_hand_three,odd_max_three,card_max_three)
@@ -289,7 +302,7 @@ def quiz_4th(decision,tab_player,tab_prec_player,main_player,occur, street, list
                         best_opponent_hand == 3
                         (odd,best_hand,odd_max,card_max)=(odd_three,best_hand_three,odd_max_three,card_max_three)
                 elif result_pair:
-                    print("3")
+                    
                     if best_opponent_hand == 2:
                         if num_cards.index(card_max_pair[:-1]) > num_cards.index(card_max[:-1]):
                             (odd,best_hand,odd_max,card_max)=(odd_three,best_hand_three,odd_max_three,card_max_three)
@@ -297,10 +310,12 @@ def quiz_4th(decision,tab_player,tab_prec_player,main_player,occur, street, list
                             best_opponent_hand == 2
                             (odd,best_hand,odd_max,card_max)=(odd_pair,best_hand_pair,odd_max_pair,card_max_pair)
                 else:
-                    player_possibilities.append([player[0],Card_To_Html(hand),'might have low3'])
-    decision.append(player_possibilities)
-    print(player_possibilities)
-    return (decision,possibilities ,odd,best_hand,odd_max)
+                    (odd_low1,lowest_hand1,odd_max1,i_low1) = better_low_hand(low_hand_odds,occur,hand)
+                    if i_low1 < i_lowest:
+                        odd_low = odd_low1
+                        lowest_hand = lowest_hand1
+                        odd_max_low = odd_max1
+    return ([[odd,Card_To_Html(best_hand),odd_max],[odd_low,Card_To_Html(lowest_hand),odd_max_low]])
 # 5th Street
 def pair_5th(hand,aggresive_prec,aggressive,occur,street,list_numplayers):
     (result,odd,best_hand,odd_max,card_max) = (False,0,[],0,'')
@@ -367,7 +382,7 @@ def flush_5th(hand,aggressive,occur,street,list_numplayers):
                 (odd,best_hand,odd_max) = better_flush(card_max,occur,street,list_numplayers)
     return (result,odd,best_hand,odd_max,card_max)
 
-def quiz_5th(occur,decision,tab_player,tab_prec_player,main_player,street,list_numplayers):
+def quiz_5th(occur,tab_player,tab_prec_player,main_player,street,list_numplayers ,low_hand_odds):
     player_name = []
     player_possibilities =[]
     possibilities = []
@@ -375,6 +390,12 @@ def quiz_5th(occur,decision,tab_player,tab_prec_player,main_player,street,list_n
     odd = 0.
     best_hand = []
     odd_max = 0.
+
+    odd_low = 0.
+    lowest_hand = []
+    odd_max_low = 0.
+    i_lowest = 13
+
     num_cards = ['2','3','4','5','6','7','8','9','T','J','Q','K','A']
     card_max = ''
     best_opponent_hand = -1
@@ -384,14 +405,18 @@ def quiz_5th(occur,decision,tab_player,tab_prec_player,main_player,street,list_n
         aggressive_prec = tab_prec_player[j][3]
         if player[0] != main_player:
             if player[0] in player_name:
-                hand = player[1]
+                '''hand = player[1]
                 if round2 == 0:
                     decision.append(player_possibilities)
                     player_possibilities = []
-                    possibilities.append((odd,best_hand,odd_max))
+                    possibilities.append((odd,Card_To_Html(best_hand),odd_max))
                     odd = 0.
                     best_hand = []
                     odd_max = 0.
+                    odd_low = 0.
+                    lowest_hand = []
+                    odd_max_low = 0.
+                    odd = 0.
                     card_max = ''
                     best_opponent_hand = -1
                     round2 +=1
@@ -420,7 +445,11 @@ def quiz_5th(occur,decision,tab_player,tab_prec_player,main_player,street,list_n
                         best_opponent_hand == 2
                         (odd,best_hand,odd_max,card_max)=(odd_pair,best_hand_pair,odd_max_pair,card_max_pair)
                 else:
-                    player_possibilities.append([player[0],Card_To_Html(hand),'might have low3'])
+                    (odd_low1,lowest_hand1,odd_max1,i_low1) = better_low_hand(low_hand_odds,occur,hand)
+                    if i_low1 < i_lowest:
+                        odd_low = odd_low1
+                        lowest_hand = lowest_hand1
+                        odd_max_low = odd_max1'''
             else:
                 player_name.append(player[0])
                 hand = player[1]
@@ -449,9 +478,12 @@ def quiz_5th(occur,decision,tab_player,tab_prec_player,main_player,street,list_n
                         best_opponent_hand == 2
                         (odd,best_hand,odd_max,card_max)=(odd_pair,best_hand_pair,odd_max_pair,card_max_pair)
                 else:
-                    player_possibilities.append([player[0],Card_To_Html(hand),'might have low3'])
-    decision.append(player_possibilities)
-    return (decision,possibilities,odd,best_hand,odd_max)
+                    (odd_low1,lowest_hand1,odd_max1,i_low1) = better_low_hand(low_hand_odds,occur,hand)
+                    if i_low1 < i_lowest:
+                        odd_low = odd_low1
+                        lowest_hand = lowest_hand1
+                        odd_max_low = odd_max1
+    return ([[odd,Card_To_Html(best_hand),odd_max],[odd_low,Card_To_Html(lowest_hand),odd_max_low]])
 
 
 def odds_better_hand(occur):

@@ -574,14 +574,18 @@ def Play(game_file,main_player,list_numplayers):
                     tab_prec_player = tab_player
                     tab_player = []
                 elif time == 1:
-                    (decision,possibilities_4th,odd_4th,best_hand_4th,odd_max_4th)  = quiz_4th(decision,tab_player,tab_prec_player,main_player,occur,words[1],list_numplayers)
-                    print("4th",possibilities_4th ,odd_4th, best_hand_4th,odd_max_4th)
+                    
+                    ([[odd_4th,best_hand_4th,odd_max_4th],[odd_low_4th,lowest_hand_4th,odd_max_low_4th]])  = quiz_4th(tab_player,tab_prec_player,main_player,occur,words[1],list_numplayers, low_hand_odds)
+                    print("4th",odd_4th,best_hand_4th,odd_max_4th , '////' , odd_low_4th,lowest_hand_4th,odd_max_low_4th)
                     add(tab_player,tab_prec_player)
+                    decision.append([[odd_4th,best_hand_4th,odd_max_4th],[odd_low_4th,lowest_hand_4th,odd_max_low_4th]])
                     tab_prec_player = sumarry_tab(tab_player)
                     tab_player = []
                 elif time == 2:
-                    (decision,possibilities_5th,odd_5th,best_hand_5th,odd_max_5th) = quiz_5th(occur,decision,tab_player,tab_prec_player,main_player,words[1],list_numplayers)
-                    print("5th",possibilities_5th,odd_5th,best_hand_5th,odd_max_5th)
+                    
+                    ([[odd_5th,best_hand_5th,odd_max_5th],[odd_low_5th,lowest_hand_5th,odd_max_low_5th]]) = quiz_5th(occur,tab_player,tab_prec_player,main_player,words[1],list_numplayers,low_hand_odds)
+                    decision.append([[odd_5th,best_hand_5th,odd_max_5th],[odd_low_5th,lowest_hand_5th,odd_max_low_5th]])
+                    print("5th",odd_5th,best_hand_5th,odd_max_5th , '////' , odd_low_5th,lowest_hand_5th,odd_max_low_5th)
                     add(tab_player,tab_prec_player)
                     tab_prec_player = sumarry_tab(tab_player)
                     tab_player = []

@@ -44,7 +44,7 @@ input[type="radio"] {
 }
 
 input[type="submit"] {
-    display: block;
+    display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
     background-color: #333;
@@ -92,23 +92,26 @@ input[type="submit"] {
 .dropdown span {
     display: block;
     padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
+    background-color: transparent;
+    color: transparent;
     font-size: 18px;
     transition: background-color 0.3s ease;
 }
 
 .dropdown:hover span {
-    background-color: #555;
+    background-color: transparent;
 }
-
+.hand {
+    background-color: transparent;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2)
+}
 .dropdown-content {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: #f9f9f9;
+    background-color: transparent;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     padding: 10px;
@@ -274,7 +277,7 @@ div {
     border: 0px;
     margin: 0px;
     padding: 0px;
-    background-color: white;
+    background-color: lightslategray;
     display: flex;
     overflow: hidden;
     align-items: baseline;
@@ -284,36 +287,32 @@ div {
     font-size: 90px;
 }
 .s {
-    
     align-items: center;
-    background-color: white;
+    background-color: lightslategray;
     height: 100%;
     width: 15%;
     color: black;
 }
 
 .h {
-    
     align-items: center;
-    background-color: white;
+    background-color: lightslategray;
     height: 100%;
     width: 15%;
     color: red;
 }
 
 .d {
-    
     align-items: center;
-    background-color: white;
+    background-color: lightslategray;
     height: 100%;
     width: 15%;
     color: blue;
 }
 
 .c {
-    
     align-items: center;
-    background-color: white;
+    background-color: lightslategray;
     height: 100%;
     width: 15%;
     color: green;
