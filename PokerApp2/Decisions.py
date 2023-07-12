@@ -1,4 +1,3 @@
-
 from Odds import odd_better_Flush, odd_full_house,odd_two_pairs, odd_better_pair,odd_better_three_of_kind, odd_better_four_of_kind, odd_better_Straight, better_low_hand
 def Card_To_Html(hand):
     #Intialisation of the variable
@@ -103,7 +102,7 @@ def flush_4th(hand,aggressive,occur,street,list_numplayers):
 
             (odd,best_hand,odd_max) = better_flush(card_max,occur,street,list_numplayers)
     return (result,odd,best_hand,odd_max,card_max)
-#ok² 
+#okï¿½ 
 def is_straight_flush(best_hand):
     num_cards = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     royal_flush = ['A','T','J','C','Q','K']
@@ -206,7 +205,7 @@ def better_pair(card,occur,street,list_numplayers):
        best_hand =best_hand_straight
        odd_max = odd_max_straight
     return (odd,best_hand,odd_max)
-# To do: je dois transformer les résultats en une probabilité d'avoir mieux ( ie; flush -> meilleur flush idem low)
+# To do: je dois transformer les rï¿½sultats en une probabilitï¿½ d'avoir mieux ( ie; flush -> meilleur flush idem low)
 def quiz_4th(tab_player,tab_prec_player,main_player,occur, street, list_numplayers, low_hand_odds):
     player_name = []
     player_possibilities =[]

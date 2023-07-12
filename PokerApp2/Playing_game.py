@@ -1,5 +1,3 @@
-from re import T
-from tkinter import W
 from Odds import Table, Append_cards, Calculate_odds
 from Decisions import third_street_decision,add,index_poss,sumarry_tab, quiz_4th, quiz_5th
 
@@ -48,7 +46,7 @@ def Generalities(line):
 ########################################################################################
 def file_index(game_file):
     #Intialisation of the variable
-    file_name ='Game_File\\' + game_file #change Game_File\\ into Game_File\\ if you are on linux
+    file_name ='./Game_File/' + game_file #change ./Game_File/ into ./Game_File/ if you are on linux
     lines = []
     i = 0
 
@@ -437,7 +435,7 @@ def Action(lines,line,street,street_index, occur, main_player,tab_player,order):
     # words[1] is generally an action 
     action = [words[0][:-1],words[1]]
     # We read the line of the action and if it feats a specific patern we can acees to all the information we nead 
-    # pour mettre à jour la liste des joueurs on crèe les listes quand les cartes sont distribué et on incrémente un compteur pour savoir dans quel ordre les joeurs ont joué
+    # pour mettre ï¿½ jour la liste des joueurs on crï¿½e les listes quand les cartes sont distribuï¿½ et on incrï¿½mente un compteur pour savoir dans quel ordre les joeurs ont jouï¿½
     if words[0] == 'Dealt':
         street_words = lines[street].split()
         tab_player.append([words[2],Card_Street(street_words[1],street_index, lines, words[2],occur,main_player),-1,0,[]])

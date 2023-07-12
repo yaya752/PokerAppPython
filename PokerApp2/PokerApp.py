@@ -1,6 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
-import os
-
 from Playing_game import Summary_Chips ,Average, Generalities, Summary_Hands, Init, Play
 from Odds import Table
 
@@ -41,7 +39,7 @@ def index():
 
 @app.route('/Summary')
 def Summary():
-    uploads_dir = os.path.join(app.root_path, 'Game_File\\')
+    uploads_dir = os.path.join(app.root_path, './Game_File/')
     files = os.listdir(uploads_dir)
     session['files'] = files
     main_player = session['main_player']
@@ -52,7 +50,7 @@ def Summary():
     for f in files:
         summary_table.append(Summary_Chips(f,main_player))
         hand_table.append(Summary_Hands(f,main_player) )  
-        with open("Game_File\\" + f, "r") as f:
+        with open("./Game_File/" + f, "r") as f:
             line = f.readline()
             first_lines.append(line.strip())
             generalities_list.append(Generalities(line.strip()))
@@ -105,7 +103,6 @@ def phase_js():
 
 @app.route('/Phases/phase3', methods=['GET', 'POST'])
 def phase3():
-    
     return render_template('Phase3.html')
 if __name__ == '__main__':
     app.run(host ="0.0.0.0",debug= True)
