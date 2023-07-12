@@ -108,4 +108,4 @@ def phase3():
     
     return render_template('Phase3.html')
 if __name__ == '__main__':
-    app.run(host ="0.0.0.0",debug= True)
+    app.run(host ="77.68.30.135",debug= True, port = 5000)
