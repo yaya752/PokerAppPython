@@ -6,6 +6,6 @@ Run pip3 install Flask
 
 WORKDIR /studapp
 
-copy . .
+copy . /studapp
 EXPOSE 5000
 CMD [ "python3", "./PokerApp.py"]
