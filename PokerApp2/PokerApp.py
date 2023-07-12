@@ -35,6 +35,8 @@ def save():
 def index():
     if request.method == 'POST':
         main_player = request.form['main_player']
+        if main_player != 'Hero': 
+            main_player = 'Hero'
         session['main_player'] = main_player
         return redirect(url_for('Summary'))
     return render_template('index.html')
