@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
+import os
+
 from Playing_game import Summary_Chips ,Average, Generalities, Summary_Hands, Init, Play
 from Odds import Table
 
@@ -103,6 +105,7 @@ def phase_js():
 
 @app.route('/Phases/phase3', methods=['GET', 'POST'])
 def phase3():
+    
     return render_template('Phase3.html')
 if __name__ == '__main__':
     app.run(host ="0.0.0.0",debug= True)
