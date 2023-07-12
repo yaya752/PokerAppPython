@@ -8,4 +8,4 @@ WORKDIR /studapp
 
 copy . .
 
-CMD python3 ./PokerApp.py
+CMD [ "python3", "-m", "flask","run" ,"--host = 0.0.0.0"]
