@@ -31,7 +31,7 @@ def save():
         return redirect(url_for('phase', file_name=file_name, main_player=main_player))
     return render_template('save.html')
 
-@app.route('/', methods=['GET', 'POST']) # define the main route (first page)
+@app.route('/name', methods=['GET', 'POST']) # define the main route (first page)
 def index():
     if request.method == 'POST':
         main_player = request.form['main_player']
@@ -41,27 +41,64 @@ def index():
         return redirect(url_for('Summary'))
     return render_template('index.html')
 
+@app.route('/', methods=['GET', 'POST']) # define the main route (first page)
+def upload_file():
+    if request.method == 'POST':
+        uploaded_files = request.files.getlist('files')
+        print(uploaded_files)
+        for file in uploaded_files:
+            
+            if file.filename =='' :
+                session['new'] = False  
+            else:
+                file.save('./New_File/' + file.filename)
+                session['new'] = True
+        
+        
+        return redirect(url_for('index'))
+    return render_template('uploads.html')
+
+
 @app.route('/Summary')
 def Summary():
-    uploads_dir = os.path.join(app.root_path, './Game_File/')
+    if session['new']:
+        path = './New_File/'
+    else:
+        path = './Game_File/'
+    uploads_dir = os.path.join(app.root_path, path)
     files = os.listdir(uploads_dir)
     session['files'] = files
+    session['path'] = path
     main_player = session['main_player']
     summary_table = []
     first_lines = []
     generalities_list = []
     hand_table = []
     for f in files:
-        summary_table.append(Summary_Chips(f,main_player))
-        hand_table.append(Summary_Hands(f,main_player) )  
-        with open("./Game_File/" + f, "r") as f:
+        summary_table.append(Summary_Chips(f,main_player,path))
+        hand_table.append(Summary_Hands(f,main_player,path) )  
+        with open(path + f, "r") as f:
             line = f.readline()
             first_lines.append(line.strip())
             generalities_list.append(Generalities(line.strip()))
     mean = round(Average(summary_table),2)
     return render_template('summary.html',files=files,first_lines = first_lines,hand_table = hand_table, generalities_list = generalities_list ,summary_table = summary_table, main_player = main_player, mean = mean)
-'''
-Function Name: phase
+
+@app.route('/Delete/<filename>')
+def delete_file(filename):
+    path = session['path']
+    if path != "./Game_File/":
+        file_path = os.path.join(path, filename)
+        os.remove(file_path)
+        uploads_dir = os.path.join(app.root_path, path)
+        files = os.listdir(uploads_dir)
+        if len(files) == 0:
+            return redirect(url_for('upload_file'))
+        else:
+            return redirect(url_for('Summary'))
+    else:
+        return redirect(url_for('Summary'))
+'''Function Name: phase
 
 Parameters:
  - file_name : Name of the text file that we want to use to generate a new game
@@ -80,9 +117,10 @@ def phase(index):
     main_player = session['main_player']
     session['file_name'] = file_name
     session['main_player'] = main_player
+    path = session['path'] 
     decision = -1
-    (initialisation,list_numplayers) = Init(file_name)
-    (list_actions,tab_street,decision) = Play(file_name,main_player,list_numplayers)    
+    (initialisation,list_numplayers) = Init(file_name,path)
+    (list_actions,tab_street,decision) = Play(file_name,main_player,list_numplayers,path)    
     return render_template('Phase.html',list_actions = list_actions,
                           initialisation = initialisation, tab_street = tab_street , decision = decision)
 '''
@@ -104,10 +142,10 @@ def serve_js():
 @app.route('/static/Phase.js')
 def phase_js():
     return send_from_directory(app.static_folder, 'Phase.js')
-
+ 
 @app.route('/Phases/phase3', methods=['GET', 'POST'])
 def phase3():
     
     return render_template('Phase3.html')
 if __name__ == '__main__':
-    app.run(host ="0.0.0.0")
+    app.run(host ="0.0.0.0", debug=True)

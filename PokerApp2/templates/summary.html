@@ -19,41 +19,42 @@
     <table>
         <thead>
             <tr>
-                <th>File Name</th>
                 <th>Hand</th>
                 <th>Times</th>
                 <th>Cards</th>
                 <th>Summary</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
             {% for i in range(files|length) %}
-            <tr onclick="window.location.href='/Play/{{ i }}';">
-                <td>{{ files[i] }}</td>
-                <td>{{ generalities_list[i][0] }}</td>
-                <td>{{ generalities_list[i][2][1] }}</td>
-                <td style="font-size: 100px">
+            <tr>
+                
+                <td onclick="window.location.href='/Play/{{ i }}';">{{ generalities_list[i][0] }}</td>
+                <td onclick="window.location.href='/Play/{{ i }}';">{{ generalities_list[i][2][1] }}</td>
+                <td style="font-size: 100px" onclick="window.location.href='/Play/{{ i }}';">
 
                     {% for j in range(hand_table[i]|length) %}
-                        {% if hand_table[i][j][1] == 0 %}
+                    {% if hand_table[i][j][1] == 0 %}
                     <span class="s">&{{ hand_table[i][j][0] }} </span>
-                    
-                        {% elif hand_table[i][j][1] == 1 %}
-                            <span class="h">&{{ hand_table[i][j][0] }} </span>
-                        {% elif hand_table[i][j][1] == 2 %}
-                            <span class="d">&{{ hand_table[i][j][0] }} </span>
-                    
-                        {% else %}
-                            <span class="c">&{{ hand_table[i][j][0] }} </span> 
-                        {% endif %}
-                    
-                        {% endfor %}
+
+                    {% elif hand_table[i][j][1] == 1 %}
+                    <span class="h">&{{ hand_table[i][j][0] }} </span>
+                    {% elif hand_table[i][j][1] == 2 %}
+                    <span class="d">&{{ hand_table[i][j][0] }} </span>
+
+                    {% else %}
+                    <span class="c">&{{ hand_table[i][j][0] }} </span>
+                    {% endif %}
+
+                    {% endfor %}
                 </td>
                 {% if summary_table[i] >= 0 %}
-                <td style="color:green; font-size: 20px">{{ summary_table[i] }}</td>
+                <td style="color:green; font-size: 20px"  onclick="window.location.href='/Play/{{ i }}';">{{ summary_table[i] }}</td>
                 {% else %}
-                <td style="color:red; font-size: 20px">{{ summary_table[i] }}</td>
+                <td style="color:red; font-size: 20px" onclick="window.location.href='/Play/{{ i }}';" >{{ summary_table[i] }}</td>
                 {% endif %}
+                <td onclick="window.location.href='/Delete/{{ files[i] }}';">delete</td>
             </tr>
             {% endfor %}
         </tbody>

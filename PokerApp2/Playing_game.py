@@ -44,9 +44,9 @@ def Generalities(line):
 #       - This function is used in other function to browse into the file easly        #
 #                                                                                      #
 ########################################################################################
-def file_index(game_file):
+def file_index(game_file,path):
     #Intialisation of the variable
-    file_name ='./Game_File/' + game_file #change ./Game_File/ into ./Game_File/ if you are on linux
+    file_name =path + game_file #change ./Game_File/ into ./Game_File/ if you are on linux
     lines = []
     i = 0
 
@@ -175,7 +175,7 @@ def Count_Chips(player,lines, idSummary):
 #                                                                                      #
 ########################################################################################
 def Average(lst):
-    return sum(lst) / len(lst)
+        return sum(lst) / len(lst)
 
 
 ########################################################################################
@@ -220,9 +220,9 @@ def Max_Bet(line):
 #           player put on the table (if he lost or won lot or not)                     #
 #                                                                                      #
 ########################################################################################
-def Summary_Chips(game_file,main_player):
+def Summary_Chips(game_file,main_player,path):
     # For this function we need the list of line of the file and the index of the street so we used the file_index function
-    (lines,street_index) = file_index(game_file)
+    (lines,street_index) = file_index(game_file,path)
     idSummary = street_index[-1]
     # We juste need to look at the summary part because we can find the necessary to calculate how many chips did the player played during the game
     i = idSummary
@@ -341,9 +341,9 @@ def Card_To_Html(hand):
 #       - extrat the last hand of the player                                           #
 #                                                                                      #
 ########################################################################################
-def Summary_Hands(game_file,main_player):
+def Summary_Hands(game_file,main_player,path):
     # For this function we need the list of line of the file and the index of the street so we used the file_index function
-    (lines,street_index) = file_index(game_file)
+    (lines,street_index) = file_index(game_file,path)
     # We juste need to look at the summary part because we can find the necessary to calculate how many chips did the player played during the game
     i = street_index[-1] # street_index[-1] is the index of the summary
     occur =Table() 
@@ -381,9 +381,9 @@ def Summary_Hands(game_file,main_player):
 #       - Initialise the game                                                          #
 #                                                                                      #
 ########################################################################################
-def Init(game_file):
+def Init(game_file,path):
     # For this function we need the list of line of the file and the index of the street so we used the file_index function
-    (lines,street_index) = file_index(game_file)
+    (lines,street_index) = file_index(game_file,path)
     #Intialisation of the variable
     Pot = 0
     players = 0
@@ -539,14 +539,14 @@ def Action(lines,line,street,street_index, occur, main_player,tab_player,order):
 #       - recreate the game and add odds and quiz                                      #
 #                                                                                      #
 ########################################################################################
-def Play(game_file,main_player,list_numplayers):
+def Play(game_file,main_player,list_numplayers,path):
     #Intialisation of the variable
     Players_Actions = []
     occur = Table()
     tab_street = []
     tab_player = [] #List of info about player, [[name,list_cards,position during the street, if he has been aggressive, what hand he can play],....]
     tab_prec_player = [] #Same as before but for the previous street  
-    (lines,street_index) = file_index(game_file)
+    (lines,street_index) = file_index(game_file,path)
     i = street_index[0]
     street = i
     time = 0 # where we are in the game

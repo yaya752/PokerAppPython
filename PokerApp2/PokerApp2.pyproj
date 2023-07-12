@@ -43,6 +43,7 @@
     <Content Include="static\Phase.css" />
     <Content Include="static\Phase.js" />
     <Content Include="static\summary.css" />
+    <Content Include="templates\upload.html" />
     <Content Include="templates\phase_tab_odds.html" />
     <Content Include="templates\Phase_test.html" />
     <Content Include="templates\Phase.html" />
@@ -57,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Game_File\" />
+    <Folder Include="New_File\" />
     <Folder Include="static\" />
     <Folder Include="templates\" />
   </ItemGroup>

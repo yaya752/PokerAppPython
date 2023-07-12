@@ -1,41 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Liste des fichiers</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Files List</title>
     <style>
-        /* Style for the list */
-        ul {
-            list-style-type: disc;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #333;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
         }
 
-        /* Style for each item in the list */
-        li {
-            float: left;
-            border-right: 1px solid #bbb;
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
         }
 
-            /* Style for the last item in the list */
-            li:last-child {
-                border-right: none;
+        .file-upload {
+            text-align: center;
+        }
+
+            .file-upload input[type="file"] {
+                display: none;
             }
 
-        /* Style for the active link */
-        .active {
-            background-color: #4CAF50;
+            .file-upload label {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+                .file-upload label:hover {
+                    background-color: #45a049;
+                }
+
+            .file-upload input[type="submit"] {
+                margin-top: 20px;
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+                .file-upload input[type="submit"]:hover {
+                    background-color: #45a049;
+                }
+
+        #selected-file {
+            margin-top: 10px;
         }
     </style>
+    <script>
+        function showSelectedFiles(event) {
+            var input = event.target;
+            var output = document.getElementById('selected-file');
+            var fileNames = "";
+
+            for (var i = 0; i < input.files.length; i++) {
+                fileNames += input.files[i].name.slice(0,-4) + ", ";
+            }
+
+            // Remove the trailing comma and space
+            fileNames = fileNames.slice(0, -2);
+
+            output.textContent = fileNames;
+        }
+    </script>
+
 </head>
 <body>
-    <h1 style="text-align: center;">Liste des fichiers dans le dossier "uploads"</h1>
-    <ul>
-        {% for file in files %}
-        <li>{{ file }}</li>
-        {% endfor %}
-    </ul>
+    <h1>Upload Files</h1>
+    <div class="file-upload">
+        <form method="POST" action="/" enctype="multipart/form-data">
+            <label for="files">Upload File</label>
+            <input type="file" name="files" id="files" multiple onchange="showSelectedFiles(event)">
+            <input type="submit" value="Summary">
+        </form>
+        <div id="selected-file"></div>
+    </div>
 </body>
 </html>

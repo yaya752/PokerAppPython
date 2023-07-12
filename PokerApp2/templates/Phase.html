@@ -625,7 +625,7 @@
             var hand = -1
             low_html ="<table>"
             for (let pas = 0; pas < t[index][1].length; pas++) {
-                if (t[index][1][pas][1] > 0.1) { 
+                if (t[index][1][pas][1] != 0) { 
                 low_html += "<tr><td>" + t[index][1][pas][0] + " </td>"
                 low_html += "<td>" + t[index][1][pas][1] + "</td></tr>"
                 }
