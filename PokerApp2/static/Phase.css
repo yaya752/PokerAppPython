@@ -181,6 +181,9 @@ td {
     font-weight: bold;
 }
 .Button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
     align-content: center;
     align-items: center;
     justify-content: center;
