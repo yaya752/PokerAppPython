@@ -58,7 +58,7 @@ def upload_file():
                     file.save('./New_File/' + file.filename)
                     session['new'] = True
                     count += 1
-        if count == 0:
+        if count_file == 0:
             session['new'] = False
         return redirect(url_for('index'))
     return render_template('uploads.html')
