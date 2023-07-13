@@ -74,7 +74,7 @@
     <div class="file-upload">
         <form method="POST" action="/" enctype="multipart/form-data">
             <label for="files">Upload File</label>
-            <input type="file" name="files" id="files" multiple onchange="showSelectedFiles(event)">
+            <input type="file" name="files" id="files" accept=".txt" multiple onchange="showSelectedFiles(event)">
             <input type="submit" value="Summary">
         </form>
         <div id="selected-file"></div>

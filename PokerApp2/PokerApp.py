@@ -88,6 +88,10 @@ def Summary():
                 line = f.readline()
                 first_lines.append(line.strip())
                 generalities_list.append(Generalities(line.strip()))
+        else:
+            summary_table.append(-1)
+            hand_table.append([])
+            generalities_list.append([[],[],[]])
     mean = round(Average(summary_table),2)
     return render_template('summary.html',files=files,first_lines = first_lines,hand_table = hand_table, generalities_list = generalities_list ,summary_table = summary_table, main_player = main_player, mean = mean)
 
