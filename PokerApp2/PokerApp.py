@@ -57,7 +57,7 @@ def upload_file():
                 if allowed_file(file.filename):
                     file.save('./New_File/' + file.filename)
                     session['new'] = True
-                    count += 1
+                    count_file += 1
         if count_file == 0:
             session['new'] = False
         return redirect(url_for('index'))
