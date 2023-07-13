@@ -9,7 +9,10 @@ app = Flask(__name__, static_folder='static')
 
 app.secret_key = "PokerApp"
 
+ALLOWED_EXTENSIONS = {'txt'}
 
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 '''
 Function Name: save
 
@@ -45,16 +48,18 @@ def index():
 def upload_file():
     if request.method == 'POST':
         uploaded_files = request.files.getlist('files')
+        count_file = 0
         print(uploaded_files)
         for file in uploaded_files:
-            
             if file.filename =='' :
                 session['new'] = False  
             else:
-                file.save('./New_File/' + file.filename)
-                session['new'] = True
-        
-        
+                if allowed_file(file.filename):
+                    file.save('./New_File/' + file.filename)
+                    session['new'] = True
+                    count += 1
+        if count == 0:
+            session['new'] = False
         return redirect(url_for('index'))
     return render_template('uploads.html')
 
@@ -75,12 +80,14 @@ def Summary():
     generalities_list = []
     hand_table = []
     for f in files:
-        summary_table.append(Summary_Chips(f,main_player,path))
-        hand_table.append(Summary_Hands(f,main_player,path) )  
-        with open(path + f, "r") as f:
-            line = f.readline()
-            first_lines.append(line.strip())
-            generalities_list.append(Generalities(line.strip()))
+        Chips = Summary_Chips(f,main_player,path)
+        if Chips != -1:
+            summary_table.append(Summary_Chips(f,main_player,path))
+            hand_table.append(Summary_Hands(f,main_player,path) )  
+            with open(path + f, "r") as f:
+                line = f.readline()
+                first_lines.append(line.strip())
+                generalities_list.append(Generalities(line.strip()))
     mean = round(Average(summary_table),2)
     return render_template('summary.html',files=files,first_lines = first_lines,hand_table = hand_table, generalities_list = generalities_list ,summary_table = summary_table, main_player = main_player, mean = mean)
 

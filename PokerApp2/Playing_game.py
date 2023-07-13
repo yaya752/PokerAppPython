@@ -81,7 +81,8 @@ def file_index(game_file,path):
             # i = index of the current line in the lines ' s list 
             i+=1
     #return the list of lines and the list of index of the beginning of a new street
-    return (lines,street_index)
+    
+    return (lines,street_index,)
 
 ########################################################################################
 #   Function Name: raises                                                              #
@@ -221,23 +222,27 @@ def Max_Bet(line):
 #                                                                                      #
 ########################################################################################
 def Summary_Chips(game_file,main_player,path):
-    # For this function we need the list of line of the file and the index of the street so we used the file_index function
     (lines,street_index) = file_index(game_file,path)
-    idSummary = street_index[-1]
-    # We juste need to look at the summary part because we can find the necessary to calculate how many chips did the player played during the game
-    i = idSummary
+    if len(street_index) >=2:
+        # For this function we need the list of line of the file and the index of the street so we used the file_index function
+        (lines,street_index) = file_index(game_file,path)
+        idSummary = street_index[-1]
+        # We juste need to look at the summary part because we can find the necessary to calculate how many chips did the player played during the game
+        i = idSummary
     
-    while i < len(lines):
-        words = lines[i].split()
-        # if the player played all the game the amount is accessible directly in the summary part 
-        if words[2] == main_player and words[3] == "showed":
-            if words[12] == "won" :
-                return round((int(words[13][1:-1]) - Count_Chips(main_player,lines, idSummary))/Max_Bet(lines[0]),2)
-            else:
-                return round(-Count_Chips(main_player,lines, idSummary)/Max_Bet(lines[0]),2)
-        i+=1
-    # else we can go through all the file and count line by line how chips the player played
-    return round(Count_Chips(main_player,lines, idSummary)/Max_Bet(lines[0]),2)
+        while i < len(lines):
+            words = lines[i].split()
+            # if the player played all the game the amount is accessible directly in the summary part 
+            if words[2] == main_player and words[3] == "showed":
+                if words[12] == "won" :
+                    return round((int(words[13][1:-1]) - Count_Chips(main_player,lines, idSummary))/Max_Bet(lines[0]),2)
+                else:
+                    return round(-Count_Chips(main_player,lines, idSummary)/Max_Bet(lines[0]),2)
+            i+=1
+        # else we can go through all the file and count line by line how chips the player played
+        return round(Count_Chips(main_player,lines, idSummary)/Max_Bet(lines[0]),2)
+    else:
+        return -1
  
 ########################################################################################
 #   Function Name : Card_Street                                                        #
