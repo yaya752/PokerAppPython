@@ -177,7 +177,6 @@ function update_pot(list) {
     var len_list = list.length - 1;
     for (let i = 0; i < len_list; i++) {
         list[len_list] += list[i][4];
-        list[i][3] -= list[i][4];
         list[i][4] = 0;
         if (list[i][2] != 'folds') {
             list[i][2] = "";
@@ -188,11 +187,9 @@ function update_pot(list) {
 function updatelist(list, i) {
     var action = actions[i];
     var len_list = list.length - 1
-
     if (action != null) {
         var name = action[0];
         var done = action[1];
-
         for (let i = 0; i < len_list; i++) {
             if (list[i][0] == name) {
                 list[i][2] = done;
@@ -201,13 +198,16 @@ function updatelist(list, i) {
                 }
                 else if (done == 'brings') {
                     list[i][4] = action[2];
+                    list[i][3] = list[i][3] - action[2];
                 }
                 else if (done == 'raises') {
+                    list[i][3] = list[i][3] - (action[2] - list[i][4]);
                     list[i][4] = action[2];
                 }
-                else if (done == 'folds' || done == 'checks') {
-                }
+                else if (done == 'folds' || done == 'checks') {}
+                
                 else {
+                    list[i][3] = list[i][3] - action[2];
                     list[i][4] = list[i][4] + action[2];
                 }
             }
