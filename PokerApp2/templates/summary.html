@@ -7,6 +7,9 @@
 </head>
 
 <body>
+    <div class="Button1">
+        <div onclick="window.location.href='/name';">Previous</div>
+    </div>
     <h1>Summary Table {{ generalities_list[0][1][:-1] }}: {{ generalities_list[0][2][0]}}</h1>
     {% for i in range(1) %}
     {% if mean >= 0 %}
@@ -29,7 +32,7 @@
         <tbody>
             {% for i in range(files|length) %}
             <tr>
-                
+
                 <td onclick="window.location.href='/Play/{{ i }}';">{{ generalities_list[i][0] }}</td>
                 <td onclick="window.location.href='/Play/{{ i }}';">{{ generalities_list[i][2][1] }}</td>
                 <td style="font-size: 100px" onclick="window.location.href='/Play/{{ i }}';">
@@ -50,9 +53,9 @@
                     {% endfor %}
                 </td>
                 {% if summary_table[i] >= 0 %}
-                <td style="color:green; font-size: 20px"  onclick="window.location.href='/Play/{{ i }}';">{{ summary_table[i] }}</td>
+                <td style="color:green; font-size: 20px" onclick="window.location.href='/Play/{{ i }}';">{{ summary_table[i] }}</td>
                 {% else %}
-                <td style="color:red; font-size: 20px" onclick="window.location.href='/Play/{{ i }}';" >{{ summary_table[i] }}</td>
+                <td style="color:red; font-size: 20px" onclick="window.location.href='/Play/{{ i }}';">{{ summary_table[i] }}</td>
                 {% endif %}
                 <td onclick="window.location.href='/Delete/{{ files[i] }}';">delete</td>
             </tr>

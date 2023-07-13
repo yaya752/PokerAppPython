@@ -6,6 +6,9 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Phase.css') }}">
 </head>
 <body>
+    <div class="Button1">
+        <div onclick="window.location.href='/Summary';">Previous</div>
+    </div>
     <div class="Button">
         <button id="previousStreet">Previous Street</button>
         <button id="previousButton">Previous Action</button>
@@ -32,15 +35,15 @@
             </div>
 
         </div>
-        
-            <div id="HandContainer" class="page"></div>
-        
+
+        <div id="HandContainer" class="page"></div>
+
     </div>
-    
+
     <script>
         var decision_json = {{ decision| tojson }}
-        
-      
+
+
         var tableau = {{ tab_street | tojson }};
         console.log(tableau)
         var tableauxContainer = document.getElementById("tableauxContainer");
@@ -466,11 +469,11 @@
             }
             index_hero = j
             if (len > 5) {
-                
+
                 player = list[5]
-                
+
                 list[5] = list[index_hero]
-                
+
                 list[index_hero] = player
             }
             else {
@@ -480,7 +483,7 @@
             }
             console.log(list)
             for (let pas = 0; pas < 15; pas++) {
-                
+
                 if (pas == 4 || pas == 0 || pas == 8 || pas == 10 || pas == 14) {
                     actionHtml += "<div class= \"vide\"></div>";
                 }
@@ -494,12 +497,12 @@
                 else if (len <  5  && pas == 11) {
                      var len1 = list[len-1].length - 1
                      actionHtml += "<div class= \"player\"><div class=\"action\">" + list[len-1][2] + "</div><div class=\"bet\">" + list[len-1][len1] + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[len-1][0] + "</div><div class=\"chips\">" + list[len-1][3] + "</div><div class=\"cards\">" + displaycards(list[len-1][1]) + "</div></div>";
-                     
+
                 }
                 else {
-                    
+
                     var len1 = list[0].length - 1
-                    
+
                     if (i < 5 && len < 6 && list[i][0] == "Hero")
                     {
                         while (pas < 11) {
@@ -515,10 +518,10 @@
                             else {
                                 console.log("yo")
                                 actionHtml += "<div class= \"vide\"></div>";
-                                
+
                             }
-                            
-                            
+
+
                             pas++
                         }
                         if (pas == 11)
@@ -589,7 +592,7 @@
                     actionHtml +="</form>"
             }
             tableContainer.innerHTML = actionHtml;
-            if (index == 0) { 
+            if (index == 0) {
             document.querySelector('form').addEventListener('submit', function (event) {
                 event.preventDefault();
 
@@ -619,13 +622,13 @@
             });
             }
         }
-        
+
         function displayLow(t, index) {
-           
+
             var hand = -1
             low_html ="<table>"
             for (let pas = 0; pas < t[index][1].length; pas++) {
-                if (t[index][1][pas][1] != 0) { 
+                if (t[index][1][pas][1] != 0) {
                 low_html += "<tr><td>" + t[index][1][pas][0] + " </td>"
                 low_html += "<td>" + t[index][1][pas][1] + "</td></tr>"
                 }
@@ -633,13 +636,13 @@
                     hand = pas
                 }
             }
-            
+
             low_html += "</table>"
             lowtab.innerHTML = low_html;
         }
         function displayHand(decision_json, index) {
 
-            
+
             hand_html = "<table class= \"hand\">"
             if (index == 1) {
                 hand_html += "<tr><td> Odd to have a better High hand</td><td> what is the biggest hand with the biggest odd that allow me to win </td><td> Odd to have it</td><td> Odd to have a better low hand</td><td> what is the lowest hand with the biggest odd that allow me to win </td><td> Odd to have it</td></tr>"

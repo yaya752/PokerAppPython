@@ -415,8 +415,43 @@ def Init(game_file,path):
             Players_Init.append([words[2],int(words[3][1:])-ante])
             players +=1
         i+=1
-    return ([Players_Init,Pot],[players])
 
+    return ([Sort_Player(Players_Init),Pot],[players])
+def Sort_Player(player_list):
+    index_hero = -1
+    for i in range (len(player_list)):
+        if player_list[i][0] == 'Hero':
+            index_hero = i
+    new_list = []
+    j = index_hero
+    new_list.append(player_list[j])
+    if j+1 == len(player_list):
+        j=0
+    else:
+        j+=1
+    while j != index_hero:
+        new_list.append(player_list[j])
+        if j+1 == len(player_list):
+            j=0
+        else:
+            j+=1
+    length = len(player_list)
+    
+    if length == 2:
+        new_list = [new_list[1],new_list[0]]
+    elif length == 3:
+        new_list = [new_list[1],new_list[2],new_list[0]]
+    elif length == 4:
+        new_list = [new_list[1],new_list[2],new_list[3],new_list[0]]
+    elif length == 5:
+        new_list = [new_list[2],new_list[3],new_list[4],new_list[1],new_list[0]]
+    elif length == 6:
+        new_list = [new_list[2],new_list[3],new_list[4],new_list[1],new_list[5],new_list[0]]
+    elif length == 7:
+        new_list = [new_list[2],new_list[3],new_list[4],new_list[1],new_list[5],new_list[0],new_list[6]]
+    elif length == 8:
+        new_list = [new_list[2],new_list[3],new_list[4],new_list[1],new_list[5],new_list[0],new_list[6],new_list[6]]
+    return new_list
 ########################################################################################
 #   Function Name : Action                                                             #
 #                                                                                      #
@@ -442,8 +477,8 @@ def Action(lines,line,street,street_index, occur, main_player,tab_player,order):
     # words[0][:-1] name of the player
     # words[1] is generally an action 
     action = [words[0][:-1],words[1]]
-    # We read the line of the action and if it feats a specific patern we can acees to all the information we nead 
-    # pour mettre � jour la liste des joueurs on cr�e les listes quand les cartes sont distribu� et on incr�mente un compteur pour savoir dans quel ordre les joeurs ont jou�
+    # We read the line of the action and if it feats a specific patern we can access to all the information we nead 
+    # to update the list of players we create the lists when the cards are dealt and we increment a counter to know in what order the players played
     if words[0] == 'Dealt':
         street_words = lines[street].split()
         tab_player.append([words[2],Card_Street(street_words[1],street_index, lines, words[2],occur,main_player),-1,0,[]])
@@ -451,7 +486,6 @@ def Action(lines,line,street,street_index, occur, main_player,tab_player,order):
     elif words[1] == 'raises':
         i = lines.index(line)
         j = index_poss(words[0][:-1],tab_player)
-         
         if tab_player[j][2] == -1:
             tab_player[j][2] = order[0]
             tab_player[j][3]+=0
