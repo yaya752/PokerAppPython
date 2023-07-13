@@ -176,6 +176,9 @@ def Count_Chips(player,lines, idSummary):
 #                                                                                      #
 ########################################################################################
 def Average(lst):
+    if len(lst) == 0 :
+        return 0
+    else:
         return sum(lst) / len(lst)
 
 
