@@ -26,7 +26,7 @@
                 <th>Times</th>
                 <th>Cards</th>
                 <th>Summary</th>
-                <th class="Button1">Delete</th>
+                <th >Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -57,7 +57,7 @@
                 {% else %}
                 <td style="color:red; font-size: 20px" onclick="window.location.href='/Play/{{ i }}';">{{ summary_table[i] }}</td>
                 {% endif %}
-                <td onclick="window.location.href='/Delete/{{ files[i] }}';">delete</td>
+                <td onclick="window.location.href='/Delete/{{ files[i] }}';"><div class="Button1">Delete</div></td>
             </tr>
             {% endfor %}
         </tbody>
