@@ -75,7 +75,6 @@ def Summary():
     session['files'] = files
     session['path'] = path
     main_player = session['main_player']
-    session['max_bet'] = maxbet
     summary_table = []
     first_lines = []
     generalities_list = []
