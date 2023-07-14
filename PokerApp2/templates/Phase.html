@@ -16,30 +16,30 @@
         <button id="nextStreet">Next Street</button>
     </div>
     <div id="tableContainer" class="page"></div>
-
-    <div>
-        <div style='display: inline-block; margin-right: 10px;'>
-            <div class="dropdown">
-                <h1>Low odds</h1>
-                <div class="dropdown-content">
-                    <div id="lowtab" class="page"></div>
+    <!--
+        <div>
+            <div style='display: inline-block; margin-right: 10px;'>
+                <div class="dropdown">
+                    <h1>Low odds</h1>
+                    <div class="dropdown-content">
+                        <div id="lowtab" class="page"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div style='display: inline-block; margin-right: 10px;'>
-            <div class="dropdown">
-                <h1>Flush</h1>
-                <div class="dropdown-content">
-                    <div id="flush" class="page"></div>
+            <div style='display: inline-block; margin-right: 10px;'>
+                <div class="dropdown">
+                    <h1>Flush</h1>
+                    <div class="dropdown-content">
+                        <div id="flush" class="page"></div>
+                    </div>
                 </div>
+
             </div>
 
+            <div id="HandContainer" class="page"></div>
+
         </div>
-
-        <div id="HandContainer" class="page"></div>
-
-    </div>
-
+    -->
     <script>
         var decision_json = {{ decision| tojson }}
 
@@ -68,7 +68,7 @@
             return list
         }
         var list = Init()
-        
+
         function begin(list) {
             var i = 1
             while (actions[i][1] == "Dealt") {
@@ -112,7 +112,7 @@
                 if (currentActionIndex - 1 == beginindex || currentActionIndex - 1 == 0 ) {
                     street = "*** 3rd STREET ***";
                     Index_tab = 0;
-                    
+
                 }
                 if (actions[currentActionIndex][0].slice(-1) == '*') {
                     street = actions[currentActionIndex][0];
@@ -593,7 +593,7 @@
         }
 
         function displayLow(t, index) {
-            
+
             var hand = -1
             low_html ="<table>"
             for (let pas = 0; pas < t[index][1].length; pas++) {
@@ -645,7 +645,7 @@
             }
             return result
         }
-            
+
         function displayHand(decision_json, index) {
 
 
