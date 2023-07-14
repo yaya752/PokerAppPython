@@ -8,7 +8,7 @@
 
 <body>
     <div class="Button1">
-        <div onclick="window.location.href='/name';">Previous</div>
+        <div onclick="window.location.href='/';">Previous</div>
     </div>
     <h1>Summary Table {{ generalities_list[0][1][:-1] }}: {{ generalities_list[0][2][0]}}</h1>
     {% for i in range(1) %}
@@ -57,7 +57,7 @@
                 {% else %}
                 <td style="color:red; font-size: 20px" onclick="window.location.href='/Play/{{ i }}';">{{ summary_table[i] }}</td>
                 {% endif %}
-                <td  ><div onclick="window.location.href='/Delete/{{ files[i] }}';" class="Button">Delete</div></td>
+                <td><div onclick="window.location.href='/Delete/{{ files[i] }}';" class="Button">Delete</div></td>
             </tr>
             {% endfor %}
         </tbody>
