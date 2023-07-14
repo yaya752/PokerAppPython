@@ -57,7 +57,7 @@
                 {% else %}
                 <td style="color:red; font-size: 20px" onclick="window.location.href='/Play/{{ i }}';">{{ summary_table[i] }}</td>
                 {% endif %}
-                <td onclick="window.location.href='/Delete/{{ files[i] }}';" class="Button">Delete</td>
+                <td onclick="window.location.href='/Delete/{{ files[i] }}';" ><div class="Button">Delete</div></td>
             </tr>
             {% endfor %}
         </tbody>
