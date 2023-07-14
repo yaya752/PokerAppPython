@@ -354,15 +354,7 @@ div {
     width: 10%;
     color: white;
 }
-    .chips_white:hover::after {
-        content: "1 &#x20AC;"; /* Texte d'explication pour les jetons blancs */
-        position: absolute;
-        top: 100%; /* Positionnez le texte d'explication sous le jeton */
-        left: 0;
-        background-color: white; /* Couleur de fond pour le texte d'explication */
-        color: black; /* Couleur du texte d'explication */
-        padding: 10px; /* Ajoutez un peu de marge autour du texte d'explication */
-    }
+    
 .chips_red {
     font-size: 50px;
     align-items: center;
@@ -371,15 +363,7 @@ div {
     width: 10%;
     color: red;
 }
-    .chips_red:hover::after {
-        content: "5 &#x20AC;"; /* Texte d'explication pour les jetons blancs */
-        position: absolute;
-        top: 100%; /* Positionnez le texte d'explication sous le jeton */
-        left: 0;
-        background-color: white; /* Couleur de fond pour le texte d'explication */
-        color: black; /* Couleur du texte d'explication */
-        padding: 10px; /* Ajoutez un peu de marge autour du texte d'explication */
-    }
+    
 .chips_green {
     font-size: 50px;
     align-items: center;
@@ -388,15 +372,7 @@ div {
     width: 10%;
     color: green;
 }
-    .chips_green:hover::after {
-        content: "25 &#x20AC;"; /* Texte d'explication pour les jetons blancs */
-        position: absolute;
-        top: 100%; /* Positionnez le texte d'explication sous le jeton */
-        left: 0;
-        background-color: white; /* Couleur de fond pour le texte d'explication */
-        color: black; /* Couleur du texte d'explication */
-        padding: 10px; /* Ajoutez un peu de marge autour du texte d'explication */
-    }
+    
 .chips_black {
     font-size: 50px;
     align-items: center;
@@ -405,12 +381,27 @@ div {
     width: 10%;
     color: black;
 }
-    .chips_black:hover::after {
-        content: "100 &#x20AC;"; /* Texte d'explication pour les jetons blancs */
+
+    .chips_white::after,
+    .chips_red::after,
+    .chips_green::after,
+    .chips_black::after {
+        content: attr(data-tooltip); 
         position: absolute;
-        top: 100%; /* Positionnez le texte d'explication sous le jeton */
-        left: 0;
-        background-color: white; /* Couleur de fond pour le texte d'explication */
-        color: black; /* Couleur du texte d'explication */
-        padding: 10px; /* Ajoutez un peu de marge autour du texte d'explication */
+        bottom: -30px; 
+        left: 50%; 
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .chips_white:hover::after,
+    .chips_red:hover::after,
+    .chips_green:hover::after,
+    .chips_black:hover::after {
+        opacity: 1;
     }
