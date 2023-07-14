@@ -586,9 +586,11 @@ def Play(game_file,main_player,list_numplayers,path):
     Players_Actions = []
     occur = Table()
     tab_street = []
+    
     tab_player = [] #List of info about player, [[name,list_cards,position during the street, if he has been aggressive, what hand he can play],....]
     tab_prec_player = [] #Same as before but for the previous street  
     (lines,street_index) = file_index(game_file,path)
+    max_bet = Max_Bet(lines[0])
     i = street_index[0]
     street = i
     time = 0 # where we are in the game
@@ -641,4 +643,4 @@ def Play(game_file,main_player,list_numplayers,path):
                     players-=1
                 Players_Actions.append(act)
         i+=1
-    return (Players_Actions,tab_street,decision)
+    return (Players_Actions,tab_street,decision,max_bet)

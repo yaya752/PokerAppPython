@@ -76,6 +76,7 @@ def Summary():
     session['files'] = files
     session['path'] = path
     main_player = session['main_player']
+    
     summary_table = []
     first_lines = []
     generalities_list = []
@@ -87,7 +88,7 @@ def Summary():
             hand_table.append(Summary_Hands(f,main_player,path) )  
             with open(path + f, "r") as f:
                 line = f.readline()
-                session['max_bet'] =Max_Bet(line)
+                
                 first_lines.append(line.strip())
                 generalities_list.append(Generalities(line.strip()))
         else:
@@ -130,11 +131,11 @@ def phase(index):
     main_player = session['main_player']
     session['file_name'] = file_name
     session['main_player'] = main_player
-    maxbet = session['max_bet'] 
+   
     path = session['path'] 
     decision = -1
     (initialisation,list_numplayers) = Init(file_name,path)
-    (list_actions,tab_street,decision) = Play(file_name,main_player,list_numplayers,path)    
+    (list_actions,tab_street,decision,maxbet) = Play(file_name,main_player,list_numplayers,path)    
     return render_template('Phase.html',list_actions = list_actions,
                           initialisation = initialisation, tab_street = tab_street , decision = decision , maxbet = maxbet)
 '''
