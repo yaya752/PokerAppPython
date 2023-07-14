@@ -464,7 +464,7 @@
                 }
                 else if (len <  5  && pas == 11) {
                      var len1 = list[len-1].length - 1
-                     actionHtml += "<div class= \"player\"><div class=\"action\">" + list[len-1][2] + "</div><div class=\"bet\">" + list[len-1][len1]/maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[len-1][0] + "</div><div class=\"chips\">" + list[len-1][3] + "</div><div class=\"cards\">" + displaycards(list[len-1][1]) + "</div></div>";
+                    actionHtml += "<div class= \"player\"><div class=\"action\">" + list[len - 1][2] + "</div><div class=\"bet\">" + list[len - 1][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[len - 1][0] + "</div><div class=\"chips\">" + displayChips(list[len-1][3]) + "</div><div class=\"cards\">" + displaycards(list[len-1][1]) + "</div></div>";
 
                 }
                 else {
@@ -494,47 +494,47 @@
                         }
                         if (pas == 11)
                         {
-                            actionHtml += "<div class= \"player\"><div class=\"action\">" + list[len - 1][2] + "</div><div class=\"bet\">" + list[len - 1][4] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[len - 1][0] + "</div><div class=\"chips\">" + list[len - 1][3] + "</div><div class=\"cards\">" + displaycards(list[len - 1][1]) + "</div></div>";
+                            actionHtml += "<div class= \"player\"><div class=\"action\">" + list[len - 1][2] + "</div><div class=\"bet\">" + list[len - 1][4] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[len - 1][0] + "</div><div class=\"chips\">" + displayChips(list[len - 1][3]) + "</div><div class=\"cards\">" + displaycards(list[len - 1][1]) + "</div></div>";
                             pas ++
                         }
                     }
                     else if (i < len && list[i][0] == "Hero") {
 
-                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>";
+                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + displayChips(list[i][3]) + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>";
                         i++
                     }
                     else if (i < len && h == 2) {
-                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/2.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
+                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/2.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + displayChips(list[i][3]) + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
                         i++
                         h++
                     }
                     else if (i < len && h == 3)  {
-                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/3.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
+                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/3.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + displayChips(list[i][3]) + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
                         i++
                         h++
                     }
                     else if (i < len && h == 4) {
-                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/4.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
+                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/4.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + displayChips(list[i][3]) + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
                         i++
                         h++
                     }
                     else if (i < len && h == 5) {
-                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/5.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
+                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/5.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + displayChips(list[i][3]) + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
                         i++
                         h++
                     }
                     else if (i < len && h == 6) {
-                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/6.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
+                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/6.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + displayChips(list[i][3]) + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
                         i++
                         h++
                     }
                     else if (i < len && h == 7) {
-                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/7.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
+                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/7.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + displayChips(list[i][3]) + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
                         i++
                         h++
                     }
                     else if (i < len && h == 8) {
-                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/8.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
+                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/8.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + displayChips(list[i][3]) + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
                         i++
                         h++
                     }
@@ -608,6 +608,43 @@
             low_html += "</table>"
             lowtab.innerHTML = low_html;
         }
+        function displayChips(chips) {
+            var w = 0;  // 1€ chips
+            var r = 0;  // 5€ chips
+            var g = 0;  // 25€ chips
+            var b = 0;  // 100€ chips
+            var result =""
+            while (chips - 100 > 0) {
+                chips = chips - 100
+                b++
+            }
+            while (chips - 25 > 0) {
+                chips = chips - 100
+                g++
+            }
+            while (chips - 5 > 0) {
+                chips = chips - 100
+                r++
+            }
+            while (chips - 1 > 0) {
+                chips = chips - 100
+                w++
+            }
+            if (b != 0) {
+                result += b + "*<span class = \"chips_black\">&#9762;</span>"
+            }
+            if (g != 0) {
+                result += g + " * <span class = \"chips_green\">&#9762;</span>"
+            }
+            if (r != 0) {
+                result += r + " * <span class = \"chips_red\">&#9762;</span>"
+            }
+            if (w != 0) {
+                result += w + " * <span class = \"chips_white\">&#9762;</span>"
+            }
+            return result
+        }
+            
         function displayHand(decision_json, index) {
 
 

@@ -344,3 +344,36 @@ div {
     width: 15%;
     color: green;
 }
+
+
+.chips_white {
+    align-items: center;
+    background-color: white;
+    height: 100%;
+    width: 15%;
+    color: white;
+}
+
+.chips_red {
+    align-items: center;
+    background-color: white;
+    height: 100%;
+    width: 15%;
+    color: red;
+}
+
+.chips_green {
+    align-items: center;
+    background-color: white;
+    height: 100%;
+    width: 15%;
+    color: green;
+}
+
+.chips_black {
+    align-items: center;
+    background-color: white;
+    height: 100%;
+    width: 15%;
+    color: black;
+}
