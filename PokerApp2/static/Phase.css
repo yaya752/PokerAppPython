@@ -187,6 +187,7 @@ td {
     align-content: center;
     align-items: center;
     justify-content: center;
+    z-index: 2;
 }
 .Button1 {
     position: fixed;
@@ -206,6 +207,7 @@ td {
     transition-duration: 0.4s;
     cursor: pointer;
     border-radius: 8px;
+    z-index: 2;
 }
 
     .Button1:hover {
