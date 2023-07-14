@@ -467,7 +467,7 @@
                 else if (len <  5  && pas == 11) {
                      var len1 = list[len-1].length - 1
                     actionHtml += "<div class= \"player\"><div class=\"action\">" + list[len - 1][2] + "</div><div class=\"bet\">" + list[len - 1][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div>"
-                    if (list[len - 1][2] == 'fold') {
+                    if (list[len - 1][2] == 'folds') {
                         actionHtml += "<div class=\"namefold\">" + list[len - 1][0] + "</div>"
                     }
                     else {
@@ -505,7 +505,7 @@
                         if (pas == 11)
                         {
                             actionHtml += "<div class= \"player\"><div class=\"action\">" + list[len - 1][2] + "</div><div class=\"bet\">" + list[len - 1][4] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div>"
-                            if (list[len - 1][2] == 'fold') {
+                            if (list[len - 1][2] == 'folds') {
                                 actionHtml += "<div class=\"namefold\">" + list[len - 1][0] + "</div>"
                             }
                             else {
@@ -519,7 +519,7 @@
                     else if (i < len && list[i][0] == "Hero") {
 
                         actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div>"
-                        if (list[i][2] == 'fold') {
+                        if (list[i][2] == 'folds') {
                             actionHtml += "<div class=\"namefold\">" + list[i][0] + "</div>"
                         }
                         else {
@@ -531,7 +531,7 @@
                     }
                     else if (i < len && h == 2) {
                         actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/2.png') }}\" alt=\"caracter\"></div>"
-                        if (list[i][2] == 'fold') {
+                        if (list[i][2] == 'folds') {
                             actionHtml += "<div class=\"namefold\">" + list[i][0] + "</div>"
                         }
                         else {
@@ -544,7 +544,7 @@
                     }
                     else if (i < len && h == 3)  {
                         actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/3.png') }}\" alt=\"caracter\"></div>"
-                        if (list[i][2] == 'fold') {
+                        if (list[i][2] == 'folds') {
                             actionHtml += "<div class=\"namefold\">" + list[i][0] + "</div>"
                         }
                         else {
@@ -557,7 +557,7 @@
                     }
                     else if (i < len && h == 4) {
                         actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/4.png') }}\" alt=\"caracter\"></div>"
-                        if (list[i][2] == 'fold') {
+                        if (list[i][2] == 'folds') {
                             actionHtml += "<div class=\"namefold\">" + list[i][0] + "</div>"
                         }
                         else {
@@ -570,7 +570,7 @@
                     }
                     else if (i < len && h == 5) {
                         actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/5.png') }}\" alt=\"caracter\"></div>"
-                        if (list[i][2] == 'fold') {
+                        if (list[i][2] == 'folds') {
                             actionHtml += "<div class=\"namefold\">" + list[i][0] + "</div>"
                         }
                         else {
@@ -583,7 +583,7 @@
                     }
                     else if (i < len && h == 6) {
                         actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/6.png') }}\" alt=\"caracter\"></div>"
-                        if (list[i][2] == 'fold') {
+                        if (list[i][2] == 'folds') {
                             actionHtml += "<div class=\"namefold\">" + list[i][0] + "</div>"
                         }
                         else {
@@ -596,7 +596,7 @@
                     }
                     else if (i < len && h == 7) {
                         actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/7.png') }}\" alt=\"caracter\"></div>"
-                        if (list[i][2] == 'fold') {
+                        if (list[i][2] == 'folds') {
                             actionHtml += "<div class=\"namefold\">" + list[i][0] + "</div>"
                         }
                         else {
@@ -609,7 +609,7 @@
                     }
                     else if (i < len && h == 8) {
                         actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/8.png') }}\" alt=\"caracter\"></div>"
-                        if (list[i][2] == 'fold') {
+                        if (list[i][2] == 'folds') {
                             actionHtml += "<div class=\"namefold\">" + list[i][0] + "</div>"
                         }
                         else {
