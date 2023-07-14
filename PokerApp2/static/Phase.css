@@ -262,9 +262,9 @@ td {
     text-align: center;
     display: flex;
     justify-content: center;
-    font-size: 50px;
+    font-size: 45px;
     width: 100%;
-    height: 50px;
+    height: 60px;
 }
 
 .action {
