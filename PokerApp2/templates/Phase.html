@@ -43,7 +43,7 @@
     <script>
         var decision_json = {{ decision| tojson }}
 
-
+        var maxbet = {{ maxbet }}
         var tableau = {{ tab_street | tojson }};
         console.log(tableau)
         var tableauxContainer = document.getElementById("tableauxContainer");
