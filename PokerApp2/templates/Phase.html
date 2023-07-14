@@ -456,7 +456,7 @@
                     actionHtml += "<div class= \"vide\"></div>";
                 }
                 else if (pas == 7) {
-                    actionHtml += "<div class= \"pot\">" + list[len] + "</div>";
+                    actionHtml += "<div class= \"pot\">" + list[len] / maxbet + "</div>";
                 }
                 else if (pas == 6)
                 {
@@ -464,7 +464,7 @@
                 }
                 else if (len <  5  && pas == 11) {
                      var len1 = list[len-1].length - 1
-                     actionHtml += "<div class= \"player\"><div class=\"action\">" + list[len-1][2] + "</div><div class=\"bet\">" + list[len-1][len1] + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[len-1][0] + "</div><div class=\"chips\">" + list[len-1][3] + "</div><div class=\"cards\">" + displaycards(list[len-1][1]) + "</div></div>";
+                     actionHtml += "<div class= \"player\"><div class=\"action\">" + list[len-1][2] + "</div><div class=\"bet\">" + list[len-1][len1]/maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[len-1][0] + "</div><div class=\"chips\">" + list[len-1][3] + "</div><div class=\"cards\">" + displaycards(list[len-1][1]) + "</div></div>";
 
                 }
                 else {
@@ -494,47 +494,47 @@
                         }
                         if (pas == 11)
                         {
-                            actionHtml += "<div class= \"player\"><div class=\"action\">" + list[len - 1][2] + "</div><div class=\"bet\">" + list[len - 1][4] + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[len - 1][0] + "</div><div class=\"chips\">" + list[len - 1][3] + "</div><div class=\"cards\">" + displaycards(list[len - 1][1]) + "</div></div>";
+                            actionHtml += "<div class= \"player\"><div class=\"action\">" + list[len - 1][2] + "</div><div class=\"bet\">" + list[len - 1][4] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[len - 1][0] + "</div><div class=\"chips\">" + list[len - 1][3] + "</div><div class=\"cards\">" + displaycards(list[len - 1][1]) + "</div></div>";
                             pas ++
                         }
                     }
                     else if (i < len && list[i][0] == "Hero") {
 
-                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>";
+                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/1.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>";
                         i++
                     }
                     else if (i < len && h == 2) {
-                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/2.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
+                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/2.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
                         i++
                         h++
                     }
                     else if (i < len && h == 3)  {
-                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/3.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
+                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/3.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
                         i++
                         h++
                     }
                     else if (i < len && h == 4) {
-                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/4.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
+                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/4.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
                         i++
                         h++
                     }
                     else if (i < len && h == 5) {
-                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/5.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
+                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/5.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
                         i++
                         h++
                     }
                     else if (i < len && h == 6) {
-                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/6.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
+                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/6.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
                         i++
                         h++
                     }
                     else if (i < len && h == 7) {
-                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/7.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
+                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/7.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
                         i++
                         h++
                     }
                     else if (i < len && h == 8) {
-                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/8.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
+                        actionHtml += "<div class= \"player\"><div class=\"action\">" + list[i][2] + "</div><div class=\"bet\">" + list[i][len1] / maxbet + "</div><div class=\"image\"><img src=\"{{ url_for('static', filename = 'Head/8.png') }}\" alt=\"caracter\"></div><div class=\"name\">" + list[i][0] + "</div><div class=\"chips\">" + list[i][3] + "</div><div class=\"cards\">" + displaycards(list[i][1]) + "</div></div>"
                         i++
                         h++
                     }
