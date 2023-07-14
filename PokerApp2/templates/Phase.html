@@ -593,7 +593,7 @@
             }*/
         }
 
-        function //displayLow(t, index) {
+        function displayLow(t, index) {
 
             var hand = -1
             low_html ="<table>"
@@ -647,7 +647,7 @@
             return result
         }
 
-        function //displayHand(decision_json, index) {
+        function displayHand(decision_json, index) {
 
 
             hand_html = "<table class= \"hand\">"
@@ -662,7 +662,7 @@
             hand_html += "</table>"
             handtab.innerHTML = hand_html;
         }
-        function //displayFlush(t, index) {
+        function displayFlush(t, index) {
             flush_html = "<table>"
             flush_html += "<tr><td>s</td><td>" + t[index][0][0][14] + " </td>"
             flush_html += "<tr><td>h</td><td>" + t[index][0][1][14] + " </td>"
