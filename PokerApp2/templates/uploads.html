@@ -15,6 +15,7 @@
 
         .file-upload {
             text-align: center;
+
         }
 
             .file-upload input[type="file"] {
@@ -75,9 +76,10 @@
         <form method="POST" action="/" enctype="multipart/form-data">
             <label for="files">Upload File</label>
             <input type="file" name="files" id="files" accept=".txt" multiple onchange="showSelectedFiles(event)">
-            <input type="submit" value="Summary">
+            <input type="submit" value="Summary (if you don't upload anything you will be redirect to some existant games)">
         </form>
         <div id="selected-file"></div>
+        
     </div>
 </body>
 </html>

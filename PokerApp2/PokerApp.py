@@ -49,6 +49,7 @@ def upload_file():
     if request.method == 'POST':
         uploaded_files = request.files.getlist('files')
         count_file = 0
+        session['main_player'] = 'Hero'
         print(uploaded_files)
         for file in uploaded_files:
             if file.filename =='' :
@@ -60,7 +61,7 @@ def upload_file():
                     count_file += 1
         if count_file == 0:
             session['new'] = False
-        return redirect(url_for('index'))
+        return redirect(url_for('Summary'))
     return render_template('uploads.html')
 
 
