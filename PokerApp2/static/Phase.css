@@ -270,8 +270,7 @@ td {
     font-size: 45px;
     width: 100%;
     height: 60px;
-    background-color: rgba(128, 128, 128, 0.5);
-    z-index: 1;
+    
 }
 
 .action {
@@ -282,8 +281,7 @@ td {
     font-size: 23px;
     width: 50%;
     height: 30px;
-    background-color: rgba(128, 128, 128, 0.5);
-    z-index: 1;
+    
 }
 div {
     text-align: center;
@@ -298,8 +296,7 @@ div {
     font-size: 23px;
     width: 50%;
     height: 30px;
-    background-color: rgba(128, 128, 128, 0.5);
-    z-index: 1;
+    
 }
 
 .image {
@@ -309,8 +306,7 @@ div {
     align-items: center;
     width: 100%;
     height: 30%;
-    background-color: rgba(128, 128, 128, 0.5);
-    z-index: 1;
+    
 }
 
 .cards {
@@ -325,12 +321,12 @@ div {
     height: 100px;
     text-align: center;
     font-size: 90px;
-    background-color: rgba(128, 128, 128, 0.5);
-    z-index: 1;
+    background-color: white;
+    
 }
 .s {
     align-items: center;
-    
+    background-color: white;
     height: 100%;
     width: 15%;
     color: black;
@@ -338,7 +334,7 @@ div {
 
 .h {
     align-items: center;
-    
+    background-color: white;
     height: 100%;
     width: 15%;
     color: red;
@@ -346,7 +342,7 @@ div {
 
 .d {
     align-items: center;
-    
+    background-color: white;
     height: 100%;
     width: 15%;
     color: blue;
@@ -354,7 +350,7 @@ div {
 
 .c {
     align-items: center;
-    
+    background-color: white;
     height: 100%;
     width: 15%;
     color: green;
