@@ -544,6 +544,7 @@
                 }
             };
             actionHtml += "</div>"
+            /*
             if (index == 0) {
                 actionHtml +="<form>"
                 actionHtml +="<h2>What action should you take in this position ?</h2>"
@@ -558,7 +559,7 @@
 
                             actionHtml +="<input type=\"submit\" value=\"submit response\">"
                     actionHtml +="</form>"
-            }
+            }*/
             tableContainer.innerHTML = actionHtml;
             if (index == 0) {
             document.querySelector('form').addEventListener('submit', function (event) {
@@ -592,7 +593,7 @@
         }
 
         function displayLow(t, index) {
-
+            
             var hand = -1
             low_html ="<table>"
             for (let pas = 0; pas < t[index][1].length; pas++) {
