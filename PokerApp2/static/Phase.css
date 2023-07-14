@@ -304,7 +304,7 @@ div {
     border: 0px;
     margin: 0px;
     padding: 0px;
-    background-color: lightslategray;
+    background-color: white;
     display: flex;
     overflow: hidden;
     align-items: baseline;
@@ -315,7 +315,7 @@ div {
 }
 .s {
     align-items: center;
-    background-color: lightslategray;
+    background-color: white;
     height: 100%;
     width: 15%;
     color: black;
@@ -323,7 +323,7 @@ div {
 
 .h {
     align-items: center;
-    background-color: lightslategray;
+    background-color: white;
     height: 100%;
     width: 15%;
     color: red;
@@ -331,7 +331,7 @@ div {
 
 .d {
     align-items: center;
-    background-color: lightslategray;
+    background-color: white;
     height: 100%;
     width: 15%;
     color: blue;
@@ -339,7 +339,7 @@ div {
 
 .c {
     align-items: center;
-    background-color: lightslategray;
+    background-color: white;
     height: 100%;
     width: 15%;
     color: green;

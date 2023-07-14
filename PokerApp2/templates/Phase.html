@@ -104,7 +104,6 @@
                 nextStreet.classList.add("disabled");
             }
             else if (currentActionIndex >= 0) {
-                console.log("yo")
                 currentActionIndex++
                 previousButton.disabled = false;
                 previousButton.classList.remove("disabled");
@@ -113,7 +112,7 @@
                 if (currentActionIndex - 1 == beginindex || currentActionIndex - 1 == 0 ) {
                     street = "*** 3rd STREET ***";
                     Index_tab = 0;
-                    updatelist(list, currentActionIndex);
+                    
                 }
                 if (actions[currentActionIndex][0].slice(-1) == '*') {
                     street = actions[currentActionIndex][0];
