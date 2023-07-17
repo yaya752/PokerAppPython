@@ -130,7 +130,7 @@
                 }
                 else if (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows') {
                     update_pot(list, street)
-                    updatelist(list, currentActionIndex)
+                    
 
                     currentActionIndex++;
                     while (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows'){
@@ -138,7 +138,7 @@
                         currentActionIndex++;
                     }
                     currentActionIndex--
-                    updatelist(list, currentActionIndex)
+                    
                 }
                 else {
                     updatelist(list, currentActionIndex);
@@ -263,11 +263,12 @@
                     nextButton.classList.add("disabled");
                 }
                 else {
+                    update_pot(list, street)
                     street = actions[currentActionIndex][0]
                     currentActionIndex++
                     
                     if (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows' || actions[currentActionIndex][1] == 'Won') {
-                        update_pot(list, street)
+                        
                         while ((currentActionIndex < actions.length) && (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows' || actions[currentActionIndex][1] == 'Won')) {
                             updatelist(list, currentActionIndex);
                             currentActionIndex++;
