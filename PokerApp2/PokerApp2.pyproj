@@ -22,6 +22,7 @@
     <UnitTestRootDirectory>.</UnitTestRootDirectory>
     <InterpreterPath>
     </InterpreterPath>
+    <SuppressEnvironmentCreationPrompt>True</SuppressEnvironmentCreationPrompt>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>

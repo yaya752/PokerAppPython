@@ -198,21 +198,18 @@
             Index_tab = 0;
             street = "*** 3rd STREET ***"
             for (let i = 0; i < currentActionIndex; i++) {
-                console.log(actions[i])
+                
                 if (actions[i][0].slice(-1) == '*') {
                     update_pot(list)
                     street = actions[i][0]
-
                     Index_tab++;
-
-
                 }
                 else {
                     updatelist(list, i)
                 }
 
             }
-            console.log(currentActionIndex)
+            
             updatelist(list, currentActionIndex);
             displayAction(list, street, Index_tab);
             //displayLow(tableau, Index_tab)
@@ -366,8 +363,12 @@
 
         function update_pot(list) {
             var len_list = list.length - 1;
+            
             for (let i = 0; i < len_list; i++) {
-                list[len_list] += list[i][4];
+                if (list[i][4] != null)
+                {
+                    list[len_list] += list[i][4];
+                }
                 list[i][4] = 0;
                 if (list[i][2] != 'folds') {
                     list[i][2] = "";                                                                                                              
