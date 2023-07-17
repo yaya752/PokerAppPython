@@ -262,9 +262,9 @@
                 else {
                     street = actions[currentActionIndex][0]
                     currentActionIndex++
-                    if (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows') {
+                    if (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows' || actions[currentActionIndex][1] == 'Won') {
                         updatelist(list, currentActionIndex)
-                        while (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows') {
+                        while (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows' || actions[currentActionIndex][1] == 'Won') {
                             updatelist(list, currentActionIndex);
                             currentActionIndex++;
                         }
@@ -366,13 +366,12 @@
             
             
             for (let i = 0; i < len_list; i++) {
-                console.log(typeof list[i][4])
-                console.log(list[i][4])
+                
                 if (typeof list[i][4] == 'number' && list[i][4] != NaN)
                 {
                     list[len_list] += list[i][4];
                 }
-                list[i][4] = 0;
+                
                 if (list[i][2] != 'folds') {
                     list[i][2] = "";                                                                                                              
                 }
