@@ -364,8 +364,9 @@
         function update_pot(list) {
             var len_list = list.length - 1;
             console.log(list)
-            console.log(typeof list[i][4])
+            
             for (let i = 0; i < len_list; i++) {
+                console.log(typeof list[i][4])
                 if (typeof list[i][4] == 'number' )
                 {
                     list[len_list] += list[i][4];
