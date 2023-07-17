@@ -346,7 +346,7 @@
             }
 
             updatelist(list, currentActionIndex)
-            update_pot(list,street)
+            update_pot(list, street)
             displayAction(list, street, Index_tab);
             //displayLow(tableau, Index_tab)
             //displayHand(decision_json, Index_tab)
@@ -397,11 +397,11 @@
                         list[i][2] = done;
                         if (done == 'Dealt') {
                             list[i][1] = action[2];
-                            list[i][4] = 0
+                            
                         }
                         else if (done == 'shows') {
                             list[i][1] = action[2];
-                            list[i][4] = 0;
+                            
                         }
                         else if (done == 'brings') {
                             list[i][4] = action[2];
@@ -412,7 +412,7 @@
                             list[i][4] = action[2];
                         }
                         else if (done == 'folds' || done == 'checks') {
-                            list[i][4] = 0
+                            
                         }
     
                         else if (done == 'Won' || done == 'mucks')
