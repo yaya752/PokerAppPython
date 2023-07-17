@@ -8,4 +8,5 @@ WORKDIR /studapp
 
 copy . /studapp
 EXPOSE 5000
+EXPOSE 80
 CMD [ "python3", "./PokerApp.py"]
