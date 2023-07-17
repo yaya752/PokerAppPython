@@ -439,6 +439,17 @@
                 }
             }
         }
+        function Winners(actions) {
+            var count = 0
+            for (let i = 0; i < actions.lenght;i++) {
+                if (actions[i].length > 1) {
+                    if (actions[i][1] == 'Won') {
+                        count++
+                    }
+                }
+            }
+
+        }
         function displaycards(cards) {
             cards_string = ""
             for (let i = 0; i < cards.length; i++) {
