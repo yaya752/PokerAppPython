@@ -129,7 +129,9 @@
                     
                 }
                 else if (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows') {
+                    update_pot(list, street)
                     updatelist(list, currentActionIndex)
+
                     currentActionIndex++;
                     while (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows'){
                         updatelist(list, currentActionIndex);
@@ -262,7 +264,9 @@
                 else {
                     street = actions[currentActionIndex][0]
                     currentActionIndex++
+                    
                     if (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows' || actions[currentActionIndex][1] == 'Won') {
+                        update_pot(list, street)
                         while ((currentActionIndex < actions.length) && (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows' || actions[currentActionIndex][1] == 'Won')) {
                             updatelist(list, currentActionIndex);
                             currentActionIndex++;
@@ -275,7 +279,7 @@
             }
             updatelist(list, currentActionIndex)
 
-            update_pot(list,street)
+            
             
             displayAction(list, street, Index_tab);
             //displayLow(tableau, Index_tab)
@@ -397,10 +401,13 @@
                         list[i][2] = done;
                         if (done == 'Dealt') {
                             list[i][1] = action[2];
+                            list[i][4] = 0
+
                             
                         }
                         else if (done == 'shows') {
                             list[i][1] = action[2];
+                            
                             
                         }
                         else if (done == 'brings') {
