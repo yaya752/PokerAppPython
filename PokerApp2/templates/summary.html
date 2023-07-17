@@ -22,17 +22,18 @@
     <table>
         <thead>
             <tr>
+                <th>Files names</th>
                 <th>Hand</th>
                 <th>Times</th>
                 <th>Cards</th>
                 <th>Summary</th>
-                <th >Delete</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
             {% for i in range(files|length) %}
             <tr>
-
+                <td onclick="window.location.href='/Play/{{ i }}';">{{files[i] }}</td>
                 <td onclick="window.location.href='/Play/{{ i }}';">{{ generalities_list[i][0] }}</td>
                 <td onclick="window.location.href='/Play/{{ i }}';">{{ generalities_list[i][2][1] }}</td>
                 <td style="font-size: 100px" onclick="window.location.href='/Play/{{ i }}';">
