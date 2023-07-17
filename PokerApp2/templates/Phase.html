@@ -394,6 +394,20 @@
                 }
             }
         }
+        function Winners(actions) {
+            var count = 0
+            console.log(actions)
+            for (let i = 0; i < actions.lenght; i++) {
+                console.log(actions[0])
+                if (actions[i].length > 1) {
+
+                    if (actions[i][1] == 'Won') {
+                        count++
+                    }
+                }
+            }
+
+        }
         function updatelist(list, j) {
             var action = actions[j];
             var len_list = list.length - 1
@@ -428,7 +442,7 @@
     
                         else if (done == 'Won' || done == 'mucks')
                         {
-                            console.log(Winners(actions))
+                            
                             list[i][4] = list[len_list]/Winners(actions)
                         }
 
@@ -440,20 +454,7 @@
                 }
             }
         }
-        function Winners(actions) {
-            var count = 0
-            
-            for (let i = 0; i < actions.lenght; i++) {
-                console.log(actions[0])
-                if (actions[i].length > 1) {
-                    
-                    if (actions[i][1] == 'Won') {
-                        count++
-                    }
-                }
-            }
-
-        }
+        
         function displaycards(cards) {
             cards_string = ""
             for (let i = 0; i < cards.length; i++) {
