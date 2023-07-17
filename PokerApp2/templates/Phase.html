@@ -207,6 +207,7 @@
                     Index_tab++;
                 }
                 else {
+                    
                     updatelist(list, i)
                 }
 
@@ -341,6 +342,7 @@
             for (let i = beginindex; i < currentActionIndex; i++) {
 
                 if (actions[i][0].slice(-1) == "*") {
+                    update_pot(list, street)
                     street = actions[i][0]
                     Index_tab++;
                 }
@@ -350,7 +352,7 @@
             }
 
             updatelist(list, currentActionIndex)
-            update_pot(list, street)
+            
             displayAction(list, street, Index_tab);
             //displayLow(tableau, Index_tab)
             //displayHand(decision_json, Index_tab)
