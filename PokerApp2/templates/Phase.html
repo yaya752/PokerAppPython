@@ -367,7 +367,7 @@
             
             for (let i = 0; i < len_list; i++) {
                 console.log(typeof list[i][4])
-                if (typeof list[i][4] == 'number' )
+                if (typeof list[i][4] == 'number' && list[i][4] != NaN)
                 {
                     list[len_list] += list[i][4];
                 }
