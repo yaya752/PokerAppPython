@@ -442,9 +442,10 @@
         }
         function Winners(actions) {
             var count = 0
-            console.log(actions)
+            
             for (let i = 0; i < actions.lenght;i++) {
                 if (actions[i].length > 1) {
+                    console.log(actions[i])
                     if (actions[i][1] == 'Won') {
                         count++
                     }
