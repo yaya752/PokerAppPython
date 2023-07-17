@@ -222,6 +222,7 @@
         // Event for the next action Street
         nextStreet.addEventListener("click", function () {
             currentActionIndex++
+            street = "*** 3rd STREET ***"
             if (currentActionIndex >= actions.length - 1) {
                 currentActionIndex = actions.length - 1;
                 street = "*** SUMMARY ***"
