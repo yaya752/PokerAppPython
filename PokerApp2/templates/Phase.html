@@ -381,21 +381,22 @@
                         list[len_list] += list[i][4];
                     }
                     if (list[i][2] != 'folds') {
-                        list[i][2] = "";                                                                                                              
+                        if (street == '*** 6th STREET ***')
+                        {
+                            list[i][2] = "Dealt";
+                        }
+                        else {
+                            list[i][2] = "";
+                        }                                                                                                              
                     }
                 }
             }
         }
-        function Winners(actions) {
-            var count = 0
-            for (let i = 0; i < actions.length; i++) {
-                if (actions[i].length > 1) {
-                    if (actions[i][1] == 'Won') {
-                        count ++
-                    }
-                }
+        
+        function River(list,) {
+            for (let i = 0; i < list.length - 1; i++) {
+                if (list[i][2])
             }
-            return count
         }
         function updatelist(list, j) {
             var action = actions[j];
