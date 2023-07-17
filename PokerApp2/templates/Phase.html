@@ -377,7 +377,7 @@
                 for (let i = 0; i < len_list; i++) {
                     if (typeof list[i][4] == 'number' && list[i][4] != NaN)
                     {
-                        console.log(list[i][4])
+                        
                         list[len_list] += list[i][4];
                         list[i][4] = 0
                     }
@@ -428,6 +428,7 @@
     
                         else if (done == 'Won' || done == 'mucks')
                         {
+                            console.log(list[len_list])
                             list[i][4] = list[len_list]/Winners(actions)
                         }
 
