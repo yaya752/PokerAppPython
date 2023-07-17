@@ -379,6 +379,17 @@
             }
 
         }
+        function Winners(actions) {
+            var count = 0
+            for (let i = 0; i < actions.length; i++) {
+                if (actions[i].length > 1) {
+                    if (actions[i][1] == 'Won') {
+                        count ++
+                    }
+                }
+            }
+            return count
+        }
         function updatelist(list, j) {
             var action = actions[j];
             var len_list = list.length - 1
@@ -403,9 +414,9 @@
                         }
                         else if (done == 'folds' || done == 'checks') { }
 
-                        else if (done == 'Won')
+                        else if (done == 'Won' || done == 'mucks')
                         {
-
+                            list[i][4] = list[len_list]/Winners(actions)
                         }
 
                         else {
