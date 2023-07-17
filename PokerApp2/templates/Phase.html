@@ -365,19 +365,15 @@
             var len_list = list.length - 1;
             if (street != "*** SUMMARY ***" && street != "*** SHOW DOWN ***") {
                 for (let i = 0; i < len_list; i++) {
-
-                    if (typeof list[i][4] == 'number' && list[i][4] != NaN) {
+                    if (typeof list[i][4] == 'number' && list[i][4] != NaN)
+                    {
                         list[len_list] += list[i][4];
                     }
-
                     if (list[i][2] != 'folds') {
-                        list[i][2] = "";
+                        list[i][2] = "";                                                                                                              
                     }
                 }
             }
-            
-            
-
         }
         function Winners(actions) {
             var count = 0
@@ -402,11 +398,11 @@
                         list[i][2] = done;
                         if (done == 'Dealt') {
                             list[i][1] = action[2];
-                            
+                            list[i][4] = 0
                         }
                         else if (done == 'shows') {
                             list[i][1] = action[2];
-
+                            list[i][4] = 0;
                         }
                         else if (done == 'brings') {
                             list[i][4] = action[2];
@@ -416,8 +412,10 @@
                             list[i][3] = list[i][3] - (action[2] - list[i][4]);
                             list[i][4] = action[2];
                         }
-                        else if (done == 'folds' || done == 'checks') { }
-
+                        else if (done == 'folds' || done == 'checks') {
+                            list[i][4] = 0
+                        }
+    
                         else if (done == 'Won' || done == 'mucks')
                         {
                             list[i][4] = list[len_list]/Winners(actions)
