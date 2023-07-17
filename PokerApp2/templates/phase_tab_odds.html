@@ -193,7 +193,7 @@
                         }
                     }
                     Index_tab++;
-                    update_pot(list);
+                    update_pot(list,street);
                 }
                 else if (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows') {
                     updatelist(list, currentActionIndex)
@@ -263,7 +263,7 @@
             street = "*** 3rd STREET ***"
             for (let i = 0; i < currentActionIndex; i++) {
                 if (actions[i][0].slice(-1) == '*') {
-                    update_pot(list)
+                    update_pot(list,street)
                     street = actions[i][0]
 
                     Index_tab++;
@@ -337,7 +337,7 @@
             }
             updatelist(list, currentActionIndex)
 
-            update_pot(list)
+            update_pot(list,street)
             displayAction(list, street, Index_tab);
 
 
@@ -405,7 +405,7 @@
             }
 
             updatelist(list, currentActionIndex)
-            update_pot(list)
+            update_pot(list,street)
             displayAction(list, street, Index_tab);
         });
 
@@ -416,7 +416,7 @@
         previousButton.disabled = true;
         previousButton.classList.add("disabled");
 
-        function update_pot(list) {
+        function update_pot(list,street) {
             var len_list = list.length - 1;
             for (let i = 0; i < len_list; i++) {
                 list[len_list] += list[i][4];

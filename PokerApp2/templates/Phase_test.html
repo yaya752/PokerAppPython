@@ -86,7 +86,7 @@
                 else if (actions[currentActionIndex][0].slice(-1) == "*") {
                     street = actions[currentActionIndex][0];
                     Index_tab++;
-                    update_pot(list);
+                    update_pot(list,street);
                 }
 
             }
@@ -181,7 +181,7 @@
             }
             updatelist(list, currentActionIndex)
             street = actions[currentActionIndex][0]
-            update_pot(list)
+            update_pot(list,street)
             afficherTableau(tableau, Index_tab);
             displayAction(list,street);
 
@@ -232,7 +232,7 @@
                 }
             }
             updatelist(list, currentActionIndex)
-            update_pot(list)
+            update_pot(list,street)
             street = actions[currentActionIndex][0]
             displayAction(list, street);
         });
@@ -244,7 +244,7 @@
         previousButton.disabled = true;
         previousButton.classList.add("disabled");
             
-        function update_pot(list) {
+        function update_pot(list,street) {
             var len_list = list.length - 1;
             for (let i = 0; i < len_list; i++) {
                 list[len_list] += list[i][4];
