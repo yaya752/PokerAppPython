@@ -379,11 +379,13 @@
                     {
                         console.log(list[i][4])
                         list[len_list] += list[i][4];
+                        list[i][4] = 0
                     }
                     if (list[i][2] != 'folds') {
                         if (street == '*** 6th STREET ***')
                         {
                             list[i][2] = "Dealt";
+
                         }
                         else {
                             list[i][2] = "";
