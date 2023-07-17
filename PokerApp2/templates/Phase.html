@@ -400,7 +400,6 @@
                 if (actions[i].length > 1) {
                     
                     if (actions[i][1] == 'Won') {
-                        console.log(actions[i][1])
                         count++
                     }
                 }
@@ -441,7 +440,7 @@
     
                         else if (done == 'Won' || done == 'mucks')
                         {
-                            
+                            console.log(Winners(actions))
                             list[i][4] = list[len_list]/Winners(actions)
                         }
 
