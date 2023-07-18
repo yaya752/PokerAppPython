@@ -384,7 +384,16 @@ div {
     width: 10%;
     color: red;
 }
-    
+
+.chips_purple {
+    font-size: 50px;
+    align-items: center;
+    background-color: transparent;
+    height: 100%;
+    width: 10%;
+    color: purple;
+}
+
 .chips_green {
     font-size: 50px;
     align-items: center;

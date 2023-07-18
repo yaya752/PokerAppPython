@@ -760,15 +760,23 @@
             var r = 0;  // 5 euros chips
             var g = 0;  // 25 euros chips
             var b = 0;  // 100 euros chips
-            var result =""
+            var p = 0;  // 500 euros chips
+            var result = ""
+            while (chips - 500 > 0) {
+                chips = chips - 500
+                p++
+            }
+            p--
             while (chips - 100 > 0) {
                 chips = chips - 100
                 b++
             }
+            b--
             while (chips - 25 > 0) {
                 chips = chips - 100
                 g++
             }
+            g--
             while (chips - 5 > 0) {
                 chips = chips - 100
                 r++
@@ -776,6 +784,10 @@
             while (chips - 1 > 0) {
                 chips = chips - 100
                 w++
+            }
+            w--
+            if (p != 0) {
+                result += p + "*<span class = \"chips_purple\" data-tooltip=\"chips value 500\">&#9762; </span> "
             }
             if (b != 0) {
                 result += b + "*<span class = \"chips_black\" data-tooltip=\"chips value 100\">&#9762; </span> "
