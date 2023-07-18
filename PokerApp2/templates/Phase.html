@@ -429,6 +429,16 @@
                             
                             
                         }
+                        else if (done == 'collected') {
+                            list[i][4] = action[2];
+                            list[i][3] = list[i][3] + action[2];
+
+                        }
+                        else if (done == 'uncalled') {
+                            list[i][4] = list[i][4] - action[2];
+                            list[i][3] = list[i][3] + action[2];
+
+                        }
                         else if (done == 'brings') {
                             list[i][4] = action[2];
                             list[i][3] = list[i][3] - action[2];
@@ -443,8 +453,9 @@
     
                         else if (done == 'Won' || done == 'mucks')
                         {
-                            console.log(Winners(actions))
-                            list[i][4] = list[len_list]/Winners(actions)
+                            
+                            list[i][4] = list[len_list] / Winners(actions)
+                            list[i][3] = list[i][3] - list[i][4];
                         }
 
                         else {
