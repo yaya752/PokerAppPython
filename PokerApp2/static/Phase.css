@@ -413,13 +413,14 @@ div {
 }
 
     .chips_white::after,
+    .chips_putple::after,
     .chips_red::after,
     .chips_green::after,
     .chips_black::after {
-        content: attr(data-tooltip); 
+        content: attr(data-tooltip);
         position: fixed;
-        top: 30px; 
-        left: 50%; 
+        top: 30px;
+        left: 50%;
         transform: translateX(-50%);
         background-color: rgba(0, 0, 0, 0.8);
         color: white;
@@ -430,6 +431,7 @@ div {
         transition: opacity 0.3s;
     }
     .chips_white:hover::after,
+    .chips_purple:hover::after,
     .chips_red:hover::after,
     .chips_green:hover::after,
     .chips_black:hover::after {
