@@ -72,7 +72,7 @@
         function begin(list) {
             var i = 1
             while (actions[i][1] == "Dealt") {
-                updatelist(list, i)
+                updatelist(list, i, street)
                 i++
             }
             beginindex = i-1;
@@ -119,9 +119,9 @@
                     currentActionIndex++;
                     update_pot(list,street)
                     if (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows') {
-                        updatelist(list, currentActionIndex)
+                        updatelist(list, currentActionIndex, street)
                         while (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows') {
-                            updatelist(list, currentActionIndex);
+                            updatelist(list, currentActionIndex, street);
                             currentActionIndex++;
                         }
                         
@@ -136,7 +136,7 @@
 
                     
                     while (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows'){
-                        updatelist(list, currentActionIndex);
+                        updatelist(list, currentActionIndex, street);
                         currentActionIndex++;
                     }
                     
@@ -144,7 +144,7 @@
                     
                 }
                 else {
-                    updatelist(list, currentActionIndex);
+                    updatelist(list, currentActionIndex, street);
                 }
             }
             
@@ -211,12 +211,12 @@
                 }
                 else {
                     
-                    updatelist(list, i)
+                    updatelist(list, i, street)
                 }
 
             }
             
-            updatelist(list, currentActionIndex);
+            updatelist(list, currentActionIndex, street);
             displayAction(list, street, Index_tab);
             //displayLow(tableau, Index_tab)
             //displayHand(decision_json, Index_tab)
@@ -237,19 +237,19 @@
             }
             else if (currentActionIndex > 0) {
                 Index_tab += 1;
-                updatelist(list, currentActionIndex)
+                updatelist(list, currentActionIndex, street)
                 previousStreet.disabled = false;
                 previousStreet.classList.remove("disabled");
                 previousButton.disabled = false;
                 previousButton.classList.remove("disabled");
                 while (actions[currentActionIndex][0].slice(-1) != "*" && currentActionIndex != actions.length - 1) {
                     currentActionIndex++;
-                    updatelist(list, currentActionIndex)
+                    updatelist(list, currentActionIndex, street)
                     if (currentActionIndex >= actions.length - 1) {
                         currentActionIndex = actions.length - 1;
                         street = "*** SUMMARY ***"
                         Index_tab = tableau.length - 1
-                        updatelist(list, currentActionIndex)
+                        updatelist(list, currentActionIndex, street)
                         nextStreet.disabled = true;
                         nextStreet.classList.add("disabled");
                         nextButton.disabled = true;
@@ -260,7 +260,7 @@
                     currentActionIndex = actions.length - 1;
                     street = "*** SUMMARY ***"
                     Index_tab = tableau.length-1
-                    updatelist(list, currentActionIndex)
+                    updatelist(list, currentActionIndex, street)
                     nextStreet.disabled = true;
                     nextStreet.classList.add("disabled");
                     nextButton.disabled = true;
@@ -274,7 +274,7 @@
                     if (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows' || actions[currentActionIndex][1] == 'Won') {
                         
                         while ((currentActionIndex < actions.length) && (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows' || actions[currentActionIndex][1] == 'Won')) {
-                            updatelist(list, currentActionIndex);
+                            updatelist(list, currentActionIndex, street);
                             currentActionIndex++;
                         }
                         currentActionIndex--
@@ -283,7 +283,7 @@
                 }
 
             }
-            updatelist(list, currentActionIndex)
+            updatelist(list, currentActionIndex, street)
 
             
             
@@ -352,11 +352,11 @@
                     Index_tab++;
                 }
                 else {
-                    updatelist(list, i)
+                    updatelist(list, i, street)
                 }
             }
 
-            updatelist(list, currentActionIndex)
+            updatelist(list, currentActionIndex,street)
             
             displayAction(list, street, Index_tab);
             //displayLow(tableau, Index_tab)
@@ -408,7 +408,7 @@
 
         }
         console.log(actions)
-        function updatelist(list, j) {
+        function updatelist(list, j, street) {
             var action = actions[j];
             
             var len_list = list.length - 1
@@ -431,11 +431,13 @@
                         }
                         else if (done == 'collected') {
                             list[i][4] = action[2];
-                            list[i][3] = list[i][3] + action[2];
+                            if (street == "*** SUMMARY ***") { 
+                                list[i][3] = list[i][3] + action[2];
+                            }
 
                         }
                         else if (done == 'Uncalled') {
-                            list[i][4] = list[i][4] - action[2];
+                            list[i][4] = action[2];
                             list[i][3] = list[i][3] + action[2];
 
                         }
