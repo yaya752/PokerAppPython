@@ -56,7 +56,9 @@ def upload_file():
                 session['new'] = False  
             else:
                 if allowed_file(file.filename):
-                    os.makedirs('./New_file/', exist_ok=True)
+                    new_directory = "./New_File"
+                    os.makedirs(new_directory, exist_ok=True)
+
                     file.save('./New_File/' + file.filename)
                     session['new'] = True
                     count_file += 1
