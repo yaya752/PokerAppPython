@@ -554,9 +554,9 @@ def Action(lines,line,street,street_index, occur, main_player,tab_player,order):
     elif words[1] == 'mucks':
         return action
     elif words[0] == 'Uncalled':
-        return [words[5],words[0],int(words[2])]
+        return [words[5],words[0],int(words[2][1:-1])]
     elif words[1] == 'collected':
-        return [words[0],words[1],int(words[2][1:-1])]
+        return [words[0],words[1],int(words[2])]
     elif words[0] == 'Seat':
         if words[3] == 'showed' and words[12] == 'won':
             return [words[2],'Won']
