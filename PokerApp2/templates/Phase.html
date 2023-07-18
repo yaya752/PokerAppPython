@@ -71,12 +71,13 @@
 
         function begin(list) {
             var i = 1
+             var street = '*** 3rd STREET ***'
             while (actions[i][1] == "Dealt") {
                 updatelist(list, i, street)
                 i++
             }
             beginindex = i-1;
-            displayAction(list, '*** 3rd STREET ***', 0)
+            displayAction(list, street, 0)
             //displayLow(tableau, Index_tab)
             //displayHand(decision_json, Index_tab)
             //displayFlush(tableau, Index_tab)
