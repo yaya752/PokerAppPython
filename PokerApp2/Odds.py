@@ -476,7 +476,7 @@ def low_hand_odd(occur,street,list_numplayers):
         odd = low_hand_odds[i][1]
         odd_7low += odd
         if odd > odd_7low_max:
-             odd_7low_max = odd 
+            odd_7low_max = odd 
             best_7low = Best_hand(hand,occur)
         i+=1
     Odds.append([odd_7low,best_7low,odd_7low_max])
