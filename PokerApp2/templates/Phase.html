@@ -16,36 +16,37 @@
         <button id="nextStreet">Next Street</button>
     </div>
     <div id="tableContainer" class="page"></div>
-    <!--
-        <div>
-            <div style='display: inline-block; margin-right: 10px;'>
-                <div class="dropdown">
-                    <h1>Low odds</h1>
-                    <div class="dropdown-content">
-                        <div id="lowtab" class="page"></div>
-                    </div>
+    
+    <div>
+        <div style='display: inline-block; margin-right: 10px;'>
+            <div class="dropdown">
+                <h1>Probabilities of having a Low-Hand</h1>
+                <div class="dropdown-content">
+                    <div id="lowtab" class="page"></div>
                 </div>
             </div>
-            <div style='display: inline-block; margin-right: 10px;'>
-                <div class="dropdown">
-                    <h1>Flush</h1>
-                    <div class="dropdown-content">
-                        <div id="flush" class="page"></div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div id="HandContainer" class="page"></div>
-
         </div>
+        <!--     <div style='display: inline-block; margin-right: 10px;'>
+              <div class="dropdown">
+                  <h1>Flush</h1>
+                  <div class="dropdown-content">
+                      <div id="flush" class="page"></div>
+                  </div>
+              </div>
+
+          </div>
+
     -->
-    <script>
+        <div id="HandContainer" class="page"></div>
+
+    </div>
+    
+        <script>
         var decision_json = {{ decision| tojson }}
 
         var maxbet = {{ maxbet }}
         var tableau = {{ tab_street | tojson }};
-        
+
         var tableauxContainer = document.getElementById("tableauxContainer");
         var lowtab = document.getElementById("lowtab")
         var flush = document.getElementById("flush")
@@ -55,8 +56,8 @@
         var beginindex = 0;
         var Index_tab = 0;
         // Retrieve the list of actions from Flask
-        var actions = {{ list_actions| tojson }};
-        
+        var actions = {{list_actions|tojson}};
+
         var list_init = {{ initialisation| tojson }};
         function Init() {
             var list = []
@@ -78,7 +79,7 @@
             }
             beginindex = i-1;
             displayAction(list, street, 0)
-            //displayLow(tableau, Index_tab)
+            displayLow(tableau, Index_tab)
             //displayHand(decision_json, Index_tab)
             //displayFlush(tableau, Index_tab)
             return beginindex
@@ -125,32 +126,32 @@
                             updatelist(list, currentActionIndex, street);
                             currentActionIndex++;
                         }
-                        
+
                     }
                     currentActionIndex--
                     Index_tab++;
-                    
+
                 }
                 else if (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows') {
                     update_pot(list, street)
-                    
 
-                    
+
+
                     while (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows'){
                         updatelist(list, currentActionIndex, street);
                         currentActionIndex++;
                     }
-                    
+
                     currentActionIndex--
-                    
+
                 }
                 else {
                     updatelist(list, currentActionIndex, street);
                 }
             }
-            
+
             displayAction(list, street, Index_tab);
-            //displayLow(tableau, Index_tab)
+            displayLow(tableau, Index_tab)
             //displayHand(decision_json, Index_tab)
             //displayFlush(tableau, Index_tab)
         });
@@ -204,22 +205,22 @@
             Index_tab = 0;
             street = "*** 3rd STREET ***"
             for (let i = 0; i < currentActionIndex; i++) {
-                
+
                 if (actions[i][0].slice(-1) == '*') {
                     update_pot(list,street)
                     street = actions[i][0]
                     Index_tab++;
                 }
                 else {
-                    
+
                     updatelist(list, i, street)
                 }
 
             }
-            
+
             updatelist(list, currentActionIndex, street);
             displayAction(list, street, Index_tab);
-            //displayLow(tableau, Index_tab)
+            displayLow(tableau, Index_tab)
             //displayHand(decision_json, Index_tab)
             //displayFlush(tableau, Index_tab)
         });
@@ -271,9 +272,9 @@
                     update_pot(list, street)
                     street = actions[currentActionIndex][0]
                     currentActionIndex++
-                    
+
                     if (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows' || actions[currentActionIndex][1] == 'Won') {
-                        
+
                         while ((currentActionIndex < actions.length) && (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows' || actions[currentActionIndex][1] == 'Won')) {
                             updatelist(list, currentActionIndex, street);
                             currentActionIndex++;
@@ -286,10 +287,10 @@
             }
             updatelist(list, currentActionIndex, street)
 
-            
-            
+
+
             displayAction(list, street, Index_tab);
-            //displayLow(tableau, Index_tab)
+            displayLow(tableau, Index_tab)
             //displayHand(decision_json, Index_tab)
             //displayFlush(tableau, Index_tab)
 
@@ -358,9 +359,9 @@
             }
 
             updatelist(list, currentActionIndex,street)
-            
+
             displayAction(list, street, Index_tab);
-            //displayLow(tableau, Index_tab)
+            displayLow(tableau, Index_tab)
             //displayHand(decision_json, Index_tab)
             //displayFlush(tableau, Index_tab)
         });
@@ -378,7 +379,7 @@
                 for (let i = 0; i < len_list; i++) {
                     if (typeof list[i][4] == 'number' && list[i][4] != NaN)
                     {
-                        
+
                         list[len_list] += list[i][4];
                         list[i][4] = 0
                     }
@@ -390,7 +391,7 @@
                         }
                         else {
                             list[i][2] = "";
-                        }                                                                                                              
+                        }
                     }
                 }
             }
@@ -399,7 +400,7 @@
             var count = 0
             for (let i = 0; i < actions.length; i++) {
                 if (actions[i].length > 1) {
-                    
+
                     if (actions[i][1] == 'Won') {
                         count++
                     }
@@ -411,7 +412,7 @@
         console.log(actions)
         function updatelist(list, j, street) {
             var action = actions[j];
-            
+
             var len_list = list.length - 1
             if (action != null) {
                 var name = action[0];
@@ -423,16 +424,16 @@
                             list[i][1] = action[2];
                             list[i][4] = 0
 
-                            
+
                         }
                         else if (done == 'shows') {
                             list[i][1] = action[2];
-                            
-                            
+
+
                         }
                         else if (done == 'collected') {
                             list[i][4] = action[2];
-                            if (street == "*** SUMMARY ***") { 
+                            if (street == "*** SUMMARY ***") {
                                 list[i][3] = list[i][3] + action[2];
                             }
 
@@ -451,12 +452,12 @@
                             list[i][4] = action[2];
                         }
                         else if (done == 'folds' || done == 'checks') {
-                            
+
                         }
-    
+
                         else if (done == 'Won' || done == 'mucks')
                         {
-                            
+
                             list[i][4] = list[len_list] / Winners(actions)
                             list[i][3] = list[i][3] - list[i][4];
                         }
@@ -469,7 +470,7 @@
                 }
             }
         }
-        
+
         function displaycards(cards) {
             cards_string = ""
             for (let i = 0; i < cards.length; i++) {
@@ -515,7 +516,7 @@
                 list[len-1] = list[index_hero]
                 list[index_hero] = player
             }
-            
+
             for (let pas = 0; pas < 15; pas++) {
 
                 if (pas == 4 || pas == 0 || pas == 8 || pas == 10 || pas == 14) {
@@ -537,7 +538,7 @@
                     else {
                         actionHtml += "<div class=\"name\">" + list[len - 1][0] + "</div>"
                     }
-                    
+
                     actionHtml += "<div class=\"chips\">" + displayChips(list[len - 1][3]) + "</div><div class=\"cards\">" + displaycards(list[len - 1][1]) + "</div></div>";
 
                 }
@@ -558,7 +559,7 @@
                                 actionHtml += "<div class= \"vide\">" + street + "</div>";
                             }
                             else {
-                                
+
                                 actionHtml += "<div class= \"vide\"></div>";
 
                             }
@@ -742,11 +743,16 @@
         function displayLow(t, index) {
 
             var hand = -1
-            low_html ="<table>"
+            low_html = "<table>"
+            low_html += "<tr><td> Low_Hand Probabilities </td>"
+
+            low_html += "<td>Best Hand</td>"
+            low_html += "<td>Probabilite to have this Hand </td></tr>"
             for (let pas = 0; pas < t[index][1].length; pas++) {
                 if (t[index][1][pas][1] != 0) {
-                low_html += "<tr><td>" + t[index][1][pas][0] + " </td>"
-                low_html += "<td>" + t[index][1][pas][1] + "</td></tr>"
+                    low_html += "<tr><td>" + t[index][1][pas][0] + " </td>"
+                    low_html += "<td>" + displaycards(t[index][1][pas][1]) + "</td>"
+                    low_html += "<td>" + t[index][1][pas][2] + "</td></tr>"
                 }
                 if (t[index][1][pas][1] == 1) {
                     hand = pas
@@ -767,17 +773,17 @@
                 chips = chips - 500
                 p++
             }
-            
+
             while (chips - 100 > 0) {
                 chips = chips - 100
                 b++
             }
-            
+
             while (chips - 25 > 0) {
                 chips = chips - 100
                 g++
             }
-            
+
             while (chips - 5 > 0) {
                 chips = chips - 100
                 r++
@@ -786,7 +792,7 @@
                 chips = chips - 100
                 w++
             }
-            
+
             if (p != 0) {
                 result += p + "*<span class = \"chips_purple\" data-tooltip=\"chips value 500\">&#9762; </span> "
             }
@@ -830,6 +836,6 @@
             flush.innerHTML = flush_html;
 
         }
-    </script>
+        </script>
 </body>
 </html>

@@ -614,6 +614,7 @@ def Play(game_file,main_player,list_numplayers,path):
                 list_numplayers.append(players)
                 (occur1,low_hand_odds)= Calculate_odds(occur,words[1],list_numplayers) #calculate the odds using the occur tab (occurence of the cards)
                 tab_street.append([occur1,low_hand_odds])
+                '''
                 # we need this part to create the decision quiz for each street
                 if time == 0:
                     decision.append(third_street_decision(occur))
@@ -635,7 +636,7 @@ def Play(game_file,main_player,list_numplayers,path):
                     add(tab_player,tab_prec_player)
                     tab_prec_player = sumarry_tab(tab_player)
                     tab_player = []
-                time += 1
+                time += 1'''
             Players_Actions.append([lines[i]])
             j+=1
        #else we add the action to the list with a specific pattern [name of the player,action, chips or cards]

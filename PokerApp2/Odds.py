@@ -415,14 +415,82 @@ low_hand = [['5','4','3','2','A'],
             ['8','7','6','5','2'],
             ['8','7','6','5','3'],
             ['8','7','6','5','4']]
-
+def Best_hand(hand,occur):
+    notfind = True
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    shapes = ['s','h','d','c']
+    result = []
+    for card in hand:
+        j = nums.index(card)
+        for i in range (0,4):
+            if occur[i][j]== 1 :
+                notFind =False
+                result.append(nums[j] + shapes[i])
+        if notFind:
+            i = 0
+            while i< 4 and occur[i][j]!= 0 :
+                    i+=1
+            result.append(nums[j] + shapes[i])        
+    return result
 def low_hand_odd(occur,street,list_numplayers):
-    
-    odd = 0.
+    i = 0
+    odd = 0
+    odd_5low = 0.
+    odd_6low = 0.
+    odd_7low = 0.
+    odd_8low = 0.
+    odd_5low_max = 0.
+    odd_6low_max= 0.
+    odd_7low_max = 0.
+    odd_8low_max = 0.
+    best_5low = []
+    best_6low = []
+    best_7low = []
+    best_8low = []
+    hand = []
     low_hand_odds = []
+    Odds = []
     for hand in low_hand :
-        low_hand_odds.append([hand,round(odd_Low(hand,occur,street,list_numplayers),3)])
-    return low_hand_odds
+        low_hand_odds.append([hand,odd_Low(hand,occur,street,list_numplayers)])
+    while (low_hand_odds[i][0][0] == '5'):
+        hand = low_hand_odds[i][0]
+        odd = low_hand_odds[i][1]
+        odd_5low += odd
+        if odd > odd_5low_max:
+            odd = odd_5low_max
+            best_5low = Best_hand(hand)
+        i+=1
+    Odds.append([odd_5low,best_5low,odd_5low_max])
+    while (low_hand_odds[i][0][0] == '6'):
+        hand = low_hand_odds[i][0]
+        odd = low_hand_odds[i][1]
+        odd_6low += odd
+        if odd > odd_6low_max:
+            odd = odd_6low_max
+            best_6low = Best_hand(hand,occur)
+        i+=1
+    Odds.append([odd_6low,best_6low,odd_6low_max])
+    while (low_hand_odds[i][0][0] == '7'):
+        hand = low_hand_odds[i][0]
+        odd = low_hand_odds[i][1]
+        odd_7low += odd
+        if odd > odd_7low_max:
+            odd = odd_7low_max
+            best_7low = Best_hand(hand,occur)
+        i+=1
+    Odds.append([odd_7low,best_7low,odd_7low_max])
+    while (i < len(low_hand_odds) and low_hand_odds[i][0][0] == '8'):
+        hand = low_hand_odds[i][0]
+        odd = low_hand_odds[i][1]
+        odd_8low += odd
+        if odd > odd_8low_max:
+            odd = odd_8low_max
+            best_8low = Best_hand(hand,occur)
+        i+=1
+    Odds.append([odd_8low,best_8low,odd_8low_max])
+    return Odds
+
+    
 def odd_Low(low,occur,street,list_numplayers):
     nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     suits = ['s','h','d','c']
