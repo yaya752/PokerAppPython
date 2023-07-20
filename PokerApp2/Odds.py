@@ -416,7 +416,7 @@ low_hand = [['5','4','3','2','A'],
             ['8','7','6','5','3'],
             ['8','7','6','5','4']]
 def Best_hand(hand,occur):
-    notfind = True
+    notFind = True
     nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     shapes = ['s','h','d','c']
     result = []
