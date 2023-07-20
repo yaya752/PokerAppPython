@@ -748,7 +748,7 @@
             low_html += "<td>Best Hand</td>"
             low_html += "<td>Probabilite to have this Hand </td></tr>"
             for (let pas = 0; pas < t[index][1].length; pas++) {
-                console.log(t[index][1][pas][1])
+                console.log(displaycards(t[index][1][pas][1]))
                 if (t[index][1][pas][1] != 0) {
                     low_html += "<tr><td>" + t[index][1][pas][0] + " </td>"
                     low_html += "<td>" + displaycards(t[index][1][pas][1]) + "</td>"
