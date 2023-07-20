@@ -1,3 +1,14 @@
+def Card_To_Html(hand):
+    #Intialisation of the variable
+    Html_Cards = []
+    num_cards = ['A','2','3','4','5','6','7','8','9','T','J','C','Q','K']
+    shape_card = ['s','h','d','c']
+    for card in hand:
+        i= num_cards.index(card[0])
+        j= shape_card.index(card[1])
+        #in html we can display graphical card by using a unicode value
+        Html_Cards.append(["#1271" + str(i+16*j + 37)+";",j])
+    return Html_Cards
 def odd_full_house(occur):
     num_cards = ['A','2','3','4','5','6','7','8','9','T','J','C','Q','K']
     shape_card = ['s','h','d','c']
@@ -431,7 +442,7 @@ def Best_hand(hand,occur):
             while i< 4 and occur[i][j]!= 0 :
                     i+=1
             result.append(nums[j] + shapes[i])        
-    return result
+    return Card_To_Html(result)
 def low_hand_odd(occur,street,list_numplayers):
     i = 0
     odd = 0
