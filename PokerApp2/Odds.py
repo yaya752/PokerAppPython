@@ -464,7 +464,7 @@ def low_hand_odd(occur,street,list_numplayers):
     low_hand_odds = []
     Odds = []
     for hand in low_hand :
-        low_hand_odds.append([hand,odd_Low(hand,occur,street,list_numplayers)])
+        low_hand_odds.append([hand,odd_Low(hand,occur,street,list_numplayers)/len(low_hand)])
     while (low_hand_odds[i][0][0] == '5'):
         hand = low_hand_odds[i][0]
         odd = low_hand_odds[i][1]
