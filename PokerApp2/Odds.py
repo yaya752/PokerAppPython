@@ -435,13 +435,19 @@ def Best_hand(hand,occur):
         j = nums.index(card)
         for i in range (0,4):
             if occur[i][j]== 1 :
-                notFind =False
+                notFind = False
                 result.append(nums[j] + shapes[i])
         if notFind:
             i = 0
-            while i< 4 and occur[i][j]!= 0 :
-                    i+=1
-            result.append(nums[j] + shapes[i])        
+            if occur[0][j] == 0:
+                result.append(nums[j] + shapes[0])
+            elif occur[1][j] == 0:
+                result.append(nums[j] + shapes[1])
+            elif occur[2][j] == 0:
+                result.append(nums[j] + shapes[2])
+            elif occur[3][j] == 0:
+                result.append(nums[j] + shapes[3])
+                   
     return Card_To_Html(result)
 def low_hand_odd(occur,street,list_numplayers):
     i = 0
