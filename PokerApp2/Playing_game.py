@@ -309,8 +309,11 @@ def Card_Street(word,street_index, lines, player, occur,main_player,Players):
 
     else :
         if player != main_player:
-            hand.append('x')
-            
+            if word != 'RIVER' or word != 'River':
+                hand.append('x')
+                hand.append('x')
+            else:
+                hand.append('x')
         for card in words[3:]:
             
             c = ''
