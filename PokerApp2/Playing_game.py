@@ -287,6 +287,7 @@ def Card_Street(word,street_index, lines, player, occur,main_player,Players):
             while k < len(Players) and Players[k][0] != player:
                 k+=1
             Players[k][1].append('x')
+            
             return Players[k][1]
     elif word == 'SHOW':   
         i = street_index[-2]
@@ -309,7 +310,7 @@ def Card_Street(word,street_index, lines, player, occur,main_player,Players):
     else :
         if player != main_player:
             hand.append('x')
-            hand.append('x')
+            
         for card in words[3:]:
             
             c = ''
@@ -604,7 +605,7 @@ def Play(game_file,main_player,list_numplayers,path):
                 print("ici")
                 for k in range(0,len(Players)):
                     if Players[k][1] != "folds":
-                        print(Card_Street('RIVER',street_index, lines, Players[k][0],occur,main_player,Players))
+                        
                         Players_Actions.append([Players[k][0],"Dealt",Card_To_Html(Card_Street('RIVER',street_index, lines, Players[k][0],occur,main_player,Players))])
                 
             
