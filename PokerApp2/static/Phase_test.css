@@ -417,7 +417,7 @@ button {
 .page {
     display: flex;
     flex-direction: column;
-    margin-top: 21%;
+    margin-top: 30%;
 }
 
 table {
