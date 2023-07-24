@@ -140,7 +140,7 @@ def phase(index):
     decision = -1
     (initialisation,list_numplayers,Players) = Init(file_name,path)
     (list_actions,tab_street,decision,maxbet) = Play(file_name,main_player,list_numplayers,path)    
-    return render_template('Phase.html',list_actions = list_actions,
+    return render_template('Phase_test.html',list_actions = list_actions,
                           initialisation = initialisation, tab_street = tab_street , decision = decision , maxbet = maxbet)
 '''
 Function Name: phase 3

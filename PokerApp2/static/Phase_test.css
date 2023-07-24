@@ -1,0 +1,448 @@
+body {
+    background-color:rgb(50, 50, 50);
+    
+}
+.disabled {
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+}
+.Button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.Button2 {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.Button1 {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    background-color: #f44336;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+    z-index: 2;
+}
+
+    .Button1:hover {
+        background-color: #555555;
+    }
+
+
+.square-box {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    overflow: hidden;
+    background: #4679BD;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 150px;
+    border: 10px solid black;
+}
+
+    .square-box:before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+    }
+button {
+    background-color: #428bca;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.square-content {
+    position: absolute;
+    top: 45%;
+    left: 40%;
+    font-size: 25px;
+    color: white;
+    width: 100%;
+    height: 100%;
+    z-index: 102;
+}
+
+    .square-content div {
+        display: table;
+        width: 100%;
+        height: 100%;
+        z-index: 102;
+    }
+
+    .square-content span {
+        
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        color: white;
+        z-index: 102;
+    }
+
+.players {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+    .players .player {
+        position: absolute;
+    }
+
+        .players .player.player-1 {
+            top: 0px;
+            left: 50%;
+            -webkit-transform: translatex(-50%) translatey(-50%);
+            transform: translatex(-50%) translatey(-50%);
+        }
+
+        .players .player.player-2 {
+            top: 0px;
+            right: 10%;
+            -webkit-transform: translatex(-50%) translatey(-50%);
+            transform: translatex(-50%) translatey(-50%);
+        }
+
+        .players .player.player-3 {
+            top: 45%;
+            right: -3%;
+            -webkit-transform: translatex(-50%) translatey(-50%);
+            transform: translatex(-50%) translatey(-50%);
+        }
+
+        .players .player.player-4 {
+            top: 88%;
+            right: 10%;
+            -webkit-transform: translatex(-50%) translatey(-50%);
+            transform: translatex(-50%) translatey(-50%);
+        }
+
+        .players .player.player-5 {
+            top: 88%;
+            left: 50%;
+            -webkit-transform: translatex(-50%) translatey(-50%);
+            transform: translatex(-50%) translatey(-50%);
+        }
+
+        .players .player.player-6 {
+            top: 88%;
+            left: 20%;
+            -webkit-transform: translatex(-50%) translatey(-50%);
+            transform: translatex(-50%) translatey(-50%);
+        }
+
+        .players .player.player-7 {
+            top: 45%;
+            left: 5%;
+            -webkit-transform: translatex(-50%) translatey(-50%);
+            transform: translatex(-50%) translatey(-50%);
+        }
+
+        .players .player.player-8 {
+            top: 0%;
+            left: 20%;
+            -webkit-transform: translatex(-50%) translatey(-50%);
+            transform: translatex(-50%) translatey(-50%);
+        }
+
+        .players .player .avatar {
+            width: 10vh;
+            height: 10vh;
+            background-color: lightcoral;
+            border-radius: 100%;
+            position: relative;
+            top: 20px;
+            z-index: 102;
+            display: flex;
+            
+        }
+
+.card_bottom {
+    z-index: 102;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 200%;
+    height: 100%; 
+    background-color: white;
+    text-align: center;
+    font-size: 7vw;
+    font-weight: 400;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top:-200px;
+            }
+.card_left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 200%;
+    height: 100%;
+    background-color: white;
+    text-align: center;
+    font-size: 7vw;
+    font-weight: 400;
+    z-index: 101;
+    position: absolute;
+    right: 20%;
+    transform: translateX(-50%);
+}
+.card_right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 200%;
+    height: 100%;
+    background-color: white;
+    text-align: center;
+    font-size: 7vw;
+    font-weight: 400;
+    z-index: 101;
+    position: absolute;
+    left: 250%;
+    transform: translateX(-50%);
+}
+.card_top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 200%;
+    height: 100%;
+    background-color: white;
+    text-align: center;
+    font-size: 7vw;
+    font-weight: 400;
+    z-index: 101;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    
+}
+
+.s {
+    align-items: center;
+    background-color: transparent;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    color: black;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.h {
+    align-items: center;
+    background-color: transparent;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    color: red;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.d {
+    align-items: center;
+    background-color: transparent;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    color: blue;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.c {
+    align-items: center;
+    background-color: transparent;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    color: green;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+.r {
+    align-items: center;
+    background-color: transparent;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    color: black;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+#main {
+    position: absolute;
+    width: 70%;
+    height: 50%;
+    overflow: none;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+    text-align: center;
+    color: #FFF;
+    font-size: 2vw;
+}
+
+.name {
+    z-index: 102;
+    font-size: 50%;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0px; 
+    padding: 0; 
+}
+
+.chips {
+    z-index: 102;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: -10px; 
+    padding: -10px; 
+}
+.bet_bottom {
+    z-index: 102;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 200%;
+    height: 100%;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2vw;
+    font-weight: 400;
+    position: absolute;
+    bottom: 90%;
+    left:40%;
+    padding-top: -200px;
+}
+.bet_left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 200%;
+    height: 100%;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2vw;
+    font-weight: 400;
+    z-index: 101;
+    position: absolute;
+    left: 250%;
+    transform: translateX(-50%);
+}
+
+.bet_right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 200%;
+    height: 100%;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2vw;
+    font-weight: 400;
+    z-index: 101;
+    position: absolute;
+    left: 50%;
+    
+    transform: translateX(-50%);
+}
+
+.bet_top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 200%;
+    height: 100%;
+    background-color: transparent;
+    text-align: center;
+    font-size: 2vw;
+    font-weight: 400;
+    z-index: 101;
+    position: absolute;
+    
+    top: 100%;
+    left: 40%;
+    
+}
+.page {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20%;
+}
+
+table {
+    
+    border-collapse: collapse;
+    height: 100%;
+    width: 100%;
+    align-content: center;
+    background-color: darkgrey;
+    border: thick;
+    border-color: black;
+    flex-wrap: wrap;
+    color: black;
+}
+.cards {
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    overflow: hidden;
+    align-items: baseline;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    font-size: 150px;
+    background-color: white;
+    margin-bottom:10px
+}
