@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Summary Table</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='summary.css') }}">
+</head>
+
+<body>
+    <div class="Button1">
+        <div onclick="window.location.href='/';">Previous</div>
+    </div>
+    <h1>Summary Table {{ generalities_list[0][1][:-1] }}: {{ generalities_list[0][2][0]}}</h1>
+    {% for i in range(1) %}
+    {% if mean >= 0 %}
+    <p style="color:green; font-size: 20px"> <span class="mean">Mean : </span> {{ mean }}</p>
+    {% else %}
+    <p style="color: red; font-size: 20px"><span class="mean">Mean : </span> {{ mean }}</p>
+    {% endif %}
+    {% endfor %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Files names</th>
+                <th>Hand</th>
+                <th>Times</th>
+                <th>Cards</th>
+                <th>Summary</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(files|length) %}
+            <tr>
+                <td onclick="window.location.href='/Play/{{ i }}';">{{files[i] }}</td>
+                <td onclick="window.location.href='/Play/{{ i }}';">{{ generalities_list[i][0] }}</td>
+                <td onclick="window.location.href='/Play/{{ i }}';">{{ generalities_list[i][2][1] }}</td>
+                <td style="font-size: 100px" onclick="window.location.href='/Play/{{ i }}';">
+
+                    {% for j in range(hand_table[i]|length) %}
+                    {% if hand_table[i][j][1] == 0 %}
+                    <span class="s">&{{ hand_table[i][j][0] }} </span>
+
+                    {% elif hand_table[i][j][1] == 1 %}
+                    <span class="h">&{{ hand_table[i][j][0] }} </span>
+                    {% elif hand_table[i][j][1] == 2 %}
+                    <span class="d">&{{ hand_table[i][j][0] }} </span>
+
+                    {% else %}
+                    <span class="c">&{{ hand_table[i][j][0] }} </span>
+                    {% endif %}
+
+                    {% endfor %}
+                </td>
+                {% if summary_table[i] >= 0 %}
+                <td style="color:green; font-size: 20px" onclick="window.location.href='/Play/{{ i }}';">{{ summary_table[i] }}</td>
+                {% else %}
+                <td style="color:red; font-size: 20px" onclick="window.location.href='/Play/{{ i }}';">{{ summary_table[i] }}</td>
+                {% endif %}
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

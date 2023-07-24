@@ -268,7 +268,7 @@ def Summary_Chips(game_file,main_player,path):
 #               from the file to create the hand of the players during the game        #
 #                                                                                      #
 ########################################################################################
-def Card_Street(word,street_index, lines, player, occur,main_player):
+def Card_Street(word,street_index, lines, player, occur,main_player,Players):
     #Intialisation of the variable
     i = 0
     # each street all the past cards and the new cards are given so we can just look at the street that we need and retrieved the hand
@@ -282,6 +282,12 @@ def Card_Street(word,street_index, lines, player, occur,main_player):
         i = street_index[3]
     elif word == 'RIVER' or word == 'River':   
         i = street_index[4]
+        if player !=main_player:
+            k = 0
+            while k < len(Players) and Players[k][0] != player:
+                k+=1
+            Players[k][1].append('x')
+            return Players[k][1]
     elif word == 'SHOW':   
         i = street_index[-2]
     words = lines[i].split()
@@ -289,7 +295,6 @@ def Card_Street(word,street_index, lines, player, occur,main_player):
     while ((words[0] != 'Dealt' or words[1] != 'shows' ) and words[2] != player  ):
         i+=1
         words = lines[i].split()
-    
     hand = []
     # when we have the good line we extract the cards from the text 
     if  words[1] == 'shows': 
@@ -302,7 +307,11 @@ def Card_Street(word,street_index, lines, player, occur,main_player):
             hand.append(c)
 
     else :
+        if player != main_player:
+            hand.append('x')
+            hand.append('x')
         for card in words[3:]:
+            
             c = ''
             for letter in card:
                 if letter != "[" and  letter != "]":
@@ -330,10 +339,13 @@ def Card_To_Html(hand):
     num_cards = ['A','2','3','4','5','6','7','8','9','T','J','C','Q','K']
     shape_card = ['s','h','d','c']
     for card in hand:
-        i= num_cards.index(card[0])
-        j= shape_card.index(card[1])
-        #in html we can display graphical card by using a unicode
-        Html_Cards.append(["#1271" + str(i+16*j + 37)+";",j])
+        if card == 'x':
+            Html_Cards.append(["#127136;",4])
+        else:
+            i= num_cards.index(card[0])
+            j= shape_card.index(card[1])
+            #in html we can display graphical card by using a unicode
+            Html_Cards.append(["#1271" + str(i+16*j + 37)+";",j])
     return Html_Cards
 ########################################################################################
 #   Function Name : Summary_Hands                                                      #
@@ -370,7 +382,7 @@ def Summary_Hands(game_file,main_player,path):
         # else we can find in which street he folded and retrieved his hand by using Card Street function 
         # ( Card-To_ html function is only used for displaying the card on the html page)
         elif words[2] == main_player and words[3] == "folded" :
-            return Card_To_Html(Card_Street(words[6],street_index, lines, main_player,occur,main_player))
+            return Card_To_Html(Card_Street(words[6],street_index, lines, main_player,occur,main_player,[]))
         i+=1
 ########################################################################################
 #   Function Name : Init                                                               #
@@ -395,6 +407,7 @@ def Init(game_file,path):
     #Intialisation of the variable
     Pot = 0
     players = 0
+    Players = []
     i  = 2
     Players_Init = []
     ante  = 0
@@ -412,11 +425,11 @@ def Init(game_file,path):
         if words[0] =='Seat':
             # words[3][1:] amount of chips own by the player at the beginning 
             # words[2] name of the player
+            Players.append([words[2],"play"])
             Players_Init.append([words[2],int(words[3][1:])-ante])
             players +=1
         i+=1
-
-    return ([Sort_Player(Players_Init),Pot],[players])
+    return ([Sort_Player(Players_Init),Pot],[players],Players)
 def Sort_Player(player_list):
     index_hero = -1
     for i in range (len(player_list)):
@@ -472,85 +485,53 @@ def Sort_Player(player_list):
 #       - allow to identify who did the action and what he did                         #
 #                                                                                      #
 ########################################################################################
-def Action(lines,line,street,street_index, occur, main_player,tab_player,order):
+def Action(lines,line,street,street_index, occur, main_player,Player):
     words = line.split()
+    
     # words[0][:-1] name of the player
     # words[1] is generally an action 
     action = [words[0][:-1],words[1]]
     # We read the line of the action and if it feats a specific patern we can access to all the information we nead 
     # to update the list of players we create the lists when the cards are dealt and we increment a counter to know in what order the players played
+    
     if words[0] == 'Dealt':
         street_words = lines[street].split()
-        tab_player.append([words[2],Card_Street(street_words[1],street_index, lines, words[2],occur,main_player),-1,0,[]])
-        return [words[2],'Dealt',Card_To_Html(Card_Street(street_words[1],street_index, lines, words[2],occur,main_player))]
+        k = 0
+        while k < len(Player) and Player[k][0] != words[2]:
+            k+=1
+        Player[k][1] = Card_Street(street_words[1],street_index, lines, words[2],occur,main_player,Player)
+        return [words[2],'Dealt',Card_To_Html(Card_Street(street_words[1],street_index, lines, words[2],occur,main_player,Player))]
     elif words[1] == 'raises':
         i = lines.index(line)
-        j = index_poss(words[0][:-1],tab_player)
-        if tab_player[j][2] == -1:
-            tab_player[j][2] = order[0]
-            tab_player[j][3]+=0
-        else:
-            tab_player.append([tab_player[j][0],tab_player[j][1],order[0],tab_player[j][3] + 3 ,[]])
+        
         action.append(raises(i,lines,words[0][:-1]))
-        order[0]+=1
+        
         return action
     elif words[1] == 'brings':
         action.append(int(words[4]))
-        j = index_poss(words[0][:-1],tab_player)
-         
-        if tab_player[j][2] == -1:
-            tab_player[j][2] = order[0]
-            tab_player[j][3]+=0
-        else:
-            tab_player.append([tab_player[j][0],tab_player[j][1],order[0],tab_player[j][3] ,[]])
-        order[0]+=1
+        
+        
         return action
     elif words[1] == 'calls' :
         action.append(int(words[2]))
-        j = index_poss(words[0][:-1],tab_player)
-         
-        if tab_player[j][2] == -1:
-            tab_player[j][2] = order[0]
-            tab_player[j][3]+=1
-        else:
-            tab_player.append([tab_player[j][0],tab_player[j][1],order[0],tab_player[j][3] + 1 ,[]])
-        order[0]+=1
+        
+       
         return action
     elif words[1] == 'bets':
         action.append(int(words[2]))
-        j = index_poss(words[0][:-1],tab_player)
-         
-        if tab_player[j][2] == -1:
-            tab_player[j][2] = order[0]
-            tab_player[j][3] += 2
-        else:
-            tab_player.append([tab_player[j][0],tab_player[j][1],order[0],tab_player[j][3] + 2 ,[]])
-        order[0]+=1
+        
+       
         return action
     elif words[1] == 'folds' :
-        j = index_poss(words[0][:-1],tab_player)
-
-        if tab_player[j][2] == -1:
-            tab_player[j][2] = order[0]
-            tab_player[j][3] = -1
-
-        else:
-            tab_player.append([tab_player[j][0],tab_player[j][1],order[0],-1 ,[]])
-        order[0]+=1
+        
         return action
     elif words[1] == 'checks':
-        j = index_poss(words[0][:-1],tab_player)
-         
-        if tab_player[j][2] == -1:
-            tab_player[j][2] = order[0]
-            tab_player[j][3]+=0
-        else:
-            tab_player.append([tab_player[j][0],tab_player[j][1],order[0],tab_player[j][3] ,[]])
-        order[0]+=1
+        
+        
         return action
     elif words[1] == 'shows':
         street_words = lines[street].split()
-        return [words[0][:-1],words[1],Card_To_Html(Card_Street(street_words[1],street_index, lines, words[2],occur,main_player))]
+        return [words[0][:-1],words[1],Card_To_Html(Card_Street(street_words[1],street_index, lines, words[2],occur,main_player,Player))]
     elif words[1] == 'mucks':
         return action
     elif words[0] == 'Uncalled':
@@ -587,10 +568,11 @@ def Action(lines,line,street,street_index, occur, main_player,tab_player,order):
 ########################################################################################
 def Play(game_file,main_player,list_numplayers,path):
     #Intialisation of the variable
+    (initialisation,list_numplayers,Players) = Init(game_file,path)
     Players_Actions = []
     occur = Table()
     tab_street = []
-    
+
     tab_player = [] #List of info about player, [[name,list_cards,position during the street, if he has been aggressive, what hand he can play],....]
     tab_prec_player = [] #Same as before but for the previous street  
     (lines,street_index) = file_index(game_file,path)
@@ -609,42 +591,36 @@ def Play(game_file,main_player,list_numplayers,path):
         words = lines[i].split()
         # if we met a new street we calculate the new occurence tab and odds associate to it 
         if words[0] == '***':
-            order = [0]
+            print(Players)
+            print(words[1])
+            
+            
             if words[1] != "3rd": 
                 list_numplayers.append(players)
                 (occur1,low_hand_odds)= Calculate_odds(occur,words[1],list_numplayers) #calculate the odds using the occur tab (occurence of the cards)
                 tab_street.append([occur1,low_hand_odds])
-                '''
-                # we need this part to create the decision quiz for each street
-                if time == 0:
-                    decision.append(third_street_decision(occur))
-                    tab_prec_player = tab_player
-                    tab_player = []
-                elif time == 1:
-                    
-                    ([[odd_4th,best_hand_4th,odd_max_4th],[odd_low_4th,lowest_hand_4th,odd_max_low_4th]])  = quiz_4th(tab_player,tab_prec_player,main_player,occur,words[1],list_numplayers, low_hand_odds)
-                    print("4th",odd_4th,best_hand_4th,odd_max_4th , '////' , odd_low_4th,lowest_hand_4th,odd_max_low_4th)
-                    add(tab_player,tab_prec_player)
-                    decision.append([[odd_4th,best_hand_4th,odd_max_4th],[odd_low_4th,lowest_hand_4th,odd_max_low_4th]])
-                    tab_prec_player = sumarry_tab(tab_player)
-                    tab_player = []
-                elif time == 2:
-                    
-                    ([[odd_5th,best_hand_5th,odd_max_5th],[odd_low_5th,lowest_hand_5th,odd_max_low_5th]]) = quiz_5th(occur,tab_player,tab_prec_player,main_player,words[1],list_numplayers,low_hand_odds)
-                    decision.append([[odd_5th,best_hand_5th,odd_max_5th],[odd_low_5th,lowest_hand_5th,odd_max_low_5th]])
-                    print("5th",odd_5th,best_hand_5th,odd_max_5th , '////' , odd_low_5th,lowest_hand_5th,odd_max_low_5th)
-                    add(tab_player,tab_prec_player)
-                    tab_prec_player = sumarry_tab(tab_player)
-                    tab_player = []
-                time += 1'''
             Players_Actions.append([lines[i]])
+            if words[1] == "RIVER":
+                print("ici")
+                for k in range(0,len(Players)):
+                    if Players[k][1] != "folds":
+                        print(Card_Street('RIVER',street_index, lines, Players[k][0],occur,main_player,Players))
+                        Players_Actions.append([Players[k][0],"Dealt",Card_To_Html(Card_Street('RIVER',street_index, lines, Players[k][0],occur,main_player,Players))])
+                
+            
             j+=1
        #else we add the action to the list with a specific pattern [name of the player,action, chips or cards]
         else:
-            act = (Action(lines,lines[i],street,street_index,occur,main_player,tab_player,order))
+            act = (Action(lines,lines[i],street,street_index,occur,main_player,Players))
             if act :
                 words = lines[i].split()
                 if words[1] == 'folds':
+                    k = 0
+                    while k <len(Players) and Players[k][0] !=words[0][:-1]:
+                        k+=1
+                    
+                    Players[k][1] ="folds"
+                    
                     players-=1
                 Players_Actions.append(act)
         i+=1

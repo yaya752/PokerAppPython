@@ -50,7 +50,6 @@ def upload_file():
         uploaded_files = request.files.getlist('files')
         count_file = 0
         session['main_player'] = 'Hero'
-        print(uploaded_files)
         for file in uploaded_files:
             if file.filename =='' :
                 session['new'] = False  
@@ -58,7 +57,6 @@ def upload_file():
                 if allowed_file(file.filename):
                     new_directory = "./New_File"
                     os.makedirs(new_directory, exist_ok=True)
-
                     file.save('./New_File/' + file.filename)
                     session['new'] = True
                     count_file += 1
@@ -99,7 +97,10 @@ def Summary():
             hand_table.append([])
             generalities_list.append([[],[],[]])
     mean = round(Average(summary_table),2)
-    return render_template('summary.html',files=files,first_lines = first_lines,hand_table = hand_table, generalities_list = generalities_list ,summary_table = summary_table, main_player = main_player, mean = mean)
+    if session['new']:
+        return render_template('summary.html',files=files,first_lines = first_lines,hand_table = hand_table, generalities_list = generalities_list ,summary_table = summary_table, main_player = main_player, mean = mean)
+    else:
+        return render_template('summary_game.html',files=files,first_lines = first_lines,hand_table = hand_table, generalities_list = generalities_list ,summary_table = summary_table, main_player = main_player, mean = mean)
 
 @app.route('/Delete/<filename>')
 def delete_file(filename):
@@ -137,7 +138,7 @@ def phase(index):
    
     path = session['path'] 
     decision = -1
-    (initialisation,list_numplayers) = Init(file_name,path)
+    (initialisation,list_numplayers,Players) = Init(file_name,path)
     (list_actions,tab_street,decision,maxbet) = Play(file_name,main_player,list_numplayers,path)    
     return render_template('Phase.html',list_actions = list_actions,
                           initialisation = initialisation, tab_street = tab_street , decision = decision , maxbet = maxbet)

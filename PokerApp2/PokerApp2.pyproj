@@ -43,6 +43,7 @@
     <Content Include="Game_File\game2.txt" />
     <Content Include="static\Phase.css" />
     <Content Include="static\summary.css" />
+    <Content Include="templates\summary_game.html" />
     <Content Include="templates\upload.html" />
     <Content Include="templates\phase_tab_odds.html" />
     <Content Include="templates\Phase_test.html" />

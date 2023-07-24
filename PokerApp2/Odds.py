@@ -145,6 +145,7 @@ def odd_first_card(card,occur,street,list_numplayers):
                 num5 = list_numplayers[2]
                 num6 = list_numplayers[3]
                 odd = 1/(52-(2+ num3+num4+num5+num6))
+
     return odd
 def odd_second_card(card,occur,street,list_numplayers):
     odd = 0
@@ -366,9 +367,10 @@ def odd_Straight_flush(straight,occur,street,list_numplayers):
     return odd
 def count_card(j,occur):
     S = 0
-    for i in range (4):
+    for i in range (0,4):
         if occur[i][j] == 0:
             S+=1
+
     return S
 low_hand = [['5','4','3','2','A'],
             ['6','4','3','2','A'],
@@ -434,7 +436,7 @@ def Best_hand(hand,occur):
     for card in hand:
         j = nums.index(card)
         for i in range (0,4):
-            if occur[i][j]== 1 :
+            if occur[i][j]== 1 and notFind :
                 notFind = False
                 result.append(nums[j] + shapes[i])
         for i in range(0,4):
@@ -464,7 +466,8 @@ def low_hand_odd(occur,street,list_numplayers):
     low_hand_odds = []
     Odds = []
     for hand in low_hand :
-        low_hand_odds.append([hand,odd_Low(hand,occur,street,list_numplayers)/len(low_hand)])
+        low_hand_odds.append([hand,odd_Low(hand,occur,street,list_numplayers)])
+
     while (low_hand_odds[i][0][0] == '5'):
         hand = low_hand_odds[i][0]
         odd = low_hand_odds[i][1]
@@ -507,13 +510,14 @@ def low_hand_odd(occur,street,list_numplayers):
             odd_8low_max= odd
             best_8low = Best_hand(hand,occur)
         if odd_8low_max == 1:
-            odd_8low =1 
+            odd_8low = 1 
         i+=1
     Odds.append(["8-Low",best_8low,round(odd_8low_max*100,3)])
     return Odds
 
     
 def odd_Low(low,occur,street,list_numplayers):
+    
     nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     suits = ['s','h','d','c']
     odd = 0.
@@ -531,8 +535,7 @@ def odd_Low(low,occur,street,list_numplayers):
             if occur[i][j] == 0 and pres !=1:
                 remaining.append(nums[j] + suits[i])
                 count.append(count_card(j,occur))
-                pres = 1
-            
+                pres = 1  
     if hand >= 5:
         return 1.
     elif len(remaining)>=5:
@@ -635,7 +638,10 @@ def odd_Low(low,occur,street,list_numplayers):
                 for i in range (0,len(remaining)):
                     card1 = remaining[i]
                     for m in range (0,len(list_function)):
+                        
+
                         odd += count[0]*list_function[m](card1,occur,street,list_numplayers)
+
         else:
             odd = 0
     return odd
@@ -1575,15 +1581,17 @@ def Table():
 
 def Append_cards(hand,occur,mainplayer,player):
     num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
-    suit = ['s','h','d','c']
+    shape = ['s','h','d','c']
+
     for card in hand:
-        i= suit.index(card[1])
-        j= num.index(card[0])
-        if occur[i][j] == 0 :
-            if mainplayer == player:
-                occur[i][j] = 1
-            else:
-                occur[i][j] = -1
+        if card != 'x':
+            i= shape.index(card[1])
+            j= num.index(card[0])
+            if occur[i][j] == 0 :
+                if mainplayer == player:
+                    occur[i][j] = 1
+                else:
+                    occur[i][j] = -1
     return occur
 def NumCards(occur):
     S = 0
@@ -1593,6 +1601,7 @@ def NumCards(occur):
                 S+=1
     return 52-S
 def Calculate_odds(occur,street,list_numplayers):
+    
     occur1 = Table()
     low_hand_odds = []
     for i in range (len(occur)):

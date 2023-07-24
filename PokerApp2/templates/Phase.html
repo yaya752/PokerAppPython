@@ -10,19 +10,23 @@
         <div onclick="window.location.href='/Summary';">Previous</div>
     </div>
     <div class="Button">
-        <button id="previousStreet">Previous Street</button>
+        
         <button id="previousButton">Previous Action</button>
         <button id="nextButton">Next Action</button>
+        
+    </div>
+    <div class="Button2">
+        <button id="previousStreet">Previous Street</button>
         <button id="nextStreet">Next Street</button>
     </div>
     <div id="tableContainer" class="page"></div>
-    
+
     <div>
 
         <h1>Probabilities of having a Low-Hand</h1>
-        
 
-            <!--     <div style='display: inline-block; margin-right: 10px;'>
+
+        <!--     <div style='display: inline-block; margin-right: 10px;'>
                   <div class="dropdown">
                       <h1>Flush</h1>
                       <div class="dropdown-content">
@@ -33,14 +37,14 @@
               </div>
 
         -->
-            <div id="HandContainer" class="page"></div>
+        <div id="HandContainer" class="page"></div>
 
-        </div>
-        <div>
-            <div id="lowtab" class="page"></div>
-        </div>
+    </div>
+    <div>
+        <div id="lowtab" class="page"></div>
+    </div>
 
-        <script>
+    <script>
         var decision_json = {{ decision| tojson }}
 
         var maxbet = {{ maxbet }}
@@ -56,7 +60,7 @@
         var Index_tab = 0;
         // Retrieve the list of actions from Flask
         var actions = {{list_actions|tojson}};
-
+        console.log(tableau)
         var list_init = {{ initialisation| tojson }};
         function Init() {
             var list = []
@@ -271,7 +275,6 @@
                     update_pot(list, street)
                     street = actions[currentActionIndex][0]
                     currentActionIndex++
-
                     if (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows' || actions[currentActionIndex][1] == 'Won') {
 
                         while ((currentActionIndex < actions.length) && (actions[currentActionIndex][1] == 'Dealt' || actions[currentActionIndex][1] == 'shows' || actions[currentActionIndex][1] == 'Won')) {
@@ -485,10 +488,14 @@
                 else if (cards[i][1] == 3) {
                     cards_string += "<div class=\"c\">&" + cards[i][0] + "</div>"
                 }
+                else
+                {
+                    cards_string += "<div class=\"r\">&" + cards[i][0] + "</div>"
+                }
             }
             return cards_string;
             }
-            
+
         // Function to display the current action
         function displayAction(list,street,index) {
             var i = 0
@@ -748,7 +755,7 @@
             low_html += "<td>The most likely hand</td>"
             low_html += "<td>Probabilite to have this Hand </td></tr>"
             for (let pas = 0; pas < t[index][1].length; pas++) {
-                console.log(displaycards(t[index][1][pas][1]))
+                console.log(index)
                 if (t[index][1][pas][1] != 0) {
                     low_html += "<tr><td>" + t[index][1][pas][0] + " </td>"
                     low_html += "<td class=\"cards\">" + displaycards(t[index][1][pas][1]) + "</td>"
@@ -836,6 +843,6 @@
             flush.innerHTML = flush_html;
 
         }
-        </script>
+    </script>
 </body>
 </html>
