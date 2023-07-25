@@ -14,7 +14,7 @@ body {
     align-content: center;
     align-items: center;
     justify-content: center;
-    z-index: 1;
+    z-index: 2;
 }
 
 .Button2 {
@@ -24,7 +24,7 @@ body {
     align-content: center;
     align-items: center;
     justify-content: center;
-    z-index: 1;
+    z-index: 2;
 }
 
 .Button1 {
@@ -45,7 +45,7 @@ body {
     transition-duration: 0.4s;
     cursor: pointer;
     border-radius: 8px;
-    z-index: 1;
+    z-index: 2;
 }
 
     .Button1:hover {
@@ -92,14 +92,14 @@ button {
     color: white;
     width: 100%;
     height: 100%;
-    z-index: 102;
+    z-index: 3;
 }
 
     .square-content div {
         display: table;
         width: 100%;
         height: 100%;
-        z-index: 102;
+        z-index: 3;
     }
 
     .square-content span {
@@ -108,14 +108,14 @@ button {
         text-align: center;
         vertical-align: middle;
         color: white;
-        z-index: 102;
+        z-index: 3;
     }
 
 .players {
-    position: relative;
+    position: absolute;
     width: 100%;
     height: 100%;
-    z-index: 100;
+    z-index: 3;
 }
 
     .players .player {
