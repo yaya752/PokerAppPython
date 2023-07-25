@@ -147,7 +147,7 @@
                 i++
             }
             beginindex = i-1;
-            displayAction(list, '*** 3rd STREET ***', 0)
+            displayAction(tableau,list, '*** 3rd STREET ***', 0)
             return beginindex
         }
         beginindex = begin(list)
@@ -210,7 +210,7 @@
                 }
             }
 
-            displayAction(list, street, Index_tab);
+            displayAction(tableau,list, street, Index_tab);
         });
 
         // Event for the previous action button
@@ -276,7 +276,7 @@
 
             }
             updatelist(list, currentActionIndex);
-            displayAction(list, street, Index_tab);
+            displayAction(tableau,list, street, Index_tab);
         });
         // Event for the next action Street
         nextStreet.addEventListener("click", function () {
@@ -338,7 +338,7 @@
             updatelist(list, currentActionIndex)
 
             update_pot(list,street)
-            displayAction(list, street, Index_tab);
+            displayAction(tableau,list, street, Index_tab);
 
 
         });
@@ -406,7 +406,7 @@
 
             updatelist(list, currentActionIndex)
             update_pot(list,street)
-            displayAction(list, street, Index_tab);
+            displayAction(tableau,list, street, Index_tab);
         });
 
         // Disable the previous Street at the beginning
@@ -479,7 +479,7 @@
             return cards_string;
         }
         // Function to display the current action
-        function displayAction(list,street,index) {
+        function displayAction(tableau,list,street,index) {
             var i = 0
             var h = 2
             var actionHtml = "<div class = \"containerplayer\"> ";

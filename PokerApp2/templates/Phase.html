@@ -81,7 +81,7 @@
                 i++
             }
             beginindex = i-1;
-            displayAction(list, street, 0)
+            displayAction(tableau,list, street, 0)
             displayLow(tableau, Index_tab)
             //displayHand(decision_json, Index_tab)
             //displayFlush(tableau, Index_tab)
@@ -153,7 +153,7 @@
                 }
             }
 
-            displayAction(list, street, Index_tab);
+            displayAction(tableau,list, street, Index_tab);
             displayLow(tableau, Index_tab)
             //displayHand(decision_json, Index_tab)
             //displayFlush(tableau, Index_tab)
@@ -222,7 +222,7 @@
             }
 
             updatelist(list, currentActionIndex, street);
-            displayAction(list, street, Index_tab);
+            displayAction(tableau,list, street, Index_tab);
             displayLow(tableau, Index_tab)
             //displayHand(decision_json, Index_tab)
             //displayFlush(tableau, Index_tab)
@@ -291,7 +291,7 @@
 
 
 
-            displayAction(list, street, Index_tab);
+            displayAction(tableau,list, street, Index_tab);
             displayLow(tableau, Index_tab)
             //displayHand(decision_json, Index_tab)
             //displayFlush(tableau, Index_tab)
@@ -362,7 +362,7 @@
 
             updatelist(list, currentActionIndex,street)
 
-            displayAction(list, street, Index_tab);
+            displayAction(tableau,list, street, Index_tab);
             displayLow(tableau, Index_tab)
             //displayHand(decision_json, Index_tab)
             //displayFlush(tableau, Index_tab)
@@ -497,7 +497,7 @@
             }
 
         // Function to display the current action
-        function displayAction(list,street,index) {
+        function displayAction(tableau,list,street,index) {
             var i = 0
             var h = 2
             var index_hero = 0

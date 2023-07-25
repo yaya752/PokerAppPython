@@ -19,16 +19,11 @@
         <button id="previousStreet">Previous Street</button>
         <button id="nextStreet">Next Street</button>
     </div>
-    <div id="main">
-        <div id="tableContainer" class="page">
-            <div class="page">
-                <h1>Probabilities of having a Low-Hand</h1>
-                <div>
-                    <div id="lowtab"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+        <div id="tableContainer" class="page"></div>
+
+        
+    
     
             
 
@@ -70,8 +65,8 @@
                 i++
             }
             beginindex = i-1;
-            displayAction(list, street, 0)
-            displayLow(tableau, Index_tab)
+            displayAction(tableau,tableau,list, street, 0)
+            
             //displayHand(decision_json, Index_tab)
             //displayFlush(tableau, Index_tab)
             return beginindex
@@ -142,8 +137,8 @@
                 }
             }
 
-            displayAction(list, street, Index_tab);
-            displayLow(tableau, Index_tab)
+            displayAction(tableau,list, street, Index_tab);
+            
             //displayHand(decision_json, Index_tab)
             //displayFlush(tableau, Index_tab)
         });
@@ -211,8 +206,8 @@
             }
 
             updatelist(list, currentActionIndex, street);
-            displayAction(list, street, Index_tab);
-            displayLow(tableau, Index_tab)
+            displayAction(tableau,list, street, Index_tab);
+            
             //displayHand(decision_json, Index_tab)
             //displayFlush(tableau, Index_tab)
         });
@@ -280,7 +275,7 @@
 
 
 
-            displayAction(list, street, Index_tab);
+            displayAction(tableau,list, street, Index_tab);
             displayLow(tableau, Index_tab)
             //displayHand(decision_json, Index_tab)
             //displayFlush(tableau, Index_tab)
@@ -351,8 +346,8 @@
 
             updatelist(list, currentActionIndex,street)
 
-            displayAction(list, street, Index_tab);
-            displayLow(tableau, Index_tab)
+            displayAction(tableau,list, street, Index_tab);
+            
             //displayHand(decision_json, Index_tab)
             //displayFlush(tableau, Index_tab)
         });
@@ -486,7 +481,7 @@
             }
 
         // Function to display the current action
-        function displayAction(list,street,index) {
+        function displayAction(table,table,list,street,index) {
             var i = 0
             var h = 2
             var index_hero = 0
@@ -563,8 +558,9 @@
             }
             
             actionHtml += "</div>"
-            actionHtml += "</div>"
             
+            actionHtml = displayLow(table, index)
+            actionHtml += "</div>"
             tableContainer.innerHTML = actionHtml;
         }
 
@@ -589,7 +585,7 @@
             }
 
             low_html += "</table>"
-            lowtab.innerHTML = low_html;
+            return low_html
         }
         function displayChips(chips) {
             var w = 0;  // 1euro chips
