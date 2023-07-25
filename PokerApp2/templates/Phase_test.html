@@ -20,7 +20,7 @@
         <button id="nextStreet">Next Street</button>
     </div>
     
-        <div id="tableContainer" class="page"></div>
+    <div id="tableContainer" class="page"></div>
 
         
     
@@ -34,9 +34,6 @@
         var tableau = {{ tab_street | tojson }};
 
         var tableauxContainer = document.getElementById("tableauxContainer");
-        var lowtab = document.getElementById("lowtab")
-        var flush = document.getElementById("flush")
-        var handtab = document.getElementById("HandContainer")
         // Index of the current action
         var currentActionIndex = 0;
         var beginindex = 0;
@@ -276,7 +273,7 @@
 
 
             displayAction(tableau,list, street, Index_tab);
-            displayLow(tableau, Index_tab)
+            
             //displayHand(decision_json, Index_tab)
             //displayFlush(tableau, Index_tab)
 
@@ -557,9 +554,10 @@
                 colour = 'blue'
             }
             
-            actionHtml += "</div>"
+            
             
             actionHtml = displayLow(table, index)
+            actionHtml += "</div>"
             actionHtml += "</div>"
             tableContainer.innerHTML = actionHtml;
         }
