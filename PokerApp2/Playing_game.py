@@ -461,13 +461,13 @@ def Sort_Player(player_list):
     elif length == 4:
         new_list = [new_list[1],new_list[2],new_list[3],new_list[0]]
     elif length == 5:
-        new_list = [new_list[2],new_list[3],new_list[4],new_list[1],new_list[0]]
+        new_list = [new_list[1],new_list[2],new_list[3],new_list[4],new_list[0]]
     elif length == 6:
-        new_list = [new_list[2],new_list[3],new_list[4],new_list[1],new_list[5],new_list[0]]
+        new_list = [new_list[2],new_list[3],new_list[4],new_list[5],new_list[0],new_list[1]]
     elif length == 7:
-        new_list = [new_list[2],new_list[3],new_list[4],new_list[1],new_list[5],new_list[0],new_list[6]]
+        new_list = [new_list[3],new_list[4],new_list[5],new_list[6],new_list[0],new_list[1],new_list[2]]
     elif length == 8:
-        new_list = [new_list[2],new_list[3],new_list[4],new_list[1],new_list[5],new_list[0],new_list[6],new_list[7]]
+        new_list = [new_list[4],new_list[5],new_list[6],new_list[7],new_list[0],new_list[1],new_list[2],new_list[3]]
     return new_list
 ########################################################################################
 #   Function Name : Action                                                             #

@@ -386,7 +386,7 @@ div {
     width: 10%;
     color: white;
 }
-    
+
 .chips_red {
     font-size: 50px;
     align-items: center;
@@ -413,7 +413,7 @@ div {
     width: 10%;
     color: green;
 }
-    
+
 .chips_black {
     font-size: 50px;
     align-items: center;
@@ -441,6 +441,7 @@ div {
         opacity: 0;
         transition: opacity 0.3s;
     }
+
     .chips_white:hover::after,
     .chips_purple:hover::after,
     .chips_red:hover::after,

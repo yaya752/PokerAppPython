@@ -486,9 +486,12 @@
             var len = list.length - 1
             var actionHtml = "<div id=\"main\">"
             actionHtml += "<div class=\'square-box\'>"
+            
             actionHtml += "<div class='square-content'> <span>" + street + "<span style='margin-left: 5px;'></span>" + list[len] + "</span></div>"
-            actionHtml += displayLow(table, index)
-            actionHtml += "</div><div class=\"players\" >"
+            
+            actionHtml += "</div>"
+            
+            actionHtml += "<div class=\"players\" >"
             
             var player = []
             var j = 0
@@ -506,14 +509,14 @@
                     colour = 'grey'
                 }
                 if (pas == index_hero) {
-                    actionHtml += "<div class=\"player player-6 playing\" id=\"player6\">"
+                    actionHtml += "<div class=\"player player-5 playing\" id=\"player5\">"
                     actionHtml += "<div class=\"avatar timer\" style=\"background:"+ colour +";\">"
                     actionHtml += "<div class =\"name\">" + list[pas][0] + "</div>"
                     actionHtml += "<div class =\"chips\">" + list[pas][3] + "</div>"
                     actionHtml += "<div class = 'card_bottom'>"
                     actionHtml += displaycards(list[pas][1])
                     actionHtml += "</div>"
-                    actionHtml += "<div class =\"bet_bottom\">" + list[pas][4] + "</div>"
+                    actionHtml += "<div class =\"bet_bottom\">" + displayChips(list[pas][4]) + "</div>"
                     actionHtml += "</div>"
                     
                     actionHtml +="</div > "
@@ -547,7 +550,7 @@
                     actionHtml += displaycards(list[pas][1])
                     actionHtml += "</div>"
                     actionHtml += "<div class =" + position_bet + ">"
-                    actionHtml += list[pas][4]
+                    actionHtml += displayChips(list[pas][4]) 
                     actionHtml += "</div>"
                     actionHtml += "</div></div>"
                     i++ 
@@ -555,8 +558,9 @@
                 colour = 'blue'
             }
             
-            
+           
             actionHtml += "</div>"
+            actionHtml += displayLow(table, index)
             actionHtml += "</div>"
             
             
@@ -565,73 +569,103 @@
         }
 
         function displayLow(t, index) {
-
+            var ind = index
             var hand = -1
             low_html = ""
-            low_html = "<table>"
-            low_html += "<tr><td>Low_Hand</td>"
-            low_html += "<td>The most likely hand</td>"
-            low_html += "<td>Probabilite to have this Hand </td></tr>"
-            for (let pas = 0; pas < t[index][1].length; pas++) {
-                console.log(index)
-                if (t[index][1][pas][1] != 0) {
-                    low_html += "<tr><td>" + t[index][1][pas][0] + " </td>"
-                    low_html += "<td class=\"cards\">" + displaycards(t[index][1][pas][1]) + "</td>"
-                    low_html += "<td>" + t[index][1][pas][2] + "</td></tr>"
-                }
-                if (t[index][1][pas][1] == 1) {
-                    hand = pas
+            if (t[ind] != null) { 
+                if (t[ind].length != 0) { 
+                    if (t[ind][1].length != 0) {
+                        if (t[ind][1][0][1].length != 0 || t[ind][1][1][1].length != 0 || t[ind][1][2][1].length != 0 || t[ind][1][3][1].length != 0) {
+                            low_html = "<table>"
+                            low_html += "<tr><td>Low_Hand</td>"
+                            low_html += "<td>The most likely hand</td>"
+                            low_html += "<td>Probabilite to have this Hand </td></tr>"
+                            for (let pas = 0; pas < t[ind][1].length; pas++) {
+                                console.log(t[ind])
+                                if (t[index][1][pas][1] != 0) {
+                                    low_html += "<tr><td>" + t[ind][1][pas][0] + " </td>"
+                                    low_html += "<td class=\"cards\">" + displaycards(t[ind][1][pas][1]) + "</td>"
+                                    low_html += "<td>" + t[ind][1][pas][2] + "</td></tr>"
+                                }
+                                if (t[index][1][pas][1] == 1) {
+                                    hand = pas
+                                }
+                            }
+                        }
+                    }
                 }
             }
-
             low_html += "</table>"
             return low_html
         }
         function displayChips(chips) {
-            var w = 0;  // 1euro chips
-            var r = 0;  // 5 euros chips
-            var g = 0;  // 25 euros chips
-            var b = 0;  // 100 euros chips
-            var p = 0;  // 500 euros chips
+            var w = 0;  // 1 euro chip maxbet/100
+            var r = 0;  // 5 euros chip maxbet/20
+            var blue = 0;  // 10 euros chip maxbet/10
+            var g = 0;  // 25 euros chip maxbet/4
+            var black = 0;  // 100 euros chip maxbet
+            var p = 0;  // 500 euros chip 5*maxbet
+            var y = 0;  // 1000 euros chip 10*maxbet
             var result = ""
-            while (chips - 500 > 0) {
-                chips = chips - 500
+            while (chips - 10 * maxbet > 0) {
+                chips = chips - 10 * maxbet
+                y++
+            }
+            while (chips - 5 * maxbet > 0) {
+                chips = chips - 5 * maxbet
                 p++
             }
 
-            while (chips - 100 > 0) {
-                chips = chips - 100
-                b++
+            while (chips - maxbet > 0) {
+                chips = chips - maxbet
+                black++
             }
 
-            while (chips - 25 > 0) {
-                chips = chips - 100
+            while (chips - maxbet / 4 > 0) {
+                chips = chips - maxbet / 4
                 g++
             }
-
-            while (chips - 5 > 0) {
-                chips = chips - 100
+            while (chips - maxbet / 10 > 0) {
+                chips = chips - maxbet / 10
+                blue++
+            }
+            while (chips - maxbet / 20 > 0) {
+                chips = chips - maxbet / 10
                 r++
             }
-            while (chips - 1 > 0) {
-                chips = chips - 100
+            while (chips - maxbet / 100 > 0) {
+                chips = chips - maxbet / 100
                 w++
             }
-
-            if (p != 0) {
-                result += p + "*<span class = \"chips_purple\" data-tooltip=\"chips value 500\">&#9762; </span> "
+            var amount = 0
+            
+            if (y != 0) {
+                amount = maxbet * 10
+                result += p + "*<span class = \"chips_yellow\" data-tooltip=\"chips value"+amount+"\">&#9762; </span> "
             }
-            if (b != 0) {
-                result += b + "*<span class = \"chips_black\" data-tooltip=\"chips value 100\">&#9762; </span> "
+            if (p != 0) {
+                amount = maxbet * 5
+                result += p + "*<span class = \"chips_purple\" data-tooltip=\"chips value" + amount +"\">&#9762; </span> "
+            }
+            if (black != 0) {
+                amount = maxbet
+                result += black + "*<span class = \"chips_black\" data-tooltip=\"chips value" + amount +"\">&#9762; </span> "
             }
             if (g != 0) {
-                result += g + "*<span class = \"chips_green\" data-tooltip=\"chips value 25\">&#9762; </span> "
+                amount = maxbet / 4
+                result += g + "*<span class = \"chips_green\" data-tooltip=\"chips value" + amount +"\">&#9762; </span> "
+            }
+            if (blue != 0) {
+                amount = maxbet / 10
+                result += blue + "*<span class = \"chips_blue   \" data-tooltip=\"chips value" + amount + "\">&#9762; </span> "
             }
             if (r != 0) {
-                result += r + "*<span class = \"chips_red\" data-tooltip=\"chips value 5\">&#9762; </span> "
+                amount = maxbet / 20
+                result += r + "*<span class = \"chips_red\" data-tooltip=\"chips value" + amount +"\">&#9762; </span> "
             }
             if (w != 0) {
-                result += w + "*<span class = \"chips_white\" data-tooltip=\"chips value 1\">&#9762; </span> "
+                amount = maxbet / 100
+                result += w + "*<span class = \"chips_white\" data-tooltip=\"chips value " + amount +"\">&#9762; </span> "
             }
             return result
         }
