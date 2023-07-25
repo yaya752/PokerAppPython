@@ -14,7 +14,7 @@ body {
     align-content: center;
     align-items: center;
     justify-content: center;
-    z-index: 101;
+    z-index: 1;
 }
 
 .Button2 {
@@ -24,7 +24,7 @@ body {
     align-content: center;
     align-items: center;
     justify-content: center;
-    z-index: 101;
+    z-index: 1;
 }
 
 .Button1 {
@@ -45,7 +45,7 @@ body {
     transition-duration: 0.4s;
     cursor: pointer;
     border-radius: 8px;
-    z-index: 101;
+    z-index: 1;
 }
 
     .Button1:hover {
