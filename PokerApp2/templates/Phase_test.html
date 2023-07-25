@@ -486,7 +486,8 @@
             var len = list.length - 1
             var actionHtml = "<div id=\"main\">"
             actionHtml += "<div class=\'square-box\'>"
-            actionHtml += "<div class='square-content'> <span>" + street +"<span style='margin-left: 5px;'></span>"+ list[len] +"</span></div>"
+            actionHtml += "<div class='square-content'> <span>" + street + "<span style='margin-left: 5px;'></span>" + list[len] + "</span></div>"
+            actionHtml += displayLow(table, index)
             actionHtml += "</div><div class=\"players\" >"
             
             var player = []
@@ -557,7 +558,7 @@
             
             actionHtml += "</div>"
             actionHtml += "</div>"
-            actionHtml += displayLow(table, index)
+            
             
             
             tableContainer.innerHTML = actionHtml;
