@@ -57,7 +57,7 @@ def upload_file():
                 if allowed_file(file.filename):
                     new_directory = "./New_File"
                     os.makedirs(new_directory, exist_ok=True)
-                    file.save('./New_File/' + file.filename)
+                    file.save('./new_File/' + file.filename)
                     session['new'] = True
                     count_file += 1
         if count_file == 0:
@@ -69,7 +69,7 @@ def upload_file():
 @app.route('/Summary')
 def Summary():
     if session['new']:
-        path = './New_File/'
+        path = './new_File/'
     else:
         path = './Game_File/'
     uploads_dir = os.path.join(app.root_path, path)

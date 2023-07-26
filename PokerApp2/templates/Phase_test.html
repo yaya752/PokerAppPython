@@ -599,75 +599,8 @@
             return low_html
         }
         function displayChips(chips) {
-            var w = 0;  // 1 euro chip maxbet/100
-            var r = 0;  // 5 euros chip maxbet/20
-            var blue = 0;  // 10 euros chip maxbet/10
-            var g = 0;  // 25 euros chip maxbet/4
-            var black = 0;  // 100 euros chip maxbet
-            var p = 0;  // 500 euros chip 5*maxbet
-            var y = 0;  // 1000 euros chip 10*maxbet
-            var result = ""
-            while (chips - 10 * maxbet > 0) {
-                chips = chips - 10 * maxbet
-                y++
-            }
-            while (chips - 5 * maxbet > 0) {
-                chips = chips - 5 * maxbet
-                p++
-            }
-
-            while (chips - maxbet > 0) {
-                chips = chips - maxbet
-                black++
-            }
-
-            while (chips - maxbet / 4 > 0) {
-                chips = chips - maxbet / 4
-                g++
-            }
-            while (chips - maxbet / 10 > 0) {
-                chips = chips - maxbet / 10
-                blue++
-            }
-            while (chips - maxbet / 20 > 0) {
-                chips = chips - maxbet / 10
-                r++
-            }
-            while (chips - maxbet / 100 > 0) {
-                chips = chips - maxbet / 100
-                w++
-            }
-            var amount = 0
-            
-            if (y != 0) {
-                amount = maxbet * 10
-                result += p + "*<span class = \"chips_yellow\" data-tooltip=\"chips value"+amount+"\">&#9762; </span> "
-            }
-            if (p != 0) {
-                amount = maxbet * 5
-                result += p + "*<span class = \"chips_purple\" data-tooltip=\"chips value" + amount +"\">&#9762; </span> "
-            }
-            if (black != 0) {
-                amount = maxbet
-                result += black + "*<span class = \"chips_black\" data-tooltip=\"chips value" + amount +"\">&#9762; </span> "
-            }
-            if (g != 0) {
-                amount = maxbet / 4
-                result += g + "*<span class = \"chips_green\" data-tooltip=\"chips value" + amount +"\">&#9762; </span> "
-            }
-            if (blue != 0) {
-                amount = maxbet / 10
-                result += blue + "*<span class = \"chips_blue   \" data-tooltip=\"chips value" + amount + "\">&#9762; </span> "
-            }
-            if (r != 0) {
-                amount = maxbet / 20
-                result += r + "*<span class = \"chips_red\" data-tooltip=\"chips value" + amount +"\">&#9762; </span> "
-            }
-            if (w != 0) {
-                amount = maxbet / 100
-                result += w + "*<span class = \"chips_white\" data-tooltip=\"chips value " + amount +"\">&#9762; </span> "
-            }
-            return result
+            var result = Math.round(chips/maxbet * 100)
+            return result + "%"
         }
 
 

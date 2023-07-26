@@ -57,25 +57,26 @@ body {
 
 
 .square-box {
+    
+    margin: auto;
     position: absolute;
-    width: 90%;
-    height: 90%;
+    width: 45%;
+    height: 45%;
     overflow: hidden;
     background: #4679BD;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    margin: auto;
+
     border-radius: 150px;
     border: 10px solid black;
-    z-index:1;
+    z-index: 0;
 }
 
     .square-box:before {
         content: "";
         display: block;
-        
         width: 100%;
         height: 40%;
     }
@@ -95,8 +96,8 @@ button {
     left: 40%;
     font-size: 25px;
     color: white;
-    width: 100%;
-    height: 100%;
+    width: 25%;
+    height: 25%;
     z-index: 3;
 }
 
@@ -111,16 +112,19 @@ button {
         
         display: table-cell;
         text-align: center;
+        font-size: 20px;
         vertical-align: middle;
         color: white;
         z-index: 2;
     }
 
 .players {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    left: 25%; 
+    top: 25%; 
+    margin: auto;
 }
 
     .players .player {
@@ -143,7 +147,7 @@ button {
 
         .players .player.player-3 {
             top: 45%;
-            right: -3%;
+            right: -5%;
             -webkit-transform: translatex(-50%) translatey(-50%);
             transform: translatex(-50%) translatey(-50%);
         }
@@ -314,11 +318,10 @@ button {
     margin-bottom: 10px;
 }
 
+
+
 #main {
     position: absolute;
-    
-    
-    
     width: 80%;
     height: 50%;
     overflow: none;
@@ -327,7 +330,11 @@ button {
     top: 0;
     bottom: 0;
     margin: auto;
+    margin-top: 2%;
 }
+
+
+
 
 .timer {
     display: flex;
@@ -366,10 +373,10 @@ button {
     height: 100%;
     background-color: transparent;
     text-align: center;
-    font-size: 2vw;
+    font-size: 20px;
     font-weight: 400;
     position: absolute;
-    bottom: 90%;
+    bottom: 60%;
     left:40%;
     padding-top: -200px;
 }
@@ -381,11 +388,11 @@ button {
     height: 100%;
     background-color: transparent;
     text-align: center;
-    font-size: 2vw;
+    font-size: 20px;
     font-weight: 400;
     z-index: 101;
     position: absolute;
-    left: 250%;
+    left: 220%;
     transform: translateX(-50%);
 }
 
@@ -397,11 +404,11 @@ button {
     height: 100%;
     background-color: transparent;
     text-align: center;
-    font-size: 2vw;
+    font-size: 20px;
     font-weight: 400;
     z-index: 101;
     position: absolute;
-    left: 50%;
+    left: 60%;
     
     transform: translateX(-50%);
 }
@@ -414,12 +421,12 @@ button {
     height: 100%;
     background-color: transparent;
     text-align: center;
-    font-size: 2vw;
+    font-size: 20px;
     font-weight: 400;
     z-index: 101;
     position: absolute;
     
-    top: 100%;
+    top: 60%;
     left: 40%;
     
 }
@@ -430,15 +437,14 @@ button {
 }
 
 table {
-    margin-top:20vh;
+    position: absolute;
+    width: 100%;
+    top: 120%; 
+    left: 0; 
     border-collapse: collapse;
-    height: 100%;
-    width: 80vw;
-    align-content: center;
     background-color: darkgrey;
     border: thick;
     border-color: black;
-    flex-wrap: wrap;
     color: black;
 }
 .cards {
