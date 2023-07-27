@@ -57,7 +57,7 @@ def upload_file():
                 if allowed_file(file.filename):
                     new_directory = "./New_File"
                     os.makedirs(new_directory, exist_ok=True)
-                    file.save('./new_File/' + file.filename)
+                    file.save('New_File\\' + file.filename)
                     session['new'] = True
                     count_file += 1
         if count_file == 0:
@@ -69,9 +69,9 @@ def upload_file():
 @app.route('/Summary')
 def Summary():
     if session['new']:
-        path = './new_File/'
+        path = 'New_File\\'
     else:
-        path = './Game_File/'
+        path = 'Game_File\\'
     uploads_dir = os.path.join(app.root_path, path)
     files = os.listdir(uploads_dir)
     session['files'] = files
@@ -105,7 +105,7 @@ def Summary():
 @app.route('/Delete/<filename>')
 def delete_file(filename):
     path = session['path']
-    if path != "./Game_File/":
+    if path != "Game_File\\":
         file_path = os.path.join(path, filename)
         os.remove(file_path)
         uploads_dir = os.path.join(app.root_path, path)

@@ -46,7 +46,7 @@ def Generalities(line):
 ########################################################################################
 def file_index(game_file,path):
     #Intialisation of the variable
-    file_name =path + game_file #change ./Game_File/ into ./Game_File/ if you are on linux
+    file_name =path + game_file #change Game_File\\ into Game_File\\ if you are on linux
     lines = []
     i = 0
 
@@ -595,17 +595,15 @@ def Play(game_file,main_player,list_numplayers,path):
         words = lines[i].split()
         # if we met a new street we calculate the new occurence tab and odds associate to it 
         if words[0] == '***':
-            print(Players)
-            print(words[1])
+
             
             
             if words[1] != "3rd": 
                 list_numplayers.append(players)
-                (occur1,low_hand_odds)= Calculate_odds(occur,words[1],list_numplayers) #calculate the odds using the occur tab (occurence of the cards)
-                tab_street.append([occur1,low_hand_odds])
+                (occur1,low_hand_odds,low6)= Calculate_odds(occur,words[1],list_numplayers) #calculate the odds using the occur tab (occurence of the cards)
+                tab_street.append([occur1,low_hand_odds,low6])
             Players_Actions.append([lines[i]])
             if words[1] == "RIVER":
-                print("ici")
                 for k in range(0,len(Players)):
                     if Players[k][1] != "folds":
                         

@@ -487,7 +487,7 @@
             var actionHtml = "<div id=\"main\">"
             actionHtml += "<div class=\'square-box\'>"
             
-            actionHtml += "<div class='square-content'> <span>" + street + "<span style='margin-left: 5px;'></span>" + list[len] + "</span></div>"
+            actionHtml += "<div class='square-content'> <span>" + street + "<span style='margin-left: 5px;'></span>" + displayChips(list[len]) + "</span><span>BB = " + maxbet +"</span></div>"
             
             actionHtml += "</div>"
             
@@ -512,7 +512,7 @@
                     actionHtml += "<div class=\"player player-5 playing\" id=\"player5\">"
                     actionHtml += "<div class=\"avatar timer\" style=\"background:"+ colour +";\">"
                     actionHtml += "<div class =\"name\">" + list[pas][0] + "</div>"
-                    actionHtml += "<div class =\"chips\">" + list[pas][3] + "</div>"
+                    actionHtml += "<div class =\"chips\">" + displayChips(list[pas][3]) + "</div>"
                     actionHtml += "<div class = 'card_bottom'>"
                     actionHtml += displaycards(list[pas][1])
                     actionHtml += "</div>"
@@ -545,7 +545,7 @@
                     actionHtml += "<div class=\"player player-" + i + " playing\" id=\"player" + i + "\">"
                     actionHtml += "<div class=\"avatar timer\" style=\"background:"+ colour +";\">"
                     actionHtml += "<div class =\"name\">" + list[pas][0] + "</div>"
-                    actionHtml += "<div class =\"chips\">" + list[pas][3] + "</div>"
+                    actionHtml += "<div class =\"chips\">" + displayChips(list[pas][3]) + "</div>"
                     actionHtml += "<div class =" + position_cards +">"
                     actionHtml += displaycards(list[pas][1])
                     actionHtml += "</div>"
@@ -560,7 +560,10 @@
             
            
             actionHtml += "</div>"
-            actionHtml += displayLow(table, index)
+            if (list[index_hero][2] != 'folds' || (street != '*** SHOW DOWN ***' && street != '*** SUMMARY ***')) {
+                actionHtml += displayLow(table, index) 
+            }
+            
             actionHtml += "</div>"
             
             
@@ -579,13 +582,15 @@
                             low_html = "<table>"
                             low_html += "<tr><td>Low_Hand</td>"
                             low_html += "<td>The most likely hand</td>"
-                            low_html += "<td>Probabilite to have this Hand </td></tr>"
+                            low_html += "<td>Probabilite to have this Hand </td>"
+                            low_html += "<td>Low probabilities</td></tr>"
                             for (let pas = 0; pas < t[ind][1].length; pas++) {
                                 console.log(t[ind])
                                 if (t[index][1][pas][1] != 0) {
                                     low_html += "<tr><td>" + t[ind][1][pas][0] + " </td>"
                                     low_html += "<td class=\"cards\">" + displaycards(t[ind][1][pas][1]) + "</td>"
-                                    low_html += "<td>" + t[ind][1][pas][2] + "</td></tr>"
+                                    low_html += "<td>" + t[ind][1][pas][2]*100  + "%</td>"
+                                    low_html += "<td>" + t[ind][2][pas] + "%</td></tr>"
                                 }
                                 if (t[index][1][pas][1] == 1) {
                                     hand = pas
@@ -600,7 +605,7 @@
         }
         function displayChips(chips) {
             var result = Math.round(chips/maxbet * 100)
-            return result + "%"
+            return result 
         }
 
 
