@@ -719,6 +719,7 @@ def odd_7cards_one_shape(low,occur,street,list_numplayers):
         if occur[i][j] == 1:
             hand +=1
         elif occur[i][j] == 0:
+            remaining+=1
     co = 1
     if len(hand) == 6 and len(low) == 6:
         return 1.
