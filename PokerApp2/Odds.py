@@ -1,3 +1,5 @@
+
+'''
 low_hand = [['5','4','3','2','A'],
             ['6','4','3','2','A'],
             ['6','5','3','2','A'],
@@ -53,283 +55,7 @@ low_hand = [['5','4','3','2','A'],
             ['8','7','6','5','A'],
             ['8','7','6','5','2'],
             ['8','7','6','5','3'],
-            ['8','7','6','5','4']]
-low5 = [['5','4','3','2','A']]
-low_6 = [['6','4','3','2','A'],
-        ['6','5','3','2','A'],
-        ['6','5','4','2','A'],
-        ['6','5','4','3','A'],
-        ['6','5','4','3','2']]
-low6 = [['6','4','3','2','A'],
-        ['6','5','3','2','A'],
-        ['6','5','4','2','A'],
-        ['6','5','4','3','A'],
-        ['6','5','4','3','2']]
-
-low7 = [['7','4','3','2','A'],
-            ['7','5','3','2','A'],
-            ['7','5','4','2','A'],
-            ['7','5','4','3','A'],
-            ['7','5','4','3','2'],
-            ['7','6','3','2','A'],
-            ['7','6','4','2','A'],
-            ['7','6','4','3','A'],
-            ['7','6','4','3','2'],
-            ['7','6','5','2','A'],
-            ['7','6','5','3','A'],
-            ['7','6','5','3','2'],
-            ['7','6','5','4','A'],
-            ['7','6','5','4','2'],
-            ['7','6','5','4','3']]
-low_7_2 = [['7','4','3','2','A'],
-            ['7','5','3','2','A'],
-            ['7','5','4','2','A'],
-            ['7','5','4','3','A'],
-            ['7','5','4','3','2'],
-            ['7','6','3','2','A'],
-            ['7','6','4','2','A'],
-            ['7','6','4','3','A'],
-            ['7','6','4','3','2'],
-            ['7','6','5','2','A'],
-            ['7','6','5','3','A'],
-            ['7','6','5','3','2'],
-            ['7','6','5','4','A'],
-            ['7','6','5','4','2'],
-            ['7','6','5','4','3']]
-low_7_1 = [['7','4','3','2','A'],
-            ['7','5','3','2','A'],
-            ['7','5','4','2','A'],
-            ['7','5','4','3','A'],
-            ['7','5','4','3','2'],
-            ['7','6','3','2','A'],
-            ['7','6','4','2','A'],
-            ['7','6','4','3','A'],
-            ['7','6','4','3','2'],
-            ['7','6','5','2','A'],
-            ['7','6','5','3','A'],
-            ['7','6','5','3','2'],
-            ['7','6','5','4','A'],
-            ['7','6','5','4','2'],
-            ['7','6','5','4','3']]
-def Union(lst1, lst2):
-    final_list = list(set(lst1) | set(lst2))
-    return final_list
-def intersection_two_hands(Hands):
-    intersection = []
-    hand =[]
-    for i in range(len(Hands)):
-        for j in range (i+1,len(Hands)):
-            intersection.append(Union(Hands[i],Hands[j]))
-    return intersection
-def intersection_three_hands(Hands):
-    intersection = []
-    for i in range (len(Hands)-2):
-        for j in range (i+1,len(Hands)-1):
-            hand = Hands[i]
-            for card in Hands[j]:
-                if not(card in hand):
-                    hand.append(card)
-            for k in range (j+1,len(Hands)):
-                for card1 in Hands[k]:
-                    if not(card1 in hand):
-                        hand.append(card1)
-            if len(hand)<=7:
-                intersection.append(hand)
-    return intersection
-inter_low7_2=intersection_two_hands(low_7_1)
-inter_low7_3=intersection_three_hands(low_7_2)
-inter_low6_2=intersection_two_hands(low6)
-inter_low6_3=intersection_three_hands(low6)
-
-low8 =[['8','4','3','2','A'],
-            ['8','5','3','2','A'],
-            ['8','5','4','2','A'],
-            ['8','5','4','3','A'],
-            ['8','5','4','3','2'],
-            ['8','6','3','2','A'],
-            ['8','6','4','2','A'],
-            ['8','6','4','3','A'],
-            ['8','6','4','3','2'],
-            ['8','6','5','2','A'],
-            ['8','6','5','3','A'],
-            ['8','6','5','3','2'],
-            ['8','6','5','4','A'],
-            ['8','6','5','4','2'],
-            ['8','6','5','4','3'],
-            ['8','7','3','2','A'],
-            ['8','7','4','2','A'],
-            ['8','7','4','3','A'],
-            ['8','7','4','3','2'],
-            ['8','7','5','2','A'],
-            ['8','7','5','3','A'],
-            ['8','7','5','3','2'],
-            ['8','7','5','4','A'],
-            ['8','7','5','4','2'],
-            ['8','7','5','4','3'],
-            ['8','7','6','2','A'],
-            ['8','7','6','3','A'],
-            ['8','7','6','3','2'],
-            ['8','7','6','4','A'],
-            ['8','7','6','4','2'],
-            ['8','7','6','4','3'],
-            ['8','7','6','5','A'],
-            ['8','7','6','5','2'],
-            ['8','7','6','5','3'],
-            ['8','7','6','5','4']]
-low_8 =[['8','4','3','2','A'],
-            ['8','5','3','2','A'],
-            ['8','5','4','2','A'],
-            ['8','5','4','3','A'],
-            ['8','5','4','3','2'],
-            ['8','6','3','2','A'],
-            ['8','6','4','2','A'],
-            ['8','6','4','3','A'],
-            ['8','6','4','3','2'],
-            ['8','6','5','2','A'],
-            ['8','6','5','3','A'],
-            ['8','6','5','3','2'],
-            ['8','6','5','4','A'],
-            ['8','6','5','4','2'],
-            ['8','6','5','4','3'],
-            ['8','7','3','2','A'],
-            ['8','7','4','2','A'],
-            ['8','7','4','3','A'],
-            ['8','7','4','3','2'],
-            ['8','7','5','2','A'],
-            ['8','7','5','3','A'],
-            ['8','7','5','3','2'],
-            ['8','7','5','4','A'],
-            ['8','7','5','4','2'],
-            ['8','7','5','4','3'],
-            ['8','7','6','2','A'],
-            ['8','7','6','3','A'],
-            ['8','7','6','3','2'],
-            ['8','7','6','4','A'],
-            ['8','7','6','4','2'],
-            ['8','7','6','4','3'],
-            ['8','7','6','5','A'],
-            ['8','7','6','5','2'],
-            ['8','7','6','5','3'],
-            ['8','7','6','5','4']]
-
-inter_low8_2=intersection_two_hands(low8)
-inter_low8_3=intersection_three_hands(low8)
-def Card_To_Html(hand):
-    #Intialisation of the variable
-    Html_Cards = []
-    num_cards = ['A','2','3','4','5','6','7','8','9','T','J','C','Q','K']
-    shape_card = ['s','h','d','c']
-    for card in hand:
-        i= num_cards.index(card[0])
-        j= shape_card.index(card[1])
-        #in html we can display graphical card by using a unicode value
-        Html_Cards.append(["#1271" + str(i+16*j + 37)+";",j])
-    return Html_Cards
-def odd_full_house(occur):
-    num_cards = ['A','2','3','4','5','6','7','8','9','T','J','C','Q','K']
-    shape_card = ['s','h','d','c']
-    odd = 0
-    column = -1
-    column1 = -1
-    best_hand = []
-    odd_max=0.
-    for j in range(0,13):
-        if occur[5][j] == 1:
-            column = j
-        elif occur[4][j] == 1 and occur[5][j] != 1:
-            column1 = j
-    for j in range(0,13):
-        if occur[4][j] == 1 and j != column and column != -1:
-            best_hand =[]
-            for i in range (4):
-                if occur[i][j] == 1 :
-                    best_hand.append(num_cards.index(j) + shape_card.index(i))
-                if occur[i][column] == 1 :
-                    best_hand.append(num_cards.index(column) + shape_card.index(i))
-            return  (1,1,best_hand)
-        elif j != column and column != -1:
-            odd += occur[4][j]
-            if occur[4][j] > odd_max:
-                odd_max = occur[4][j]
-                best_hand = []
-                count = 0
-                for i in range (4):
-                    if occur[i][j] == 1 :
-                        count += 1
-                for i in range (4):
-                    if occur[i][j] == 1 :
-                        best_hand.append(num_cards.index(j) + shape_card.index(i))
-                    elif count == 1 and occur[i][j] == 0:
-                        best_hand.append(num_cards.index(j) + shape_card.index(i))
-                        count+=1
-                    elif count == 0 and occur[i][j] == 0:
-                        best_hand.append(num_cards.index(j) + shape_card.index(i))
-                        count+=1
-                    if occur[i][column] == 1 :
-                        best_hand.append(num_cards.index(column) + shape_card.index(i))
-        if occur[5][j] == 1 and j != column1 and column1 != -1:
-            best_hand =[]
-
-            for i in range (4):
-                if occur[i][j] == 1 :
-                    best_hand.append(num_cards.index(j) + shape_card.index(i))
-                if occur[i][column1] == 1 :
-                    best_hand.append(num_cards.index(column1) + shape_card.index(i))
-            return  (1,1,best_hand)
-        elif j != column1 and column1 != -1:
-            odd += occur[5][j]
-            if occur[5][j] > odd_max:
-                odd_max = occur[5][j]
-                best_hand = []
-                count = 0
-            for i in range (4):
-                if occur[i][j] == 1 :
-                    count += 1
-            for i in range (4):
-                if occur[i][j] == 1 :
-                    best_hand.append(num_cards.index(j) + shape_card.index(i))
-                elif count == 2 and occur[i][j] == 0:
-                    best_hand.append(num_cards.index(j) + shape_card.index(i))
-                    count+=1
-                elif count == 1 and occur[i][j] == 0:
-                    best_hand.append(num_cards.index(j) + shape_card.index(i))
-                    count+=1
-                elif count == 0 and occur[i][j] == 0:
-                    best_hand.append(num_cards.index(j) + shape_card.index(i))
-                    count+=1
-                if occur[i][column1] == 1 :
-                    best_hand.append(num_cards.index(column1) + shape_card.index(i))        
-    return (odd,odd_max,best_hand)
-
-def list_Straight_flush(row):
-    num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
-    suits = ['s','h','d','c']
-    suit = suits[row]
-    poss = []
-    for i in range (9):
-        poss.append([num[i] +suit,num[i+1]+suit,num[i+2]+suit,num[i+3]+suit,num[i+4]+suit])
-    poss.append(['T'+suit,'J'+suit,'Q'+suit,'K'+suit,'A'+suit])
-    return poss
-
-def list_Straight():
-    num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
-    poss = []
-    for i in range (9):
-        poss.append([num[i] ,num[i+1],num[i+2],num[i+3],num[i+4]])
-    poss.append(['T','J','Q','K','A'])
-    return poss
-
-
-def list_remove_straight_flush(poss,i,j):
-    num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
-    suit = ['s','h','d','c']
-    card = num[j] + suit[i]
-    new_poss = []
-    k = 0
-    for k in range (len(poss)):
-        if not (card in poss[k]):
-            new_poss.append(poss[k])
-    return poss
+            ['8','7','6','5','4']]'''
 
 
 def odd_first_card(card,occur,street,list_numplayers):
@@ -456,265 +182,24 @@ def odd_card(card,occur,street,list_numplayers):
             odd = 0.
     return odd
 
-def odd_Straight_flush(straight,occur,street,list_numplayers):
-    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
-    suits = ['s','h','d','c']
-    odd = 0.
-    hand = 0
-    remaining = []
-    other = 0
-    for card in straight:
-        j = nums.index(card[0])
-        i = suits.index(card[1])
-        if occur[i][j] == 1:
-            hand += 1
-        elif occur[i][j] == 0:
-            remaining.append(card)
-        else:
-            other +=1
-    if hand == 5:
-        return 1.
-    elif other>0:
-        return 0.
-    else:
-        if  street != "SUMMARY" or street != "SHOW":
-            if hand == 0:
-                 odd = 0.
-            elif hand == 1:
-                for i in range (0,len(remaining)-3):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)-2):
-                        card2 = remaining[j]
-                        for k in range (j+1,len(remaining)-1):
-                            card3 = remaining[k]
-                            for l in range (k+1,len(remaining)):
-                                card4 = remaining[l]
-                                for m in range (len(list_function)-3):
-                                    odd1 = list_function[m](card1,occur,street,list_numplayers)
-                                    odd2 = list_function[m](card2,occur,street,list_numplayers)
-                                    odd3 = list_function[m](card3,occur,street,list_numplayers)
-                                    odd4 = list_function[m](card4,occur,street,list_numplayers)
-                                    for n in range (m+1,len(list_function)-2):
-                                        odd5 = list_function[n](card1,occur,street,list_numplayers)
-                                        odd6 = list_function[n](card2,occur,street,list_numplayers)
-                                        odd7 = list_function[n](card3,occur,street,list_numplayers)
-                                        odd8 = list_function[n](card4,occur,street,list_numplayers)
-                                        for o in range (n+1,len(list_function)-1):
-                                            odd9 = list_function[o](card1,occur,street,list_numplayers)
-                                            odd10 = list_function[o](card2,occur,street,list_numplayers)
-                                            odd11 = list_function[o](card3,occur,street,list_numplayers)
-                                            odd12 = list_function[o](card4,occur,street,list_numplayers)
-                                            for p in range (o+1,len(list_function)):
-                                                odd13 = list_function[p](card1,occur,street,list_numplayers)
-                                                odd14 = list_function[p](card2,occur,street,list_numplayers)
-                                                odd15 = list_function[p](card3,occur,street,list_numplayers)
-                                                odd16 = list_function[p](card4,occur,street,list_numplayers)
-                                                odd += (odd1*odd6*odd11*odd16+
-                                                        odd1*odd6*odd12*odd15+
-                                                        odd1*odd7*odd10*odd16+
-                                                        odd1*odd7*odd12*odd14+    
-                                                        odd1*odd8*odd10*odd15+
-                                                        odd1*odd8*odd11*odd14+
-                                                        odd2*odd5*odd11*odd16+
-                                                        odd2*odd5*odd12*odd15+
-                                                        odd2*odd7*odd9*odd16+
-                                                        odd2*odd7*odd12*odd13+
-                                                        odd2*odd8*odd9*odd15+
-                                                        odd2*odd8*odd11*odd13+
-                                                        odd3*odd5*odd10*odd16+
-                                                        odd3*odd5*odd12*odd14+
-                                                        odd3*odd6*odd9*odd16+
-                                                        odd3*odd6*odd12*odd13+
-                                                        odd3*odd8*odd9*odd14+
-                                                        odd3*odd8*odd10*odd13+
-                                                        odd4*odd5*odd10*odd15+
-                                                        odd4*odd5*odd11*odd14+
-                                                        odd4*odd6*odd9*odd15+
-                                                        odd4*odd6*odd11*odd13+
-                                                        odd4*odd7*odd9*odd14+
-                                                        odd4*odd7*odd10*odd13)
-            elif hand == 2:
-               for i in range (0,len(remaining)-2):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)-1):
-                        card2 = remaining[j]
-                        for k in range (j+1,len(remaining)):
-                            card3 = remaining[k]
-                            for m in range (0,len(list_function)-2):
-                                odd1 = list_function[m](card1,occur,street,list_numplayers)
-                                odd2 = list_function[m](card2,occur,street,list_numplayers)
-                                odd3 = list_function[m](card3,occur,street,list_numplayers)
-                                for n in range (m+1,len(list_function)-1):
-                                    odd5 = list_function[n](card1,occur,street,list_numplayers)
-                                    odd6 = list_function[n](card2,occur,street,list_numplayers)
-                                    odd7 = list_function[n](card3,occur,street,list_numplayers)
-                                    for o in range (n+1,len(list_function)):
-                                        
-                                        odd9 = list_function[o](card1,occur,street,list_numplayers)
-                                        odd10 = list_function[o](card2,occur,street,list_numplayers)
-                                        odd11 = list_function[o](card3,occur,street,list_numplayers)
-                                        odd += (odd1*odd6*odd11+
-                                                odd1*odd7*odd10+
-                                                odd2*odd5*odd11+
-                                                odd2*odd7*odd9+
-                                                odd3*odd5*odd10+
-                                                odd3*odd6*odd9) 
-            elif hand == 3:
-                for i in range (0,len(remaining)-1):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)):
-                        card2 = remaining[j]
-                        for m in range (0,len(list_function)-1):
-                            odd1 = list_function[m](card1,occur,street,list_numplayers)
-                            odd2 = list_function[m](card2,occur,street,list_numplayers)
-                            for n in range (m+1,len(list_function)):
-                                
-                                odd5 = list_function[n](card1,occur,street,list_numplayers)
-                                odd6 = list_function[n](card2,occur,street,list_numplayers)
-                                odd += (odd1*odd6 + odd2*odd5)
-            elif hand == 4:
-                for i in range (0,len(remaining)):
-                    card1 = remaining[i]
-                    for m in range (0,len(list_function)):
-                        
-                        odd += list_function[m](card1,occur,street,list_numplayers)
-        else:
-            odd = 0
-    return odd
+
 def count_card(j,occur):
     S = 0
     for i in range (0,4):
         if occur[i][j] == 0:
             S+=1
     return S
-def odd_Low(low,occur,street,list_numplayers):
-    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
-    suits = ['s','h','d','c']
-    odd = 0.
-    hand = 0
-    remaining = []
-    count = []
-    
-    for k in range (len(low)):
-        pres = 0
-        j = nums.index(low[k])
-        for i in range (0,4):
-            if occur[i][j] == 1 and pres!=1:
-                hand += 1
-                pres = 1    
-        for i in range (0,4):
-            if occur[i][j] == 0 and pres !=1:
-                remaining.append(nums[j] + suits[i])
-                count.append(count_card(j,occur))
-                pres = 1
-   
-    if hand >= 5:
-        return 1.
-    elif len(remaining)>=5:
-        return 0.
-    else:
-        if  street != "SUMMARY" or street != "SHOW":
-            if hand == 0:
-                 odd = 0.
-            elif hand == 1:
-                for i in range (0,len(remaining)-3):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)-2):
-                        card2 = remaining[j]
-                        for k in range (j+1,len(remaining)-1):
-                            card3 = remaining[k]
-                            for l in range (k+1,len(remaining)):
-                                card4 = remaining[l]
-                                for m in range (len(list_function)-3):
-                                    odd1 = count[0]*list_function[m](card1,occur,street,list_numplayers)
-                                    odd2 = count[1]*list_function[m](card2,occur,street,list_numplayers)
-                                    odd3 = count[2]*list_function[m](card3,occur,street,list_numplayers)
-                                    odd4 = count[3]*list_function[m](card4,occur,street,list_numplayers)
-                                    for n in range (m+1,len(list_function)-2):
-                                        odd5 = count[0]*list_function[n](card1,occur,street,list_numplayers)
-                                        odd6 = count[1]*list_function[n](card2,occur,street,list_numplayers)
-                                        odd7 = count[2]*list_function[n](card3,occur,street,list_numplayers)
-                                        odd8 = count[3]*list_function[n](card4,occur,street,list_numplayers)
-                                        for o in range (n+1,len(list_function)-1):
-                                            odd9 = count[0]*list_function[o](card1,occur,street,list_numplayers)
-                                            odd10 = count[1]*list_function[o](card2,occur,street,list_numplayers)
-                                            odd11 = count[2]*list_function[o](card3,occur,street,list_numplayers)
-                                            odd12 = count[3]*list_function[o](card4,occur,street,list_numplayers)
-                                            for p in range (o+1,len(list_function)):
-                                                odd13 = count[0]*list_function[p](card1,occur,street,list_numplayers)
-                                                odd14 = count[1]*list_function[p](card2,occur,street,list_numplayers)
-                                                odd15 = count[2]*list_function[p](card3,occur,street,list_numplayers)
-                                                odd16 = count[3]*list_function[p](card4,occur,street,list_numplayers)
-                                                odd += (odd1*odd6*odd11*odd16+
-                                                        odd1*odd6*odd12*odd15+
-                                                        odd1*odd7*odd10*odd16+
-                                                        odd1*odd7*odd12*odd14+    
-                                                        odd1*odd8*odd10*odd15+
-                                                        odd1*odd8*odd11*odd14+
-                                                        odd2*odd5*odd11*odd16+
-                                                        odd2*odd5*odd12*odd15+
-                                                        odd2*odd7*odd9*odd16+
-                                                        odd2*odd7*odd12*odd13+
-                                                        odd2*odd8*odd9*odd15+
-                                                        odd2*odd8*odd11*odd13+
-                                                        odd3*odd5*odd10*odd16+
-                                                        odd3*odd5*odd12*odd14+
-                                                        odd3*odd6*odd9*odd16+
-                                                        odd3*odd6*odd12*odd13+
-                                                        odd3*odd8*odd9*odd14+
-                                                        odd3*odd8*odd10*odd13+
-                                                        odd4*odd5*odd10*odd15+
-                                                        odd4*odd5*odd11*odd14+
-                                                        odd4*odd6*odd9*odd15+
-                                                        odd4*odd6*odd11*odd13+
-                                                        odd4*odd7*odd9*odd14+
-                                                        odd4*odd7*odd10*odd13)
-            elif hand == 2:
-               for i in range (0,len(remaining)-2):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)-1):
-                        card2 = remaining[j]
-                        for k in range (j+1,len(remaining)):
-                            card3 = remaining[k]
-                            for m in range (0,len(list_function)-2):
-                                odd1 = count[0]*list_function[m](card1,occur,street,list_numplayers)
-                                odd2 = count[1]*list_function[m](card2,occur,street,list_numplayers)
-                                odd3 = count[2]*list_function[m](card3,occur,street,list_numplayers)
-                                for n in range (m+1,len(list_function)-1):
-                                    odd5 = count[0]*list_function[n](card1,occur,street,list_numplayers)
-                                    odd6 = count[1]*list_function[n](card2,occur,street,list_numplayers)
-                                    odd7 = count[2]*list_function[n](card3,occur,street,list_numplayers)
-                                    for o in range (n+1,len(list_function)):
-                                        odd9 = count[0]*list_function[o](card1,occur,street,list_numplayers)
-                                        odd10 = count[1]*list_function[o](card2,occur,street,list_numplayers)
-                                        odd11 = count[2]*list_function[o](card3,occur,street,list_numplayers)
-                                        odd += (odd1*odd6*odd11+
-                                                odd1*odd7*odd10+
-                                                odd2*odd5*odd11+
-                                                odd2*odd7*odd9+
-                                                odd3*odd5*odd10+
-                                                odd3*odd6*odd9) 
-            elif hand == 3:
-                for i in range (0,len(remaining)-1):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)):
-                        card2 = remaining[j]
-                        for m in range (0,len(list_function)-1):
-                            odd1 = count[0]*list_function[m](card1,occur,street,list_numplayers)
-                            odd2 = count[1]*list_function[m](card2,occur,street,list_numplayers)
-                            for n in range (m+1,len(list_function)):
-                                odd5 = count[0]*list_function[n](card1,occur,street,list_numplayers)
-                                odd6 = count[1]*list_function[n](card2,occur,street,list_numplayers)
-                                odd += (odd1*odd6 + odd2*odd5)
-            elif hand == 4:
-                for i in range (0,len(remaining)):
-                    card1 = remaining[i]
-                    for m in range (0,len(list_function)):
-                        odd += count[0]*list_function[m](card1,occur,street,list_numplayers)
-
-        else:
-            odd = 0
-    return odd
+def Card_To_Html(hand):
+    #Intialisation of the variable
+    Html_Cards = []
+    num_cards = ['A','2','3','4','5','6','7','8','9','T','J','C','Q','K']
+    shape_card = ['s','h','d','c']
+    for card in hand:
+        i= num_cards.index(card[0])
+        j= shape_card.index(card[1])
+        #in html we can display graphical card by using a unicode value
+        Html_Cards.append(["#1271" + str(i+16*j + 37)+";",j])
+    return Html_Cards
 def odd_Low_6cards(low,occur,street,list_numplayers,Xlow):
     nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     suits = ['s','h','d','c']
@@ -955,199 +440,512 @@ def odd_Low_6cards(low,occur,street,list_numplayers,Xlow):
         else:
             odd = 0
     return odd
-def odd_Low_7cards(low,occur,street,list_numplayers,Xlow):
+def coef_4(remaining,count,cards):
+    mul = 1
+    nums = []
+    num_with_occur = []
+    index = 0
+    i = 0
+    count1 = 0
+    for card in cards:
+        count1 = 0
+        index = remaining.index(card)
+        nums.append(card[:-1])
+        for num in nums:
+            if num == card[:-1]:
+                count1+=1
+        mul*= count[index]-count1
+    return mul
+
+def odd_Low_7cards(low,occur,street,list_numplayers):
+    
     nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     suits = ['s','h','d','c']
     odd = 0.
     hand = []
     remaining = []
     count = []
+    all_card = []
+    
+    index_card = 0
+
     for k in range (len(low)):
         pres = 0
         j = nums.index(low[k])
         for i in range (0,4):
-            if occur[i][j] == 1 and pres!=1:
-                hand.append(nums[j])
+            if occur[i][j] == 1 and pres!=1 and not((nums[j]  + suits[i]) in hand):
+                hand.append(nums[j]  + suits[i])
                 pres = 1    
         for i in range (0,4):
-            if occur[i][j] == 0 and pres !=1:
+            if occur[i][j] == 0 and pres !=1 and not((nums[j]  + suits[i]) in remaining):
                 remaining.append(nums[j] + suits[i])
                 count.append(count_card(j,occur))
                 pres = 1  
-    if len(hand) >= 7:
+    co = 0
+    if len(hand) == 6 and len(low) == 6:
         return 1.
-    elif len(remaining)>=5:
+    elif len(hand) == 7 and len(low) == 7:
+        return 1.
+    elif len(remaining)>=5 and len(low) == 6:
+        return 0.
+    elif len(remaining)>=5 and len(low) == 7:
         return 0.
     else:
-        if  street != "SUMMARY" or street != "SHOW":
-            if len(hand) == 0 or len(hand) == 1 or len(hand) == 2:
-                 odd = 0.
-            elif len(hand) == 3:
-                for i in range (0,len(remaining)-3):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)-2):
-                        card2 = remaining[j]
-                        for k in range (j+1,len(remaining)-1):
-                            card3 = remaining[k]
-                            for l in range (k+1,len(remaining)):
-                                card4 = remaining[l]
-                                for m in range (len(list_function)-3):
-                                    odd1 = count[0]*list_function[m](card1,occur,street,list_numplayers)
-                                    odd2 = count[1]*list_function[m](card2,occur,street,list_numplayers)
-                                    odd3 = count[2]*list_function[m](card3,occur,street,list_numplayers)
-                                    odd4 = count[3]*list_function[m](card4,occur,street,list_numplayers)
-                                    for n in range (m+1,len(list_function)-2):
-                                        odd5 = count[0]*list_function[n](card1,occur,street,list_numplayers)
-                                        odd6 = count[1]*list_function[n](card2,occur,street,list_numplayers)
-                                        odd7 = count[2]*list_function[n](card3,occur,street,list_numplayers)
-                                        odd8 = count[3]*list_function[n](card4,occur,street,list_numplayers)
-                                        for o in range (n+1,len(list_function)-1):
-                                            odd9 = count[0]*list_function[o](card1,occur,street,list_numplayers)
-                                            odd10 = count[1]*list_function[o](card2,occur,street,list_numplayers)
-                                            odd11 = count[2]*list_function[o](card3,occur,street,list_numplayers)
-                                            odd12 = count[3]*list_function[o](card4,occur,street,list_numplayers)
-                                            for p in range (o+1,len(list_function)):
-                                                odd13 = count[0]*list_function[p](card1,occur,street,list_numplayers)
-                                                odd14 = count[1]*list_function[p](card2,occur,street,list_numplayers)
-                                                odd15 = count[2]*list_function[p](card3,occur,street,list_numplayers)
-                                                odd16 = count[3]*list_function[p](card4,occur,street,list_numplayers)
-                                                if hand[2] == Xlow or hand[0] == Xlow or hand[1] == Xlow or card1[:-1] == Xlow or card2[:-1] == Xlow or card3[:-1] == Xlow or card4[:-1] == Xlow:
-                                                    odd += (odd1*odd6*odd11*odd16+
-                                                            odd1*odd6*odd12*odd15+
-                                                            odd1*odd7*odd10*odd16+
-                                                            odd1*odd7*odd12*odd14+    
-                                                            odd1*odd8*odd10*odd15+
-                                                            odd1*odd8*odd11*odd14+
-                                                            odd2*odd5*odd11*odd16+
-                                                            odd2*odd5*odd12*odd15+
-                                                            odd2*odd7*odd9*odd16+
-                                                            odd2*odd7*odd12*odd13+
-                                                            odd2*odd8*odd9*odd15+
-                                                            odd2*odd8*odd11*odd13+
-                                                            odd3*odd5*odd10*odd16+
-                                                            odd3*odd5*odd12*odd14+
-                                                            odd3*odd6*odd9*odd16+
-                                                            odd3*odd6*odd12*odd13+
-                                                            odd3*odd8*odd9*odd14+
-                                                            odd3*odd8*odd10*odd13+
-                                                            odd4*odd5*odd10*odd15+
-                                                            odd4*odd5*odd11*odd14+
-                                                            odd4*odd6*odd9*odd15+
-                                                            odd4*odd6*odd11*odd13+
-                                                            odd4*odd7*odd9*odd14+
-                                                            odd4*odd7*odd10*odd13)
-            elif len(hand) == 4:
-               for i in range (0,len(remaining)-2):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)-1):
-                        card2 = remaining[j]
-                        for k in range (j+1,len(remaining)):
-                            card3 = remaining[k]
-                            for m in range (0,len(list_function)-2):
-                                odd1 = count[0]*list_function[m](card1,occur,street,list_numplayers)
-                                odd2 = count[1]*list_function[m](card2,occur,street,list_numplayers)
-                                odd3 = count[2]*list_function[m](card3,occur,street,list_numplayers)
-                                for n in range (m+1,len(list_function)-1):
-                                    odd5 = count[0]*list_function[n](card1,occur,street,list_numplayers)
-                                    odd6 = count[1]*list_function[n](card2,occur,street,list_numplayers)
-                                    odd7 = count[2]*list_function[n](card3,occur,street,list_numplayers)
-                                    for o in range (n+1,len(list_function)):
-                                        odd9 = count[0]*list_function[o](card1,occur,street,list_numplayers)
-                                        odd10 = count[1]*list_function[o](card2,occur,street,list_numplayers)
-                                        odd11 = count[2]*list_function[o](card3,occur,street,list_numplayers)
-                                        if hand[0] == Xlow or hand[3] == Xlow or hand[1] == Xlow or card1[:-1] == Xlow or card2[:-1] == Xlow or card3[:-1] == Xlow or hand[2] == Xlow:
-                                            odd += (odd1*odd6*odd11+
-                                                    odd1*odd7*odd10+
-                                                    odd2*odd5*odd11+
-                                                    odd2*odd7*odd9+
-                                                    odd3*odd5*odd10+
-                                                    odd3*odd6*odd9) 
-            elif len(hand) == 5:
-                for i in range (0,len(remaining)-1):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)):
-                        card2 = remaining[j]
-                        for m in range (0,len(list_function)-1):
-                            odd1 = count[0]*list_function[m](card1,occur,street,list_numplayers)
-                            odd2 = count[1]*list_function[m](card2,occur,street,list_numplayers)
-                            for n in range (m+1,len(list_function)):
-                                odd5 = count[0]*list_function[n](card1,occur,street,list_numplayers)
-                                odd6 = count[1]*list_function[n](card2,occur,street,list_numplayers)
-                                if hand[0] == Xlow or hand[4] == Xlow or hand[1] == Xlow or card1[:-1] == Xlow or card2[:-1] == Xlow or hand[3] == Xlow or hand[2] == Xlow:
+         if len(low) == 7 :
+            if  street != "SUMMARY" or street != "SHOW":
+                if len(hand) == 3:
+                    for i in range (0,len(remaining)-3):
+                        card1 = remaining[i]
+                        for j in range (i+1,len(remaining)-2):
+                            card2 = remaining[j]
+                            for k in range (j+1,len(remaining)-1):
+                                card3 = remaining[k]
+                                for l in range (k+1,len(remaining)):
+                                    card4 = remaining[l]
+                                    for m in range (len(list_function)-3):
+                                        odd1 = list_function[m](card1,occur,street,list_numplayers)
+                                        odd2 = list_function[m](card2,occur,street,list_numplayers)
+                                        odd3 = list_function[m](card3,occur,street,list_numplayers)
+                                        odd4 = list_function[m](card4,occur,street,list_numplayers)
+                                        for n in range (m+1,len(list_function)-2):
+                                            odd5 = list_function[n](card1,occur,street,list_numplayers)
+                                            odd6 = list_function[n](card2,occur,street,list_numplayers)
+                                            odd7 = list_function[n](card3,occur,street,list_numplayers)
+                                            odd8 = list_function[n](card4,occur,street,list_numplayers)
+                                            for o in range (n+1,len(list_function)-1):
+                                                odd9 = list_function[o](card1,occur,street,list_numplayers)
+                                                odd10 = list_function[o](card2,occur,street,list_numplayers)
+                                                odd11 = list_function[o](card3,occur,street,list_numplayers)
+                                                odd12 = list_function[o](card4,occur,street,list_numplayers)
+                                                for p in range (o+1,len(list_function)):
+                                                    odd13 = list_function[p](card1,occur,street,list_numplayers)
+                                                    odd14 = list_function[p](card2,occur,street,list_numplayers)
+                                                    odd15 = list_function[p](card3,occur,street,list_numplayers)
+                                                    odd16 = list_function[p](card4,occur,street,list_numplayers)
+                                                    co =coef_4(remaining,count,[card1,card2,card3,card4])
+                                                    odd += (co*odd1*odd6*odd11*odd16+
+                                                                co*odd1*odd6*odd12*odd15+
+                                                                co*odd1*odd7*odd10*odd16+
+                                                                co*odd1*odd7*odd12*odd14+    
+                                                                co*odd1*odd8*odd10*odd15+
+                                                                co*odd1*odd8*odd11*odd14+
+                                                                co*odd2*odd5*odd11*odd16+
+                                                                co*odd2*odd5*odd12*odd15+
+                                                                co*odd2*odd7*odd9*odd16+
+                                                                co*odd2*odd7*odd12*odd13+
+                                                                co*odd2*odd8*odd9*odd15+
+                                                                co*odd2*odd8*odd11*odd13+
+                                                                co*odd3*odd5*odd10*odd16+
+                                                                co*odd3*odd5*odd12*odd14+
+                                                                co*odd3*odd6*odd9*odd16+
+                                                                co*odd3*odd6*odd12*odd13+
+                                                                co*odd3*odd8*odd9*odd14+
+                                                                co*odd3*odd8*odd10*odd13+
+                                                                co*odd4*odd5*odd10*odd15+
+                                                                co*odd4*odd5*odd11*odd14+
+                                                                co*odd4*odd6*odd9*odd15+
+                                                                co*odd4*odd6*odd11*odd13+
+                                                                co*odd4*odd7*odd9*odd14+
+                                                                co*odd4*odd7*odd10*odd13)
+                                                
+                elif len(hand) == 4:
+                    for i in range (0,len(remaining)-2):
+                        card1 = remaining[i]
+                        for j in range (i+1,len(remaining)-1):
+                            card2 = remaining[j]
+                            for k in range (j+1,len(remaining)):
+                                card3 = remaining[k]
+                                for m in range (0,len(list_function)-2):
+                                    odd1 = list_function[m](card1,occur,street,list_numplayers)
+                                    odd2 = list_function[m](card2,occur,street,list_numplayers)
+                                    odd3 = list_function[m](card3,occur,street,list_numplayers)
+                                    for n in range (m+1,len(list_function)-1):
+                                        odd5 = list_function[n](card1,occur,street,list_numplayers)
+                                        odd6 = list_function[n](card2,occur,street,list_numplayers)
+                                        odd7 = list_function[n](card3,occur,street,list_numplayers)
+                                        for o in range (n+1,len(list_function)):
+                                            odd9 = list_function[o](card1,occur,street,list_numplayers)
+                                            odd10 = list_function[o](card2,occur,street,list_numplayers)
+                                            odd11 = list_function[o](card3,occur,street,list_numplayers)
+                                            co = coef_4(remaining,count,[card1,card2,card3])
+                                            odd += (co*odd1*odd6*odd11+
+                                                        co*odd1*odd7*odd10+
+                                                        co*odd2*odd5*odd11+
+                                                        co*odd2*odd7*odd9+
+                                                        co*odd3*odd5*odd10+
+                                                        co*odd3*odd6*odd9) 
+                elif len(hand) == 5:
+                    for i in range (0,len(remaining)-1):
+                        card1 = remaining[i]
+                        for j in range (i+1,len(remaining)):
+                            card2 = remaining[j]
+                            for m in range (0,len(list_function)-1):
+                                odd1 = list_function[m](card1,occur,street,list_numplayers)
+                                odd2 = list_function[m](card2,occur,street,list_numplayers)
+                                for n in range (m+1,len(list_function)):
+                                    co = coef_4(remaining,count,[card1,card2])
+                                    odd5 = co*list_function[n](card1,occur,street,list_numplayers)
+                                    odd6 = co*list_function[n](card2,occur,street,list_numplayers)
                                     odd += (odd1*odd6 + odd2*odd5)
-            elif len(hand) == 6:
-                for i in range (0,len(remaining)):
-                    card1 = remaining[i]
-                    for m in range (0,len(list_function)):
-                        if hand[0] == Xlow or hand[5] == Xlow or hand[1] == Xlow or card1[:-1] == Xlow or hand[4] == Xlow or hand[3] == Xlow or hand[2] == Xlow:
+                elif len(hand) == 6:
+                    for i in range (0,len(remaining)):
+                        card1 = remaining[i]
+                        for m in range (0,len(list_function)):
                             odd += count[0]*list_function[m](card1,occur,street,list_numplayers)
 
-        else:
-            odd = 0
+            else:
+                odd = 0
+         elif len(low) == 6 :
+            if  street != "SUMMARY" or street != "SHOW":
+                if len(hand) == 2:
+                    for i in range (0,len(remaining)-3):
+                        card1 = remaining[i]
+                        for j in range (i+1,len(remaining)-2):
+                            card2 = remaining[j]
+                            for k in range (j+1,len(remaining)-1):
+                                card3 = remaining[k]
+                                for l in range (k+1,len(remaining)):
+                                    card4 = remaining[l]
+                                    for m in range (len(list_function)-3):
+                                        odd1 = list_function[m](card1,occur,street,list_numplayers)
+                                        odd2 = list_function[m](card2,occur,street,list_numplayers)
+                                        odd3 = list_function[m](card3,occur,street,list_numplayers)
+                                        odd4 = list_function[m](card4,occur,street,list_numplayers)
+                                        for n in range (m+1,len(list_function)-2):
+                                            odd5 = list_function[n](card1,occur,street,list_numplayers)
+                                            odd6 = list_function[n](card2,occur,street,list_numplayers)
+                                            odd7 = list_function[n](card3,occur,street,list_numplayers)
+                                            odd8 = list_function[n](card4,occur,street,list_numplayers)
+                                            for o in range (n+1,len(list_function)-1):
+                                                odd9 = list_function[o](card1,occur,street,list_numplayers)
+                                                odd10 = list_function[o](card2,occur,street,list_numplayers)
+                                                odd11 = list_function[o](card3,occur,street,list_numplayers)
+                                                odd12 = list_function[o](card4,occur,street,list_numplayers)
+                                                for p in range (o+1,len(list_function)):
+                                                    odd13 = list_function[p](card1,occur,street,list_numplayers)
+                                                    odd14 = list_function[p](card2,occur,street,list_numplayers)
+                                                    odd15 = list_function[p](card3,occur,street,list_numplayers)
+                                                    odd16 = list_function[p](card4,occur,street,list_numplayers)
+                                                    co =coef_4(remaining,count,[card1,card2,card3,card4])
+                                                    odd += (co*odd1*odd6*odd11*odd16+
+                                                                co*odd1*odd6*odd12*odd15+
+                                                                co*odd1*odd7*odd10*odd16+
+                                                                co*odd1*odd7*odd12*odd14+    
+                                                                co*odd1*odd8*odd10*odd15+
+                                                                co*odd1*odd8*odd11*odd14+
+                                                                co*odd2*odd5*odd11*odd16+
+                                                                co*odd2*odd5*odd12*odd15+
+                                                                co*odd2*odd7*odd9*odd16+
+                                                                co*odd2*odd7*odd12*odd13+
+                                                                co*odd2*odd8*odd9*odd15+
+                                                                co*odd2*odd8*odd11*odd13+
+                                                                co*odd3*odd5*odd10*odd16+
+                                                                co*odd3*odd5*odd12*odd14+
+                                                                co*odd3*odd6*odd9*odd16+
+                                                                co*odd3*odd6*odd12*odd13+
+                                                                co*odd3*odd8*odd9*odd14+
+                                                                co*odd3*odd8*odd10*odd13+
+                                                                co*odd4*odd5*odd10*odd15+
+                                                                co*odd4*odd5*odd11*odd14+
+                                                                co*odd4*odd6*odd9*odd15+
+                                                                co*odd4*odd6*odd11*odd13+
+                                                                co*odd4*odd7*odd9*odd14+
+                                                                co*odd4*odd7*odd10*odd13)
+                                                
+                elif len(hand) == 3:
+                    for i in range (0,len(remaining)-2):
+                        card1 = remaining[i]
+                        for j in range (i+1,len(remaining)-1):
+                            card2 = remaining[j]
+                            for k in range (j+1,len(remaining)):
+                                card3 = remaining[k]
+                                for m in range (0,len(list_function)-2):
+                                    odd1 = list_function[m](card1,occur,street,list_numplayers)
+                                    odd2 = list_function[m](card2,occur,street,list_numplayers)
+                                    odd3 = list_function[m](card3,occur,street,list_numplayers)
+                                    for n in range (m+1,len(list_function)-1):
+                                        odd5 = list_function[n](card1,occur,street,list_numplayers)
+                                        odd6 = list_function[n](card2,occur,street,list_numplayers)
+                                        odd7 = list_function[n](card3,occur,street,list_numplayers)
+                                        for o in range (n+1,len(list_function)):
+                                            odd9 = list_function[o](card1,occur,street,list_numplayers)
+                                            odd10 = list_function[o](card2,occur,street,list_numplayers)
+                                            odd11 = list_function[o](card3,occur,street,list_numplayers)
+                                            co = coef_4(remaining,count,[card1,card2,card3])
+                                            odd += (co*odd1*odd6*odd11+
+                                                        co*odd1*odd7*odd10+
+                                                        co*odd2*odd5*odd11+
+                                                        co*odd2*odd7*odd9+
+                                                        co*odd3*odd5*odd10+
+                                                        co*odd3*odd6*odd9) 
+                elif len(hand) == 4:
+                    for i in range (0,len(remaining)-1):
+                        card1 = remaining[i]
+                        for j in range (i+1,len(remaining)):
+                            card2 = remaining[j]
+                            for m in range (0,len(list_function)-1):
+                                odd1 = list_function[m](card1,occur,street,list_numplayers)
+                                odd2 = list_function[m](card2,occur,street,list_numplayers)
+                                for n in range (m+1,len(list_function)):
+                                    co = coef_4(remaining,count,[card1,card2])
+                                    odd5 = co*list_function[n](card1,occur,street,list_numplayers)
+                                    odd6 = co*list_function[n](card2,occur,street,list_numplayers)
+                                    odd += (odd1*odd6 + odd2*odd5)
+                elif len(hand) == 5:
+                    for i in range (0,len(remaining)):
+                        card1 = remaining[i]
+                        for m in range (0,len(list_function)):
+                            odd += count[0]*list_function[m](card1,occur,street,list_numplayers)
+
+            else:
+                odd = 0
     return odd
-def Odd_6low(occur,street,list_numplayers):
-    odd_each = 0
-    odd_inter_2 =0
-    odd_inter_3 = 0
-    odd_low = 0
-    for hand in low_6:
-        od1=odd_Low(hand,occur,street,list_numplayers)
-        
-        odd_each+=od1
-    for hand1 in inter_low6_2:
-        odd_inter_2+=odd_Low_6cards(hand1,occur,street,list_numplayers,'6')
-    for hand2 in inter_low6_3:
-        odd_inter_3+=odd_Low_7cards(hand2,occur,street,list_numplayers,'6')
-    odd=odd_each -odd_inter_2+odd_inter_3
+def odd_7cards_one_shape(low,occur,street,list_numplayers):
     
-    odd = round(odd,2)
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    suits = ['s','h','d','c']
+    odd = 0.
+    hand = 0
+    remaining = 0
+    count = []
+    all_card = []
     
-    return odd*100
+    index_card = 0
 
-def Odd_7low( occur,street,list_numplayers):
-    odd_each = 0
-    odd_inter_2 =0
-    odd_inter_3 = 0
-    odd_low =0
-    print('7')
-    print(street)
-    for hand in low7:
-        odd_each+=odd_Low(hand,occur,street,list_numplayers)
-        print(hand,odd_Low(hand,occur,street,list_numplayers))
-    for hand1 in inter_low7_2:
-        od2=odd_Low_6cards(hand1,occur,street,list_numplayers,'7')
-        
+    for k in range (len(low)):
+        pres = 0
+        i = nums.index(low[k][:-1])
+        j = suits.index(low[k][1:])
+        if occur[i][j] == 1:
+            hand +=1
+        elif occur[i][j] == 0:
+    co = 1
+    if len(hand) == 6 and len(low) == 6:
+        return 1.
+    elif len(hand) == 7 and len(low) == 7:
+        return 1.
+    elif len(remaining)>=5 and len(low) == 6:
+        return 0.
+    elif len(remaining)>=5 and len(low) == 7:
+        return 0.
+    else:
+         if len(low) == 7 :
+            if  street != "SUMMARY" or street != "SHOW":
+                if len(hand) == 3:
+                    for i in range (0,len(remaining)-3):
+                        card1 = remaining[i]
+                        for j in range (i+1,len(remaining)-2):
+                            card2 = remaining[j]
+                            for k in range (j+1,len(remaining)-1):
+                                card3 = remaining[k]
+                                for l in range (k+1,len(remaining)):
+                                    card4 = remaining[l]
+                                    for m in range (len(list_function)-3):
+                                        odd1 = list_function[m](card1,occur,street,list_numplayers)
+                                        odd2 = list_function[m](card2,occur,street,list_numplayers)
+                                        odd3 = list_function[m](card3,occur,street,list_numplayers)
+                                        odd4 = list_function[m](card4,occur,street,list_numplayers)
+                                        for n in range (m+1,len(list_function)-2):
+                                            odd5 = list_function[n](card1,occur,street,list_numplayers)
+                                            odd6 = list_function[n](card2,occur,street,list_numplayers)
+                                            odd7 = list_function[n](card3,occur,street,list_numplayers)
+                                            odd8 = list_function[n](card4,occur,street,list_numplayers)
+                                            for o in range (n+1,len(list_function)-1):
+                                                odd9 = list_function[o](card1,occur,street,list_numplayers)
+                                                odd10 = list_function[o](card2,occur,street,list_numplayers)
+                                                odd11 = list_function[o](card3,occur,street,list_numplayers)
+                                                odd12 = list_function[o](card4,occur,street,list_numplayers)
+                                                for p in range (o+1,len(list_function)):
+                                                    odd13 = list_function[p](card1,occur,street,list_numplayers)
+                                                    odd14 = list_function[p](card2,occur,street,list_numplayers)
+                                                    odd15 = list_function[p](card3,occur,street,list_numplayers)
+                                                    odd16 = list_function[p](card4,occur,street,list_numplayers)
+                                                    
+                                                    odd += (co*odd1*odd6*odd11*odd16+
+                                                                co*odd1*odd6*odd12*odd15+
+                                                                co*odd1*odd7*odd10*odd16+
+                                                                co*odd1*odd7*odd12*odd14+    
+                                                                co*odd1*odd8*odd10*odd15+
+                                                                co*odd1*odd8*odd11*odd14+
+                                                                co*odd2*odd5*odd11*odd16+
+                                                                co*odd2*odd5*odd12*odd15+
+                                                                co*odd2*odd7*odd9*odd16+
+                                                                co*odd2*odd7*odd12*odd13+
+                                                                co*odd2*odd8*odd9*odd15+
+                                                                co*odd2*odd8*odd11*odd13+
+                                                                co*odd3*odd5*odd10*odd16+
+                                                                co*odd3*odd5*odd12*odd14+
+                                                                co*odd3*odd6*odd9*odd16+
+                                                                co*odd3*odd6*odd12*odd13+
+                                                                co*odd3*odd8*odd9*odd14+
+                                                                co*odd3*odd8*odd10*odd13+
+                                                                co*odd4*odd5*odd10*odd15+
+                                                                co*odd4*odd5*odd11*odd14+
+                                                                co*odd4*odd6*odd9*odd15+
+                                                                co*odd4*odd6*odd11*odd13+
+                                                                co*odd4*odd7*odd9*odd14+
+                                                                co*odd4*odd7*odd10*odd13)
+                                                
+                elif len(hand) == 4:
+                    for i in range (0,len(remaining)-2):
+                        card1 = remaining[i]
+                        for j in range (i+1,len(remaining)-1):
+                            card2 = remaining[j]
+                            for k in range (j+1,len(remaining)):
+                                card3 = remaining[k]
+                                for m in range (0,len(list_function)-2):
+                                    odd1 = list_function[m](card1,occur,street,list_numplayers)
+                                    odd2 = list_function[m](card2,occur,street,list_numplayers)
+                                    odd3 = list_function[m](card3,occur,street,list_numplayers)
+                                    for n in range (m+1,len(list_function)-1):
+                                        odd5 = list_function[n](card1,occur,street,list_numplayers)
+                                        odd6 = list_function[n](card2,occur,street,list_numplayers)
+                                        odd7 = list_function[n](card3,occur,street,list_numplayers)
+                                        for o in range (n+1,len(list_function)):
+                                            odd9 = list_function[o](card1,occur,street,list_numplayers)
+                                            odd10 = list_function[o](card2,occur,street,list_numplayers)
+                                            odd11 = list_function[o](card3,occur,street,list_numplayers)
+                                            
+                                            odd += (co*odd1*odd6*odd11+
+                                                        co*odd1*odd7*odd10+
+                                                        co*odd2*odd5*odd11+
+                                                        co*odd2*odd7*odd9+
+                                                        co*odd3*odd5*odd10+
+                                                        co*odd3*odd6*odd9) 
+                elif len(hand) == 5:
+                    for i in range (0,len(remaining)-1):
+                        card1 = remaining[i]
+                        for j in range (i+1,len(remaining)):
+                            card2 = remaining[j]
+                            for m in range (0,len(list_function)-1):
+                                odd1 = list_function[m](card1,occur,street,list_numplayers)
+                                odd2 = list_function[m](card2,occur,street,list_numplayers)
+                                for n in range (m+1,len(list_function)):
+                                    
+                                    odd5 = co*list_function[n](card1,occur,street,list_numplayers)
+                                    odd6 = co*list_function[n](card2,occur,street,list_numplayers)
+                                    odd += (odd1*odd6 + odd2*odd5)
+                elif len(hand) == 6:
+                    for i in range (0,len(remaining)):
+                        card1 = remaining[i]
+                        for m in range (0,len(list_function)):
+                            odd += list_function[m](card1,occur,street,list_numplayers)
 
-        odd_inter_2+=od2
-    for hand2 in inter_low7_3:
-        odd_inter_3+=odd_Low_7cards(hand2,occur,street,list_numplayers,'7')
-    odd=odd_each - odd_inter_2 - odd_inter_2/2 +odd_inter_3
-    print(odd_each,odd_inter_2,odd_inter_3)
-    odd = round(odd,2)
-    return odd*100
-def Odd_8low( occur,street,list_numplayers):
-    odd = 0
-    odd_each = 0
-    odd_inter_2 =0
-    odd_inter_3 = 0
-    for hand in low_8:
-        odd_each+=odd_Low(hand,occur,street,list_numplayers)
-    for hand1 in inter_low8_2 :
-        odd_inter_2+=odd_Low_6cards(hand1,occur,street,list_numplayers,'8')
-    for hand2 in inter_low8_3 :
-        odd_inter_3+=odd_Low_7cards(hand2,occur,street,list_numplayers,'8')
-    odd=odd_each -odd_inter_2+odd_inter_3
-    
-    odd = round(odd,2)
-    
-    
-    return odd*100
+            else:
+                odd = 0
+         elif len(low) == 6 :
+            if  street != "SUMMARY" or street != "SHOW":
+                if len(hand) == 2:
+                    for i in range (0,len(remaining)-3):
+                        card1 = remaining[i]
+                        for j in range (i+1,len(remaining)-2):
+                            card2 = remaining[j]
+                            for k in range (j+1,len(remaining)-1):
+                                card3 = remaining[k]
+                                for l in range (k+1,len(remaining)):
+                                    card4 = remaining[l]
+                                    for m in range (len(list_function)-3):
+                                        odd1 = list_function[m](card1,occur,street,list_numplayers)
+                                        odd2 = list_function[m](card2,occur,street,list_numplayers)
+                                        odd3 = list_function[m](card3,occur,street,list_numplayers)
+                                        odd4 = list_function[m](card4,occur,street,list_numplayers)
+                                        for n in range (m+1,len(list_function)-2):
+                                            odd5 = list_function[n](card1,occur,street,list_numplayers)
+                                            odd6 = list_function[n](card2,occur,street,list_numplayers)
+                                            odd7 = list_function[n](card3,occur,street,list_numplayers)
+                                            odd8 = list_function[n](card4,occur,street,list_numplayers)
+                                            for o in range (n+1,len(list_function)-1):
+                                                odd9 = list_function[o](card1,occur,street,list_numplayers)
+                                                odd10 = list_function[o](card2,occur,street,list_numplayers)
+                                                odd11 = list_function[o](card3,occur,street,list_numplayers)
+                                                odd12 = list_function[o](card4,occur,street,list_numplayers)
+                                                for p in range (o+1,len(list_function)):
+                                                    odd13 = list_function[p](card1,occur,street,list_numplayers)
+                                                    odd14 = list_function[p](card2,occur,street,list_numplayers)
+                                                    odd15 = list_function[p](card3,occur,street,list_numplayers)
+                                                    odd16 = list_function[p](card4,occur,street,list_numplayers)
+                                                    
+                                                    odd += (co*odd1*odd6*odd11*odd16+
+                                                                co*odd1*odd6*odd12*odd15+
+                                                                co*odd1*odd7*odd10*odd16+
+                                                                co*odd1*odd7*odd12*odd14+    
+                                                                co*odd1*odd8*odd10*odd15+
+                                                                co*odd1*odd8*odd11*odd14+
+                                                                co*odd2*odd5*odd11*odd16+
+                                                                co*odd2*odd5*odd12*odd15+
+                                                                co*odd2*odd7*odd9*odd16+
+                                                                co*odd2*odd7*odd12*odd13+
+                                                                co*odd2*odd8*odd9*odd15+
+                                                                co*odd2*odd8*odd11*odd13+
+                                                                co*odd3*odd5*odd10*odd16+
+                                                                co*odd3*odd5*odd12*odd14+
+                                                                co*odd3*odd6*odd9*odd16+
+                                                                co*odd3*odd6*odd12*odd13+
+                                                                co*odd3*odd8*odd9*odd14+
+                                                                co*odd3*odd8*odd10*odd13+
+                                                                co*odd4*odd5*odd10*odd15+
+                                                                co*odd4*odd5*odd11*odd14+
+                                                                co*odd4*odd6*odd9*odd15+
+                                                                co*odd4*odd6*odd11*odd13+
+                                                                co*odd4*odd7*odd9*odd14+
+                                                                co*odd4*odd7*odd10*odd13)
+                                                
+                elif len(hand) == 3:
+                    for i in range (0,len(remaining)-2):
+                        card1 = remaining[i]
+                        for j in range (i+1,len(remaining)-1):
+                            card2 = remaining[j]
+                            for k in range (j+1,len(remaining)):
+                                card3 = remaining[k]
+                                for m in range (0,len(list_function)-2):
+                                    odd1 = list_function[m](card1,occur,street,list_numplayers)
+                                    odd2 = list_function[m](card2,occur,street,list_numplayers)
+                                    odd3 = list_function[m](card3,occur,street,list_numplayers)
+                                    for n in range (m+1,len(list_function)-1):
+                                        odd5 = list_function[n](card1,occur,street,list_numplayers)
+                                        odd6 = list_function[n](card2,occur,street,list_numplayers)
+                                        odd7 = list_function[n](card3,occur,street,list_numplayers)
+                                        for o in range (n+1,len(list_function)):
+                                            odd9 = list_function[o](card1,occur,street,list_numplayers)
+                                            odd10 = list_function[o](card2,occur,street,list_numplayers)
+                                            odd11 = list_function[o](card3,occur,street,list_numplayers)
+                                            
+                                            odd += (co*odd1*odd6*odd11+
+                                                        co*odd1*odd7*odd10+
+                                                        co*odd2*odd5*odd11+
+                                                        co*odd2*odd7*odd9+
+                                                        co*odd3*odd5*odd10+
+                                                        co*odd3*odd6*odd9) 
+                elif len(hand) == 4:
+                    for i in range (0,len(remaining)-1):
+                        card1 = remaining[i]
+                        for j in range (i+1,len(remaining)):
+                            card2 = remaining[j]
+                            for m in range (0,len(list_function)-1):
+                                odd1 = list_function[m](card1,occur,street,list_numplayers)
+                                odd2 = list_function[m](card2,occur,street,list_numplayers)
+                                for n in range (m+1,len(list_function)):
+                                    
+                                    odd5 = co*list_function[n](card1,occur,street,list_numplayers)
+                                    odd6 = co*list_function[n](card2,occur,street,list_numplayers)
+                                    odd += (odd1*odd6 + odd2*odd5)
+                elif len(hand) == 5:
+                    for i in range (0,len(remaining)):
+                        card1 = remaining[i]
+                        for m in range (0,len(list_function)):
+                            odd += list_function[m](card1,occur,street,list_numplayers)
+
+            else:
+                odd = 0
+    return odd
+
 
 def Best_hand(hand,occur):
     notFind = True
     nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     shapes = ['s','h','d','c']
     result = []
+    already_used = []
     for card in hand:
         j = nums.index(card)
         for i in range (0,4):
@@ -1156,218 +954,17 @@ def Best_hand(hand,occur):
                 result.append(nums[j] + shapes[i])
         for i in range(0,4):
             if notFind:
-                if occur[i][j] == 0:
+                if occur[i][j] == 0 and not((nums[j] + shapes[i]) in already_used):
                     result.append(nums[j] + shapes[i])
+                    already_used.append(nums[j] + shapes[i])
                     notFind = False
         notFind = True
     return Card_To_Html(result)
 
-def low_hand_odd(occur,street,list_numplayers):
-    i = 0
-    odd = 0
-    odd_5low = 0.
-    odd_6low = 0.
-    odd_7low = 0.
-    odd_8low = 0.
-    odd_5low_max = 0.
-    odd_6low_max= 0.
-    odd_7low_max = 0.
-    odd_8low_max = 0.
-    best_5low = []
-    best_6low = []
-    best_7low = []
-    best_8low = []
-    hand = []
-    low_hand_odds = []
-    Odds = []
-    for hand in low_hand :
-        low_hand_odds.append([hand,odd_Low(hand,occur,street,list_numplayers)])
-
-    while (low_hand_odds[i][0][0] == '5'):
-        hand = low_hand_odds[i][0]
-        odd = low_hand_odds[i][1]
-        odd_5low += odd
-        if odd > odd_5low_max:
-            odd_5low_max = odd
-           
-            best_5low = Best_hand(hand,occur)
-        if odd_5low_max == 1:
-            odd_5low = 1
-        i+=1
-    Odds.append(["5-Low",best_5low,round(odd_5low_max,2)])
-    while (low_hand_odds[i][0][0] == '6'):
-        hand = low_hand_odds[i][0]
-        odd = low_hand_odds[i][1]
-        odd_6low += odd
-        if odd > odd_6low_max:
-            odd_6low_max = odd
-            best_6low = Best_hand(hand,occur)
-        if odd_6low_max == 1:
-            odd_6low = 1
-        i+=1
-    Odds.append(["6-Low",best_6low,round(odd_6low_max,2)])
-    while (low_hand_odds[i][0][0] == '7'):
-        hand = low_hand_odds[i][0]
-        odd = low_hand_odds[i][1]
-        odd_7low += odd
-        if odd > odd_7low_max:
-            odd_7low_max = odd 
-            best_7low = Best_hand(hand,occur)
-        if odd_7low_max == 1:
-            odd_7low = 1
-        i+=1
-    Odds.append(["7-Low",best_7low,round(odd_7low_max,2)])
-    while (i < len(low_hand_odds) and low_hand_odds[i][0][0] == '8'):
-        hand = low_hand_odds[i][0]
-        odd = low_hand_odds[i][1]
-        odd_8low += odd
-        if odd > odd_8low_max:
-            odd_8low_max= odd
-            best_8low = Best_hand(hand,occur)
-        if odd_8low_max == 1:
-            odd_8low = 1 
-        i+=1
-    Odds.append(["8-Low",best_8low,round(odd_8low_max,2)])
-    return Odds
-
-    
 
 
-def odd_Straight(straight,occur,street,list_numplayers):
-    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
-    suits = ['s','h','d','c']
-    odd = 0.
-    hand = 0
-    remaining = []
-    count = []
-    for k in range (len(straight)):
-        pres = 0
-        j = nums.index(straight[k])
-        for i in range (0,4):
-            if occur[i][j] == 1 and pres!=1:
-                hand += 1
-                pres = 1    
-        for i in range (0,4):
-            if occur[i][j] == 0 and pres !=1:
-                remaining.append(nums[j] + suits[i])
-                count.append(count_card(j,occur))
-                pres = 1
-            
-    if hand >= 5:
-        return 1.
-    elif len(remaining)>=5:
-        return 0.
-    else:
-        if  street != "SUMMARY" or street != "SHOW":
-            if hand == 0:
-                 odd = 0.
-            elif hand == 1:
-                for i in range (0,len(remaining)-3):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)-2):
-                        card2 = remaining[j]
-                        for k in range (j+1,len(remaining)-1):
-                            card3 = remaining[k]
-                            for l in range (k+1,len(remaining)):
-                                card4 = remaining[l]
-                                for m in range (len(list_function)-3):
-                                    odd1 = count[0]*list_function[m](card1,occur,street,list_numplayers)
-                                    odd2 = count[1]*list_function[m](card2,occur,street,list_numplayers)
-                                    odd3 = count[2]*list_function[m](card3,occur,street,list_numplayers)
-                                    odd4 = count[3]*list_function[m](card4,occur,street,list_numplayers)
-                                    for n in range (m+1,len(list_function)-2):
-                                        odd5 = count[0]*list_function[n](card1,occur,street,list_numplayers)
-                                        odd6 = count[1]*list_function[n](card2,occur,street,list_numplayers)
-                                        odd7 = count[2]*list_function[n](card3,occur,street,list_numplayers)
-                                        odd8 = count[3]*list_function[n](card4,occur,street,list_numplayers)
-                                        for o in range (n+1,len(list_function)-1):
-                                            odd9 = count[0]*list_function[o](card1,occur,street,list_numplayers)
-                                            odd10 = count[1]*list_function[o](card2,occur,street,list_numplayers)
-                                            odd11 = count[2]*list_function[o](card3,occur,street,list_numplayers)
-                                            odd12 = count[3]*list_function[o](card4,occur,street,list_numplayers)
-                                            for p in range (o+1,len(list_function)):
-                                                odd13 = count[0]*list_function[p](card1,occur,street,list_numplayers)
-                                                odd14 = count[1]*list_function[p](card2,occur,street,list_numplayers)
-                                                odd15 = count[2]*list_function[p](card3,occur,street,list_numplayers)
-                                                odd16 = count[3]*list_function[p](card4,occur,street,list_numplayers)
-                                                odd += (odd1*odd6*odd11*odd16+
-                                                        odd1*odd6*odd12*odd15+
-                                                        odd1*odd7*odd10*odd16+
-                                                        odd1*odd7*odd12*odd14+    
-                                                        odd1*odd8*odd10*odd15+
-                                                        odd1*odd8*odd11*odd14+
-                                                        odd2*odd5*odd11*odd16+
-                                                        odd2*odd5*odd12*odd15+
-                                                        odd2*odd7*odd9*odd16+
-                                                        odd2*odd7*odd12*odd13+
-                                                        odd2*odd8*odd9*odd15+
-                                                        odd2*odd8*odd11*odd13+
-                                                        odd3*odd5*odd10*odd16+
-                                                        odd3*odd5*odd12*odd14+
-                                                        odd3*odd6*odd9*odd16+
-                                                        odd3*odd6*odd12*odd13+
-                                                        odd3*odd8*odd9*odd14+
-                                                        odd3*odd8*odd10*odd13+
-                                                        odd4*odd5*odd10*odd15+
-                                                        odd4*odd5*odd11*odd14+
-                                                        odd4*odd6*odd9*odd15+
-                                                        odd4*odd6*odd11*odd13+
-                                                        odd4*odd7*odd9*odd14+
-                                                        odd4*odd7*odd10*odd13)
-            elif hand == 2:
-               for i in range (0,len(remaining)-2):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)-1):
-                        card2 = remaining[j]
-                        for k in range (j+1,len(remaining)):
-                            card3 = remaining[k]
-                            for m in range (0,len(list_function)-2):
-                                odd1 = count[0]*list_function[m](card1,occur,street,list_numplayers)
-                                odd2 = count[1]*list_function[m](card2,occur,street,list_numplayers)
-                                odd3 = count[2]*list_function[m](card3,occur,street,list_numplayers)
-                                for n in range (m+1,len(list_function)-1):
-                                    odd5 = count[0]*list_function[n](card1,occur,street,list_numplayers)
-                                    odd6 = count[1]*list_function[n](card2,occur,street,list_numplayers)
-                                    odd7 = count[2]*list_function[n](card3,occur,street,list_numplayers)
-                                    for o in range (n+1,len(list_function)):
-                                        odd9 = count[0]*list_function[o](card1,occur,street,list_numplayers)
-                                        odd10 = count[1]*list_function[o](card2,occur,street,list_numplayers)
-                                        odd11 = count[2]*list_function[o](card3,occur,street,list_numplayers)
-                                        odd += (odd1*odd6*odd11+
-                                                odd1*odd7*odd10+
-                                                odd2*odd5*odd11+
-                                                odd2*odd7*odd9+
-                                                odd3*odd5*odd10+
-                                                odd3*odd6*odd9) 
-            elif hand == 3:
-                for i in range (0,len(remaining)-1):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)):
-                        card2 = remaining[j]
-                        for m in range (0,len(list_function)-1):
-                            odd1 = count[0]*list_function[m](card1,occur,street,list_numplayers)
-                            odd2 = count[1]*list_function[m](card2,occur,street,list_numplayers)
-                            for n in range (m+1,len(list_function)):
-                                odd5 = count[0]*list_function[n](card1,occur,street,list_numplayers)
-                                odd6 = count[1]*list_function[n](card2,occur,street,list_numplayers)
-                                odd += (odd1*odd6 + odd2*odd5)
-            elif hand == 4:
-                for i in range (0,len(remaining)):
-                    card1 = remaining[i]
-                    for m in range (0,len(list_function)):
-                        odd += count[0]*list_function[m](card1,occur,street,list_numplayers)
-        else:
-            odd = 0
-    return odd
 
-def Straight(occur,street,list_numplayers):
-    odd = 0.
-    poss = list_Straight()
-    for straight in poss :
-        odd+=odd_Straight(straight,occur,street,list_numplayers)
-        if odd_Straight(straight,occur,street,list_numplayers) == 1:
-            return 1. 
-    return odd
+
 def better_low_hand(low_hand_odds,occur,hand):
     nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     shape = ['s','h','d','c']
@@ -1423,184 +1020,8 @@ def odd_better_Straight(occur,street,list_numplayers):
             odd_max = odd_straight
             best_hand = straight
     return (odd,best_hand,odd_max)
-def Straight_flush(occur,street,list_numplayers,poss):
-    odd = 0.
-    for straight in poss :
-        odd+=odd_Straight_flush(straight,occur,street,list_numplayers)
-        if odd > len(poss):
-            return 1.
-    return odd/len(poss)
 
-def Flush(occur, row, street, list_numplayers):
-    num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
-    suit = ['s','h','d','c']
-    odd = 0.
-    hand = 0
-    other=0
-    remaining = []
-    
-    for j in range(len(occur[0])-3):
-        if occur[row][j] == 1:
-            hand += 1
-            
-        elif occur[row][j] == 0:
-            remaining.append(num[j] + suit[row])
-        else:
-            other +=1
-    if hand >= 5:
-        return 1.
-    elif len(remaining) + hand < 5:
-        return 0.
-    else:
-        if  street != "SUMMARY" or street != "SHOW":
-            if hand == 0:
-                 odd = 0.
-            elif hand == 1:
-                for i in range (0,len(remaining)-3):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)-2):
-                        card2 = remaining[j]
-                        for k in range (j+1,len(remaining)-1):
-                            card3 = remaining[k]
-                            for l in range (k+1,len(remaining)):
-                                card4 = remaining[l]
-                                for m in range (len(list_function)-3):
-                                    odd1 = list_function[m](card1,occur,street,list_numplayers)
-                                    odd2 = list_function[m](card2,occur,street,list_numplayers)
-                                    odd3 = list_function[m](card3,occur,street,list_numplayers)
-                                    odd4 = list_function[m](card4,occur,street,list_numplayers)
-                                    for n in range (m+1,len(list_function)-2):
-                                        odd5 = list_function[n](card1,occur,street,list_numplayers)
-                                        odd6 = list_function[n](card2,occur,street,list_numplayers)
-                                        odd7 = list_function[n](card3,occur,street,list_numplayers)
-                                        odd8 = list_function[n](card4,occur,street,list_numplayers)
-                                        for o in range (n+1,len(list_function)-1):
-                                            odd9 = list_function[o](card1,occur,street,list_numplayers)
-                                            odd10 = list_function[o](card2,occur,street,list_numplayers)
-                                            odd11 = list_function[o](card3,occur,street,list_numplayers)
-                                            odd12 = list_function[o](card4,occur,street,list_numplayers)
-                                            for p in range (o+1,len(list_function)):
-                                                
-                                                odd13 = list_function[p](card1,occur,street,list_numplayers)
-                                                odd14 = list_function[p](card2,occur,street,list_numplayers)
-                                                odd15 = list_function[p](card3,occur,street,list_numplayers)
-                                                odd16 = list_function[p](card4,occur,street,list_numplayers)
-                                                odd_4 = (odd1*odd6*odd11*odd16+
-                                                        odd1*odd6*odd12*odd15+
-                                                        odd1*odd7*odd10*odd16+
-                                                        odd1*odd7*odd12*odd14+    
-                                                        odd1*odd8*odd10*odd15+
-                                                        odd1*odd8*odd11*odd14+
-                                                        odd2*odd5*odd11*odd16+
-                                                        odd2*odd5*odd12*odd15+
-                                                        odd2*odd7*odd9*odd16+
-                                                        odd2*odd7*odd12*odd13+
-                                                        odd2*odd8*odd9*odd15+
-                                                        odd2*odd8*odd11*odd13+
-                                                        odd3*odd5*odd10*odd16+
-                                                        odd3*odd5*odd12*odd14+
-                                                        odd3*odd6*odd9*odd16+
-                                                        odd3*odd6*odd12*odd13+
-                                                        odd3*odd8*odd9*odd14+
-                                                        odd3*odd8*odd10*odd13+
-                                                        odd4*odd5*odd10*odd15+
-                                                        odd4*odd5*odd11*odd14+
-                                                        odd4*odd6*odd9*odd15+
-                                                        odd4*odd6*odd11*odd13+
-                                                        odd4*odd7*odd9*odd14+
-                                                        odd4*odd7*odd10*odd13)
-                                                odd+= odd_4
-                                                    
 
-            elif hand == 2:
-               for i in range (0,len(remaining)-2):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)-1):
-                        card2 = remaining[j]
-                        for k in range (j+1,len(remaining)):
-                            card3 = remaining[k]
-                            for m in range (0,len(list_function)-2):
-                                odd1 = list_function[m](card1,occur,street,list_numplayers)
-                                odd2 = list_function[m](card2,occur,street,list_numplayers)
-                                odd3 = list_function[m](card3,occur,street,list_numplayers)
-                                for n in range (m+1,len(list_function)-1):
-                                    odd5 = list_function[n](card1,occur,street,list_numplayers)
-                                    odd6 = list_function[n](card2,occur,street,list_numplayers)
-                                    odd7 = list_function[n](card3,occur,street,list_numplayers)
-                                    for o in range (n+1,len(list_function)):
-                                        
-                                        odd9 = list_function[o](card1,occur,street,list_numplayers)
-                                        odd10 = list_function[o](card2,occur,street,list_numplayers)
-                                        odd11 = list_function[o](card3,occur,street,list_numplayers)
-                                        odd_3 = (odd1*odd6*odd11+
-                                                odd1*odd7*odd10+
-                                                odd2*odd5*odd11+
-                                                odd2*odd7*odd9+
-                                                odd3*odd5*odd10+
-                                                odd3*odd6*odd9)
-                                        odd+=odd_3
-            elif hand == 3:
-                for i in range (0,len(remaining)-1):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)):
-                        card2 = remaining[j]
-                        for m in range (0,len(list_function)-1):
-                            odd1 = list_function[m](card1,occur,street,list_numplayers)
-                            odd2 = list_function[m](card2,occur,street,list_numplayers)
-                            for n in range (m+1,len(list_function)):
-                                odd5 = list_function[n](card1,occur,street,list_numplayers)
-                                odd6 = list_function[n](card2,occur,street,list_numplayers)
-                                odd_2 = (odd1*odd6 + odd2*odd5)
-                                odd+=odd_2
-            elif hand == 4:
-                for i in range (0,len(remaining)):
-                    card1 = remaining[i]
-                    for m in range (0,len(list_function)):
-                        
-                        odd += list_function[m](card1,occur,street,list_numplayers)
-                        odd_1 = (odd1*odd6 + odd2*odd5)
-                        odd+=odd_1
-        else:
-            odd = 0
-    return odd
-def odd_two_pairs(occur):
-    num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
-    shape = ['s','h','d','c']
-    odd=0
-    odd_max = 0
-    best_hand = []
-    index_pair1 = -1
-    index_pair2 = -1
-    count1 = 0
-    count2= 0
-    l = 0
-    for j in range (len(occur[0])-4):
-        for k in range (len(occur[0])-3):
-            odd_two_pairs = occur[4][k]*occur[4][j]
-            odd+= odd_two_pairs
-            if odd_two_pairs >  odd_max:
-                odd_max = odd_two_pairs
-                index_pair1 = j
-                index_pair2 = k
-    if index_pair1 != -1:
-        for i in range (len(occur)-3):
-            if occur[i][index_pair1] == 1:
-                best_hand.append(num[index_pair1] + shape[i])
-                count1+= 1
-            if occur[i][index_pair2] == 1:
-                best_hand.append(num[index_pair2] + shape[i])
-                count2+= 1
-        while count1 !=2 and l < 4:
-            if occur[l][index_pair1] == 0:
-                best_hand.append(num[index_pair1] + shape[i])
-                count1+= 1
-            l+=1
-        l =0
-        while count2 !=2:
-            if occur[l][index_pair2] == 0:
-                best_hand.append(num[index_pair2] + shape[i])
-                count2+= 1
-    return(odd,best_hand,odd_max)
 def odd_better_pair(occur,card):
     num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     shape = ['s','h','d','c']
@@ -1908,251 +1329,8 @@ def odd_better_Flush(occur, row,street, list_numplayers,card_max):
             odd = 0
     return (odd_max,best_hand,odd)
 list_function=[odd_first_card,odd_second_card,odd_third_card,odd_fourth_card]
-def Pair(occur, column, street, list_numplayers):
-    num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
-    suit = ['s','h','d','c']
-    odd = 0.
-    hand = 0
-    remaining = []
-    other = 0
-    count = 0
-    for i in range(len(occur)-3):
-        if occur[i][column] == 0 :
-            remaining.append(num[column] + suit[i])
-        elif occur[i][column] == 1:
-            hand +=1            
-        else:
-            other +=1
-    if hand >= 2:
-        return 1.
-    elif other > 2:
-        return 0.
-    else:
-        if street != "SUMMARY" or street != "SHOW":
-            if hand == 0:
-                for i in range (0,len(remaining)-1):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)):
-                        card2 = remaining[j]
-                        for k in range (0,len(list_function)-1):
-                            odd1 = list_function[k](card1,occur,street,list_numplayers)
-                            odd2 = list_function[k](card2,occur,street,list_numplayers)
-                            for l in range (k+1,len(list_function)):
-                                count+=2
-                                odd3 = list_function[l](card2,occur,street,list_numplayers)
-                                odd4 = list_function[l](card1,occur,street,list_numplayers)
-                                odd += (odd1*odd3+
-                                        odd2*odd4)
-            elif hand == 1 :
-                for i in range (0,len(remaining)):
-                    card1 = remaining[i]
-                    
-                    for k in range (0,len(list_function)):
-                        count+=1
-                        odd1 = list_function[k](card1,occur,street,list_numplayers)
-                        odd += list_function[k](card1,occur,street,list_numplayers)
-        else:
-            odd = 0
-    return odd
 
-def Three_Kind(occur,column,street,list_numplayers):
-    num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
-    suit = ['s','h','d','c']
-    odd = 0.
-    hand = 0
-    remaining = []
-    other = 0
-    count = 0
-    for i in range(len(occur)-3):
-        if occur[i][column] == 0 or occur[i][column] == 1:
-            if occur[i][column] == 1:
-                hand +=1
-                
-            else:
-                remaining.append(num[column] + suit[i])
-        else:
-            other +=1
-    if hand >= 3:
-        return 1.
-    elif other > 1:
-        return 0.
-    
-    else:
-        if street != "SUMMARY" or street != "SHOW":
-            if hand == 0:
-                for i in range (0,len(remaining)-2):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)-1):
-                        card2 = remaining[j]
-                        for k in range (j+1,len(remaining)):
-                            card3 = remaining[k]
-                            for l in range (0,len(list_function)-2):
-                                odd1 = list_function[l](card1,occur,street,list_numplayers)
-                                odd2 = list_function[l](card2,occur,street,list_numplayers)
-                                odd3 = list_function[l](card3,occur,street,list_numplayers)
-                                for m in range (l+1,len(list_function)-1):
-                                    odd4 = list_function[m](card1,occur,street,list_numplayers)
-                                    odd5 = list_function[m](card2,occur,street,list_numplayers)
-                                    odd6 = list_function[m](card3,occur,street,list_numplayers)
-                                    for n in range (m+1,len(list_function)):
-                                        count +=6
-                                        odd7 = list_function[n](card1,occur,street,list_numplayers)
-                                        odd8 = list_function[n](card2,occur,street,list_numplayers)
-                                        odd9 = list_function[n](card3,occur,street,list_numplayers)
-                                        odd += (odd1*odd5*odd9+
-                                                odd1*odd6*odd8+
-                                                odd2*odd4*odd9+
-                                                odd2*odd6*odd7+
-                                                odd3*odd4*odd8+
-                                                odd3*odd5*odd7)
-            elif hand == 1:
-                for i in range (0,len(remaining)-1):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)):
-                        card2 = remaining[j]
-                        for l in range (0,len(list_function)-1):
-                            odd1 = list_function[l](card1,occur,street,list_numplayers)
-                            odd2 = list_function[l](card2,occur,street,list_numplayers)
-                            for n in range (l+1,len(list_function)):
-                                count +=2
-                                odd3 = list_function[n](card1,occur,street,list_numplayers)
-                                odd4 = list_function[n](card2,occur,street,list_numplayers)
-                                odd += (odd1*odd4+
-                                        odd2*odd3)
-            elif hand == 2:
-                for i in range (0,len(remaining)):
-                    card1 = remaining[i]
-                    for l in range (0,len(list_function)):
-                        count +=1
-                        odd += list_function[l](card1,occur,street,list_numplayers)
-        else:
-            odd = 0
-    return odd
-def Four_Kind(occur,column,street,list_numplayers):
-    num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
-    suit = ['s','h','d','c']
-    odd = 0.
-    hand = 0
-    remaining = []
-    other = 0
-    count = 0
-    for i in range(0,4):
-        if occur[i][column] == 0 or occur[i][column] == 1:
-            if occur[i][column] == 1:
-                hand +=1
-                
-            else:
-                remaining.append(num[column] + suit[i])
-        else:
-            other +=1
-    if hand == 4:
-        return 1.
-    elif other > 0:
-        return 0.
-    else:
-        if street != "SUMMARY" or street != "SHOW":
-            if hand == 0:
-                for i in range (0,len(remaining)-3):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)-2):
-                        card2 = remaining[j]
-                        for k in range (j+1,len(remaining)-1):
-                            card3 = remaining[k]
-                            for l in range (k+1,len(remaining)):
-                                card4 = remaining[l]
-                                for m in range (len(list_function)-3):
-                                    odd1 = list_function[m](card1,occur,street,list_numplayers)
-                                    odd2 = list_function[m](card2,occur,street,list_numplayers)
-                                    odd3 = list_function[m](card3,occur,street,list_numplayers)
-                                    odd4 = list_function[m](card4,occur,street,list_numplayers)
-                                    for n in range (m+1,len(list_function)-2):
-                                        odd5 = list_function[n](card1,occur,street,list_numplayers)
-                                        odd6 = list_function[n](card2,occur,street,list_numplayers)
-                                        odd7 = list_function[n](card3,occur,street,list_numplayers)
-                                        odd8 = list_function[n](card4,occur,street,list_numplayers)
-                                        for o in range (n+1,len(list_function)-1):
-                                            odd9 = list_function[o](card1,occur,street,list_numplayers)
-                                            odd10 = list_function[o](card2,occur,street,list_numplayers)
-                                            odd11 = list_function[o](card3,occur,street,list_numplayers)
-                                            odd12 = list_function[o](card4,occur,street,list_numplayers)
-                                            for p in range (o+1,len(list_function)):
-                                                count +=24
-                                                odd13 = list_function[p](card1,occur,street,list_numplayers)
-                                                odd14 = list_function[p](card2,occur,street,list_numplayers)
-                                                odd15 = list_function[p](card3,occur,street,list_numplayers)
-                                                odd16 = list_function[p](card4,occur,street,list_numplayers)
-                                                odd += (odd1*odd6*odd11*odd16+
-                                                        odd1*odd6*odd12*odd15+
-                                                        odd1*odd7*odd10*odd16+
-                                                        odd1*odd7*odd12*odd14+    
-                                                        odd1*odd8*odd10*odd15+
-                                                        odd1*odd8*odd11*odd14+
-                                                        odd2*odd5*odd11*odd16+
-                                                        odd2*odd5*odd12*odd15+
-                                                        odd2*odd7*odd9*odd16+
-                                                        odd2*odd7*odd12*odd13+
-                                                        odd2*odd8*odd9*odd15+
-                                                        odd2*odd8*odd11*odd13+
-                                                        odd3*odd5*odd10*odd16+
-                                                        odd3*odd5*odd12*odd14+
-                                                        odd3*odd6*odd9*odd16+
-                                                        odd3*odd6*odd12*odd13+
-                                                        odd3*odd8*odd9*odd14+
-                                                        odd3*odd8*odd10*odd13+
-                                                        odd4*odd5*odd10*odd15+
-                                                        odd4*odd5*odd11*odd14+
-                                                        odd4*odd6*odd9*odd15+
-                                                        odd4*odd6*odd11*odd13+
-                                                        odd4*odd7*odd9*odd14+
-                                                        odd4*odd7*odd10*odd13)
-            elif hand == 1:
-                for i in range (0,len(remaining)-2):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)-1):
-                        card2 = remaining[j]
-                        for k in range (j+1,len(remaining)):
-                            card3 = remaining[k]
-                            for m in range (0,len(list_function)-2):
-                                odd1 = list_function[m](card1,occur,street,list_numplayers)
-                                odd2 = list_function[m](card2,occur,street,list_numplayers)
-                                odd3 = list_function[m](card3,occur,street,list_numplayers)
-                                for n in range (m+1,len(list_function)-1):
-                                    odd5 = list_function[n](card1,occur,street,list_numplayers)
-                                    odd6 = list_function[n](card2,occur,street,list_numplayers)
-                                    odd7 = list_function[n](card3,occur,street,list_numplayers)
-                                    for o in range (n+1,len(list_function)):
-                                        count+=6
-                                        odd9 = list_function[o](card1,occur,street,list_numplayers)
-                                        odd10 = list_function[o](card2,occur,street,list_numplayers)
-                                        odd11 = list_function[o](card3,occur,street,list_numplayers)
-                                        odd += (odd1*odd6*odd11+
-                                                odd1*odd7*odd10+
-                                                odd2*odd5*odd11+
-                                                odd2*odd7*odd9+
-                                                odd3*odd5*odd10+
-                                                odd3*odd6*odd9)                
-            elif hand == 2:
-                for i in range (0,len(remaining)-1):
-                    card1 = remaining[i]
-                    for j in range (i+1,len(remaining)):
-                        card2 = remaining[j]
-                        for m in range (0,len(list_function)-1):
-                            odd1 = list_function[m](card1,occur,street,list_numplayers)
-                            odd2 = list_function[m](card2,occur,street,list_numplayers)
-                            for n in range (m+1,len(list_function)):
-                                count+=2
-                                odd5 = list_function[n](card1,occur,street,list_numplayers)
-                                odd6 = list_function[n](card2,occur,street,list_numplayers)
-                                odd += (odd1*odd6 + odd2*odd5)
-            elif hand ==3:
-                for i in range (0,len(remaining)):
-                    card1 = remaining[i]
-                    for m in range (0,len(list_function)):
-                        count+=1
-                        odd += list_function[m](card1,occur,street,list_numplayers)   
-        else:
-            odd = 0
-    return odd
+
 
 def Table():
     nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
@@ -2187,27 +1365,3 @@ def NumCards(occur):
             if occur[i][j] == 1 or occur[i][j] == -1:
                 S+=1
     return 52-S
-def Calculate_odds(occur,street,list_numplayers):
-    
-    occur1 = Table()
-    low_hand_odds = []
-    for i in range (len(occur)):
-        for j in range(len(occur[1])):
-            occur1[i][j] = occur[i][j]
-    staight_odds = round(Straight(occur,street,list_numplayers),2)
-    low_hand_odds = low_hand_odd(occur,street,list_numplayers)
-    odd_5lows = 0
-    odd_6lows = Odd_6low(occur,street,list_numplayers)
-    odd_7lows = Odd_7low(occur,street,list_numplayers)
-    odd_8lows = Odd_8low(occur,street,list_numplayers)
-    odd_l = [odd_5lows,odd_6lows,odd_7lows,odd_8lows]
-    for i in range (len(occur)-3):
-        poss = list_Straight_flush(i)
-        occur1[i][13] = staight_odds
-        occur1[i][14] = round(Flush(occur, i, street, list_numplayers),2)
-        occur1[i][15] = round(Straight_flush(occur,street,list_numplayers,poss),2)
-    for j in range (len(occur[0])-3):
-        occur1[4][j] = round(Pair(occur,j,street,list_numplayers),2)
-        occur1[5][j] = round(Three_Kind(occur,j,street,list_numplayers),2)
-        occur1[6][j] = round(Four_Kind(occur,j,street,list_numplayers),2)
-    return (occur1,low_hand_odds,odd_l)

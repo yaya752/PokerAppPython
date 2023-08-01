@@ -1,4 +1,5 @@
-from Odds import odd_better_Flush, odd_full_house,odd_two_pairs, odd_better_pair,odd_better_three_of_kind, odd_better_four_of_kind, odd_better_Straight, better_low_hand
+from Odds import odd_better_Flush ,odd_better_three_of_kind, odd_better_four_of_kind, odd_better_Straight, better_low_hand, odd_better_pair
+from High import odd_full_house,odd_two_pairs
 def Card_To_Html(hand):
     #Intialisation of the variable
     Html_Cards = []

@@ -572,37 +572,56 @@
         }
 
         function displayLow(t, index) {
-            var ind = index
-            var hand = -1
-            low_html = ""
-            if (t[ind] != null) { 
-                if (t[ind].length != 0) { 
+            var ind = index;
+            var hand = -1;
+            low_html = "";
+            if (t[ind] != null) {
+                if (t[ind].length != 0) {
                     if (t[ind][1].length != 0) {
-                        if (t[ind][1][0][1].length != 0 || t[ind][1][1][1].length != 0 || t[ind][1][2][1].length != 0 || t[ind][1][3][1].length != 0) {
-                            low_html = "<table>"
-                            low_html += "<tr><td>Low_Hand</td>"
-                            low_html += "<td>The most likely hand</td>"
-                            low_html += "<td>Probabilite to have this Hand </td>"
-                            low_html += "<td>Low probabilities</td></tr>"
-                            for (let pas = 0; pas < t[ind][1].length; pas++) {
-                                console.log(t[ind])
-                                if (t[index][1][pas][1] != 0) {
-                                    low_html += "<tr><td>" + t[ind][1][pas][0] + " </td>"
-                                    low_html += "<td class=\"cards\">" + displaycards(t[ind][1][pas][1]) + "</td>"
-                                    low_html += "<td>" + t[ind][1][pas][2]*100  + "%</td>"
-                                    low_html += "<td>" + t[ind][2][pas] + "%</td></tr>"
-                                }
-                                if (t[index][1][pas][1] == 1) {
-                                    hand = pas
+                        low_html = "<div class='table_wrapper'>";
+                        low_html += "<div class='table_container'><table class='table_low'>";
+                        low_html += "<tr><td>Low_Hand</td>";
+                        low_html += "<td>Probabilitie at the river</td></tr>";
+                        for (let pas = 0; pas < t[ind][1].length; pas++) {
+                            if (t[index][1][pas][1] != 0) {
+                                low_html += "<tr><td>" + t[ind][1][pas][0] + " </td>";
+                                if (t[ind][1][pas][3] == 0) {
+                                    low_html += "<td><1%</td></tr>";
+                                } else {
+                                    low_html += "<td>" + t[ind][1][pas][3] + "%</td></tr>";
                                 }
                             }
+                            if (t[index][1][pas][1] == 1) {
+                                hand = pas;
+                            }
                         }
+                        low_html += "</table></div>"; 
+                    }
+                    if (t[ind][2].length != 0) {
+                        low_html += "<div class='table_container'><table class='table_high'>";
+                        low_html += "<tr><td>High_Hand</td>";
+                        low_html += "<td>Probabilitie at the river</td></tr>";
+                        for (let pas = 0; pas < t[ind][2].length; pas++) {
+                            if (t[ind][2][pas][2] != 0) {
+                                low_html += "<tr><td>" + t[ind][2][pas][0] + " </td>";
+                                if (t[ind][2][pas][1] == 0) {
+                                    low_html += "<td><1%</td></tr>"
+                                }
+                                
+                                else {
+                                    low_html += "<td>" + t[ind][2][pas][1] + "%</td></tr>";
+                                }
+                            }
+                            
+                        }
+                        low_html += "</table></div>"; 
                     }
                 }
             }
-            low_html += "</table>"
-            return low_html
+            low_html += "</div>"; 
+            return low_html;
         }
+
         function displayChips(chips) {
             var result = Math.round(chips/maxbet * 100)
             return result 

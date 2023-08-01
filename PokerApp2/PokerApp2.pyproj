@@ -33,7 +33,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Calcul.py" />
     <Compile Include="Decisions.py" />
+    <Compile Include="High.py" />
+    <Compile Include="Low.py" />
     <Compile Include="Odds.py" />
     <Compile Include="Playing_game.py" />
     <Compile Include="PokerApp.py" />

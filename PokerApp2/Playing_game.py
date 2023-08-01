@@ -1,4 +1,5 @@
-from Odds import Table, Append_cards, Calculate_odds
+from Calcul import Calculate_odds
+from Odds import Table, Append_cards
 from Decisions import third_street_decision,add,index_poss,sumarry_tab, quiz_4th, quiz_5th
 
 ########################################################################################
@@ -600,8 +601,8 @@ def Play(game_file,main_player,list_numplayers,path):
             
             if words[1] != "3rd": 
                 list_numplayers.append(players)
-                (occur1,low_hand_odds,low6)= Calculate_odds(occur,words[1],list_numplayers) #calculate the odds using the occur tab (occurence of the cards)
-                tab_street.append([occur1,low_hand_odds,low6])
+                (occur1,low_hand_odds,high_hand_odds)= Calculate_odds(occur,words[1],list_numplayers) #calculate the odds using the occur tab (occurence of the cards)
+                tab_street.append([occur1,low_hand_odds,high_hand_odds])
             Players_Actions.append([lines[i]])
             if words[1] == "RIVER":
                 for k in range(0,len(Players)):
