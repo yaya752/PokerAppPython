@@ -71,16 +71,16 @@ def odd_first_card(card,occur,street,list_numplayers):
     else:
         if street == "4th":
                 num3 = list_numplayers[0]
-                odd = (1/(52-(2 + num3)))*((51-(2 + 2*num3))/(52-(2 + 2*num3)))*((51-(2 + 3*num3))/(52-(2 + 3*num3)))*((51-(2 + 4*num3))/(52-(2 + 4*num3)))
+                odd = (1/(52-(2 + num3)))
         elif street == "5th":
                 num3 = list_numplayers[0]
                 num4 = list_numplayers[1]
-                odd = (1/(52-(2 + num3+num4)))*((51-(2 + num3+2*num4))/(52-(2 + num3+2*num4)))*((51-(2 + num3+3*num4))/(52-(2 + num3+3*num4)))
+                odd = (1/(52-(2 + num3+num4)))
         elif street == "6th":
                 num3 = list_numplayers[0]
                 num4 = list_numplayers[1]
                 num5 = list_numplayers[2]
-                odd = (1/(52-(2 + num3+num4+num5)))*((51-(2 + num3+num4+num5))/(52-(2 + num3+num4+num5)))
+                odd = (1/(52-(2 + num3+num4+num5)))
         elif street == "RIVER": 
                 num3 = list_numplayers[0]
                 num4 = list_numplayers[1]
@@ -103,16 +103,16 @@ def odd_second_card(card,occur,street,list_numplayers):
 
         if street == "4th":
                 num3 = list_numplayers[0]
-                odd = (51-(2+num3))/((52-(2+ num3))*(52-(2+ 2*num3)))*((51-(2 + 3*num3))/(52-(2 + 3*num3)))*((51-(2 + 4*num3))/(52-(2 + 4*num3)))
+                odd = 1/(51-(2+ num3))
         elif street == "5th":
                 num3 = list_numplayers[0]
                 num4 = list_numplayers[1]
-                odd = (51-(2+ num3+num4))/((52-(2+ num3+num4))*(52-(2+ num3+2*num4)))*((51-(2 + num3+3*num4))/(52-(2 + num3+3*num4)))
+                odd = 1/(51-(2+ num3+num4))
         elif street == "6th":
                 num3 = list_numplayers[0]
                 num4 = list_numplayers[1]
                 num5 = list_numplayers[2]
-                odd = (51-(2+ num3+num4+num5))/((52-(2+ num3+num4+num5))*(52-(2+num3+num4+2*num5)))
+                odd = (1/((51-(2+ num3+num4+num5))))
         elif street == "RIVER": 
                 odd = 0
     return odd
@@ -129,11 +129,11 @@ def odd_third_card(card,occur,street,list_numplayers):
     else:
         if street == "4th":
                 num3 = list_numplayers[0]
-                odd = ((51-(2+num3))*(51-(2+ 2*num3)))/((52-(2+ num3))*(52-(2+ 2*num3))*(52-(2+ 3*num3)))*((51-(2 + 4*num3))/(52-(2 + 4*num3)))
+                odd = 1/(50-(2+ num3))
         elif street == "5th":
                 num3 = list_numplayers[0]
                 num4 = list_numplayers[1]
-                odd = (51-(2+ num3+num4))*(51-(2+ num3+2*num4))/((52-(2+ num3+num4))*(52-(2+ num3+2*num4))*(52-(2+ num3+3*num4)))
+                odd = 1/(50-(2 + num3+num4))
         elif street == "6th":
                 odd = 0
         elif street == "RIVER": 
@@ -152,7 +152,7 @@ def odd_fourth_card(card,occur,street,list_numplayers):
     else:
         if street == "4th":
                 num3 = list_numplayers[0]
-                odd = ((51-(2+num3))*(51-(2+ 2*num3))*(51-(2+ 3*num3)))/((52-(2+ num3))*(52-(2+ 2*num3))*(52-(2+ 3*num3))*(52-(2+ 4*num3)))
+                odd = 1/(49-(2+ num3))
         elif street == "5th":
                 odd = 0
         elif street == "6th":
@@ -442,19 +442,19 @@ def odd_Low_6cards(low,occur,street,list_numplayers,Xlow):
     return odd
 def coef_4(remaining,count,cards):
     mul = 1
-    nums = []
-    num_with_occur = []
+    nums = []   
     index = 0
-    i = 0
     count1 = 0
     for card in cards:
-        count1 = 0
+        count1 = -1
         index = remaining.index(card)
         nums.append(card[:-1])
         for num in nums:
             if num == card[:-1]:
                 count1+=1
-        mul*= count[index]-count1
+        
+        mul*= (count[index]-count1)/(count1+ 1)
+    
     return mul
 
 def odd_Low_7cards(low,occur,street,list_numplayers):
@@ -482,6 +482,7 @@ def odd_Low_7cards(low,occur,street,list_numplayers):
                 count.append(count_card(j,occur))
                 pres = 1  
     co = 0
+    
     if len(hand) == 6 and len(low) == 6:
         return 1.
     elif len(hand) == 7 and len(low) == 7:
@@ -522,7 +523,8 @@ def odd_Low_7cards(low,occur,street,list_numplayers):
                                                     odd14 = list_function[p](card2,occur,street,list_numplayers)
                                                     odd15 = list_function[p](card3,occur,street,list_numplayers)
                                                     odd16 = list_function[p](card4,occur,street,list_numplayers)
-                                                    co =coef_4(remaining,count,[card1,card2,card3,card4])
+                                                    co = coef_4(remaining,count,[card1,card2,card3,card4])
+                                                    
                                                     odd += (co*odd1*odd6*odd11*odd16+
                                                                 co*odd1*odd6*odd12*odd15+
                                                                 co*odd1*odd7*odd10*odd16+
@@ -584,9 +586,12 @@ def odd_Low_7cards(low,occur,street,list_numplayers):
                                 odd2 = list_function[m](card2,occur,street,list_numplayers)
                                 for n in range (m+1,len(list_function)):
                                     co = coef_4(remaining,count,[card1,card2])
-                                    odd5 = co*list_function[n](card1,occur,street,list_numplayers)
-                                    odd6 = co*list_function[n](card2,occur,street,list_numplayers)
-                                    odd += (odd1*odd6 + odd2*odd5)
+                                    odd5 = list_function[n](card1,occur,street,list_numplayers)
+                                    odd6 = list_function[n](card2,occur,street,list_numplayers)
+                                   
+                                    odd += (co*odd1*odd6+
+                                            co*odd2*odd5)
+                                    
                 elif len(hand) == 6:
                     for i in range (0,len(remaining)):
                         card1 = remaining[i]

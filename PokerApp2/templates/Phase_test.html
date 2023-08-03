@@ -518,7 +518,6 @@
                     actionHtml += "</div>"
                     actionHtml += "<div class =\"bet_bottom\">" + displayChips(list[pas][4]) + "</div>"
                     actionHtml += "</div>"
-                    
                     actionHtml +="</div > "
                     i++
                 }
@@ -573,7 +572,7 @@
 
         function displayLow(t, index) {
             var ind = index;
-            var hand = -1;
+            
             low_html = "";
             if (t[ind] != null) {
                 if (t[ind].length != 0) {
@@ -581,36 +580,46 @@
                         low_html = "<div class='table_wrapper'>";
                         low_html += "<div class='table_container'><table class='table_low'>";
                         low_html += "<tr><td>Low_Hand</td>";
-                        low_html += "<td>Probabilitie at the river</td></tr>";
+                        low_html += "<td>Probabilities at the river</td></tr>";
                         for (let pas = 0; pas < t[ind][1].length; pas++) {
-                            if (t[index][1][pas][1] != 0) {
+                           
+                            
+                            if (t[ind][1][pas][2] != 0) {
                                 low_html += "<tr><td>" + t[ind][1][pas][0] + " </td>";
-                                if (t[ind][1][pas][3] == 0) {
+                                if (t[ind][1][pas][1] == 0) {
                                     low_html += "<td><1%</td></tr>";
                                 } else {
-                                    low_html += "<td>" + t[ind][1][pas][3] + "%</td></tr>";
+                                    low_html += "<td>" + Math.round(t[ind][1][pas][1] * 100)+ "%</td></tr>";
                                 }
+                                
                             }
-                            if (t[index][1][pas][1] == 1) {
-                                hand = pas;
+                            else {
+                                 
+                                low_html += "<tr><td>" + t[ind][1][pas][0] + " </td>";
+                                low_html += "<td>0%</td></tr>"
                             }
                         }
+                            
                         low_html += "</table></div>"; 
                     }
                     if (t[ind][2].length != 0) {
                         low_html += "<div class='table_container'><table class='table_high'>";
                         low_html += "<tr><td>High_Hand</td>";
-                        low_html += "<td>Probabilitie at the river</td></tr>";
+                        low_html += "<td>Probabilities at the river</td></tr>";
                         for (let pas = 0; pas < t[ind][2].length; pas++) {
                             if (t[ind][2][pas][2] != 0) {
                                 low_html += "<tr><td>" + t[ind][2][pas][0] + " </td>";
                                 if (t[ind][2][pas][1] == 0) {
                                     low_html += "<td><1%</td></tr>"
                                 }
-                                
+
                                 else {
-                                    low_html += "<td>" + t[ind][2][pas][1] + "%</td></tr>";
+                                    low_html += "<td>" + Math.round(t[ind][2][pas][1] * 100) + "%</td></tr>";
                                 }
+                            }
+                            else {
+                                low_html += "<tr><td>" + t[ind][2][pas][0] + " </td>";
+                                low_html += "<td>0%</td></tr>"
                             }
                             
                         }

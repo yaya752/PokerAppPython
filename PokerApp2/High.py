@@ -413,7 +413,6 @@ def Four_Kind(occur,column,street,list_numplayers):
         if occur[i][column] == 0 or occur[i][column] == 1:
             if occur[i][column] == 1:
                 hand +=1
-                
             else:
                 remaining.append(num[column] + suit[i])
         else:
@@ -556,7 +555,7 @@ all_straight_flush_1 = intersection(list_Straight_flush(1))
 all_straight_flush_2 = intersection(list_Straight_flush(2))
 all_straight_flush_3 = intersection(list_Straight_flush(3))
 all_straight = intersection(list_Straight())
-print(all_straight)
+
 
 def list_remove_straight_flush(poss,i,j):
     num = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
@@ -894,12 +893,12 @@ def high_hand_odd(occur,street,list_numplayers):
     for i in range(1,len(all_straight)):
         if i%2 == 0 :
             for straight in all_straight[i]:
-                print(all_straight[i])
+                
                 odd_straight+=straight[1]*odd_Low_7cards(straight[0],occur,street,list_numplayers)
         else:
             for straight in all_straight[i]:
                 odd_straight-=straight[1]*odd_Low_7cards(straight[0],occur,street,list_numplayers)
-    print(odd_straight)
+    
     if odd_straight != 0:
         s_zero = 1
     odd_three_of_kind = 0
