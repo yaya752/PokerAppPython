@@ -1,9 +1,44 @@
+
+##
+# @mainpage 7 Stud Hi Lo
+#
+# @section description_PokerApp Description
+# Project for Trinty College Dublin, I had to recreate a game of 7 Stud Hi-Lo and give the different probability
+#
+# @section notes_main Notes
+# - it's a pyhton project using flask, it's for running on your own machine not on a server (no database)
+#
+##
+# @file PokerApp.py
+#
+# @brief Python Project for Trinity Colege Dublin
+#
+# @section description_PokerApp Description
+# Python Project for Trinity Colege Dublin
+#
+# @section libraries_main Libraries/Modules
+# - os library (https://docs.python.org/3/library/os.html)
+#   - Access to directory creation and delation function.
+#   - Access to read file from directory
+#
+# @section notes_doxygen_example Notes
+# - Comments are Doxygen compatible.
+#
+# @section todo_doxygen_example TODO
+# - None.
+#
+# @section author_doxygen_example Author(s)
+# - Created by Yassine Khiara on 04/08/2023.
+# - Modified by John Woolsey on 04/08/2023.
+
+# Imports
+
 from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
 import os
 
 from Playing_game import Summary_Chips ,Average, Generalities, Summary_Hands, Init, Play, Max_Bet
 from Odds import Table
-
+# Functions
 Table()
 app = Flask(__name__, static_folder='static')
 
@@ -12,40 +47,15 @@ app.secret_key = "PokerApp"
 ALLOWED_EXTENSIONS = {'txt'}
 
 def allowed_file(filename):
+    """! Look if the game file has the txt extension"""
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-'''
-Function Name: save
-
-Parameters:
-- file_name: name of the file that you want to use ()
-    
-Returns: 
-- Redirect the user to the page to choose the phase of the game he want to play
-
-Description:
-- This function get the file name by using a post method, the file have to be in the Game_File Folder
-
-'''
-@app.route('/save', methods=['GET', 'POST']) # define the main route (first page)
-def save():
-    if request.method == 'POST':
-        file_name = request.form['file_name']
-        main_player = request.form['main_player']
-        return redirect(url_for('phase', file_name=file_name, main_player=main_player))
-    return render_template('save.html')
-
-@app.route('/name', methods=['GET', 'POST']) # define the main route (first page)
-def index():
-    if request.method == 'POST':
-        main_player = request.form['main_player']
-        if main_player != 'Hero': 
-            main_player = 'Hero'
-        session['main_player'] = main_player
-        return redirect(url_for('Summary'))
-    return render_template('index.html')
 
 @app.route('/', methods=['GET', 'POST']) # define the main route (first page)
 def upload_file():
+    """! Sets the temperature unit.
+    @param unit  The temperature unit ("F", "C", or "K"),
+            defaults to "F" if a valid unit is not provided.
+    """
     if request.method == 'POST':
         uploaded_files = request.files.getlist('files')
         count_file = 0
@@ -64,10 +74,41 @@ def upload_file():
             session['new'] = False
         return redirect(url_for('Summary'))
     return render_template('uploads.html')
+@app.route('/save', methods=['GET', 'POST']) # define the main route (first page)
+def save():
+    """! Sets the temperature unit.
+    @param unit  The temperature unit ("F", "C", or "K"),
+            defaults to "F" if a valid unit is not provided.
+    """
+    if request.method == 'POST':
+        file_name = request.form['file_name']
+        main_player = request.form['main_player']
+        return redirect(url_for('phase', file_name=file_name, main_player=main_player))
+    return render_template('save.html')
+
+@app.route('/name', methods=['GET', 'POST']) # define the main route (first page)
+def index():
+    """! Sets the temperature unit.
+    @param unit  The temperature unit ("F", "C", or "K"),
+            defaults to "F" if a valid unit is not provided.
+    """
+    if request.method == 'POST':
+        main_player = request.form['main_player']
+        if main_player != 'Hero': 
+            main_player = 'Hero'
+        session['main_player'] = main_player
+        return redirect(url_for('Summary'))
+    return render_template('index.html')
+
+
 
 
 @app.route('/Summary')
 def Summary():
+    """! Sets the temperature unit.
+    @param unit  The temperature unit ("F", "C", or "K"),
+            defaults to "F" if a valid unit is not provided.
+    """
     if session['new']:
         path = './New_File/'
     else:
@@ -130,6 +171,10 @@ Description:
 '''
 @app.route('/Play/<int:index>')
 def phase(index):
+    """! Sets the temperature unit.
+    @param unit  The temperature unit ("F", "C", or "K"),
+            defaults to "F" if a valid unit is not provided.
+    """
     files = session['files']
     file_name = files[index]
     main_player = session['main_player']
@@ -155,16 +200,27 @@ Description:
 '''
 @app.route('/static/Phase3.js')
 def serve_js():
+    """! Sets the temperature unit.
+    @param unit  The temperature unit ("F", "C", or "K"),
+            defaults to "F" if a valid unit is not provided.
+    """
     return send_from_directory(app.static_folder, 'Phase3.js')
 
 
 @app.route('/static/Phase.js')
 def phase_js():
+    """! Sets the temperature unit.
+    @param unit  The temperature unit ("F", "C", or "K"),
+            defaults to "F" if a valid unit is not provided.
+    """
     return send_from_directory(app.static_folder, 'Phase.js')
  
 @app.route('/Phases/phase3', methods=['GET', 'POST'])
 def phase3():
-    
+    """! Sets the temperature unit.
+    @param unit  The temperature unit ("F", "C", or "K"),
+            defaults to "F" if a valid unit is not provided.
+    """
     return render_template('Phase3.html')
 if __name__ == '__main__':
     app.run(host ="0.0.0.0", debug=True)
