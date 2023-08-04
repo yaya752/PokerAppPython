@@ -73,6 +73,8 @@ low5 =[['5','4','3','2','A']]
 def Avoid(hand,occur):
     nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     avoid_cards = []
+    remaining_cards = []
+    remaining_cards_with_occurence= []
     if hand[0] == '8':
         all_avoid_card = ['A','2','3','4','5','6','7']
         for card in all_avoid_card:
@@ -88,8 +90,12 @@ def Avoid(hand,occur):
         for card in all_avoid_card:
             if not(card in hand):
                 avoid_cards.append(card)
-
-    return count_cards(avoid_cards,occur)
+    for card in nums:
+        if not(card in avoid_cards):
+            remaining_cards.append(card)
+    for card in remaining_cards:
+        remaining_cards_with_occurence.append([card,count_cards([card],occur)])
+    return (count_cards(avoid_cards,occur),remaining_cards_with_occurence)
 def count_cards(lst,occur):
     sum_cards = 0
     nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
@@ -98,49 +104,54 @@ def count_cards(lst,occur):
         for i in range (4):
             if occur[i][k] == 0:
                 sum_cards+=1
-
     return sum_cards
-def calculate_combinations(n, r):
+
+def calculate_combinations(n, r,remaining_cards_with_occur):
     if n < r:
         return 0
-    return factorial(n) // (factorial(r) * factorial(n - r))
+    all_comb = factorial(n) // (factorial(r) * factorial(n - r))
+    for [card,count_card] in remaining_cards_with_occur:
+        if count_card >= 2:
+            all_comb-=1
+        
+    return all_comb
 def new_probability(hand,occur,street,list_numplayers):
     (possible,required_card)  = possible_hand_low(hand,occur,street)
     print(street,hand,(possible,required_card))
     permutations = 0
     spare = 0
     probability = 0
+    (avoid,remaining_cards_with_occur) =Avoid(hand,occur)
     #=SI(AD11=1,L$6-AF11,SI(AD11=2,COMBIN(L$6-AF11,2),1))
     if street == "4th" and possible:
         spare = 4 - required_card
         num3 = list_numplayers[0]
         permutations = ((52-(2 + num3)))*((51-(2 + num3)))*((50-(2 + num3)))*((49-(2 + num3)))
-        probability = factorial(4)*Spare(spare,Avoid(hand,occur), count_remaining_cards(occur))*Required(hand,occur)/permutations
+        probability = factorial(4)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required(hand,occur)/permutations
     elif street == "5th" and possible:
         spare = 3 - required_card
         num3 = list_numplayers[0]
         num4 = list_numplayers[1]
         permutations = ((52-(2 + num3+num4)))*((51-(2 + num3+num4)))*((50-(2 + num3+num4)))
-        probability = factorial(3)*Spare(spare,Avoid(hand,occur), count_remaining_cards(occur))*Required(hand,occur)/permutations
+        probability = factorial(3)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required(hand,occur)/permutations
     elif street == "6th" and possible:
         spare = 2 - required_card
         num3 = list_numplayers[0]
         num4 = list_numplayers[1]
         num5 = list_numplayers[2]
         permutations = ((52-(2 + num3+num4+num5)))*((51-(2 + num3+num4+num5)))
-        probability = factorial(2)*Spare(spare,Avoid(hand,occur), count_remaining_cards(occur))*Required(hand,occur)/permutations
-    elif street == "RIVER" and possible:
+        probability = factorial(2)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required(hand,occur)/permutations
+    elif street == "RIVER" and possible: 
         spare = 1 - required_card
         num3 = list_numplayers[0]
         num4 = list_numplayers[1]
         num5 = list_numplayers[2]
         num6 = list_numplayers[3]
         permutations = (52-(2+ num3+num4+num5+num6))
-        probability = factorial(1)*Spare(spare,Avoid(hand,occur),count_remaining_cards(occur))*Required(hand,occur)/permutations
+        probability = factorial(1)*Spare(spare,avoid,count_remaining_cards(occur),remaining_cards_with_occur)*Required(hand,occur)/permutations
     else:
         return 0
-    if possible:
-        print(hand,probability,Spare(spare,Avoid(hand,occur),count_remaining_cards(occur)),Required(hand,occur),Avoid(hand,occur),count_remaining_cards(occur))
+    
     return probability
 def Required(hand,occur):
     pro_cards = 1
@@ -168,12 +179,12 @@ def count_remaining_cards(occur):
             if occur[i][j]==0:
                 S+=1
     return S
-def Spare(spare,avoid, remaining_cards):
+def Spare(spare,avoid, remaining_cards,remaining_cards_with_occur):
     print(spare)
     if spare == 1:
         return remaining_cards - avoid
     elif spare == 2:
-        return calculate_combinations(remaining_cards - avoid, 2)
+        return calculate_combinations(remaining_cards - avoid, 2,remaining_cards_with_occur)
     else:
         return 1
 def possible_hand_low(hand,occur,street):
