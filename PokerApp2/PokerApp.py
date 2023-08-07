@@ -1,60 +1,71 @@
+#!/usr/bin/env python3
 
+"""! @brief Defines the Endpoints file"""
 ##
 # @mainpage 7 Stud Hi Lo
 #
-# @section description_PokerApp Description
-# Project for Trinty College Dublin, I had to recreate a game of 7 Stud Hi-Lo and give the different probability
+# @section description_MAIN Description
+# Project of my internship for my second year in ISIMA for Trinity College Dublin, I had to recreate a game of 7 Stud Hi-Lo and give the different probabilities
 #
-# @section notes_main Notes
-# - it's a pyhton project using flask, it's for running on your own machine not on a server (no database)
+# @section notes_MAIN Notes
+# - It's a python project using flask, it's for running on your own machine not on a server (no database).
 #
+# @section todo_MAIN TODO
+# - Implement a database to make the App useable by many users at the same time.
+#
+# @section author_MAIN Author
+# - Created by Yassine Khiara on 15/04/2023.
+# - Modified by Yassine Khiara on 07/08/2023.
+
 ##
 # @file PokerApp.py
+#   
+# @brief EndPoints file
 #
-# @brief Python Project for Trinity Colege Dublin
-#
-# @section description_PokerApp Description
-# Python Project for Trinity Colege Dublin
-#
-# @section libraries_main Libraries/Modules
+# @section libraries_PokerApp Libraries/Modules
 # - os library (https://docs.python.org/3/library/os.html)
 #   - Access to directory creation and delation function.
 #   - Access to read file from directory
 #
-# @section notes_doxygen_example Notes
-# - Comments are Doxygen compatible.
+# @section notes_PokerApp Notes
+# - If you have a different name than Hero refere to the /name endpoint
 #
-# @section todo_doxygen_example TODO
-# - None.
+# @section todo_PokerApp TODO
+# - None
 #
-# @section author_doxygen_example Author(s)
-# - Created by Yassine Khiara on 04/08/2023.
-# - Modified by John Woolsey on 04/08/2023.
+
 
 # Imports
 
 from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
 import os
 
-from Playing_game import Summary_Chips ,Average, Generalities, Summary_Hands, Init, Play, Max_Bet
-from Odds import Table
-# Functions
-Table()
+from Playing_game import Summary_Chips ,Average, Generalities, Summary_Hands, Init, Play
+
+
+# Global Constants
+## Definie the specificities of the Flask app, like the folder of the staticfiles (css files)
 app = Flask(__name__, static_folder='static')
-
-app.secret_key = "PokerApp"
-
+## Dictionnary of the allowed files extensions.
 ALLOWED_EXTENSIONS = {'txt'}
+## Argument of the App run commande, "0.0.0.0" means that the app will run on the public ip and the localhost of the computer
+host ="0.0.0.0"
+## Debug Mode
+debug=True
 
+# Functions
 def allowed_file(filename):
-    """! Look if the game file has the txt extension"""
+    """! Look if the game file has the txt extension.
+    @param filename : the file name with the extension
+    @return  bool : True if the extension is txt , False otherwise"""
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-@app.route('/', methods=['GET', 'POST']) # define the main route (first page)
+#EndPoint
+## Define the main route (first page)
+@app.route('/', methods=['GET', 'POST']) 
 def upload_file():
-    """! Sets the temperature unit.
-    @param unit  The temperature unit ("F", "C", or "K"),
-            defaults to "F" if a valid unit is not provided.
+    """! Allow to upload a file, it takes the reponse of the POST request to upload the 
+    differents save of games to study them.
+    @return  The Summary page of all games select is given when games are selected and validated
     """
     if request.method == 'POST':
         uploaded_files = request.files.getlist('files')
@@ -74,23 +85,14 @@ def upload_file():
             session['new'] = False
         return redirect(url_for('Summary'))
     return render_template('uploads.html')
-@app.route('/save', methods=['GET', 'POST']) # define the main route (first page)
-def save():
-    """! Sets the temperature unit.
-    @param unit  The temperature unit ("F", "C", or "K"),
-            defaults to "F" if a valid unit is not provided.
-    """
-    if request.method == 'POST':
-        file_name = request.form['file_name']
-        main_player = request.form['main_player']
-        return redirect(url_for('phase', file_name=file_name, main_player=main_player))
-    return render_template('save.html')
 
-@app.route('/name', methods=['GET', 'POST']) # define the main route (first page)
-def index():
-    """! Sets the temperature unit.
-    @param unit  The temperature unit ("F", "C", or "K"),
-            defaults to "F" if a valid unit is not provided.
+#EndPoint
+## Define the /name route 
+@app.route('/name', methods=['GET', 'POST']) # define the name route
+def name():
+    """! Hiden endpoint, most of the code was made for my tutor so the name will be always the same,
+      but if an other person want to use my app he will have to look at this endpoint to match names.
+      @return  Store the name of the user in the session
     """
     if request.method == 'POST':
         main_player = request.form['main_player']
@@ -102,12 +104,13 @@ def index():
 
 
 
-
+#EndPoint
+## Define the /Summary route
 @app.route('/Summary')
 def Summary():
-    """! Sets the temperature unit.
-    @param unit  The temperature unit ("F", "C", or "K"),
-            defaults to "F" if a valid unit is not provided.
+    """! Summaries all the game, if the user didn't upload files it will summarise games of the game_file folder.
+   This end point shows the average of chips won/lost during the games, end hand , end amount of chips won/lost by the main player.
+   @return Display  the summary of all the games
     """
     if session['new']:
         path = './New_File/'
@@ -142,9 +145,12 @@ def Summary():
         return render_template('summary.html',files=files,first_lines = first_lines,hand_table = hand_table, generalities_list = generalities_list ,summary_table = summary_table, main_player = main_player, mean = mean)
     else:
         return render_template('summary_game.html',files=files,first_lines = first_lines,hand_table = hand_table, generalities_list = generalities_list ,summary_table = summary_table, main_player = main_player, mean = mean)
-
+#EndPoint
+## Define the /Delete/name_of_the_files_to_delete route
 @app.route('/Delete/<filename>')
 def delete_file(filename):
+    """! As the user has the possibility to add a game he can also delete it.  
+     @param filename : the file to delete """
     path = session['path']
     if path != "./Game_File/":
         file_path = os.path.join(path, filename)
@@ -169,11 +175,14 @@ Returns:
 Description:
     allow to choose what phase we want to try
 '''
+#EndPoint
+## Define the /Delete/index_of_the_game_to_display route
 @app.route('/Play/<int:index>')
 def phase(index):
-    """! Sets the temperature unit.
-    @param unit  The temperature unit ("F", "C", or "K"),
-            defaults to "F" if a valid unit is not provided.
+    """! The main endpoint, for each games that are summarise , the user has the possibility to remake the game, 
+    it will have access to the game itself, and to the probabilities of each possible hand.
+
+    @param index take the index of the game to display.
     """
     files = session['files']
     file_name = files[index]
@@ -187,40 +196,15 @@ def phase(index):
     (list_actions,tab_street,decision,maxbet) = Play(file_name,main_player,list_numplayers,path)    
     return render_template('Phase_test.html',list_actions = list_actions,
                           initialisation = initialisation, tab_street = tab_street , decision = decision , maxbet = maxbet)
-'''
-Function Name: phase 3
 
-Parameters:
-     
-Returns: 
-    HTML of the first Phase, 
-Description:
-    Create the first phase
-
-'''
-@app.route('/static/Phase3.js')
-def serve_js():
-    """! Sets the temperature unit.
-    @param unit  The temperature unit ("F", "C", or "K"),
-            defaults to "F" if a valid unit is not provided.
-    """
-    return send_from_directory(app.static_folder, 'Phase3.js')
-
-
+#EndPoint
+## Define the /static route
 @app.route('/static/Phase.js')
 def phase_js():
-    """! Sets the temperature unit.
-    @param unit  The temperature unit ("F", "C", or "K"),
-            defaults to "F" if a valid unit is not provided.
+    """! js files have to have their own endpoint to be used
     """
     return send_from_directory(app.static_folder, 'Phase.js')
  
-@app.route('/Phases/phase3', methods=['GET', 'POST'])
-def phase3():
-    """! Sets the temperature unit.
-    @param unit  The temperature unit ("F", "C", or "K"),
-            defaults to "F" if a valid unit is not provided.
-    """
-    return render_template('Phase3.html')
+
 if __name__ == '__main__':
-    app.run(host ="0.0.0.0", debug=True)
+    app.run(host = "0.0.0.0",debug = True)

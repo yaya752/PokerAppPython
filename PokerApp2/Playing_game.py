@@ -1,6 +1,26 @@
+
+"""! @brief Defines the sensor classes."""
+##
+# @file Playing_game.py
+#
+# @brief Defines the sensor classes.
+#
+# @section description_sensors Description
+# Defines the base and end user classes for various sensors.
+# - Sensor (base class)
+# - TempSensor
+#
+# @section notes_sensors Notes
+# - Comments are Doxygen compatible.
+#
+# @section todo_ TO DO
+# - None.
+#
+# @section author_sensors Author(s)
+# - Created by John Woolsey on 05/27/2020.
+# - Modified by John Woolsey on 06/11/2020.
 from Calcul import Calculate_odds
 from Odds import Table, Append_cards
-from Decisions import third_street_decision,add,index_poss,sumarry_tab, quiz_4th, quiz_5th
 
 ########################################################################################
 #   Function Name: Generalities                                                        #

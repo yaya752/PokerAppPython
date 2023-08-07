@@ -1,4 +1,3 @@
-from Odds import Card_To_Html, count_card, odd_Low_7cards ,list_function, Best_hand
 from math import *
 low5 = [['5','4','3','2','A']]
 
@@ -122,7 +121,6 @@ def new_probability(hand,occur,street,list_numplayers):
     spare = 0
     probability = 0
     (avoid,remaining_cards_with_occur) =Avoid(hand,occur)
-    #=SI(AD11=1,L$6-AF11,SI(AD11=2,COMBIN(L$6-AF11,2),1))
     if street == "4th" and possible:
         spare = 4 - required_card
         num3 = list_numplayers[0]
