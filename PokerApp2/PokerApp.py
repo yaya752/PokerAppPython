@@ -33,10 +33,7 @@
 # @section todo_PokerApp TODO
 # - None
 #
-
-
 # Imports
-
 from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
 import os
 
@@ -44,7 +41,7 @@ from Playing_game import Summary_Chips ,Average, Generalities, Summary_Hands, In
 
 
 # Global Constants
-## Definie the specificities of the Flask app, like the folder of the staticfiles (css files)
+## Definie the specificities of the Flask app, like the folder of the statics files (css files)
 app = Flask(__name__, static_folder='static')
 ## Dictionnary of the allowed files extensions.
 ALLOWED_EXTENSIONS = {'txt'}
@@ -52,7 +49,7 @@ ALLOWED_EXTENSIONS = {'txt'}
 host ="0.0.0.0"
 ## Debug Mode
 debug=True
-
+app.secret_key = "PokerApp"
 # Functions
 def allowed_file(filename):
     """! Look if the game file has the txt extension.
@@ -76,9 +73,9 @@ def upload_file():
                 session['new'] = False  
             else:
                 if allowed_file(file.filename):
-                    new_directory = "./New_File"
+                    new_directory = "New_File\\"
                     os.makedirs(new_directory, exist_ok=True)
-                    file.save('./New_File/' + file.filename)
+                    file.save('New_File\\' + file.filename)
                     session['new'] = True
                     count_file += 1
         if count_file == 0:
@@ -113,9 +110,9 @@ def Summary():
    @return Display  the summary of all the games
     """
     if session['new']:
-        path = './New_File/'
+        path = 'New_File\\'
     else:
-        path = './Game_File/'
+        path = 'Game_File\\'
     uploads_dir = os.path.join(app.root_path, path)
     files = os.listdir(uploads_dir)
     session['files'] = files
@@ -152,7 +149,7 @@ def delete_file(filename):
     """! As the user has the possibility to add a game he can also delete it.  
      @param filename : the file to delete """
     path = session['path']
-    if path != "./Game_File/":
+    if path != "Game_File\\":
         file_path = os.path.join(path, filename)
         os.remove(file_path)
         uploads_dir = os.path.join(app.root_path, path)
@@ -163,18 +160,7 @@ def delete_file(filename):
             return redirect(url_for('Summary'))
     else:
         return redirect(url_for('Summary'))
-'''Function Name: phase
 
-Parameters:
- - file_name : Name of the text file that we want to use to generate a new game
-        (this file has to be put in the " Game_File" folder)
- - session : allow to save the name file between
-
-Returns: 
- - Html file that allow us to choose the phase that we want to play
-Description:
-    allow to choose what phase we want to try
-'''
 #EndPoint
 ## Define the /Delete/index_of_the_game_to_display route
 @app.route('/Play/<int:index>')

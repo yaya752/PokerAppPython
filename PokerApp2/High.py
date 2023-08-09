@@ -1,4 +1,4 @@
-from Odds import list_function,count_card,Card_To_Html, odd_Low_7cards
+from Odds import *
 import itertools
 
 def count_occurrences(lst):
@@ -822,91 +822,1094 @@ def odd_Straight(straight,occur,street,list_numplayers):
         else:
             odd = 0
     return odd
+
+
+lst_straight_flush = [['A','2','3','4','5'],
+                ['2','3','4','5','6'],
+                ['3','4','5','6','7'],
+                ['4','5','6','7','8'],
+                ['5','6','7','8','9'],
+                ['6','7','8','9','T'],
+                ['7','8','9','T','J'],
+                ['8','9','T','J','Q'],
+                ['9','T','J','Q','K'],
+                ['T','J','Q','K','A']]
+def possible_hand_straight_flush(hand,row,occur,street):
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    avoid_cards = []
+    if nums.index(hand[0]) >=1 and nums.index(hand[4]) < 12:
+        avoid_cards.append(nums[nums.index(hand[0]) - 1])
+        avoid_cards.append(nums[nums.index(hand[4]) + 1])
+    elif nums.index(hand[0]) == 0:
+        avoid_cards.append(nums[nums.index(hand[4]) + 1])
+    elif nums.index(hand[4]) == 0:
+        avoid_cards.append(nums[nums.index(hand[0]) - 1])
+    required_card = 5
+    for card in hand:
+        k = nums.index(card)
+        if occur[row][k] == 1:
+            required_card -= 1
+    for card in avoid_cards:
+        k = nums.index(card)
+        if occur[row][k] == 1:
+            if required_card != 0:
+                return (False,5)
+            else:
+                return (False,-1)
+    if street == "4th" and required_card > 4:
+        possible = False
+    elif street == "5th" and required_card > 3:
+        possible = False
+    elif street == "6th" and required_card > 2:
+        possible = False
+    elif street == "RIVER" and required_card > 1:
+         possible = False
+    elif (street == "SHOW" or street == "SUMMARY" ) and required_card == 0:
+        possible = True
+    elif street == "SHOW" or street == "SUMMARY" :
+        possible = False
+    else:
+        return (True,required_card)
+    return (possible,required_card)
+def Avoid_straight_flush(hand,occur):
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    avoid_cards = []
+    if nums.index(hand[0]) >=1 and nums.index(hand[4]) < 12:
+        avoid_cards.append(nums[nums.index(hand[0]) - 1])
+        avoid_cards.append(nums[nums.index(hand[4]) + 1])
+    elif nums.index(hand[0]) == 0:
+        avoid_cards.append(nums[nums.index(hand[4]) + 1])
+    elif nums.index(hand[4]) == 0:
+        avoid_cards.append(nums[nums.index(hand[0]) - 1])
+    remaining_cards = []
+    remaining_cards_with_occurence= []
+    for card in nums:
+        if not(card in avoid_cards):
+            remaining_cards.append(card)
+    for card in remaining_cards:
+        remaining_cards_with_occurence.append([card,count_cards([card],occur)])
+    return (count_cards(avoid_cards,occur),remaining_cards_with_occurence)
+def straight_flush_probability(hand,row,occur,street,list_numplayers):
+    (possible,required_card)  = possible_hand_straight_flush(hand,row,occur,street)
+    permutations = 0
+    spare = 0
+    probability = 0
+    (avoid,remaining_cards_with_occur) =Avoid_straight_flush(hand,occur)
+    if required_card == 0 :
+        return 1
+    if street == "4th" and possible:
+        spare = 4 - required_card
+        num3 = list_numplayers[0]
+        permutations = ((52-(2 + num3)))*((51-(2 + num3)))*((50-(2 + num3)))*((49-(2 + num3)))
+        probability = factorial(4)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required(hand,occur)/permutations
+    elif street == "5th" and possible:
+        spare = 3 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        permutations = ((52-(2 + num3+num4)))*((51-(2 + num3+num4)))*((50-(2 + num3+num4)))
+        probability = factorial(3)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required(hand,occur)/permutations
+    elif street == "6th" and possible:
+        spare = 2 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        num5 = list_numplayers[2]
+        permutations = ((52-(2 + num3+num4+num5)))*((51-(2 + num3+num4+num5)))
+        probability = factorial(2)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required(hand,occur)/permutations
+    elif street == "RIVER" and possible: 
+        spare = 1 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        num5 = list_numplayers[2]
+        num6 = list_numplayers[3]
+        permutations = (52-(2+ num3+num4+num5+num6))
+        probability = factorial(1)*Spare(spare,avoid,count_remaining_cards(occur),remaining_cards_with_occur)*Required(hand,occur)/permutations
+    else:
+        if possible:
+            probability = 1
+        else:
+            return 0
     
+    return probability 
+def generate_all_four():
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    lst_full = []
+    hand=[]
+    for i in range (13):
+        hand = []
+        hand.append(nums[i])
+        hand.append(nums[i])
+        
+        hand.append(nums[i])
+        hand.append(nums[i])
+        lst_full.append(hand)
+    return lst_full
+lst_four = generate_all_four()
+def Required_four(hand,occur):
+    pro_cards = 1
+    number_card=1
+    have  = False
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    remaining_four = 0
+    count_four = 0
+    index_four = nums.index(hand[0])
+    for i in range (4):
+        if occur[i][index_four] == 0: 
+            remaining_four +=1
+        elif occur[i][index_four] == 1: 
+            count_four +=1
+    if count_four == 0:
+        pro_cards *= remaining_four*(remaining_four-1)*(remaining_four-2)*(remaining_four-3)
+    elif count_four == 1:
+        pro_cards *= remaining_four*(remaining_four-1)*(remaining_four-2)
+    elif count_four == 2:
+        pro_cards *= remaining_four*(remaining_four-1)
+    elif count_four == 3:
+        pro_cards *= remaining_four
+    return pro_cards
+def possible_hand_four(hand,occur,street):
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    count_four = 0
+    required_card = 4
+    index_four = nums.index(hand[0])
+    for i in range (4):
+        if occur[i][index_four] == 1:
+            count_four +=1
+    else:
+        required_card-= ( count_four)
+
+    if street == "4th" and required_card > 4:
+        possible = False
+    elif street == "5th" and required_card > 3:
+        possible = False
+    elif street == "6th" and required_card > 2:
+        possible = False
+    elif street == "RIVER" and required_card > 1:
+         possible = False
+    elif (street == "SHOW" or street == "SUMMARY" ) and required_card == 0:
+        possible = True
+    elif street == "SHOW" or street == "SUMMARY" :
+        possible = False
+    else:
+        return (True,required_card)
+    return (possible,required_card)
+def Avoid_four(hand,occur):
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    avoid_cards = []
+    remaining_cards = []
+    remaining_cards_with_occurence= []
+    for card in nums:
+        if not(card in avoid_cards):
+            remaining_cards.append(card)
+    for card in remaining_cards:
+        remaining_cards_with_occurence.append([card,count_cards([card],occur)])
+    return (count_cards(avoid_cards,occur),remaining_cards_with_occurence)
+
+def Four_probability(hand,occur,street,list_numplayers):
+    (possible,required_card)  = possible_hand_four(hand,occur,street)
+    print(street,hand,(possible,required_card))
+    permutations = 0
+    spare = 0
+    probability = 0
+    (avoid,remaining_cards_with_occur) =Avoid_four(hand,occur)
+    if required_card == 0 :
+        return 1
+    elif street == "4th" and possible:
+        spare = 4 - required_card
+        num3 = list_numplayers[0]
+        permutations = ((52-(2 + num3)))*((51-(2 + num3)))*((50-(2 + num3)))*((49-(2 + num3)))
+        probability = factorial(4)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_four(hand,occur)/permutations
+    elif street == "5th" and possible:
+        spare = 3 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        permutations = ((52-(2 + num3+num4)))*((51-(2 + num3+num4)))*((50-(2 + num3+num4)))
+        probability = factorial(3)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_four(hand,occur)/permutations
+    elif street == "6th" and possible:
+        spare = 2 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        num5 = list_numplayers[2]
+        permutations = ((52-(2 + num3+num4+num5)))*((51-(2 + num3+num4+num5)))
+        probability = factorial(2)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_four(hand,occur)/permutations
+    elif street == "RIVER" and possible: 
+        spare = 1 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        num5 = list_numplayers[2]
+        num6 = list_numplayers[3]
+        permutations = (52-(2+ num3+num4+num5+num6))
+        probability = factorial(1)*Spare(spare,avoid,count_remaining_cards(occur),remaining_cards_with_occur)*Required_four(hand,occur)/permutations
+    else:
+        if possible:
+            probability = 1
+        elif required_card == -1:
+            return -1
+        else:
+            return 0
+    return probability 
+def generate_all_full():
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    lst_full = []
+    hand=[]
+    for i in range (12):
+        for j in range (i+1,13):
+            hand = []
+            hand.append(nums[i])
+            hand.append(nums[i])
+            hand.append(nums[j])
+            hand.append(nums[j])
+            hand.append(nums[j]) 
+            lst_full.append(hand)
+    return lst_full
+lst_full = generate_all_full()
+def Required_full(hand,occur):
+    pro_cards = 1
+    number_card=1
+    have  = False
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    remaining_pair = 0
+    remaining_three = 0
+    count_three = 0
+    count_pair = 0
+    index_pair = nums.index(hand[0])
+    index_three = nums.index(hand[2])
+    for i in range (4):
+        if occur[i][index_pair] == 0: 
+            remaining_pair +=1
+        elif occur[i][index_pair] == 1: 
+            count_pair +=1
+        if occur[i][index_three] == 0:
+            remaining_three +=1
+        elif occur[i][index_three] == 1:
+            count_three +=1
+    if count_pair == 0:
+        pro_cards *=remaining_pair*(remaining_pair-1)
+    elif count_pair == 1:
+        pro_cards *=remaining_pair
+    if count_three == 0:
+        pro_cards *= remaining_three*(remaining_three-1)*(remaining_three-2)
+    elif count_three == 1:
+        pro_cards *= remaining_three*(remaining_three-1)
+    elif count_three == 2:
+        pro_cards *= remaining_three
+    return pro_cards
+def possible_hand_full(hand,occur,street):
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    count_pair = 0
+    count_three = 0
+    required_card = 5
+    index_pair = nums.index(hand[0])
+    index_three = nums.index(hand[2])
+    for i in range (4):
+        if occur[i][index_pair] == 1:
+            count_pair +=1
+        if occur[i][index_three] == 1:
+            count_three +=1
+
+    if count_three> 3 or count_pair > 2:
+        possible = False
+        required_card = 5
+    else:
+        required_card-= (count_three + count_pair)
+
+    if street == "4th" and required_card > 4:
+        possible = False
+    elif street == "5th" and required_card > 3:
+        possible = False
+    elif street == "6th" and required_card > 2:
+        possible = False
+    elif street == "RIVER" and required_card > 1:
+         possible = False
+    elif (street == "SHOW" or street == "SUMMARY" ) and required_card == 0:
+        possible = True
+    elif street == "SHOW" or street == "SUMMARY" :
+        possible = False
+    else:
+        return (True,required_card)
+    return (possible,required_card)
+def Avoid_full(hand,occur):
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    avoid_cards = [hand[0],hand[2]]
+    remaining_cards = []
+    remaining_cards_with_occurence= []
+    for card in nums:
+        if not(card in avoid_cards):
+            remaining_cards.append(card)
+    for card in remaining_cards:
+        remaining_cards_with_occurence.append([card,count_cards([card],occur)])
+    return (count_cards(avoid_cards,occur),remaining_cards_with_occurence)
+
+def full_probability(hand,occur,street,list_numplayers):
+    (possible,required_card)  = possible_hand_full(hand,occur,street)
+    permutations = 0
+    spare = 0
+    probability = 0
+    (avoid,remaining_cards_with_occur) =Avoid_full(hand,occur)
+    if required_card == 0 :
+        return 1
+    if street == "4th" and possible:
+        spare = 4 - required_card
+        num3 = list_numplayers[0]
+        permutations = ((52-(2 + num3)))*((51-(2 + num3)))*((50-(2 + num3)))*((49-(2 + num3)))
+        probability = factorial(4)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_full(hand,occur)/permutations
+    elif street == "5th" and possible:
+        spare = 3 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        permutations = ((52-(2 + num3+num4)))*((51-(2 + num3+num4)))*((50-(2 + num3+num4)))
+        probability = factorial(3)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_full(hand,occur)/permutations
+    elif street == "6th" and possible:
+        spare = 2 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        num5 = list_numplayers[2]
+        permutations = ((52-(2 + num3+num4+num5)))*((51-(2 + num3+num4+num5)))
+        probability = factorial(2)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_full(hand,occur)/permutations
+    elif street == "RIVER" and possible: 
+        spare = 1 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        num5 = list_numplayers[2]
+        num6 = list_numplayers[3]
+        permutations = (52-(2+ num3+num4+num5+num6))
+        probability = factorial(1)*Spare(spare,avoid,count_remaining_cards(occur),remaining_cards_with_occur)*Required_full(hand,occur)/permutations
+    else:
+        if possible:
+            probability = 1
+        elif required_card == -1:
+            return -1
+        else:
+            return 0
+    return probability 
+
+
+def Required_flush(row,occur):
+    pro_cards = 1
+    number_card=1
+    required_card = 5
+    j = 0
+    remaining = 0
+    while  required_card!=0 and j < 13 :
+        if occur[row][j] == 1:
+            required_card -= 1
+        j+=1
+    for j in range (0,13):
+        if occur[row][j] == 0:
+            remaining+=1
+    if required_card == 1:
+        pro_cards *=remaining
+    elif required_card == 2:
+        pro_cards *=remaining*(remaining-1)
+    elif required_card == 3:
+        pro_cards *=remaining*(remaining-1)*(remaining-2)
+    elif required_card == 4:
+        pro_cards *=remaining*(remaining-1)*(remaining-2)*(remaining-3)
+    
+    return pro_cards
+
+def possible_hand_flush(row,occur,street):
+    required_card = 5
+
+        
+    j = 0
+    while  required_card!=0 and j < 13 :
+        if occur[row][j] == 1:
+            required_card -= 1
+        j+=1
+    
+    
+    
+    if street == "4th" and required_card > 4:
+        possible = False
+    elif street == "5th" and required_card > 3:
+        possible = False
+    elif street == "6th" and required_card > 2:
+        possible = False
+    elif street == "RIVER" and required_card > 1:
+         possible = False
+    elif (street == "SHOW" or street == "SUMMARY" ) and required_card == 0:
+        possible = True
+    elif street == "SHOW" or street == "SUMMARY" :
+        possible = False
+    else:
+        return (True,required_card)
+    return (possible,required_card)
+def Avoid_flush(row,occur):
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    avoid_cards = []
+    avoid = 0
+    remaining_cards = []
+    remaining_cards_with_occurence= []
+    for card in nums:
+        if not(card in avoid_cards):
+            remaining_cards.append(card)
+    for card in remaining_cards:
+        remaining_cards_with_occurence.append([card,count_cards([card],occur)])
+
+    for j in range (13):
+        if occur[row][j] != -1:
+            avoid +=1
+    avoid -= 5
+    return (avoid,remaining_cards_with_occurence)
+def flush_probability(occur,row,street,list_numplayers):
+    (possible,required_card)  = possible_hand_flush(row,occur,street)
+    
+    permutations = 0
+    spare = 0
+    probability = 0
+    (avoid,remaining_cards_with_occur) =Avoid_flush(row,occur)
+    if required_card == 0:
+        return 1
+    elif street == "4th" and possible:
+        spare = 4 - required_card
+        num3 = list_numplayers[0]
+        permutations = ((52-(2 + num3)))*((51-(2 + num3)))*((50-(2 + num3)))*((49-(2 + num3)))
+        probability = factorial(4)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_flush(row,occur)/permutations
+    elif street == "5th" and possible:
+        spare = 3 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        permutations = ((52-(2 + num3+num4)))*((51-(2 + num3+num4)))*((50-(2 + num3+num4)))
+        probability = factorial(3)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_flush(row,occur)/permutations
+    elif street == "6th" and possible:
+        spare = 2 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        num5 = list_numplayers[2]
+        permutations = ((52-(2 + num3+num4+num5)))*((51-(2 + num3+num4+num5)))
+        probability = factorial(2)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_flush(row,occur)/permutations
+    elif street == "RIVER" and possible: 
+        spare = 1 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        num5 = list_numplayers[2]
+        num6 = list_numplayers[3]
+        permutations = (52-(2+ num3+num4+num5+num6))
+        probability = factorial(1)*Spare(spare,avoid,count_remaining_cards(occur),remaining_cards_with_occur)*Required_flush(row,occur)/permutations
+    
+    else:
+        if possible:
+            probability = 1
+        else:
+            return 0
+    
+    return probability
+
+
+
+lst_straight = [['A','2','3','4','5'],
+                ['2','3','4','5','6'],
+                ['3','4','5','6','7'],
+                ['4','5','6','7','8'],
+                ['5','6','7','8','9'],
+                ['6','7','8','9','T'],
+                ['7','8','9','T','J'],
+                ['8','9','T','J','Q'],
+                ['9','T','J','Q','K'],
+                ['T','J','Q','K','A']]
+def possible_hand_straight(hand,occur,street):
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    avoid_cards = []
+    if nums.index(hand[0]) >=1 and nums.index(hand[4]) < 12:
+        avoid_cards.append(nums[nums.index(hand[0]) - 1])
+        avoid_cards.append(nums[nums.index(hand[4]) + 1])
+    elif nums.index(hand[0]) == 0:
+        avoid_cards.append(nums[nums.index(hand[4]) + 1])
+    elif nums.index(hand[4]) == 0:
+        avoid_cards.append(nums[nums.index(hand[0]) - 1])
+    required_card = 5
+    for card in hand:
+        k = nums.index(card)
+        i = 0
+        while i < 4 and occur[i][k] != 1:
+            i+=1
+        if i !=4:
+            required_card -= 1
+    for card in avoid_cards:
+        k = nums.index(card)
+        for i in range (4):
+            if occur[i][k] == 1:
+                if required_card != 0:
+                    return (False,5)
+                else:
+                    return (False,0)
+    
+    
+    if street == "4th" and required_card > 4:
+        possible = False
+    elif street == "5th" and required_card > 3:
+        possible = False
+    elif street == "6th" and required_card > 2:
+        possible = False
+    elif street == "RIVER" and required_card > 1:
+         possible = False
+    elif (street == "SHOW" or street == "SUMMARY" ) and required_card == 0:
+        possible = True
+    elif street == "SHOW" or street == "SUMMARY" :
+        possible = False
+    else:
+        return (True,required_card)
+    return (possible,required_card)
+def Avoid_straight(hand,occur):
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    avoid_cards = []
+    if nums.index(hand[0]) >=1 and nums.index(hand[4]) < 12:
+        avoid_cards.append(nums[nums.index(hand[0]) - 1])
+        avoid_cards.append(nums[nums.index(hand[4]) + 1])
+    elif nums.index(hand[0]) == 0:
+        avoid_cards.append(nums[nums.index(hand[4]) + 1])
+    elif nums.index(hand[4]) == 0:
+        avoid_cards.append(nums[nums.index(hand[0]) - 1])
+    remaining_cards = []
+    remaining_cards_with_occurence= []
+    for card in nums:
+        if not(card in avoid_cards):
+            remaining_cards.append(card)
+    for card in remaining_cards:
+        remaining_cards_with_occurence.append([card,count_cards([card],occur)])
+    return (count_cards(avoid_cards,occur),remaining_cards_with_occurence)
+def straight_probability(hand,occur,street,list_numplayers):
+    (possible,required_card)  = possible_hand_straight(hand,occur,street)
+    
+    permutations = 0
+    spare = 0
+    probability = 0
+    (avoid,remaining_cards_with_occur) =Avoid_straight(hand,occur)
+    if required_card == -1 or required_card == 0:
+        return 1
+    elif street == "4th" and possible:
+        spare = 4 - required_card
+        num3 = list_numplayers[0]
+        permutations = ((52-(2 + num3)))*((51-(2 + num3)))*((50-(2 + num3)))*((49-(2 + num3)))
+        probability = factorial(4)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required(hand,occur)/permutations
+    elif street == "5th" and possible:
+        spare = 3 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        permutations = ((52-(2 + num3+num4)))*((51-(2 + num3+num4)))*((50-(2 + num3+num4)))
+        probability = factorial(3)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required(hand,occur)/permutations
+    elif street == "6th" and possible:
+        spare = 2 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        num5 = list_numplayers[2]
+        permutations = ((52-(2 + num3+num4+num5)))*((51-(2 + num3+num4+num5)))
+        probability = factorial(2)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required(hand,occur)/permutations
+    elif street == "RIVER" and possible: 
+        spare = 1 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        num5 = list_numplayers[2]
+        num6 = list_numplayers[3]
+        permutations = (52-(2+ num3+num4+num5+num6))
+        probability = factorial(1)*Spare(spare,avoid,count_remaining_cards(occur),remaining_cards_with_occur)*Required(hand,occur)/permutations
+    
+    else:
+        if possible:
+            probability = 1
+
+        else:
+            return 0
+    
+    return probability
+
+def generate_all_three():
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    lst_full = []
+    hand=[]
+    for i in range (13):
+        hand = []
+        hand.append(nums[i])
+        hand.append(nums[i])
+        hand.append(nums[i])
+
+        lst_full.append(hand)
+    return lst_full
+lst_three = generate_all_three()
+def Required_three(hand,occur):
+    pro_cards = 1
+    number_card=1
+    have  = False
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+
+    remaining_three = 0
+    count_three = 0
+    index_three = nums.index(hand[0])
+    for i in range (4):
+        if occur[i][index_three] == 0:
+            remaining_three +=1
+        elif occur[i][index_three] == 1:
+            count_three +=1
+    if count_three == 0:
+        pro_cards *= remaining_three*(remaining_three-1)*(remaining_three-2)
+    elif count_three == 1:
+        pro_cards *= remaining_three*(remaining_three-1)
+    elif count_three == 2:
+        pro_cards *= remaining_three
+    return pro_cards
+def possible_hand_three(hand,occur,street):
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    
+    count_three = 0
+    required_card = 3
+    
+    index_three = nums.index(hand[0])
+    for i in range (4):
+
+        if occur[i][index_three] == 1:
+            count_three +=1
+
+    if count_three > 3 :
+        possible = False
+        required_card = 3
+    else:
+        required_card-= (count_three)
+
+    if street == "4th" and required_card > 4:
+        possible = False
+    elif street == "5th" and required_card > 3:
+        possible = False
+    elif street == "6th" and required_card > 2:
+        possible = False
+    elif street == "RIVER" and required_card > 1:
+         possible = False
+    elif (street == "SHOW" or street == "SUMMARY" ) and required_card == 0:
+        possible = True
+    elif street == "SHOW" or street == "SUMMARY" :
+        possible = False
+    else:
+        return (True,required_card)
+    return (possible,required_card)
+def Avoid_Three(hand,occur):
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    avoid_cards = [hand[0]]
+    remaining_cards = []
+    remaining_cards_with_occurence= []
+    count_avoid = 1
+    index_three = nums.index(hand[0])
+    for i in range (4):
+        if occur[i][index_three] == -1:
+            count_avoid = 0
+    for card in nums:
+        if not(card in avoid_cards):
+            remaining_cards.append(card)
+    for card in remaining_cards:
+        remaining_cards_with_occurence.append([card,count_cards([card],occur)])
+    return (count_avoid,remaining_cards_with_occurence)
+
+def Three_probability(hand,occur,street,list_numplayers):
+    (possible,required_card)  = possible_hand_three(hand,occur,street)
+
+    permutations = 0
+    spare = 0
+    probability = 0
+    (avoid,remaining_cards_with_occur) =Avoid_Three(hand,occur)
+    if required_card == 0 :
+        return 1
+    if street == "4th" and possible:
+        spare = 4 - required_card
+        num3 = list_numplayers[0]
+        permutations = ((52-(2 + num3)))*((51-(2 + num3)))*((50-(2 + num3)))*((49-(2 + num3)))
+        probability = factorial(4)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_three(hand,occur)/permutations
+    elif street == "5th" and possible:
+        spare = 3 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        permutations = ((52-(2 + num3+num4)))*((51-(2 + num3+num4)))*((50-(2 + num3+num4)))
+        probability = factorial(3)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_three(hand,occur)/permutations
+    elif street == "6th" and possible:
+        spare = 2 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        num5 = list_numplayers[2]
+        permutations = ((52-(2 + num3+num4+num5)))*((51-(2 + num3+num4+num5)))
+        probability = factorial(2)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_three(hand,occur)/permutations
+    elif street == "RIVER" and possible: 
+        spare = 1 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        num5 = list_numplayers[2]
+        num6 = list_numplayers[3]
+        permutations = (52-(2+ num3+num4+num5+num6))
+        probability = factorial(1)*Spare(spare,avoid,count_remaining_cards(occur),remaining_cards_with_occur)*Required_three(hand,occur)/permutations
+    else:
+        if possible:
+            probability = 1
+
+        else:
+            return 0
+    return probability
+
+
+
+def generate_all_two():
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    lst_full = []
+    hand=[]
+    for i in range (12):
+        for j in range (i+1,13):
+            hand = []
+            hand.append(nums[i])
+            hand.append(nums[i])
+            hand.append(nums[j])
+            hand.append(nums[j]) 
+            lst_full.append(hand)
+    return lst_full
+lst_two = generate_all_two()
+def Required_two(hand,occur):
+    pro_cards = 1
+    number_card=1
+    have  = False
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    remaining_pair1 = 0
+    remaining_pair2 = 0
+    count_pair2 = 0
+    count_pair1 = 0
+    index_pair1 = nums.index(hand[0])
+    index_pair2 = nums.index(hand[2])
+    for i in range (4):
+        if occur[i][index_pair1] == 0: 
+            remaining_pair1 +=1
+        elif occur[i][index_pair1] == 1: 
+            count_pair1 +=1
+        if occur[i][index_pair2] == 0:
+            remaining_pair2 +=1
+        elif occur[i][index_pair2] == 1:
+            count_pair2 +=1
+    if count_pair1 == 0:
+        pro_cards *=remaining_pair1*(remaining_pair1-1)
+    elif count_pair1 == 1:
+        pro_cards *=remaining_pair1
+    if count_pair2 == 0:
+        pro_cards *=remaining_pair2*(remaining_pair2-1)
+    elif count_pair2 == 1:
+        pro_cards *=remaining_pair2
+
+    return pro_cards
+def possible_hand_two(hand,occur,street):
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    count_pair1 = 0
+    count_pair2 = 0
+    required_card = 4
+    index_pair1 = nums.index(hand[0])
+    index_pair2 = nums.index(hand[2])
+    for i in range (4):
+        if occur[i][index_pair1] == 1:
+            count_pair1 +=1
+        if occur[i][index_pair2] == 1:
+            count_pair2 +=1
+
+    if count_pair1> 2 or count_pair2 > 2:
+        possible = False
+        required_card = 4
+    else:
+        required_card-= (count_pair2 + count_pair1)
+
+    if street == "4th" and required_card > 4:
+        possible = False
+    elif street == "5th" and required_card > 3:
+        possible = False
+    elif street == "6th" and required_card > 2:
+        possible = False
+    elif street == "RIVER" and required_card > 1:
+         possible = False
+    elif (street == "SHOW" or street == "SUMMARY" ) and required_card == 0:
+        possible = True
+    elif street == "SHOW" or street == "SUMMARY" :
+        possible = False
+    else:
+        return (True,required_card)
+    return (possible,required_card)
+def Avoid_two(hand,occur):
+
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    avoid_cards = [hand[0],hand[2]]
+    remaining_cards = []
+    remaining_cards_with_occurence= []
+    for card in nums:
+        if not(card in avoid_cards):
+            remaining_cards.append(card)
+    for card in remaining_cards:
+        remaining_cards_with_occurence.append([card,count_cards([card],occur)])
+    return (count_cards(avoid_cards,occur),remaining_cards_with_occurence)
+
+def Two_probability(hand,occur,street,list_numplayers):
+    (possible,required_card)  = possible_hand_two(hand,occur,street)
+    
+    permutations = 0
+    spare = 0
+    probability = 0
+    (avoid,remaining_cards_with_occur) =Avoid_two(hand,occur)
+    if required_card == 0 :
+        return 1
+    if street == "4th" and possible:
+        spare = 4 - required_card
+        num3 = list_numplayers[0]
+        permutations = ((52-(2 + num3)))*((51-(2 + num3)))*((50-(2 + num3)))*((49-(2 + num3)))
+        probability = factorial(4)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_two(hand,occur)/permutations
+    elif street == "5th" and possible:
+        spare = 3 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        permutations = ((52-(2 + num3+num4)))*((51-(2 + num3+num4)))*((50-(2 + num3+num4)))
+        probability = factorial(3)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_two(hand,occur)/permutations
+    elif street == "6th" and possible:
+        spare = 2 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        num5 = list_numplayers[2]
+        permutations = ((52-(2 + num3+num4+num5)))*((51-(2 + num3+num4+num5)))
+        probability = factorial(2)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_two(hand,occur)/permutations
+    elif street == "RIVER" and possible: 
+        spare = 1 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        num5 = list_numplayers[2]
+        num6 = list_numplayers[3]
+        permutations = (52-(2+ num3+num4+num5+num6))
+        probability = factorial(1)*Spare(spare,avoid,count_remaining_cards(occur),remaining_cards_with_occur)*Required_two(hand,occur)/permutations
+    else:
+        if possible:
+            probability = 1
+        elif required_card == -1:
+            return -1
+        else:
+            return 0
+    return probability 
+
+
+
+def generate_all_pair():
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    lst_full = []
+    hand=[]
+    for i in range (13):
+        hand = []
+        hand.append(nums[i])
+        hand.append(nums[i])
+        lst_full.append(hand)
+    return lst_full
+lst_pair = generate_all_pair()
+def Required_pair(hand,occur):
+    pro_cards = 1
+    number_card=1
+    have  = False
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    remaining_pair1 = 0
+
+
+    count_pair1 = 0
+    index_pair1 = nums.index(hand[0])
+
+    for i in range (4):
+        if occur[i][index_pair1] == 0: 
+            remaining_pair1 +=1
+        elif occur[i][index_pair1] == 1: 
+            count_pair1 +=1
+
+    if count_pair1 == 0:
+        pro_cards *=remaining_pair1*(remaining_pair1-1)
+    elif count_pair1 == 1:
+        pro_cards *=remaining_pair1
+
+
+    return pro_cards
+def possible_hand_pair(hand,occur,street):
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    count_pair1 = 0
+
+    required_card = 2
+    index_pair1 = nums.index(hand[0])
+
+    for i in range (4):
+        if occur[i][index_pair1] == 1:
+            count_pair1 +=1
+
+
+    if count_pair1> 2:
+        possible = False
+        required_card = 2
+    else:
+        required_card-= ( count_pair1)
+
+    if street == "4th" and required_card > 4:
+        possible = False
+    elif street == "5th" and required_card > 3:
+        possible = False
+    elif street == "6th" and required_card > 2:
+        possible = False
+    elif street == "RIVER" and required_card > 1:
+         possible = False
+    elif (street == "SHOW" or street == "SUMMARY" ) and required_card == 0:
+        possible = True
+    elif street == "SHOW" or street == "SUMMARY" :
+        possible = False
+    else:
+        return (True,required_card)
+    return (possible,required_card)
+def Avoid_pair(hand,occur):
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    avoid_cards = [hand[0]]
+    remaining_cards = []
+    remaining_cards_with_occurence= []
+    for card in nums:
+        if not(card in avoid_cards):
+            remaining_cards.append(card)
+    for card in remaining_cards:
+        remaining_cards_with_occurence.append([card,count_cards([card],occur)])
+    return (count_cards(avoid_cards,occur),remaining_cards_with_occurence)
+
+def Pair_probability(hand,occur,street,list_numplayers):
+    (possible,required_card)  = possible_hand_pair(hand,occur,street)
+    print(street,hand,(possible,required_card))
+    permutations = 0
+    spare = 0
+    probability = 0
+    (avoid,remaining_cards_with_occur) =Avoid_pair(hand,occur)
+    if required_card == 0 :
+        return 1
+    elif street == "4th" and possible:
+        spare = 4 - required_card
+        num3 = list_numplayers[0]
+        permutations = ((52-(2 + num3)))*((51-(2 + num3)))*((50-(2 + num3)))*((49-(2 + num3)))
+        probability = factorial(4)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_pair(hand,occur)/permutations
+    elif street == "5th" and possible:
+        spare = 3 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        permutations = ((52-(2 + num3+num4)))*((51-(2 + num3+num4)))*((50-(2 + num3+num4)))
+        probability = factorial(3)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_pair(hand,occur)/permutations
+    elif street == "6th" and possible:
+        spare = 2 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        num5 = list_numplayers[2]
+        permutations = ((52-(2 + num3+num4+num5)))*((51-(2 + num3+num4+num5)))
+        probability = factorial(2)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_pair(hand,occur)/permutations
+    elif street == "RIVER" and possible: 
+        spare = 1 - required_card
+        num3 = list_numplayers[0]
+        num4 = list_numplayers[1]
+        num5 = list_numplayers[2]
+        num6 = list_numplayers[3]
+        permutations = (52-(2+ num3+num4+num5+num6))
+        probability = factorial(1)*Spare(spare,avoid,count_remaining_cards(occur),remaining_cards_with_occur)*Required_pair(hand,occur)/permutations
+    else:
+        if possible:
+            probability = 1
+        elif required_card == -1:
+            return -1
+        else:
+            return 0
+    return probability 
 def high_hand_odd(occur,street,list_numplayers):
     nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
-    odd_royal_flush = Royal_flush(occur,street,list_numplayers)
+    odd = 0
+    odd_royal_flush = 0
     rf_zero = 0
-    if odd_royal_flush != 0:
-        rf_zero = 1
     odd_straight_flush = 0
     sf_zero = 0
-    '''
-    for k in range(len(all_straight_flush_0)):
-        odd_straight_flush+=odd_Straight_flush(all_straight_flush_0[0][k],occur,street,list_numplayers)
-        odd_straight_flush+=odd_Straight_flush(all_straight_flush_1[0][k],occur,street,list_numplayers)
-        odd_straight_flush+=odd_Straight_flush(all_straight_flush_2[0][k],occur,street,list_numplayers)
-        odd_straight_flush+=odd_Straight_flush(all_straight_flush_3[0][k],occur,street,list_numplayers)
-    for i in range(1,len(all_straight_flush_0)):
-        if i%2 == 0 :
-            for straight_flush in all_straight_flush_0[i]:
-                
-                odd_straight_flush+=straight_flush[1]*odd_Low_7cards(straight_flush[0],occur,street,list_numplayers)
-        else:
-            for straight_flush in all_straight_flush_0[i]:
-                odd_straight_flush-=straight_flush[1]*odd_Low_7cards(straight_flush[0],occur,street,list_numplayers)
-    for i in range(1,len(all_straight_flush_1)):
-        if i%2 == 0 :
-            for straight_flush in all_straight_flush_1[i]:
-                
-                odd_straight_flush+=straight_flush[1]*odd_Low_7cards(straight_flush[0],occur,street,list_numplayers)
-        else:
-            for straight_flush in all_straight_flush_1[i]:
-                odd_flush-=straight_flush[1]*odd_Low_7cards(straight_flush[0],occur,street,list_numplayers)
-    for i in range(1,len(all_straight_flush_2)):
-        if i%2 == 0 :
-            for straight_flush in all_straight_flush_2[i]:
-                
-                odd_straight_flush+=straight_flush[1]*odd_Low_7cards(straight_flush[0],occur,street,list_numplayers)
-        else:
-            for straight_flush in all_straight_flush_2[i]:
-                odd_straight_flush-=straight[1]*odd_Low_7cards(straight_flush[0],occur,street,list_numplayers)
-    for i in range(1,len(all_straight_flush_3)):
-        if i%2 == 0 :
-            for straight_flush in all_straight_flush_3[i]:
-                
-                odd_straight_flush+=straight_flush[1]*odd_Low_7cards(straight_flush[0],occur,street,list_numplayers)
-        else:
-            for straight_flush in all_straight_flush_3[i]:
-                odd_flush-=straight_flush[1]*odd_Low_7cards(straight_flush[0],occur,street,list_numplayers)
-    if odd_straight_flush != 0:
-        sf_zero = 1
-        '''
+
     odd_four_of_Kind = 0
     fok_zero = 0
-    for i in range (0,13):
-        odd_four_of_Kind += Four_Kind(occur,i,street,list_numplayers)
-    if odd_four_of_Kind != 0:
-        fok_zero = 1
     odd_full_house = 0
     fh_zero = 0
     odd_flush = 0
     f_zero = 0
-    
-    odd_three_of_kind = 0
     odd_straight = 0
     s_zero = 0
-    i = 0
-    
-    for hand in all_straight[0]:
-        odd_straight+=odd_Straight(hand,occur,street,list_numplayers)
-    for i in range(1,len(all_straight)):
-        if i%2 == 0 :
-            for straight in all_straight[i]:
-                
-                odd_straight+=straight[1]*odd_Low_7cards(straight[0],occur,street,list_numplayers)
-        else:
-            for straight in all_straight[i]:
-                odd_straight-=straight[1]*odd_Low_7cards(straight[0],occur,street,list_numplayers)
-    
-    if odd_straight != 0:
-        s_zero = 1
     odd_three_of_kind = 0
     tok_zero = 0
-    odd_two_pair = 0
+    odd_two_pairs = 0
     tp_zero = 0
     odd_pair = 0
     p_zero = 0
-    odd_high_card = 0
     hc_zero = 0
-    return [['Royal Flush',int(round(odd_royal_flush,2)*100),rf_zero],['Straight Flush',int(round(odd_straight_flush,2)*100),sf_zero],['Four of Kind',int(round(odd_four_of_Kind,2)*100),fok_zero],['Full House',int(round(odd_full_house,2)*100),fh_zero],['Flush',int(round(odd_flush,2)*100),f_zero],['Straight',odd_straight,s_zero],['Three of Kind',int(round(odd_three_of_kind,2)*100),tok_zero],['Two Pairs',int(round(odd_two_pair,2)*100),tp_zero],["Pair",int(round(odd_pair,2)*100),p_zero],['High Card',int(round(odd_high_card,2)*100),hc_zero]]
+    odd_high_card = 0
+    odd=0
+    for k in range (4):
+        odd = straight_flush_probability(['T','J','Q','K','A'],k,occur,street,list_numplayers)
+        odd_royal_flush += odd
+        if odd == 1:
+            return [['Royal Flush',1,1],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero],['High Card',odd_high_card,hc_zero]]
+    if odd_royal_flush != 0:
+        rf_zero = 1
+    
+    odd =0
+    for hand in lst_straight:
+        for k in range (4):
+            odd = straight_flush_probability(hand,k,occur,street,list_numplayers)
+            odd_straight_flush += odd
+            if odd == 1:
+                return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',1,1],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero],['High Card',odd_high_card,hc_zero]]
+    if odd_straight_flush !=0:
+        sf_zero = 1
+    odd = 0
+    for hand in lst_four:
+        odd = Four_probability(hand,occur,street,list_numplayers)
+        odd_four_of_Kind += odd
+        if odd == 1 :
+            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',1,1],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero],['High Card',odd_high_card,hc_zero]]
+
+        
+
+    if odd_four_of_Kind != 0:
+        fok_zero = 1
+    
+    odd = 0
+    for hand in lst_full:
+        odd = full_probability(hand,occur,street,list_numplayers)
+        odd_full_house += odd 
+        if odd == 1:
+            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',1,1],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero],['High Card',odd_high_card,hc_zero]]
+    if odd_full_house != 0:
+        fh_zero = 1
+    odd = 0
+    for i in range (0,4):
+        odd = flush_probability(occur,i,street,list_numplayers)
+        odd_flush += odd
+        if odd == 1 :
+            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',1,1],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero],['High Card',odd_high_card,hc_zero]]
+    if odd_flush != 0:
+        f_zero = 1
+    
+    odd =0
+    for hand in lst_straight:
+        odd = straight_probability(hand,occur,street,list_numplayers)
+        odd_straight += odd
+        if odd == 1:
+            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',1,1],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero],['High Card',odd_high_card,hc_zero]]
+    if odd_straight != 0:
+        s_zero = 1
+   
+    odd = 0
+    for hand in lst_three:
+         odd = Three_probability(hand,occur,street,list_numplayers)
+         odd_three_of_kind += odd
+         if odd == 1:
+             return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',1,1],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero],['High Card',odd_high_card,hc_zero]]
+    if odd_three_of_kind != 0:
+        tok_zero = 1
+    odd = 0
+    for hand in lst_two:
+        odd= Two_probability(hand,occur,street,list_numplayers)
+        odd_two_pairs += odd 
+        if odd == 1:
+            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',1,1],["Pair",odd_pair,p_zero],['High Card',odd_high_card,hc_zero]]
+    if odd_two_pairs !=0:
+        tp_zero = 1
+    odd = 0
+    for hand in lst_pair:
+        odd = Pair_probability(hand,occur,street,list_numplayers)
+        
+        odd_pair += odd
+        if odd == 1:
+            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",1,1],['High Card',odd_high_card,hc_zero]]
+
+    if odd_two_pairs !=0:
+        p_zero = 1
+    hc_zero = 0
+    odd_high_card = 1- odd_royal_flush-odd_straight_flush-odd_four_of_Kind-odd_full_house-odd_flush-odd_straight-odd_three_of_kind-odd_two_pairs-odd_pair
+    if odd_high_card != 0:
+        hc_zero = 1
+    return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero],['High Card',odd_high_card,hc_zero]]

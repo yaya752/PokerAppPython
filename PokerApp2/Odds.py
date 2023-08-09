@@ -1,3 +1,4 @@
+from math import *
 
 '''
 low_hand = [['5','4','3','2','A'],
@@ -1371,3 +1372,91 @@ def NumCards(occur):
             if occur[i][j] == 1 or occur[i][j] == -1:
                 S+=1
     return 52-S
+def Avoid(hand,occur):
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    avoid_cards = []
+    remaining_cards = []
+    remaining_cards_with_occurence= []
+    if hand[0] == '8':
+        all_avoid_card = ['A','2','3','4','5','6','7']
+        for card in all_avoid_card:
+            if not(card in hand):
+                avoid_cards.append(card)
+    elif hand[0] == '7':
+        all_avoid_card = ['A','2','3','4','5','6']
+        for card in all_avoid_card:
+            if not(card in hand):
+                avoid_cards.append(card)
+    elif hand[0] == '6':
+        all_avoid_card = ['A','2','3','4','5']
+        for card in all_avoid_card:
+            if not(card in hand):
+                avoid_cards.append(card)
+    for card in nums:
+        if not(card in avoid_cards):
+            remaining_cards.append(card)
+    for card in remaining_cards:
+        remaining_cards_with_occurence.append([card,count_cards([card],occur)])
+    return (count_cards(avoid_cards,occur),remaining_cards_with_occurence)
+def count_cards(lst,occur):
+    sum_cards = 0
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    for card in lst:
+        k = nums.index(card)
+        for i in range (4):
+            if occur[i][k] == 0:
+                sum_cards+=1
+    return sum_cards
+
+def calculate_combinations(n, r,remaining_cards_with_occur):
+    if n < r:
+        return 0
+    all_comb = factorial(n) // (factorial(r) * factorial(n - r))
+    for [card,count_card] in remaining_cards_with_occur:
+        if count_card >= 2:
+            all_comb-=1
+        if count_card == 4:
+            all_comb-=5
+        
+
+        
+    return all_comb
+
+def Required(hand,occur):
+    pro_cards = 1
+    number_card=1
+    have  = False
+    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    for card in hand:
+        k = nums.index(card)
+        have  = False
+        number_card=0
+        for i in range (4):
+            if occur[i][k] == 1:
+                have  = True
+        if not(have):
+            for i in range (4):
+                if occur[i][k] == 0:
+                    number_card+=1
+            pro_cards*=number_card
+    return pro_cards
+
+def count_remaining_cards(occur):
+    S = 0
+    for i in range (4):
+        for j in range(13):
+            if occur[i][j]==0:
+                S+=1
+    return S
+def Spare(spare,avoid, remaining_cards,remaining_cards_with_occur):
+
+    if spare == 1:
+        return remaining_cards - avoid
+    elif spare == 2:
+        return calculate_combinations(remaining_cards - avoid, 2,remaining_cards_with_occur)
+    elif spare == 3:
+        return calculate_combinations(remaining_cards - avoid, 3,remaining_cards_with_occur)
+    elif spare == 4:
+        return calculate_combinations(remaining_cards - avoid, 4,remaining_cards_with_occur)
+    else:
+        return 1

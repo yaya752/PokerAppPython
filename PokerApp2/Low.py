@@ -1,4 +1,4 @@
-from math import *
+from Odds import *
 low5 = [['5','4','3','2','A']]
 
    
@@ -68,55 +68,9 @@ low6 = [['6','4','3','2','A'],
 
 
 low5 =[['5','4','3','2','A']]
-
-def Avoid(hand,occur):
-    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
-    avoid_cards = []
-    remaining_cards = []
-    remaining_cards_with_occurence= []
-    if hand[0] == '8':
-        all_avoid_card = ['A','2','3','4','5','6','7']
-        for card in all_avoid_card:
-            if not(card in hand):
-                avoid_cards.append(card)
-    elif hand[0] == '7':
-        all_avoid_card = ['A','2','3','4','5','6']
-        for card in all_avoid_card:
-            if not(card in hand):
-                avoid_cards.append(card)
-    elif hand[0] == '6':
-        all_avoid_card = ['A','2','3','4','5']
-        for card in all_avoid_card:
-            if not(card in hand):
-                avoid_cards.append(card)
-    for card in nums:
-        if not(card in avoid_cards):
-            remaining_cards.append(card)
-    for card in remaining_cards:
-        remaining_cards_with_occurence.append([card,count_cards([card],occur)])
-    return (count_cards(avoid_cards,occur),remaining_cards_with_occurence)
-def count_cards(lst,occur):
-    sum_cards = 0
-    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
-    for card in lst:
-        k = nums.index(card)
-        for i in range (4):
-            if occur[i][k] == 0:
-                sum_cards+=1
-    return sum_cards
-
-def calculate_combinations(n, r,remaining_cards_with_occur):
-    if n < r:
-        return 0
-    all_comb = factorial(n) // (factorial(r) * factorial(n - r))
-    for [card,count_card] in remaining_cards_with_occur:
-        if count_card >= 2:
-            all_comb-=1
-        
-    return all_comb
 def new_probability(hand,occur,street,list_numplayers):
     (possible,required_card)  = possible_hand_low(hand,occur,street)
-    print(street,hand,(possible,required_card))
+   
     permutations = 0
     spare = 0
     probability = 0
@@ -147,44 +101,16 @@ def new_probability(hand,occur,street,list_numplayers):
         num6 = list_numplayers[3]
         permutations = (52-(2+ num3+num4+num5+num6))
         probability = factorial(1)*Spare(spare,avoid,count_remaining_cards(occur),remaining_cards_with_occur)*Required(hand,occur)/permutations
+    
+        
     else:
-        return 0
+        if possible:
+            probability = 1
+        else:
+            return 0
     
     return probability
-def Required(hand,occur):
-    pro_cards = 1
-    number_card=1
-    have  = False
-    nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
-    for card in hand:
-        k = nums.index(card)
-        have  = False
-        number_card=0
-        for i in range (4):
-            if occur[i][k] == 1:
-                have  = True
-        if not(have):
-            for i in range (4):
-                if occur[i][k] == 0:
-                    number_card+=1
-            pro_cards*=number_card
-    return pro_cards
 
-def count_remaining_cards(occur):
-    S = 0
-    for i in range (4):
-        for j in range(13):
-            if occur[i][j]==0:
-                S+=1
-    return S
-def Spare(spare,avoid, remaining_cards,remaining_cards_with_occur):
-    print(spare)
-    if spare == 1:
-        return remaining_cards - avoid
-    elif spare == 2:
-        return calculate_combinations(remaining_cards - avoid, 2,remaining_cards_with_occur)
-    else:
-        return 1
 def possible_hand_low(hand,occur,street):
     nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     avoid_cards = []
@@ -226,7 +152,9 @@ def possible_hand_low(hand,occur,street):
         possible = False
     elif street == "RIVER" and required_card > 1:
          possible = False
-    elif street == "SHOW" or street == "SUMMARY":
+    elif (street == "SHOW" or street == "SUMMARY" ) and required_card == 0:
+        possible = True
+    elif street == "SHOW" or street == "SUMMARY" :
         possible = False
     else:
         return (True,required_card)
@@ -249,7 +177,7 @@ def low_hand_odd(occur,street,list_numplayers):
     odd_have_it = 0
     Odds = []   
     low_hand =  low5 + low6 + low7 + low8
-    
+    tot = 0
     for hand in low_hand :
         
         low_hand_odds.append([hand,new_probability(hand,occur,street,list_numplayers)])
@@ -279,8 +207,7 @@ def low_hand_odd(occur,street,list_numplayers):
         have_7low = 0
     Odds.append(["7-Low",odd_7low,have_7low])
     while (i < len(low_hand_odds) and low_hand_odds[i][0][0] == '8'):
-        if street == '4th' and low_hand_odds[i][1] != 0 :
-            print(low_hand_odds[i])
+        
         hand = low_hand_odds[i][0]
         odd = low_hand_odds[i][1]
         odd_8low += odd
@@ -288,5 +215,13 @@ def low_hand_odd(occur,street,list_numplayers):
     if odd_8low == 0:
         have_8low = 0
     Odds.append(["8-Low",odd_8low,have_8low])
-
+    print(street,odd_5low,odd_6low,odd_7low,odd_8low)
+    for proba in Odds:
+        tot += proba[1]
+    if tot == 0:
+        Odds.append(["Total",tot,0])
+    else:
+        Odds.append(["Total",tot,1])
+        
+    
     return Odds

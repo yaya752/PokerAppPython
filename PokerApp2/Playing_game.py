@@ -67,7 +67,7 @@ def Generalities(line):
 ########################################################################################
 def file_index(game_file,path):
     #Intialisation of the variable
-    file_name =path + game_file #change ./Game_File/ into ./Game_File/ if you are on linux
+    file_name =path + game_file #change Game_File\\ into Game_File\\ if you are on linux
     lines = []
     i = 0
 
@@ -562,17 +562,14 @@ def Action(lines,line,street,street_index, occur, main_player,Player):
     elif words[0] == 'Uncalled':
         return [words[5],words[0],int(words[2][1:-1])]
     elif words[1] == 'collected':
-        return [words[0],words[1],int(words[2])]
+        return [words[0],words[1],int(words[2]),0]
     elif words[0] == 'Seat':
         if words[3] == 'showed' and words[12] == 'won':
-            return [words[2],'Won']
+            return [words[2],'Won', int(words[13][1:-1])]
         elif words[3] == 'collected':
-            return [words[2],words[3],int(words[4][1:-1])]
-    elif words[0] == 'Seat':
-        if words[3] == 'showed' and words[12] == 'won':
-            return [words[2],'Won']
-        elif words[3] == 'collected':
-            return [words[2],words[3:]]
+            return [words[2],words[3],int(words[4][1:-1]),1]
+        elif words[3] == 'showed' and words[12] == 'lost':
+            return [words[2],'Lost']
 
 ########################################################################################
 #   Function Name : Action                                                             #
@@ -616,18 +613,15 @@ def Play(game_file,main_player,list_numplayers,path):
         words = lines[i].split()
         # if we met a new street we calculate the new occurence tab and odds associate to it 
         if words[0] == '***':
-
-            
-            
             if words[1] != "3rd": 
                 list_numplayers.append(players)
+
                 (occur1,low_hand_odds,high_hand_odds)= Calculate_odds(occur,words[1],list_numplayers) #calculate the odds using the occur tab (occurence of the cards)
                 tab_street.append([occur1,low_hand_odds,high_hand_odds])
             Players_Actions.append([lines[i]])
             if words[1] == "RIVER":
                 for k in range(0,len(Players)):
                     if Players[k][1] != "folds":
-                        
                         Players_Actions.append([Players[k][0],"Dealt",Card_To_Html(Card_Street('RIVER',street_index, lines, Players[k][0],occur,main_player,Players))])
                 
             
