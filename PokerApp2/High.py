@@ -1696,8 +1696,6 @@ def Required_pair(hand,occur):
     have  = False
     nums = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     remaining_pair1 = 0
-
-
     count_pair1 = 0
     index_pair1 = nums.index(hand[0])
 
@@ -1758,7 +1756,48 @@ def Avoid_pair(hand,occur):
     for card in remaining_cards:
         remaining_cards_with_occurence.append([card,count_cards([card],occur)])
     return (count_cards(avoid_cards,occur),remaining_cards_with_occurence)
-
+def sum_occur(remaining_cards_with_occur,i):
+    j = 0
+    S = 0
+    while j < len(remaining_cards_with_occur):
+        if j != i:
+            S+=remaining_cards_with_occur[j][1]
+        j+=1
+    return 0
+def Spare_pair(spare,avoid, remaining_cards,remaining_cards_with_occur):
+    avoid1 = 0
+    if spare == 1:
+        return remaining_cards - avoid
+    elif spare == 2:
+       ''' for i in range (0,len(remaining_cards_with_occur)):
+            if remaining_cards_with_occur[i][1] == 2:
+                avoid1 +=2
+            elif remaining_cards_with_occur[i][1] == 3: 
+                avoid1 +=6
+            elif remaining_cards_with_occur[i][1] == 4: 
+                avoid1 += 12'''
+       return calculate_combinations(remaining_cards - avoid, 2,remaining_cards_with_occur) - avoid1
+    elif spare == 3:
+        '''for i in range (0,len(remaining_cards_with_occur)):
+            if remaining_cards_with_occur[i][1] == 2:
+                avoid1 +=2 * (remaining_cards - avoid - 2)
+            elif remaining_cards_with_occur[i][1] == 3: 
+                avoid1 +=6 +6*(remaining_cards - avoid - 3)
+            elif remaining_cards_with_occur[i][1] == 4: 
+                avoid1 +=  3*6 + 12 * (remaining_cards - avoid - 4)'''
+        return calculate_combinations(remaining_cards - avoid, 3,remaining_cards_with_occur) - avoid1
+    elif spare == 4:
+        '''for i in range (0,len(remaining_cards_with_occur)):
+            if remaining_cards_with_occur[i][1] == 2:
+                avoid1 +=2 * (remaining_cards - avoid - 2)*((remaining_cards - avoid - 2)-1)
+            elif remaining_cards_with_occur[i][1] == 3: 
+                avoid1 +=6*(remaining_cards - avoid - 3) * ((remaining_cards - avoid - 3)-1) + 6*(remaining_cards - avoid - 3)
+            elif remaining_cards_with_occur[i][1] == 4: 
+                avoid1 +=  24 + 24 * sum_occur(remaining_cards_with_occur,i) + 12*sum_occur(remaining_cards_with_occur,i)*(sum_occur(remaining_cards_with_occur,i) - 1)
+        '''
+        return calculate_combinations(remaining_cards - avoid, 4,remaining_cards_with_occur)- avoid1
+    else:
+        return 1
 def Pair_probability(hand,occur,street,list_numplayers):
     (possible,required_card)  = possible_hand_pair(hand,occur,street)
     print(street,hand,(possible,required_card))
@@ -1772,20 +1811,20 @@ def Pair_probability(hand,occur,street,list_numplayers):
         spare = 4 - required_card
         num3 = list_numplayers[0]
         permutations = ((52-(2 + num3)))*((51-(2 + num3)))*((50-(2 + num3)))*((49-(2 + num3)))
-        probability = factorial(4)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_pair(hand,occur)/permutations
+        probability = factorial(4)*Spare_pair(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_pair(hand,occur)/permutations
     elif street == "5th" and possible:
         spare = 3 - required_card
         num3 = list_numplayers[0]
         num4 = list_numplayers[1]
         permutations = ((52-(2 + num3+num4)))*((51-(2 + num3+num4)))*((50-(2 + num3+num4)))
-        probability = factorial(3)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_pair(hand,occur)/permutations
+        probability = factorial(3)*Spare_pair(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_pair(hand,occur)/permutations
     elif street == "6th" and possible:
         spare = 2 - required_card
         num3 = list_numplayers[0]
         num4 = list_numplayers[1]
         num5 = list_numplayers[2]
         permutations = ((52-(2 + num3+num4+num5)))*((51-(2 + num3+num4+num5)))
-        probability = factorial(2)*Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_pair(hand,occur)/permutations
+        probability = factorial(2)*Spare_pair(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur)*Required_pair(hand,occur)/permutations
     elif street == "RIVER" and possible: 
         spare = 1 - required_card
         num3 = list_numplayers[0]
@@ -1793,7 +1832,7 @@ def Pair_probability(hand,occur,street,list_numplayers):
         num5 = list_numplayers[2]
         num6 = list_numplayers[3]
         permutations = (52-(2+ num3+num4+num5+num6))
-        probability = factorial(1)*Spare(spare,avoid,count_remaining_cards(occur),remaining_cards_with_occur)*Required_pair(hand,occur)/permutations
+        probability = factorial(1)*Spare_pair(spare,avoid,count_remaining_cards(occur),remaining_cards_with_occur)*Required_pair(hand,occur)/permutations
     else:
         if possible:
             probability = 1
@@ -1909,7 +1948,7 @@ def high_hand_odd(occur,street,list_numplayers):
     if odd_two_pairs !=0:
         p_zero = 1
     hc_zero = 0
-    odd_high_card = 1- odd_royal_flush-odd_straight_flush-odd_four_of_Kind-odd_full_house-odd_flush-odd_straight-odd_three_of_kind-odd_two_pairs-odd_pair
+    odd_high_card = 1- odd_royal_flush-(odd_straight_flush-odd_royal_flush)-odd_four_of_Kind-odd_full_house-(odd_flush-odd_straight_flush-odd_royal_flush)-(odd_straight-odd_straight_flush-odd_royal_flush)-(odd_three_of_kind-odd_four_of_Kind-odd_full_house)-(odd_two_pairs-odd_flush-odd_three_of_kind-odd_four_of_Kind-odd_full_house)-(odd_pair-odd_three_of_kind-odd_four_of_Kind-odd_full_house-odd_two_pairs-odd_flush-odd_royal_flush-odd_straight_flush-odd_straight)
     if odd_high_card != 0:
         hc_zero = 1
-    return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero],['High Card',odd_high_card,hc_zero]]
+    return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush-odd_royal_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush-odd_straight_flush-odd_royal_flush-odd_four_of_Kind,f_zero],['Straight',odd_straight-odd_straight_flush-odd_royal_flush,s_zero],['Three of Kind',odd_three_of_kind-odd_four_of_Kind-odd_full_house,tok_zero],['Two Pairs',odd_two_pairs-odd_three_of_kind-odd_four_of_Kind-odd_full_house-odd_flush,tp_zero],["Pair",odd_pair-odd_three_of_kind-odd_four_of_Kind-odd_full_house-odd_two_pairs-odd_royal_flush-odd_straight_flush-odd_straight-odd_flush,p_zero],['High Card',odd_high_card,hc_zero]]
