@@ -1408,19 +1408,18 @@ def count_cards(lst,occur):
                 sum_cards+=1
     return sum_cards
 
+
 def calculate_combinations(n, r,remaining_cards_with_occur):
     if n < r:
         return 0
     all_comb = factorial(n) // (factorial(r) * factorial(n - r))
-    for [card,count_card] in remaining_cards_with_occur:
+    '''for [card,count_card] in remaining_cards_with_occur:
         if count_card >= 2:
-            all_comb-=1
-        if count_card == 4:
-            all_comb-=5
-        
-
-        
+            all_comb-=1'''
     return all_comb
+''' if count_card == 4:
+            all_comb-=5'''
+
 
 def Required(hand,occur):
     pro_cards = 1
@@ -1449,14 +1448,11 @@ def count_remaining_cards(occur):
                 S+=1
     return S
 def Spare(spare,avoid, remaining_cards,remaining_cards_with_occur):
-
+    if spare < 1:
+        return 1
     if spare == 1:
         return remaining_cards - avoid
     elif spare == 2:
         return calculate_combinations(remaining_cards - avoid, 2,remaining_cards_with_occur)
-    elif spare == 3:
-        return calculate_combinations(remaining_cards - avoid, 3,remaining_cards_with_occur)
-    elif spare == 4:
-        return calculate_combinations(remaining_cards - avoid, 4,remaining_cards_with_occur)
-    else:
-        return 1
+    
+        

@@ -70,7 +70,8 @@ low6 = [['6','4','3','2','A'],
 low5 =[['5','4','3','2','A']]
 def new_probability(hand,occur,street,list_numplayers):
     (possible,required_card)  = possible_hand_low(hand,occur,street)
-   
+    if required_card == 0:
+        return 1
     permutations = 0
     spare = 0
     probability = 0
@@ -108,7 +109,8 @@ def new_probability(hand,occur,street,list_numplayers):
             probability = 1
         else:
             return 0
-    
+    if probability != 0:
+        print (street,hand, spare, avoid, Required(hand,occur), Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur))
     return probability
 
 def possible_hand_low(hand,occur,street):
@@ -181,20 +183,25 @@ def low_hand_odd(occur,street,list_numplayers):
     for hand in low_hand :
         
         low_hand_odds.append([hand,new_probability(hand,occur,street,list_numplayers)])
-    
+        
     while (low_hand_odds[i][0][0] == '5'):
         hand = low_hand_odds[i][0]
         odd = low_hand_odds[i][1]
         odd_5low += odd
         i+=1
+        if odd == 1:
+            return [["5-Low",100,1],["6-Low",0,0],["7-Low",0,0],["8-Low",0,0],["Total",0,1]]
     if odd_5low == 0:
         have_5low = 0
+    
     Odds.append(["5-Low",odd_5low,have_5low])
     while (low_hand_odds[i][0][0] == '6'):
         hand = low_hand_odds[i][0]
         odd = low_hand_odds[i][1]
         odd_6low += odd
         i+=1
+        if odd == 1:
+            return [["5-Low",odd_5low,have_5low],["6-Low",1,1],["7-Low",0,0],["8-Low",0,0],["Total",odd_5low,1]]
     if odd_6low == 0:
         have_6low = 0
     Odds.append(["6-Low",odd_6low,have_6low])
@@ -203,6 +210,8 @@ def low_hand_odd(occur,street,list_numplayers):
         odd = low_hand_odds[i][1]
         odd_7low += odd
         i+=1
+        if odd == 1:
+            return [["5-Low",odd_5low,have_5low],["6-Low",odd_6low,have_6low],["7-Low",1,1],["8-Low",0,0],["Total",odd_5low+odd_6low,1]]
     if odd_7low == 0:
         have_7low = 0
     Odds.append(["7-Low",odd_7low,have_7low])
@@ -212,16 +221,21 @@ def low_hand_odd(occur,street,list_numplayers):
         odd = low_hand_odds[i][1]
         odd_8low += odd
         i+=1
+        if odd == 1:
+            if odd_5low+odd_6low+odd_7low > 0:
+                return [["5-Low",odd_5low,have_5low],["6-Low",odd_6low,have_6low],["7-Low",odd_7low,have_7low],["8-Low",1,1],["Total",odd_5low+odd_6low+odd_7low,1]]
+            else:
+                return [["5-Low",odd_5low,have_5low],["6-Low",odd_6low,have_6low],["7-Low",odd_7low,have_7low],["8-Low",1,1],["Total",odd_5low+odd_6low+odd_7low,0]]
     if odd_8low == 0:
         have_8low = 0
     Odds.append(["8-Low",odd_8low,have_8low])
-    print(street,odd_5low,odd_6low,odd_7low,odd_8low)
+ 
     for proba in Odds:
         tot += proba[1]
     if tot == 0:
         Odds.append(["Total",tot,0])
     else:
-        Odds.append(["Total",tot,1])
+        Odds.append(["Better Low Hand",tot,1])
         
     
     return Odds

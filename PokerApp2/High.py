@@ -1006,7 +1006,7 @@ def Avoid_four(hand,occur):
 
 def Four_probability(hand,occur,street,list_numplayers):
     (possible,required_card)  = possible_hand_four(hand,occur,street)
-    print(street,hand,(possible,required_card))
+
     permutations = 0
     spare = 0
     probability = 0
@@ -1765,7 +1765,7 @@ def sum_occur(remaining_cards_with_occur,i):
         j+=1
     return 0
 def Spare_pair(spare,avoid, remaining_cards,remaining_cards_with_occur):
-    avoid1 = 0
+    
     if spare == 1:
         return remaining_cards - avoid
     elif spare == 2:
@@ -1776,7 +1776,7 @@ def Spare_pair(spare,avoid, remaining_cards,remaining_cards_with_occur):
                 avoid1 +=6
             elif remaining_cards_with_occur[i][1] == 4: 
                 avoid1 += 12'''
-       return calculate_combinations(remaining_cards - avoid, 2,remaining_cards_with_occur) - avoid1
+       return calculate_combinations(remaining_cards - avoid, 2,remaining_cards_with_occur) 
     elif spare == 3:
         '''for i in range (0,len(remaining_cards_with_occur)):
             if remaining_cards_with_occur[i][1] == 2:
@@ -1785,22 +1785,15 @@ def Spare_pair(spare,avoid, remaining_cards,remaining_cards_with_occur):
                 avoid1 +=6 +6*(remaining_cards - avoid - 3)
             elif remaining_cards_with_occur[i][1] == 4: 
                 avoid1 +=  3*6 + 12 * (remaining_cards - avoid - 4)'''
-        return calculate_combinations(remaining_cards - avoid, 3,remaining_cards_with_occur) - avoid1
+        return calculate_combinations(remaining_cards - avoid, 3,remaining_cards_with_occur)
     elif spare == 4:
-        '''for i in range (0,len(remaining_cards_with_occur)):
-            if remaining_cards_with_occur[i][1] == 2:
-                avoid1 +=2 * (remaining_cards - avoid - 2)*((remaining_cards - avoid - 2)-1)
-            elif remaining_cards_with_occur[i][1] == 3: 
-                avoid1 +=6*(remaining_cards - avoid - 3) * ((remaining_cards - avoid - 3)-1) + 6*(remaining_cards - avoid - 3)
-            elif remaining_cards_with_occur[i][1] == 4: 
-                avoid1 +=  24 + 24 * sum_occur(remaining_cards_with_occur,i) + 12*sum_occur(remaining_cards_with_occur,i)*(sum_occur(remaining_cards_with_occur,i) - 1)
-        '''
-        return calculate_combinations(remaining_cards - avoid, 4,remaining_cards_with_occur)- avoid1
+        
+        return calculate_combinations(remaining_cards - avoid, 4,remaining_cards_with_occur)
     else:
         return 1
 def Pair_probability(hand,occur,street,list_numplayers):
     (possible,required_card)  = possible_hand_pair(hand,occur,street)
-    print(street,hand,(possible,required_card))
+
     permutations = 0
     spare = 0
     probability = 0
@@ -1870,7 +1863,7 @@ def high_hand_odd(occur,street,list_numplayers):
         odd = straight_flush_probability(['T','J','Q','K','A'],k,occur,street,list_numplayers)
         odd_royal_flush += odd
         if odd == 1:
-            return [['Royal Flush',1,1],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero],['High Card',odd_high_card,hc_zero]]
+            return [['Royal Flush',1,1],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
     if odd_royal_flush != 0:
         rf_zero = 1
     
@@ -1880,7 +1873,7 @@ def high_hand_odd(occur,street,list_numplayers):
             odd = straight_flush_probability(hand,k,occur,street,list_numplayers)
             odd_straight_flush += odd
             if odd == 1:
-                return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',1,1],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero],['High Card',odd_high_card,hc_zero]]
+                return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',1,1],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
     if odd_straight_flush !=0:
         sf_zero = 1
     odd = 0
@@ -1888,7 +1881,7 @@ def high_hand_odd(occur,street,list_numplayers):
         odd = Four_probability(hand,occur,street,list_numplayers)
         odd_four_of_Kind += odd
         if odd == 1 :
-            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',1,1],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero],['High Card',odd_high_card,hc_zero]]
+            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',1,1],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
 
         
 
@@ -1900,7 +1893,7 @@ def high_hand_odd(occur,street,list_numplayers):
         odd = full_probability(hand,occur,street,list_numplayers)
         odd_full_house += odd 
         if odd == 1:
-            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',1,1],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero],['High Card',odd_high_card,hc_zero]]
+            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',1,1],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
     if odd_full_house != 0:
         fh_zero = 1
     odd = 0
@@ -1908,7 +1901,7 @@ def high_hand_odd(occur,street,list_numplayers):
         odd = flush_probability(occur,i,street,list_numplayers)
         odd_flush += odd
         if odd == 1 :
-            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',1,1],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero],['High Card',odd_high_card,hc_zero]]
+            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',1,1],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
     if odd_flush != 0:
         f_zero = 1
     
@@ -1917,7 +1910,7 @@ def high_hand_odd(occur,street,list_numplayers):
         odd = straight_probability(hand,occur,street,list_numplayers)
         odd_straight += odd
         if odd == 1:
-            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',1,1],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero],['High Card',odd_high_card,hc_zero]]
+            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',1,1],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
     if odd_straight != 0:
         s_zero = 1
    
@@ -1926,7 +1919,7 @@ def high_hand_odd(occur,street,list_numplayers):
          odd = Three_probability(hand,occur,street,list_numplayers)
          odd_three_of_kind += odd
          if odd == 1:
-             return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',1,1],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero],['High Card',odd_high_card,hc_zero]]
+             return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',1,1],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
     if odd_three_of_kind != 0:
         tok_zero = 1
     odd = 0
@@ -1934,7 +1927,7 @@ def high_hand_odd(occur,street,list_numplayers):
         odd= Two_probability(hand,occur,street,list_numplayers)
         odd_two_pairs += odd 
         if odd == 1:
-            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',1,1],["Pair",odd_pair,p_zero],['High Card',odd_high_card,hc_zero]]
+            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',1,1],["Pair",odd_pair,p_zero]]
     if odd_two_pairs !=0:
         tp_zero = 1
     odd = 0
@@ -1943,12 +1936,9 @@ def high_hand_odd(occur,street,list_numplayers):
         
         odd_pair += odd
         if odd == 1:
-            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",1,1],['High Card',odd_high_card,hc_zero]]
+            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",1,1]]
 
     if odd_two_pairs !=0:
         p_zero = 1
-    hc_zero = 0
-    odd_high_card = 1- odd_royal_flush-(odd_straight_flush-odd_royal_flush)-odd_four_of_Kind-odd_full_house-(odd_flush-odd_straight_flush-odd_royal_flush)-(odd_straight-odd_straight_flush-odd_royal_flush)-(odd_three_of_kind-odd_four_of_Kind-odd_full_house)-(odd_two_pairs-odd_flush-odd_three_of_kind-odd_four_of_Kind-odd_full_house)-(odd_pair-odd_three_of_kind-odd_four_of_Kind-odd_full_house-odd_two_pairs-odd_flush-odd_royal_flush-odd_straight_flush-odd_straight)
-    if odd_high_card != 0:
-        hc_zero = 1
-    return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush-odd_royal_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush-odd_straight_flush-odd_royal_flush-odd_four_of_Kind,f_zero],['Straight',odd_straight-odd_straight_flush-odd_royal_flush,s_zero],['Three of Kind',odd_three_of_kind-odd_four_of_Kind-odd_full_house,tok_zero],['Two Pairs',odd_two_pairs-odd_three_of_kind-odd_four_of_Kind-odd_full_house-odd_flush,tp_zero],["Pair",odd_pair-odd_three_of_kind-odd_four_of_Kind-odd_full_house-odd_two_pairs-odd_royal_flush-odd_straight_flush-odd_straight-odd_flush,p_zero],['High Card',odd_high_card,hc_zero]]
+    
+    return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
