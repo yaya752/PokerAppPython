@@ -109,8 +109,7 @@ def new_probability(hand,occur,street,list_numplayers):
             probability = 1
         else:
             return 0
-    if probability != 0:
-        print (street,hand, spare, avoid, Required(hand,occur), Spare(spare,avoid, count_remaining_cards(occur),remaining_cards_with_occur))
+    
     return probability
 
 def possible_hand_low(hand,occur,street):

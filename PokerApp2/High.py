@@ -1873,7 +1873,7 @@ def high_hand_odd(occur,street,list_numplayers):
             odd = straight_flush_probability(hand,k,occur,street,list_numplayers)
             odd_straight_flush += odd
             if odd == 1:
-                return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',1,1],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
+                return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',1-odd_royal_flush,1],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
     if odd_straight_flush !=0:
         sf_zero = 1
     odd = 0
@@ -1881,7 +1881,7 @@ def high_hand_odd(occur,street,list_numplayers):
         odd = Four_probability(hand,occur,street,list_numplayers)
         odd_four_of_Kind += odd
         if odd == 1 :
-            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',1,1],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
+            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush-odd_royal_flush,sf_zero],['Four of Kind',1,1],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
 
         
 
@@ -1893,7 +1893,7 @@ def high_hand_odd(occur,street,list_numplayers):
         odd = full_probability(hand,occur,street,list_numplayers)
         odd_full_house += odd 
         if odd == 1:
-            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',1,1],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
+            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush-odd_royal_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',1-odd_four_of_Kind,1],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
     if odd_full_house != 0:
         fh_zero = 1
     odd = 0
@@ -1901,7 +1901,7 @@ def high_hand_odd(occur,street,list_numplayers):
         odd = flush_probability(occur,i,street,list_numplayers)
         odd_flush += odd
         if odd == 1 :
-            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',1,1],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
+            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush-odd_royal_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house-odd_four_of_Kind,fh_zero],['Flush',1-odd_straight_flush-odd_royal_flush,1],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
     if odd_flush != 0:
         f_zero = 1
     
@@ -1910,7 +1910,7 @@ def high_hand_odd(occur,street,list_numplayers):
         odd = straight_probability(hand,occur,street,list_numplayers)
         odd_straight += odd
         if odd == 1:
-            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',1,1],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
+            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush-odd_royal_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house-odd_four_of_Kind,fh_zero],['Flush',odd_flush-odd_straight_flush-odd_royal_flush,f_zero],['Straight',1-odd_flush-odd_straight_flush-odd_royal_flush,1],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
     if odd_straight != 0:
         s_zero = 1
    
@@ -1919,7 +1919,7 @@ def high_hand_odd(occur,street,list_numplayers):
          odd = Three_probability(hand,occur,street,list_numplayers)
          odd_three_of_kind += odd
          if odd == 1:
-             return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',1,1],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
+             return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush-odd_royal_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house-odd_four_of_Kind,fh_zero],['Flush',odd_flush-odd_straight_flush-odd_royal_flush,f_zero],['Straight',odd_straight-odd_flush-odd_straight_flush-odd_royal_flush,s_zero],['Three of Kind',1-odd_flush-odd_straight_flush-odd_royal_flush-odd_full_house-odd_four_of_Kind,1],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
     if odd_three_of_kind != 0:
         tok_zero = 1
     odd = 0
@@ -1927,7 +1927,7 @@ def high_hand_odd(occur,street,list_numplayers):
         odd= Two_probability(hand,occur,street,list_numplayers)
         odd_two_pairs += odd 
         if odd == 1:
-            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',1,1],["Pair",odd_pair,p_zero]]
+            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush-odd_royal_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house-odd_four_of_Kind,fh_zero],['Flush',odd_flush-odd_straight_flush-odd_royal_flush,f_zero],['Straight',1-odd_flush-odd_straight_flush-odd_royal_flush,s_zero],['Three of Kind',odd_three_of_kind-odd_flush-odd_straight_flush-odd_royal_flush-odd_full_house-odd_four_of_Kind,tok_zero],['Two Pairs',1-odd_three_of_kind-odd_flush-odd_straight_flush-odd_royal_flush-odd_full_house-odd_four_of_Kind,1],["Pair",odd_pair,p_zero]]
     if odd_two_pairs !=0:
         tp_zero = 1
     odd = 0
@@ -1936,9 +1936,9 @@ def high_hand_odd(occur,street,list_numplayers):
         
         odd_pair += odd
         if odd == 1:
-            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",1,1]]
+            return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush-odd_royal_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house-odd_four_of_Kind,fh_zero],['Flush',odd_flush-odd_straight_flush-odd_royal_flush,f_zero],['Straight',1-odd_flush-odd_straight_flush-odd_royal_flush,s_zero],['Three of Kind',odd_three_of_kind-odd_flush-odd_straight_flush-odd_royal_flush-odd_full_house-odd_four_of_Kind,tok_zero],['Two Pairs',odd_two_pairs-odd_three_of_kind-odd_flush-odd_straight_flush-odd_royal_flush-odd_full_house-odd_four_of_Kind,tp_zero],["Pair",1-odd_two_pairs-odd_three_of_kind-odd_flush-odd_straight_flush-odd_royal_flush-odd_full_house-odd_four_of_Kind,1]]
 
     if odd_two_pairs !=0:
         p_zero = 1
     
-    return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house,fh_zero],['Flush',odd_flush,f_zero],['Straight',odd_straight,s_zero],['Three of Kind',odd_three_of_kind,tok_zero],['Two Pairs',odd_two_pairs,tp_zero],["Pair",odd_pair,p_zero]]
+    return [['Royal Flush',odd_royal_flush,rf_zero],['Straight Flush',odd_straight_flush-odd_royal_flush,sf_zero],['Four of Kind',odd_four_of_Kind,fok_zero],['Full House',odd_full_house-odd_four_of_Kind,fh_zero],['Flush',odd_flush-odd_straight_flush-odd_royal_flush,f_zero],['Straight',1-odd_flush-odd_straight_flush-odd_royal_flush,s_zero],['Three of Kind',odd_three_of_kind-odd_flush-odd_straight_flush-odd_royal_flush-odd_full_house-odd_four_of_Kind,tok_zero],['Two Pairs',odd_two_pairs-odd_three_of_kind-odd_flush-odd_straight_flush-odd_royal_flush-odd_full_house-odd_four_of_Kind,tp_zero],["Pair",odd_pair-odd_two_pairs-odd_three_of_kind-odd_flush-odd_straight_flush-odd_royal_flush-odd_full_house-odd_four_of_Kind,p_zero]]
