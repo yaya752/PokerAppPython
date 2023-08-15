@@ -124,15 +124,45 @@ def generate_all_remaining_hand(current_hand,remaining_cards_ranks):
                                 count_rank_possible_hand[ranks.index(card)] = count_rank_possible_hand[ranks.index(card)] + 1
                                 count_rank_all_hand[ranks.index(card)] = count_rank_all_hand[ranks.index(card)] + 1
                             if card1 == card2 and card2 == card3 and card3 == card4  and card1 == card4:
-                                all_possible_hand.append([hand,1,count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                                all_possible_hand.append([hand,1*(remaining_cards_ranks[i]*(remaining_cards_ranks[i]-1)*(remaining_cards_ranks[i]-2)*(remaining_cards_ranks[i]-3)),count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+
+
                             elif card1 != card2 and card1 != card3 and card2 != card3 and card1!=card4 and card2!=card4 and card3!=card4 :
-                                all_possible_hand.append([hand,24,count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                                all_possible_hand.append([hand,24*(remaining_cards_ranks[i]*remaining_cards_ranks[j]*remaining_cards_ranks[k]*remaining_cards_ranks[l]),count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+
                             elif (card1 == card2 and card2 == card3 and card1 != card4) or (card1 == card2 and card2 == card4 and card1 != card3) or (card1 == card3 and card3 == card4 and card1 != card2)  or (card2 == card3 and card3 == card4 and card1 != card2):
-                                all_possible_hand.append([hand,4,count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                                if (card1 == card2 and card2 == card3 and card1 != card4):
+                                    all_possible_hand.append([hand,4*remaining_cards_ranks[i]*(remaining_cards_ranks[i]-1)*(remaining_cards_ranks[i]-2)*remaining_cards_ranks[l],count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                                elif (card1 == card2 and card2 == card4 and card1 != card3):
+                                    all_possible_hand.append([hand,4*remaining_cards_ranks[i]*(remaining_cards_ranks[i]-1)*(remaining_cards_ranks[i]-2)*remaining_cards_ranks[k],count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                                elif (card1 == card3 and card3 == card4 and card1 != card2):
+                                    all_possible_hand.append([hand,4*remaining_cards_ranks[i]*(remaining_cards_ranks[i]-1)*(remaining_cards_ranks[i]-2)*remaining_cards_ranks[j],count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                                else: #(card2 == card3 and card3 == card4 and card1 != card2):
+                                    all_possible_hand.append([hand,4*remaining_cards_ranks[i]*(remaining_cards_ranks[l]-1)*(remaining_cards_ranks[l]-2)*remaining_cards_ranks[l],count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+
+
                             elif (card1 == card2 and card3 == card4) or (card1 == card3 and card2 == card4) or (card1 == card4 and card3 == card2):
-                                all_possible_hand.append([hand,6,count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])   
+                                if (card1 == card2 and card3 == card4):
+                                    all_possible_hand.append([hand,6*remaining_cards_ranks[i]*(remaining_cards_ranks[i]-1)*remaining_cards_ranks[k]*(remaining_cards_ranks[k]-1),count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                                elif (card1 == card3 and card2 == card4):
+                                    all_possible_hand.append([hand,6*remaining_cards_ranks[i]*(remaining_cards_ranks[i]-1)*remaining_cards_ranks[j]*(remaining_cards_ranks[j]-1),count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                                else:#(card1 == card4 and card3 == card2)
+                                    all_possible_hand.append([hand,6*remaining_cards_ranks[i]*(remaining_cards_ranks[i]-1)*remaining_cards_ranks[j]*(remaining_cards_ranks[j]-1),count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+
                             else:
-                                all_possible_hand.append([hand,12,count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                                if (card1 == card2 ):
+                                    all_possible_hand.append([hand,12*remaining_cards_ranks[i]*(remaining_cards_ranks[i]-1)*remaining_cards_ranks[k]*remaining_cards_ranks[l],count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                                elif (card1 == card3 ):
+                                    all_possible_hand.append([hand,12*remaining_cards_ranks[i]*(remaining_cards_ranks[i]-1)*remaining_cards_ranks[j]*remaining_cards_ranks[l],count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                                elif (card1 == card4):
+                                    all_possible_hand.append([hand,12*remaining_cards_ranks[i]*(remaining_cards_ranks[i]-1)*remaining_cards_ranks[k]*remaining_cards_ranks[j],count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                                elif (card2 == card3):
+                                    all_possible_hand.append([hand,12*remaining_cards_ranks[j]*(remaining_cards_ranks[j]-1)*remaining_cards_ranks[i]*remaining_cards_ranks[l],count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                                elif (card2 == card4):
+                                    all_possible_hand.append([hand,12*remaining_cards_ranks[j]*(remaining_cards_ranks[j]-1)*remaining_cards_ranks[i]*remaining_cards_ranks[k],count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                                else:#(card3 == card4)
+                                    all_possible_hand.append([hand,12*remaining_cards_ranks[k]*(remaining_cards_ranks[k]-1)*remaining_cards_ranks[i]*remaining_cards_ranks[j],count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                                
                             
                         l+=1
                     k+=1
@@ -161,13 +191,18 @@ def generate_all_remaining_hand(current_hand,remaining_cards_ranks):
                         for card in hand:
                             count_rank_possible_hand[ranks.index(card)] = count_rank_possible_hand[ranks.index(card)] + 1
                             count_rank_all_hand[ranks.index(card)] = count_rank_all_hand[ranks.index(card)] + 1
-                        if card1 == card2 and card2 == card3:
+                        if card1 == card2 and card2 == card3 and card3==card1:
 
-                            all_possible_hand.append([hand,1,count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                            all_possible_hand.append([hand,1*(remaining_cards_ranks[i])*(remaining_cards_ranks[i]-1)*(remaining_cards_ranks[i]-2),count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
                         elif card1 != card2 and card1 != card3 and card2 != card3:
-                            all_possible_hand.append([hand,6,count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                            all_possible_hand.append([hand,6*(remaining_cards_ranks[i])*(remaining_cards_ranks[j])*(remaining_cards_ranks[k]),count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
                         else:
-                            all_possible_hand.append([hand,3,count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                            if card1 == card2 :
+                                all_possible_hand.append([hand,3*(remaining_cards_ranks[i])*(remaining_cards_ranks[i]-1)*(remaining_cards_ranks[k]),count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                            elif card2 == card3:
+                                all_possible_hand.append([hand,3*(remaining_cards_ranks[j])*(remaining_cards_ranks[j]-1)*(remaining_cards_ranks[i]),count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                            else:#card3==card1:
+                                all_possible_hand.append([hand,3*(remaining_cards_ranks[k])*(remaining_cards_ranks[k]-1)*(remaining_cards_ranks[j]),count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
                     k+=1
                 j+=1
             i+=1
@@ -191,9 +226,9 @@ def generate_all_remaining_hand(current_hand,remaining_cards_ranks):
                         count_rank_possible_hand[ranks.index(card)] = count_rank_possible_hand[ranks.index(card)] + 1
                         count_rank_all_hand[ranks.index(card)] = count_rank_all_hand[ranks.index(card)] + 1
                     if card1 == card2:
-                        all_possible_hand.append([hand,1,count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                        all_possible_hand.append([hand,1*remaining_cards_ranks[i]*(remaining_cards_ranks[j]-1),count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
                     else:
-                        all_possible_hand.append([hand,2,count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                        all_possible_hand.append([hand,2*remaining_cards_ranks[i]*remaining_cards_ranks[j],count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
                 j+=1
             i+=1
     elif len(current_hand) == 6:# 1 card is remaining
@@ -211,8 +246,10 @@ def generate_all_remaining_hand(current_hand,remaining_cards_ranks):
                 for card in hand:
                     count_rank_possible_hand[ranks.index(card)] = count_rank_possible_hand[ranks.index(card)] + 1
                     count_rank_all_hand[ranks.index(card)] = count_rank_all_hand[ranks.index(card)] + 1
-            all_possible_hand.append([hand,1,count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+                all_possible_hand.append([hand,1*remaining_cards_ranks[i],count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
+
             i+=1
+
     return all_possible_hand
 def generate_hand_with_all_suit(current_hand, possible_hand,occur,index_straight):
     ranks = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
@@ -600,8 +637,7 @@ def generate_hand_with_all_suit(current_hand, possible_hand,occur,index_straight
                             return 1
 
             hand = [possible_hand[0] + suit1]
-            
-            if occur[suits.index(suit1)][ranks.index(possible_hand[0])] == 0 :
+            if occur[suits.index(suit1)][ranks.index(hand[0][:-1])] == 0 :
                 count_possible_hand +=1
                 count_suit_all_hand[suits.index(suit1)]  = count_suit_all_hand[suits.index(suit1)] + 1
                 
@@ -654,6 +690,7 @@ def generate_hand_with_all_suit(current_hand, possible_hand,occur,index_straight
                             if possible:
                                 count_straight_hand +=1
             i+=1
+            
         if index_straight == -1:
             return count_flush_hand/count_possible_hand
         else:
@@ -775,64 +812,65 @@ def all_prob(occur,street,list_numplayers):
                 lst_straight = have_straigth(lst_rank)
                 all_comb+= comb
                 prob_Royal_flush_hand = probability_Royal_flush(current_hand,possibility[0],lst_straight,occur)
-                if prob_Royal_flush_hand == 0:
-                    prob_straight_flush_hand = probability_straight_flush(current_hand,possibility[0],lst_straight,occur)
-                    if prob_straight_flush_hand == 0:
-                        
-                        prob_4kind_hand = probability_4Kind(lst_rank)
-                        if prob_4kind_hand == 0:
-                            prob_full_house_hand = probability_Full_House(lst_rank)
-                            if prob_full_house_hand == 0:
-                                #prob_flush_hand = probability_flush_given_hand(current_hand,possibility,occur,count_cards_remaining_by_rank(occur),list_numplayers)/comb
-                                #prob_flush_given_hand = prob_flush_hand
+                prob_straight_flush_hand = probability_straight_flush(current_hand,possibility[0],lst_straight,occur)
+                prob_4kind_hand = probability_4Kind(lst_rank)
+                if prob_4kind_hand == 0:
+                    prob_full_house_hand = probability_Full_House(lst_rank)
+                    if prob_full_house_hand == 0:
+                        #prob_flush_hand = probability_flush_given_hand(current_hand,possibility,occur,count_cards_remaining_by_rank(occur),list_numplayers)/comb
+                        #prob_flush_given_hand = prob_flush_hand
                                 
-                                prob_flush_hand = generate_hand_with_all_suit(current_hand, possibility[0],occur,-1)
-                                prob_flush_given_hand = prob_flush_hand 
-                                if prob_flush_hand !=1 :
-                                    if prob_flush_hand != 0:
-                                        f_zero = 1
-                                    prob_flush += prob_flush_hand *comb
-                                    
-                                    prob_straight_hand = probability_straight(lst_straight,prob_flush_given_hand)
-                                    if prob_straight_hand == 0:
-                                        prob_3kind_hand = probability_3KIND(lst_rank,prob_flush_given_hand)
-                                        if prob_3kind_hand == 0:
-                                            prob_2pairs_hand = probability_2PAIRS(lst_rank,prob_flush_given_hand)
-                                            if prob_2pairs_hand == 0:
-                                                prob_pair_hand = probability_PAIR(lst_rank,prob_flush_given_hand)
-                                                if prob_pair_hand == 0:
-                                                    prob_high_card_hand = probability_high_card(lst_rank,prob_flush_given_hand)
-                                                    prob_high_card +=prob_high_card_hand * comb
-                                                    h_zero = 1
-                                                else:
-                                                    prob_pair +=prob_pair_hand * comb
-                                                    p_zero = 1
-                                            else:
-                                                prob_two_pairs +=prob_2pairs_hand * comb
-                                                tp_zero = 1
+                        prob_flush_hand = generate_hand_with_all_suit(current_hand, possibility[0],occur,-1)
+                        prob_flush_given_hand = prob_flush_hand 
+                        if prob_flush_hand !=1 :
+                            if prob_flush_hand != 0:
+                                f_zero = 1
+                            prob_flush += prob_flush_hand *comb
+                            prob_straight_hand = probability_straight(lst_straight,prob_flush_given_hand)
+                            if len(current_hand) == 5:
+                                print(probability_straight(lst_straight,prob_flush_given_hand)*comb, possibility[0],lst_straight)
+                            if prob_straight_hand == 0:
+                                prob_3kind_hand = probability_3KIND(lst_rank,prob_flush_given_hand)
+                                if prob_3kind_hand == 0:
+                                    prob_2pairs_hand = probability_2PAIRS(lst_rank,prob_flush_given_hand)
+                                    if prob_2pairs_hand == 0:
+                                        prob_pair_hand = probability_PAIR(lst_rank,prob_flush_given_hand)
+                                        if prob_pair_hand == 0:
+                                            prob_high_card_hand = probability_high_card(lst_rank,prob_flush_given_hand)
+                                            prob_high_card +=prob_high_card_hand * comb
+                                            h_zero = 1
                                         else:
-                                            prob_three_of_kind += prob_3kind_hand * comb
-                                            tok_zero = 1
-                                        
+                                            prob_pair +=prob_pair_hand * comb
+                                            p_zero = 1
                                     else:
-                                        prob_straight +=prob_straight_hand * comb 
-                                        s_zero = 1
+                                        prob_two_pairs +=prob_2pairs_hand * comb
+                                        tp_zero = 1
                                 else:
-                                    prob_flush += prob_flush_hand *comb    
-                                    f_zero = 1
+                                    prob_three_of_kind += prob_3kind_hand * comb
+                                    tok_zero = 1
                             else:
-                                prob_full_house += prob_full_house_hand * comb
-                                fh_zero = 1
-
+                                prob_straight +=prob_straight_hand *comb
+                                s_zero = 1
                         else:
-                            prob_four_of_Kind += comb  * prob_4kind_hand
-                            fok_zero = 1
+                            prob_flush += prob_flush_hand *comb    
+                            f_zero = 1
                     else:
-                        prob_straight_flush += comb  * prob_straight_flush_hand
-                        sf_zero = 1
+                        prob_full_house += prob_full_house_hand * comb
+                        fh_zero = 1
+
                 else:
+                    prob_four_of_Kind += comb  * prob_4kind_hand
+                    fok_zero = 1
+                
+                    prob_straight_flush += comb  * prob_straight_flush_hand
+                    if prob_straight_flush != 0:
+                        sf_zero = 1
+                
                     prob_royal_flush += comb  * prob_Royal_flush_hand
-                    rf_zero = 1
+                    if prob_Royal_flush_hand !=0:
+                        rf_zero = 1
+            if len(current_hand) == 5:
+                print(all_comb)
             if all_comb != 0:
                 prob_royal_flush/=all_comb 
                 prob_straight_flush/=all_comb       
