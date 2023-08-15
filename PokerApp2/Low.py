@@ -189,7 +189,7 @@ def low_hand_odd(occur,street,list_numplayers):
         odd_5low += odd
         i+=1
         if odd == 1:
-            return [["5-Low",100,1],["6-Low",0,0],["7-Low",0,0],["8-Low",0,0],["Total",0,1]]
+            return [["5-Low",100,1],["6-Low",0,0],["7-Low",0,0],["8-Low",0,0],["Better Low Hand",0,1]]
     if odd_5low == 0:
         have_5low = 0
     
@@ -200,7 +200,7 @@ def low_hand_odd(occur,street,list_numplayers):
         odd_6low += odd
         i+=1
         if odd == 1:
-            return [["5-Low",odd_5low,have_5low],["6-Low",1,1],["7-Low",0,0],["8-Low",0,0],["Total",odd_5low,1]]
+            return [["5-Low",odd_5low,have_5low],["6-Low",1,1],["7-Low",0,0],["8-Low",0,0],["Better Low Hand",odd_5low,1]]
     if odd_6low == 0:
         have_6low = 0
     Odds.append(["6-Low",odd_6low,have_6low])
@@ -210,7 +210,7 @@ def low_hand_odd(occur,street,list_numplayers):
         odd_7low += odd
         i+=1
         if odd == 1:
-            return [["5-Low",odd_5low,have_5low],["6-Low",odd_6low,have_6low],["7-Low",1,1],["8-Low",0,0],["Total",odd_5low+odd_6low,1]]
+            return [["5-Low",odd_5low,have_5low],["6-Low",odd_6low,have_6low],["7-Low",1,1],["8-Low",0,0],["Better Low Hand",odd_5low+odd_6low,1]]
     if odd_7low == 0:
         have_7low = 0
     Odds.append(["7-Low",odd_7low,have_7low])
@@ -222,9 +222,9 @@ def low_hand_odd(occur,street,list_numplayers):
         i+=1
         if odd == 1:
             if odd_5low+odd_6low+odd_7low > 0:
-                return [["5-Low",odd_5low,have_5low],["6-Low",odd_6low,have_6low],["7-Low",odd_7low,have_7low],["8-Low",1,1],["Total",odd_5low+odd_6low+odd_7low,1]]
+                return [["5-Low",odd_5low,have_5low],["6-Low",odd_6low,have_6low],["7-Low",odd_7low,have_7low],["8-Low",1,1],["Better Low Hand",odd_5low+odd_6low+odd_7low,1]]
             else:
-                return [["5-Low",odd_5low,have_5low],["6-Low",odd_6low,have_6low],["7-Low",odd_7low,have_7low],["8-Low",1,1],["Total",odd_5low+odd_6low+odd_7low,0]]
+                return [["5-Low",odd_5low,have_5low],["6-Low",odd_6low,have_6low],["7-Low",odd_7low,have_7low],["8-Low",1,1],["Better Low Hand",odd_5low+odd_6low+odd_7low,0]]
     if odd_8low == 0:
         have_8low = 0
     Odds.append(["8-Low",odd_8low,have_8low])
@@ -234,7 +234,7 @@ def low_hand_odd(occur,street,list_numplayers):
     if tot == 0:
         Odds.append(["Total",tot,0])
     else:
-        Odds.append(["Better Low Hand",tot,1])
+        Odds.append(["Total",tot,1])
         
     
     return Odds

@@ -62,7 +62,7 @@ def count_cards_remaining_by_rank(occur):
         for i in range (4):
             if occur[i][j] ==0:
                 sum_cards+=1
-            remaining_cards_ranks.append(sum_cards)
+        remaining_cards_ranks.append(sum_cards)
     return remaining_cards_ranks
 def count_cards_remaining_by_suit(occur):
     remaining_cards_suit = []
@@ -84,6 +84,12 @@ def count_dead_cards_by_rank(occur):
                 sum_cards+=1
             dead_cards_ranks.append(sum_cards)
     return dead_cards_ranks
+def count_cards_having_by_ranks(hand):
+    count_rank_all_hand = [0,0,0,0,0,0,0,0,0,0,0,0,0]
+    ranks = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    for card in hand:
+        count_rank_all_hand[ranks.index(card[:-1])] = count_rank_all_hand[ranks.index(card[:-1])] + 1
+    return count_rank_all_hand
 def generate_all_remaining_hand(current_hand,remaining_cards_ranks):
     ranks = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
     all_possible_hand = []
@@ -109,6 +115,7 @@ def generate_all_remaining_hand(current_hand,remaining_cards_ranks):
                         count_rank_all_hand = [0,0,0,0,0,0,0,0,0,0,0,0,0]
                         count_rank_possible_hand = [0,0,0,0,0,0,0,0,0,0,0,0,0]
                         count_rank_current_hand = [0,0,0,0,0,0,0,0,0,0,0,0,0]
+                        
                         if hand.count(card1) <= remaining_cards_ranks[i] and hand.count(card2) <= remaining_cards_ranks[j] and hand.count(card3) <= remaining_cards_ranks[k] and hand.count(card4) <= remaining_cards_ranks[l]:
                             for card in current_hand:
                                 count_rank_all_hand[ranks.index(card[:-1])] = count_rank_all_hand[ranks.index(card[:-1])] + 1
@@ -163,7 +170,7 @@ def generate_all_remaining_hand(current_hand,remaining_cards_ranks):
                             all_possible_hand.append([hand,3,count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
                     k+=1
                 j+=1
-            i=1
+            i+=1
     elif len(current_hand) == 5:# 2 cards are remaining
         i=0
         j=0
@@ -188,7 +195,7 @@ def generate_all_remaining_hand(current_hand,remaining_cards_ranks):
                     else:
                         all_possible_hand.append([hand,2,count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
                 j+=1
-            i=1
+            i+=1
     elif len(current_hand) == 6:# 1 card is remaining
         i=0
         while i < 13:
@@ -205,8 +212,518 @@ def generate_all_remaining_hand(current_hand,remaining_cards_ranks):
                     count_rank_possible_hand[ranks.index(card)] = count_rank_possible_hand[ranks.index(card)] + 1
                     count_rank_all_hand[ranks.index(card)] = count_rank_all_hand[ranks.index(card)] + 1
             all_possible_hand.append([hand,1,count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand])
-            i=1
+            i+=1
     return all_possible_hand
+def generate_hand_with_all_suit(current_hand, possible_hand,occur,index_straight):
+    ranks = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
+    suits = ['s','h','d','c']
+    count_possible_hand = 0
+    count_flush_hand = 0
+    count_straight_hand = 0
+    hand=[]
+    if index_straight !=-1:
+        straight = []
+        if index_straight == 0:
+            straight = ['T','J','Q','K','A']
+        else:
+            straight.append(ranks[index_straight])
+            straight.append(ranks[index_straight-1])
+            straight.append(ranks[index_straight-2])
+            straight.append(ranks[index_straight-3])
+            straight.append(ranks[index_straight-4])
+        print(straight)
+        
+    if len(current_hand) == 3:# 4 cards are remaining
+        i=0
+        j=0
+        k=0
+        l=0
+        while i < 4:
+            suit1 = suits[i]
+            j = 0
+            while j< 4:
+                suit2 = suits[j]
+                k= 0
+                while k < 4:
+                    suit3 = suits[k]
+                    l= 0 
+                    while l < 4:
+                        count_suit_all_hand = [0,0,0,0]
+                        count_suit_all_hand[suits.index(current_hand[0][1:])] =1 +count_suit_all_hand[suits.index(current_hand[0][1:])]
+                        count_suit_all_hand[suits.index(current_hand[1][1:])] =1 +count_suit_all_hand[suits.index(current_hand[1][1:])]
+                        count_suit_all_hand[suits.index(current_hand[2][1:])] =1 +count_suit_all_hand[suits.index(current_hand[2][1:])]
+                        
+                        suit4 = suits[l]
+                        
+                        hand = [possible_hand[0] + suit1,possible_hand[1] + suit2,possible_hand[2] + suit3,possible_hand[3] + suit4]
+                       
+                        if hand[0] != hand[1] and hand[0] != hand[2] and hand[0] != hand[3] and hand[1] !=hand[2] and hand[1] !=hand[3] and hand[1] !=hand[3] :
+                            if occur[suits.index(suit1)][ranks.index(possible_hand[0])] == 0 and occur[suits.index(suit2)][ranks.index(possible_hand[1])] == 0 and occur[suits.index(suit3)][ranks.index(possible_hand[2])] == 0 and occur[suits.index(suit4)][ranks.index(possible_hand[3])] == 0:
+                                count_possible_hand +=1
+                                count_suit_all_hand[suits.index(suit1)]  = count_suit_all_hand[suits.index(suit1)] + 1
+                                count_suit_all_hand[suits.index(suit2)] =1+ count_suit_all_hand[suits.index(suit2)]
+                                count_suit_all_hand[suits.index(suit3)] =1+count_suit_all_hand[suits.index(suit3)]
+                                count_suit_all_hand[suits.index(suit4)] =1+count_suit_all_hand[suits.index(suit4)]
+                                
+                                if count_suit_all_hand[0]>= 5 or count_suit_all_hand[1]>= 5 or count_suit_all_hand[2]>= 5 or count_suit_all_hand[3]>=5 :
+                                    count_flush_hand +=1
+                                    if index_straight !=-1:
+                                        final_hand =current_hand + hand
+                                        
+                                        if count_suit_all_hand[0]>= 5:
+                                            suit = suits[0]
+                                            possible = True
+                                            index_card=0
+                                            while index_card<len(final_hand) and possible:
+                                                if final_hand[index_card][:-1] in straight:
+                                                    if final_hand[index_card][1:] !=suit:
+                                                        possible =False
+                                                index_card +=1
+                                            if possible:
+                                                count_straight_hand +=1
+                                        elif count_suit_all_hand[1]>= 5:
+                                            suit = suits[1]
+                                            possible = True
+                                            index_card=0
+                                            print(final_hand,suit)
+                                            while index_card<len(final_hand) and possible:
+                                                if final_hand[index_card][:-1] in straight:
+                                                    if final_hand[index_card][1:] !=suit:
+                                                        possible =False
+                                                index_card +=1
+                                            if possible:
+                                                count_straight_hand +=1
+                                        elif count_suit_all_hand[2]>= 5:
+                                            suit = suits[2]
+                                            possible = True
+                                            index_card=0
+                                            while index_card<len(final_hand) and possible:
+                                                if final_hand[index_card][:-1] in straight:
+                                                    if final_hand[index_card][1:] !=suit:
+                                                        possible =False
+                                                index_card +=1
+                                            if possible:
+                                                count_straight_hand +=1
+                                        else:
+                                            suit = suits[3]
+                                            possible = True
+                                            index_card=0
+                                            while index_card<len(final_hand) and possible:
+                                                if final_hand[index_card][:-1] in straight:
+                                                    if final_hand[index_card][1:] !=suit:
+                                                        possible =False
+                                                index_card +=1
+                                            if possible:
+                                                count_straight_hand +=1
+                        l+=1
+                    k+=1
+                j+=1
+            i+=1
+        if index_straight == -1:
+            return count_flush_hand/count_possible_hand
+        else:
+            return count_straight_hand/count_possible_hand
+    elif len(current_hand) == 4:# 3 cards are remaining
+        i=0
+        j=0
+        k=0
+       
+        
+        while i < 4:
+            print("ici")
+            suit1 = suits[i]
+            j = 0
+            while j< 4:
+                suit2 = suits[j]
+                k= 0
+                while k < 4:
+                    suit3 = suits[k]
+                    
+                    
+                    count_suit_all_hand = [0,0,0,0]
+                    count_suit_all_hand[suits.index(current_hand[0][1:])] =1 +count_suit_all_hand[suits.index(current_hand[0][1:])]
+                    count_suit_all_hand[suits.index(current_hand[1][1:])] =1 +count_suit_all_hand[suits.index(current_hand[1][1:])]
+                    count_suit_all_hand[suits.index(current_hand[2][1:])] =1 +count_suit_all_hand[suits.index(current_hand[2][1:])]
+                    count_suit_all_hand[suits.index(current_hand[3][1:])] =1 +count_suit_all_hand[suits.index(current_hand[3][1:])]
+                        
+                    
+                        
+                    hand = [possible_hand[0] + suit1,possible_hand[1] + suit2,possible_hand[2] + suit3]
+                       
+                    if hand[0] != hand[1] and hand[0] != hand[2]  and hand[1] !=hand[2]:
+                        if occur[suits.index(suit1)][ranks.index(possible_hand[0])] == 0 and occur[suits.index(suit2)][ranks.index(possible_hand[1])] == 0 and occur[suits.index(suit3)][ranks.index(possible_hand[2])] == 0:
+                            count_possible_hand +=1
+                            count_suit_all_hand[suits.index(suit1)]  = count_suit_all_hand[suits.index(suit1)] + 1
+                            count_suit_all_hand[suits.index(suit2)] =1+ count_suit_all_hand[suits.index(suit2)]
+                            count_suit_all_hand[suits.index(suit3)] =1+count_suit_all_hand[suits.index(suit3)] 
+
+                            if count_suit_all_hand[0]>= 5 or count_suit_all_hand[1]>= 5 or count_suit_all_hand[2]>= 5 or count_suit_all_hand[3]>=5 :
+                                count_flush_hand +=1
+                                if index_straight !=-1:
+                                    final_hand =current_hand + hand
+                                    if count_suit_all_hand[0]>= 5:
+                                        suit = suits[0]
+                                        possible = True
+                                        index_card=0
+                                        while index_card<len(final_hand) and possible:
+                                            if final_hand[index_card][:-1] in straight:
+                                                if final_hand[index_card][1:] !=suit:
+                                                    possible =False
+                                            index_card +=1
+                                        if possible:
+                                            count_straight_hand +=1
+                                    elif count_suit_all_hand[1]>= 5:
+                                        suit = suits[1]
+                                        possible = True
+                                        index_card=0
+                                        while index_card<len(final_hand) and possible:
+                                            if final_hand[index_card][:-1] in straight:
+                                                if final_hand[index_card][1:] !=suit:
+                                                    possible =False
+                                            index_card +=1
+                                        if possible:
+                                            count_straight_hand +=1
+                                    elif count_suit_all_hand[2]>= 5:
+                                        suit = suits[2]
+                                        possible = True
+                                        index_card=0
+                                        while index_card<len(final_hand) and possible:
+                                            if final_hand[index_card][:-1] in straight:
+                                                if final_hand[index_card][1:] !=suit:
+                                                    possible =False
+                                            index_card +=1
+                                        if possible:
+                                            count_straight_hand +=1
+                                    else:
+                                        suit = suits[3]
+                                        possible = True
+                                        index_card=0
+                                        while index_card<len(final_hand) and possible:
+                                            if final_hand[index_card][:-1] in straight:
+                                                if final_hand[index_card][1:] !=suit:
+                                                    possible =False
+                                            index_card +=1
+                                        if possible:
+                                            count_straight_hand +=1
+                    k+=1
+                j+=1
+            i+=1
+        if index_straight == -1:
+            return count_flush_hand/count_possible_hand
+        else:
+            return count_straight_hand/count_possible_hand
+        
+    elif len(current_hand) == 5:# 2 cards are remaining
+        i=0
+        j=0
+        while i < 4:
+            print("ici1")
+            suit1 = suits[i]
+            j = 0
+            while j< 4:
+                suit2 = suits[j]
+                
+                    
+                count_suit_all_hand = [0,0,0,0]
+                count_suit_all_hand[suits.index(current_hand[0][1:])] =1 +count_suit_all_hand[suits.index(current_hand[0][1:])]
+                count_suit_all_hand[suits.index(current_hand[1][1:])] =1 +count_suit_all_hand[suits.index(current_hand[1][1:])]
+                count_suit_all_hand[suits.index(current_hand[2][1:])] =1 +count_suit_all_hand[suits.index(current_hand[2][1:])]
+                count_suit_all_hand[suits.index(current_hand[3][1:])] =1 +count_suit_all_hand[suits.index(current_hand[3][1:])]
+                count_suit_all_hand[suits.index(current_hand[4][1:])] =1 +count_suit_all_hand[suits.index(current_hand[4][1:])]
+                if count_suit_all_hand[0]>= 5 or count_suit_all_hand[1]>= 5 or count_suit_all_hand[2]>= 5 or count_suit_all_hand[3]>=5 :
+                    return 1
+                    if index_straight !=-1:
+                        final_hand =current_hand + hand
+                        if count_suit_all_hand[0]>= 5:
+                            suit = suits[0]
+                            possible = True
+                            index_card=0
+                            while index_card<len(final_hand) and possible:
+                                if final_hand[index_card][:-1] in straight:
+                                    if final_hand[index_card][1:] !=suit:
+                                        possible =False
+                                index_card +=1
+                            if possible:
+                                return 1
+                        elif count_suit_all_hand[1]>= 5:
+                            suit = suits[1]
+                            possible = True
+                            index_card=0
+                            while index_card<len(final_hand) and possible:
+                                if final_hand[index_card][:-1] in straight:
+                                    if final_hand[index_card][1:] !=suit:
+                                        possible =False
+                                index_card +=1
+                            if possible:
+                                return 1
+                        elif count_suit_all_hand[2]>= 5:
+                            suit = suits[2]
+                            possible = True
+                            index_card=0
+                            while index_card<len(final_hand) and possible:
+                                if final_hand[index_card][:-1] in straight:
+                                    if final_hand[index_card][1:] !=suit:
+                                        possible =False
+                                index_card +=1
+                            if possible:
+                                return 1
+                        else:
+                            suit = suits[3]
+                            possible = True
+                            index_card=0
+                            while index_card<len(final_hand) and possible:
+                                if final_hand[index_card][:-1] in straight:
+                                    if final_hand[index_card][1:] !=suit:
+                                        possible =False
+                                index_card +=1
+                            if possible:
+                                return 1
+
+                hand = [possible_hand[0] + suit1,possible_hand[1] + suit2]
+                if hand[0] != hand[1] :
+                    if occur[suits.index(suit1)][ranks.index(possible_hand[0])] == 0 and occur[suits.index(suit2)][ranks.index(possible_hand[1])] == 0:
+                        count_possible_hand +=1
+                        count_suit_all_hand[suits.index(suit1)]  = count_suit_all_hand[suits.index(suit1)] + 1
+                        count_suit_all_hand[suits.index(suit2)] =1+ count_suit_all_hand[suits.index(suit2)] 
+                        if count_suit_all_hand[0]>= 5 or count_suit_all_hand[1]>= 5 or count_suit_all_hand[2]>= 5 or count_suit_all_hand[3]>=5 :
+                            count_flush_hand +=1
+                            if index_straight !=-1:
+                                final_hand =current_hand + hand
+                                if count_suit_all_hand[0]>= 5:
+                                    suit = suits[0]
+                                    possible = True
+                                    index_card=0
+                                    while index_card<len(final_hand) and possible:
+                                        if final_hand[index_card][:-1] in straight:
+                                            if final_hand[index_card][1:] !=suit:
+                                                possible =False
+                                        index_card +=1
+                                    if possible:
+                                        count_straight_hand +=1
+                                elif count_suit_all_hand[1]>= 5:
+                                    suit = suits[1]
+                                    possible = True
+                                    index_card=0
+                                    while index_card<len(final_hand) and possible:
+                                        if final_hand[index_card][:-1] in straight:
+                                            if final_hand[index_card][1:] !=suit:
+                                                possible =False
+                                        index_card +=1
+                                    if possible:
+                                        count_straight_hand +=1
+                                elif count_suit_all_hand[2]>= 5:
+                                    suit = suits[2]
+                                    possible = True
+                                    index_card=0
+                                    while index_card<len(final_hand) and possible:
+                                        if final_hand[index_card][:-1] in straight:
+                                            if final_hand[index_card][1:] !=suit:
+                                                possible =False
+                                        index_card +=1
+                                    if possible:
+                                        count_straight_hand +=1
+                                else:
+                                    suit = suits[3]
+                                    possible = True
+                                    index_card=0
+                                    while index_card<len(final_hand) and possible:
+                                        if final_hand[index_card][:-1] in straight:
+                                            if final_hand[index_card][1:] !=suit:
+                                                possible =False
+                                        index_card +=1
+                                    if possible:
+                                        count_straight_hand +=1
+
+                j+=1
+            i+=1
+        if index_straight == -1:
+            return count_flush_hand/count_possible_hand
+        else:
+            return count_straight_hand/count_possible_hand
+    elif len(current_hand) == 6:# 1 card is remaining
+        i=0
+        while i < 4:
+            print("ici2")
+            suit1 = suits[i]   
+            count_suit_all_hand = [0,0,0,0]
+            count_suit_all_hand[suits.index(current_hand[0][1:])] =1 +count_suit_all_hand[suits.index(current_hand[0][1:])]
+            count_suit_all_hand[suits.index(current_hand[1][1:])] =1 +count_suit_all_hand[suits.index(current_hand[1][1:])]
+            count_suit_all_hand[suits.index(current_hand[2][1:])] =1 +count_suit_all_hand[suits.index(current_hand[2][1:])]
+            count_suit_all_hand[suits.index(current_hand[3][1:])] =1 +count_suit_all_hand[suits.index(current_hand[3][1:])]
+            count_suit_all_hand[suits.index(current_hand[4][1:])] =1 +count_suit_all_hand[suits.index(current_hand[4][1:])]
+            count_suit_all_hand[suits.index(current_hand[5][1:])] =1 +count_suit_all_hand[suits.index(current_hand[5][1:])]
+            if count_suit_all_hand[0]>= 5 or count_suit_all_hand[1]>= 5 or count_suit_all_hand[2]>= 5 or count_suit_all_hand[3]>=5 :
+                return 1
+                if index_straight !=-1:
+                    final_hand =current_hand + hand
+                    if count_suit_all_hand[0]>= 5:
+                        suit = suits[0]
+                        possible = True
+                        index_card=0
+                        while index_card<len(final_hand) and possible:
+                            if final_hand[index_card][:-1] in straight:
+                                if final_hand[index_card][1:] !=suit:
+                                    possible =False
+                            index_card +=1
+                        if possible:
+                            return 1
+                    elif count_suit_all_hand[1]>= 5:
+                        suit = suits[1]
+                        possible = True
+                        index_card=0
+                        while index_card<len(final_hand) and possible:
+                            if final_hand[index_card][:-1] in straight:
+                                if final_hand[index_card][1:] !=suit:
+                                    possible =False
+                            index_card +=1
+                        if possible:
+                            return 1
+                    elif count_suit_all_hand[2]>= 5:
+                        suit = suits[2]
+                        possible = True
+                        index_card=0
+                        while index_card<len(final_hand) and possible:
+                            if final_hand[index_card][:-1] in straight:
+                                if final_hand[index_card][1:] !=suit:
+                                    possible =False
+                            index_card +=1
+                        if possible:
+                            return 1
+                    else:
+                        suit = suits[3]
+                        possible = True
+                        index_card=0
+                        while index_card<len(final_hand) and possible:
+                            if final_hand[index_card][:-1] in straight:
+                                if final_hand[index_card][1:] !=suit:
+                                    possible =False
+                            index_card +=1
+                        if possible:
+                            return 1
+
+            hand = [possible_hand[0] + suit1]
+            
+            if occur[suits.index(suit1)][ranks.index(possible_hand[0])] == 0 :
+                count_possible_hand +=1
+                count_suit_all_hand[suits.index(suit1)]  = count_suit_all_hand[suits.index(suit1)] + 1
+                
+                if count_suit_all_hand[0]>= 5 or count_suit_all_hand[1]>= 5 or count_suit_all_hand[2]>= 5 or count_suit_all_hand[3]>=5 :
+                    count_flush_hand +=1
+                    if index_straight !=-1:
+                        final_hand =current_hand + hand
+                        if count_suit_all_hand[0]>= 5:
+                            suit = suits[0]
+                            possible = True
+                            index_card=0
+                            while index_card<len(final_hand) and possible:
+                                if final_hand[index_card][:-1] in straight:
+                                    if final_hand[index_card][1:] !=suit:
+                                        possible =False
+                                index_card +=1
+                            if possible:
+                                count_straight_hand +=1
+                        elif count_suit_all_hand[1]>= 5:
+                            suit = suits[1]
+                            possible = True
+                            index_card=0
+                            while index_card<len(final_hand) and possible:
+                                if final_hand[index_card][:-1] in straight:
+                                    if final_hand[index_card][1:] !=suit:
+                                        possible =False
+                                index_card +=1
+                            if possible:
+                                count_straight_hand +=1
+                        elif count_suit_all_hand[2]>= 5:
+                            suit = suits[2]
+                            possible = True
+                            index_card=0
+                            while index_card<len(final_hand) and possible:
+                                if final_hand[index_card][:-1] in straight:
+                                    if final_hand[index_card][1:] !=suit:
+                                        possible =False
+                                index_card +=1
+                            if possible:
+                                count_straight_hand +=1
+                        else:
+                            suit = suits[3]
+                            possible = True
+                            index_card=0
+                            while index_card<len(final_hand) and possible:
+                                if final_hand[index_card][:-1] in straight:
+                                    if final_hand[index_card][1:] !=suit:
+                                        possible =False
+                                index_card +=1
+                            if possible:
+                                count_straight_hand +=1
+            i+=1
+        if index_straight == -1:
+            return count_flush_hand/count_possible_hand
+        else:
+            return count_straight_hand/count_possible_hand
+    else:
+        if len(current_hand) > 6:
+            count_suit_all_hand = [0,0,0,0]
+            hand =[]
+            count_suit_all_hand[suits.index(current_hand[0][1:])] =1 +count_suit_all_hand[suits.index(current_hand[0][1:])]
+            count_suit_all_hand[suits.index(current_hand[1][1:])] =1 +count_suit_all_hand[suits.index(current_hand[1][1:])]
+            count_suit_all_hand[suits.index(current_hand[2][1:])] =1 +count_suit_all_hand[suits.index(current_hand[2][1:])]
+            count_suit_all_hand[suits.index(current_hand[3][1:])] =1 +count_suit_all_hand[suits.index(current_hand[3][1:])]
+            count_suit_all_hand[suits.index(current_hand[4][1:])] =1 +count_suit_all_hand[suits.index(current_hand[4][1:])]
+            count_suit_all_hand[suits.index(current_hand[5][1:])] =1 +count_suit_all_hand[suits.index(current_hand[5][1:])]
+            if count_suit_all_hand[0]>= 5 or count_suit_all_hand[1]>= 5 or count_suit_all_hand[2]>= 5 or count_suit_all_hand[3]>=5 :
+                if index_straight !=-1:
+                    final_hand =current_hand + hand
+                    if count_suit_all_hand[0]>= 5:
+                        suit = suits[0]
+                        possible = True
+                        index_card=0
+                        while index_card<len(final_hand) and possible:
+                            if final_hand[index_card][:-1] in straight:
+                                if final_hand[index_card][1:] !=suit:
+                                    possible =False
+                            index_card +=1
+                        if possible:
+                            return 1
+                    elif count_suit_all_hand[1]>= 5:
+                        suit = suits[1]
+                        possible = True
+                        index_card=0
+                        while index_card<len(final_hand) and possible:
+                            if final_hand[index_card][:-1] in straight:
+                                if final_hand[index_card][1:] !=suit:
+                                    possible =False
+                            index_card +=1
+                        if possible:
+                            return 1
+                    elif count_suit_all_hand[2]>= 5:
+                        suit = suits[2]
+                        possible = True
+                        index_card=0
+                        while index_card<len(final_hand) and possible:
+                            if final_hand[index_card][:-1] in straight:
+                                if final_hand[index_card][1:] !=suit:
+                                    possible =False
+                            index_card +=1
+                        if possible:
+                            return 1
+                    else:
+                        suit = suits[3]
+                        possible = True
+                        index_card=0
+                        while index_card<len(final_hand) and possible:
+                            if final_hand[index_card][:-1] in straight:
+                                if final_hand[index_card][1:] !=suit:
+                                    possible =False
+                            index_card +=1
+                        if possible:
+                            return 1
+                else:
+                    return 1
+            else: 
+                return 0
+
+
+     
 
 
 def possible_flush(current_hand,all_possible_hand):
@@ -240,35 +757,117 @@ def possible_flush(current_hand,all_possible_hand):
                 lst.append([hand,combinaisons,count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand,False])
     return lst
 def all_prob(occur,street,list_numplayers):
-        prob_royal_flush,rf_zero =0,1
-        prob_straight_flush,sf_zero=0,1
-        prob_four_of_Kind,fok_zero=0,1
-        prob_full_house,fh_zero = 0,1
-        prob_flush,f_zero=0,1
-        prob_straight,s_zero = 0,1
-        prob_three_of_kind,tok_zero = 0,1
-        prob_two_pairs,tp_zero = 0,1
-        prob_pair,p_zero = 0,1
-        prob_high_card,h_zero = 0,1
+        prob_royal_flush,rf_zero =0,0
+        prob_straight_flush,sf_zero=0,0
+        prob_four_of_Kind,fok_zero=0,0
+        prob_full_house,fh_zero = 0,0
+        prob_flush,f_zero=0,0
+        prob_straight,s_zero = 0,0
+        prob_three_of_kind,tok_zero = 0,0
+        prob_two_pairs,tp_zero = 0,0
+        prob_pair,p_zero = 0,0
+        prob_high_card,h_zero = 0,0
         all_comb = 0
-        if street == '4th':
-            current_hand = find_current_hand(occur)
-            lst_all_possibilities = possible_flush(current_hand,generate_all_remaining_hand(current_hand,count_cards_remaining_by_rank(occur)))
+        current_hand = find_current_hand(occur)
+        if len(current_hand) <7:
+            lst_all_possibilities = generate_all_remaining_hand(current_hand,count_cards_remaining_by_rank(occur))
             for possibility in lst_all_possibilities: #[hand,combinaisons,count_rank_current_hand,count_rank_possible_hand,count_rank_all_hand,Bool]
                 comb = possibility[1]
+                lst_rank = possibility[4]
+                lst_straight = have_straigth(lst_rank)
                 all_comb+= comb
-                prob_Royal_flush_hand = 0
-                if prob_Royal_flush_hand ==0:
-                    prob_straight_flush_hand = 0
+                prob_Royal_flush_hand = probability_Royal_flush(current_hand,possibility[0],lst_straight,occur)
+                if prob_Royal_flush_hand == 0:
+                    prob_straight_flush_hand = probability_straight_flush(current_hand,possibility[0],lst_straight,occur)
                     if prob_straight_flush_hand == 0:
-                        lst_rank = possibility[4]
+                        
                         prob_4kind_hand = probability_4Kind(lst_rank)
                         if prob_4kind_hand == 0:
                             prob_full_house_hand = probability_Full_House(lst_rank)
                             if prob_full_house_hand == 0:
-                                prob_flush_hand = probability_flush_given_hand(current_hand,possibility,occur,count_cards_remaining_by_rank(occur),list_numplayers)/comb
+                                #prob_flush_hand = probability_flush_given_hand(current_hand,possibility,occur,count_cards_remaining_by_rank(occur),list_numplayers)/comb
+                                #prob_flush_given_hand = prob_flush_hand
+                                
+                                prob_flush_hand = generate_hand_with_all_suit(current_hand, possibility[0],occur,-1)
                                 prob_flush_given_hand = prob_flush_hand 
-                                lst_straight = have_straigth(lst_rank)
+                                if prob_flush_hand !=1 :
+                                    if prob_flush_hand != 0:
+                                        f_zero = 1
+                                    prob_flush += prob_flush_hand *comb
+                                    
+                                    prob_straight_hand = probability_straight(lst_straight,prob_flush_given_hand)
+                                    if prob_straight_hand == 0:
+                                        prob_3kind_hand = probability_3KIND(lst_rank,prob_flush_given_hand)
+                                        if prob_3kind_hand == 0:
+                                            prob_2pairs_hand = probability_2PAIRS(lst_rank,prob_flush_given_hand)
+                                            if prob_2pairs_hand == 0:
+                                                prob_pair_hand = probability_PAIR(lst_rank,prob_flush_given_hand)
+                                                if prob_pair_hand == 0:
+                                                    prob_high_card_hand = probability_high_card(lst_rank,prob_flush_given_hand)
+                                                    prob_high_card +=prob_high_card_hand * comb
+                                                    h_zero = 1
+                                                else:
+                                                    prob_pair +=prob_pair_hand * comb
+                                                    p_zero = 1
+                                            else:
+                                                prob_two_pairs +=prob_2pairs_hand * comb
+                                                tp_zero = 1
+                                        else:
+                                            prob_three_of_kind += prob_3kind_hand * comb
+                                            tok_zero = 1
+                                        
+                                    else:
+                                        prob_straight +=prob_straight_hand * comb 
+                                        s_zero = 1
+                                else:
+                                    prob_flush += prob_flush_hand *comb    
+                                    f_zero = 1
+                            else:
+                                prob_full_house += prob_full_house_hand * comb
+                                fh_zero = 1
+
+                        else:
+                            prob_four_of_Kind += comb  * prob_4kind_hand
+                            fok_zero = 1
+                    else:
+                        prob_straight_flush += comb  * prob_straight_flush_hand
+                        sf_zero = 1
+                else:
+                    prob_royal_flush += comb  * prob_Royal_flush_hand
+                    rf_zero = 1
+            if all_comb != 0:
+                prob_royal_flush/=all_comb 
+                prob_straight_flush/=all_comb       
+                prob_four_of_Kind/=all_comb    
+                prob_full_house/=all_comb
+                prob_flush/=all_comb
+                prob_straight/=all_comb
+                prob_three_of_kind/=all_comb
+                prob_two_pairs/=all_comb
+                prob_pair/=all_comb
+                prob_high_card/=all_comb
+        else:
+            lst_rank =  count_cards_having_by_ranks(current_hand)
+            lst_straight = have_straigth(lst_rank)
+            prob_Royal_flush_hand = probability_Royal_flush(current_hand,current_hand,lst_straight,occur)
+            
+            if prob_Royal_flush_hand == 0:
+                prob_straight_flush_hand = probability_straight_flush(current_hand,current_hand,lst_straight,occur)
+                if prob_straight_flush_hand == 0:
+                    
+                    prob_4kind_hand = probability_4Kind(lst_rank)
+                    if prob_4kind_hand == 0:
+                        prob_full_house_hand = probability_Full_House(lst_rank)
+                        if prob_full_house_hand == 0:
+                            #prob_flush_hand = probability_flush_given_hand(current_hand,possibility,occur,count_cards_remaining_by_rank(occur),list_numplayers)/comb
+                            #prob_flush_given_hand = prob_flush_hand
+                                
+                            prob_flush_hand = generate_hand_with_all_suit(current_hand, current_hand,occur,-1)
+                            prob_flush_given_hand = prob_flush_hand 
+                            if prob_flush_hand !=1 :
+                                if prob_flush_hand != 0:
+                                    f_zero = 1
+                                prob_flush += prob_flush_hand 
                                 prob_straight_hand = probability_straight(lst_straight,prob_flush_given_hand)
                                 if prob_straight_hand == 0:
                                     prob_3kind_hand = probability_3KIND(lst_rank,prob_flush_given_hand)
@@ -278,39 +877,38 @@ def all_prob(occur,street,list_numplayers):
                                             prob_pair_hand = probability_PAIR(lst_rank,prob_flush_given_hand)
                                             if prob_pair_hand == 0:
                                                 prob_high_card_hand = probability_high_card(lst_rank,prob_flush_given_hand)
-                                                prob_high_card +=prob_high_card_hand * comb
-                                                prob_flush += prob_flush_hand * comb
+                                                prob_high_card +=prob_high_card_hand 
+                                                h_zero = 1
                                             else:
-                                                prob_pair +=prob_pair_hand * comb
-                                                prob_flush += prob_flush_hand *comb
+                                                prob_pair +=prob_pair_hand 
+                                                p_zero = 1
                                         else:
-                                            prob_two_pairs +=prob_2pairs_hand * comb
-                                            prob_flush += prob_flush_hand * comb
+                                            prob_two_pairs +=prob_2pairs_hand 
+                                            tp_zero = 1
                                     else:
-                                        prob_three_of_kind += prob_3kind_hand * comb
-                                        prob_flush += prob_flush_hand * comb
+                                        prob_three_of_kind += prob_3kind_hand 
+                                        tok_zero = 1
+                                        
                                 else:
-                                    prob_straight +=prob_straight_hand * comb 
-                                    prob_flush += prob_flush_hand * comb
-                                    
+                                    prob_straight +=prob_straight_hand 
+                                    s_zero = 1
                             else:
-                                prob_full_house += prob_full_house_hand * comb 
+                                prob_flush += prob_flush_hand    
+                                f_zero = 1
                         else:
-                            prob_four_of_Kind += comb  * prob_4kind_hand
+                            prob_full_house += prob_full_house_hand 
+                            fh_zero = 1
+
                     else:
-                        prob_straight_flush += comb  * prob_straight_flush_hand
+                        prob_four_of_Kind += prob_4kind_hand
+                        fok_zero = 1
                 else:
-                    prob_royal_flush += comb  * prob_Royal_flush_hand
-            prob_royal_flush/=all_comb 
-            prob_straight_flush/=all_comb       
-            prob_four_of_Kind/=all_comb    
-            prob_full_house/=all_comb
-            prob_flush/=all_comb
-            prob_straight/=all_comb
-            prob_three_of_kind/=all_comb
-            prob_two_pairs/=all_comb
-            prob_pair/=all_comb
-            prob_high_card/=all_comb
+                    prob_straight_flush += prob_straight_flush_hand
+                    sf_zero = 1
+            else:
+                prob_royal_flush +=  prob_Royal_flush_hand
+                rf_zero = 1
+
         return [['Royal Flush',prob_royal_flush,rf_zero],
                 ['Straight Flush',prob_straight_flush,sf_zero],
                 ['Four of Kind',prob_four_of_Kind,fok_zero],
@@ -324,14 +922,31 @@ def all_prob(occur,street,list_numplayers):
                 ["Total",prob_royal_flush+prob_straight_flush+prob_four_of_Kind+prob_full_house+prob_high_card+prob_flush+prob_straight+prob_three_of_kind+prob_two_pairs+prob_pair,1]]
 
 
+
+def probability_Royal_flush(current_hand,possible_hand,lst_straight,occur):
+    prob_st_flush = 0
+    if lst_straight[0] == 1 :
+        prob_st_flush = generate_hand_with_all_suit(current_hand, possible_hand,occur,0)
+    return prob_st_flush
+
+def probability_straight_flush(current_hand,possible_hand,lst_straight,occur):
+    prob_st_flush = 0
+    for i in range (1,13):
+        if lst_straight[i] == 1 :
+            prob_st_flush += generate_hand_with_all_suit(current_hand, possible_hand,occur,i)
+    return prob_st_flush
+
+
+
 def have_straigth(lst_rank):
     lst_straight = [0 for i in range (13)]
     if lst_rank[0]*lst_rank[9]*lst_rank[10]*lst_rank[11]*lst_rank[12] !=0:
        lst_straight[0] = 1
     for i in range (8,-1,-1):
+
         if lst_rank[i]*lst_rank[i+1]*lst_rank[i+2]*lst_rank[i+3]*lst_rank[i+4] !=0:
             lst_straight[i+4] = 1
-
+    print(lst_straight)
     return lst_straight
 def probability_straight(lst_straight,prob_flush):
     for have_str in lst_straight:
@@ -393,7 +1008,7 @@ def probability_high_card(lst_rank,prob_flush):
     if Sum_straight == 0 and Distinct_rank == 7:
         return 1 - prob_flush
     return 0
-
+'''
 def probability_flush_given_hand(current_hand,possible_hand,occur,remaining_cards_ranks,list_numplayers):
     suits = ['s','h','d','c']
     ranks = ['A','2','3','4','5','6','7','8','9','T','J','Q','K']
@@ -464,11 +1079,9 @@ def probability_flush_given_hand(current_hand,possible_hand,occur,remaining_card
                         card_needed_suit1 = 3
                         card_needed_suit2 = 4
                 probability_possible_hand = probability_4cards(current_hand,possible_hand,occur,remaining_cards_ranks,list_numplayers)
-                print(current_hand,probability_possible_hand)
                 probability_possible_hand_suit1= probability_4cards_flush(suit1,card_needed_suit1,current_hand,possible_hand,occur,remaining_cards_ranks,list_numplayers)
                 probability_possible_hand_suit2= probability_4cards_flush(suit2,card_needed_suit2,current_hand,possible_hand,occur,remaining_cards_ranks,list_numplayers)
-                print(suit2,probability_possible_hand_suit2)
-                print(suit1,probability_possible_hand_suit1)
+
                 if probability_possible_hand == 0:
                     return 0
                 else:
@@ -1823,4 +2436,4 @@ def probability_4cards_flush(suit,card_needed,current_hand,possible_hand,occur,r
         else:
             return 0
     else:
-        return 0
+        return 0'''

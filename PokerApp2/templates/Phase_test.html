@@ -596,7 +596,12 @@
                                     low_html += "<td><1%</td></tr>";
                                 }
                                 else {
-                                    low_html += "<td>" + Math.round(t[ind][1][pas][1] * 100)+ "%</td></tr>";
+                                    if (t[ind][1][pas][1] == 1) {
+                                        low_html += "<td>Already Have</td></tr>";
+                                    }
+                                    else {
+                                        low_html += "<td>" + Math.round(t[ind][1][pas][1] * 100) + "%</td></tr>";
+                                    }
                                 }
                                 
                             }
@@ -620,7 +625,7 @@
                                 }
 
                                 else {
-                                    if (t[ind][2][pas][1] == 1) {
+                                    if (t[ind][2][pas][1] == 1 && t[ind][2][pas][0] !="Total" ) {
                                         low_html += "<td>Already Have</td></tr>";
                                     }
                                     else {
