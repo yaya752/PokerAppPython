@@ -73,9 +73,9 @@ def upload_file():
                 session['new'] = False  
             else:
                 if allowed_file(file.filename):
-                    new_directory = "New_File\\"
+                    new_directory = "./New_File/"
                     os.makedirs(new_directory, exist_ok=True)
-                    file.save('New_File\\' + file.filename)
+                    file.save('./New_File/' + file.filename)
                     session['new'] = True
                     count_file += 1
         if count_file == 0:
@@ -110,9 +110,9 @@ def Summary():
    @return Display  the summary of all the games
     """
     if session['new']:
-        path = 'New_File\\'
+        path = './New_File/'
     else:
-        path = 'Game_File\\'
+        path = './Game_File/'
     uploads_dir = os.path.join(app.root_path, path)
     files = os.listdir(uploads_dir)
     session['files'] = files
@@ -149,7 +149,7 @@ def delete_file(filename):
     """! As the user has the possibility to add a game he can also delete it.  
      @param filename : the file to delete """
     path = session['path']
-    if path != "Game_File\\":
+    if path != "./Game_File/":
         file_path = os.path.join(path, filename)
         os.remove(file_path)
         uploads_dir = os.path.join(app.root_path, path)
