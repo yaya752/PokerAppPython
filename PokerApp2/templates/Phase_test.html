@@ -32,7 +32,7 @@
 
         var maxbet = {{ maxbet }}
         var tableau = {{ tab_street | tojson }};
-
+        console.log(tableau)
         var tableauxContainer = document.getElementById("tableauxContainer");
         // Index of the current action
         var currentActionIndex = 0;
@@ -63,8 +63,6 @@
             beginindex = i - 1;
             displayAction(tableau, list, street, 0, 0)
             
-            //displayHand(decision_json, Index_tab)
-            //displayFlush(tableau, Index_tab)
             return beginindex
         }
         beginindex = begin(list)
@@ -564,9 +562,9 @@
             
            
             actionHtml += "</div>"
-            if (list[index_hero][2] != 'folds' || (street != '*** SHOW DOWN ***' && street != '*** SUMMARY ***')) {
-                actionHtml += displayLow(table, index) 
-            }
+            
+            actionHtml += displayLow(table, index) 
+            
             
             actionHtml += "</div>"
             
@@ -578,8 +576,8 @@
         function displayLow(t, index) {
             
             var ind = index;
-            if (ind > t.length - 2) {
-                ind = t.length- 2
+            if (ind > t.length - 1) {
+                ind = t.length - 1
             }
             low_html = "";
             if (t[ind] != null) {

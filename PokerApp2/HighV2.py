@@ -231,7 +231,6 @@ def generate_hand_with_all_suit(current_hand, possible_hand,occur,index_straight
             straight.append(ranks[index_straight-2])
             straight.append(ranks[index_straight-3])
             straight.append(ranks[index_straight-4])
-        print(straight)
         
     if len(current_hand) == 3:# 4 cards are remaining
         i=0
@@ -285,7 +284,6 @@ def generate_hand_with_all_suit(current_hand, possible_hand,occur,index_straight
                                             suit = suits[1]
                                             possible = True
                                             index_card=0
-                                            print(final_hand,suit)
                                             while index_card<len(final_hand) and possible:
                                                 if final_hand[index_card][:-1] in straight:
                                                     if final_hand[index_card][1:] !=suit:
@@ -330,7 +328,7 @@ def generate_hand_with_all_suit(current_hand, possible_hand,occur,index_straight
        
         
         while i < 4:
-            print("ici")
+           
             suit1 = suits[i]
             j = 0
             while j< 4:
@@ -417,7 +415,7 @@ def generate_hand_with_all_suit(current_hand, possible_hand,occur,index_straight
         i=0
         j=0
         while i < 4:
-            print("ici1")
+            
             suit1 = suits[i]
             j = 0
             while j< 4:
@@ -543,7 +541,7 @@ def generate_hand_with_all_suit(current_hand, possible_hand,occur,index_straight
     elif len(current_hand) == 6:# 1 card is remaining
         i=0
         while i < 4:
-            print("ici2")
+            
             suit1 = suits[i]   
             count_suit_all_hand = [0,0,0,0]
             count_suit_all_hand[suits.index(current_hand[0][1:])] =1 +count_suit_all_hand[suits.index(current_hand[0][1:])]
@@ -946,7 +944,8 @@ def have_straigth(lst_rank):
 
         if lst_rank[i]*lst_rank[i+1]*lst_rank[i+2]*lst_rank[i+3]*lst_rank[i+4] !=0:
             lst_straight[i+4] = 1
-    print(lst_straight)
+    
+
     return lst_straight
 def probability_straight(lst_straight,prob_flush):
     for have_str in lst_straight:

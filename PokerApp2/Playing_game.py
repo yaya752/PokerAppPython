@@ -617,14 +617,13 @@ def Play(game_file,main_player,list_numplayers,path):
                 list_numplayers.append(players)
 
                 (occur1,low_hand_odds,high_hand_odds)= Calculate_odds(occur,words[1],list_numplayers) #calculate the odds using the occur tab (occurence of the cards)
+                
                 tab_street.append([occur1,low_hand_odds,high_hand_odds])
             Players_Actions.append([lines[i]])
             if words[1] == "RIVER":
                 for k in range(0,len(Players)):
                     if Players[k][1] != "folds":
                         Players_Actions.append([Players[k][0],"Dealt",Card_To_Html(Card_Street('RIVER',street_index, lines, Players[k][0],occur,main_player,Players))])
-                
-            
             j+=1
        #else we add the action to the list with a specific pattern [name of the player,action, chips or cards]
         else:
